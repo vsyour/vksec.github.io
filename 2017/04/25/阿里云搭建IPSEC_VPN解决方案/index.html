@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nginx,openresty,LUA,python,pentest" />
+  <meta name="keywords" content="VPN," />
 
 
 
@@ -92,15 +92,19 @@
 
 
 
-<meta name="description" content="Nginx openresty python lua 网络安全 学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Openresty Python LUA">
-<meta property="og:url" content="http://openresti.com/index.html">
+<meta name="description" content="阿里云优惠券领取 特点 支持使用OTP两步验证工具（例如Google Authenticator） 支持 IPSec Site-to-Site 支持 VPN、SNAT 基础服务 WEB管理方便  在阿里云ECS上进行VPN IPSEC网络对接当我们需要与一些安全级别要求很高的服务对接时，服务提供商的网络提供方式可能是使用ipsec点对点对接网络。如果我们不是使用公有云，而是有自己的机房和路由器，这">
+<meta name="keywords" content="VPN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在阿里云搭建IPSEC VPN">
+<meta property="og:url" content="http://openresti.com/2017/04/25/阿里云搭建IPSEC_VPN解决方案/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta property="og:description" content="阿里云优惠券领取 特点 支持使用OTP两步验证工具（例如Google Authenticator） 支持 IPSec Site-to-Site 支持 VPN、SNAT 基础服务 WEB管理方便  在阿里云ECS上进行VPN IPSEC网络对接当我们需要与一些安全级别要求很高的服务对接时，服务提供商的网络提供方式可能是使用ipsec点对点对接网络。如果我们不是使用公有云，而是有自己的机房和路由器，这">
+<meta property="og:image" content="http://i.imgur.com/8kvIwA1.png">
+<meta property="og:updated_time" content="2017-04-25T04:13:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openresty Python LUA">
-<meta name="twitter:description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta name="twitter:title" content="在阿里云搭建IPSEC VPN">
+<meta name="twitter:description" content="阿里云优惠券领取 特点 支持使用OTP两步验证工具（例如Google Authenticator） 支持 IPSec Site-to-Site 支持 VPN、SNAT 基础服务 WEB管理方便  在阿里云ECS上进行VPN IPSEC网络对接当我们需要与一些安全级别要求很高的服务对接时，服务提供商的网络提供方式可能是使用ipsec点对点对接网络。如果我们不是使用公有云，而是有自己的机房和路由器，这">
+<meta name="twitter:image" content="http://i.imgur.com/8kvIwA1.png">
 
 
 
@@ -128,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://openresti.com/"/>
+  <link rel="canonical" href="http://openresti.com/2017/04/25/阿里云搭建IPSEC_VPN解决方案/"/>
 
 
 
 
 
-  <title>Openresty Python LUA</title>
+  <title>在阿里云搭建IPSEC VPN | Openresty Python LUA</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,9 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,9 +266,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -296,10 +298,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/04/25/阿里云搭建IPSEC_VPN解决方案/" itemprop="url">
-                  在阿里云搭建IPSEC VPN
-                </a>
+                在阿里云搭建IPSEC VPN
               
             
           </h1>
@@ -371,350 +370,93 @@
       
 
       
-        
-          <p><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=yy1jyc4f">阿里云优惠券领取</a></p>
+        <p><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=yy1jyc4f" target="_blank" rel="external">阿里云优惠券领取</a></p>
 <h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ol>
 <li>支持使用OTP两步验证工具（例如Google Authenticator）</li>
 <li>支持 IPSec Site-to-Site</li>
 <li>支持 VPN、SNAT 基础服务</li>
 <li>WEB管理方便</li>
 </ol>
-<p>在阿里云ECS上进行VPN IPSEC网络对接<br>当我们需要与一些安全级别要求很高的服务对接时，服务提供商的网络提供方式可能是使用ipsec点对点对接网络。<br>如果我们不是使用公有云，而是有自己的机房和路由器，这些就只是按照服务方的参数要求配置下路由器的小事情。但对公有云来说（例如阿里云），<br>我们没有自己的路由器，当对接方要求我们使用预共享密匙进行ipsec点对点对接，第一反应什么鬼<br>（之前没接触过的朋友可以看下这篇文章<a href="http://www.ibm.com/developerworks/cn/Linux/l-ipsec/，对该概念讲得蛮清楚）？">http://www.ibm.com/developerworks/cn/Linux/l-ipsec/，对该概念讲得蛮清楚）？</a><br>而接下来拥有私有云独立机房的服务提供方则可能要求最简单直接的解决方案：<br>拉条专线接入服务提供者机房（这个开发成本和运维成本都不小，不适合小而美型的敏捷项目！）？<br>或者买个路由器，在办公室找台机器与服务方对接（高可靠性完全无法保障了）？</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/25/阿里云搭建IPSEC_VPN解决方案/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>在阿里云ECS上进行VPN IPSEC网络对接<br>当我们需要与一些安全级别要求很高的服务对接时，服务提供商的网络提供方式可能是使用ipsec点对点对接网络。<br>如果我们不是使用公有云，而是有自己的机房和路由器，这些就只是按照服务方的参数要求配置下路由器的小事情。但对公有云来说（例如阿里云），<br>我们没有自己的路由器，当对接方要求我们使用预共享密匙进行ipsec点对点对接，第一反应什么鬼<br>（之前没接触过的朋友可以看下这篇文章<a href="http://www.ibm.com/developerworks/cn/Linux/l-ipsec/，对该概念讲得蛮清楚）？" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/Linux/l-ipsec/，对该概念讲得蛮清楚）？</a><br>而接下来拥有私有云独立机房的服务提供方则可能要求最简单直接的解决方案：<br>拉条专线接入服务提供者机房（这个开发成本和运维成本都不小，不适合小而美型的敏捷项目！）？<br>或者买个路由器，在办公室找台机器与服务方对接（高可靠性完全无法保障了）？</p>
+<a id="more"></a> 
+<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="http://i.imgur.com/8kvIwA1.png" alt=""></p>
+<p>#【Flex Gateway项目简介】#<br>使用 Flex Gateway 在阿里云搭建VPN<br>Flex GateWay 提供了 VPN、SNAT 基础服务。它主要提供以下几点功能：<br>①IPSec Site-to-Site 功能。可快速的帮助用户将两个不同的VPC 私网以IPSec Site-to-Site 的方式连接起来。<br>②拨号VPN 功能。可让用户通过拨号方式，接入VPC 私网，进行日常维护管理。<br>③SNAT 功能。可方便的设置Source NAT，以让VPC 私网内的VM 通过Gateway VM 访问外网。<br>【源码托管地址】 <a href="https://github.com/alibaba/FlexGW" target="_blank" rel="external">https://github.com/alibaba/FlexGW</a></p>
+<p>VPC 用户通过VPN 将云上环境和用户侧网络打通(Site-to-Site)。<br>同一用户名下多个VPC(包括同Region/不同Region)之间通过VPN 打通(Site-to-Site)。<br>跨账号、跨区域的云服务器之间内网互通(拨号VPN。可将不同账号下的云服务器拨入同一个FlexGW VPN 内，然后用VPN 分配的私网地址进行互通)。</p>
+<h1 id="登陆说明"><a href="#登陆说明" class="headerlink" title="登陆说明"></a>登陆说明</h1><p>登陆地址：<a href="https://VM公网IP" target="_blank" rel="external">https://VM公网IP</a><br>使用VM的系统账号密码即可登入系统，即所有可通过SSH登陆主机的用户都可以登入该系统。</p>
+<h1 id="软件组成"><a href="#软件组成" class="headerlink" title="软件组成"></a>软件组成</h1><p>Strongswan 版本：5.1.3<br>Website：<a href="http://www.strongswan.org" target="_blank" rel="external">http://www.strongswan.org</a><br>OpenVPN 版本：2.3.2<br>Website：<a href="https://openvpn.net/index.php/open-source.html" target="_blank" rel="external">https://openvpn.net/index.php/open-source.html</a></p>
+<h1 id="程序说明"><a href="#程序说明" class="headerlink" title="程序说明"></a>程序说明</h1><p>FlexGW（即本程序）<br>目录：/usr/local/flexgw<br>数据库文件：/usr/local/flexgw/instance/website.db<br>启动脚本：/etc/init.d/flexgw 或/usr/local/flexgw/website_console<br>日志文件目录：/usr/local/flexgw/logs<br>实用脚本目录：/usr/local/flexgw/scripts<br>「数据库文件」保存了我们所有的VPN 配置，建议定期备份。如果数据库损坏，可通过「实用脚本目录」下的initdb.py 脚本对数据库进行初始化，初始化之后所有的配置将清空。</p>
+<h2 id="Strongswan"><a href="#Strongswan" class="headerlink" title="Strongswan"></a>Strongswan</h2><p>目录：/etc/strongswan<br>日志文件：/var/log/strongswan.charon.log<br>启动脚本：/usr/sbin/strongswan<br>如果strongswan.conf 配置文件损坏，可使用备份文件/usr/local/flexgw/rc/strongswan.conf 进行覆盖恢复。</p>
+<p>ipsec.conf 和ipsec.secrets 配置文件，由/usr/local/flexgw/website/vpn/sts/templates/sts 目录下的同名文件自动生成，请勿随便修改。</p>
+<h2 id="OpenVPN"><a href="#OpenVPN" class="headerlink" title="OpenVPN"></a>OpenVPN</h2><p>目录：/etc/openvpn<br>日志文件：/etc/openvpn/openvpn.log<br>状态文件：/etc/openvpn/openvpn-status.log<br>启动脚本：/etc/init.d/openvpn<br>server.conf 配置文件，由/usr/local/flexgw/website/vpn/dial/templates/dial 目录下的同名文件自动生成，请勿随便修改。</p>
+<p>参考:<br><a href="http://taohui.pub/2017/01/28/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91ecs%E4%B8%8A%E8%BF%9B%E8%A1%8Cvpn-ipsec%E7%BD%91%E7%BB%9C%E5%AF%B9%E6%8E%A5/" target="_blank" rel="external">http://taohui.pub/2017/01/28/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91ecs%E4%B8%8A%E8%BF%9B%E8%A1%8Cvpn-ipsec%E7%BD%91%E7%BB%9C%E5%AF%B9%E6%8E%A5/</a><br><a href="http://www.oschina.net/p/flexgw" target="_blank" rel="external">http://www.oschina.net/p/flexgw</a></p>
+<p>阿里巴巴开源技术汇总：115个软件(五)<br><a href="https://yq.aliyun.com/articles/53997" target="_blank" rel="external">https://yq.aliyun.com/articles/53997</a></p>
+
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/04/24/python奇技淫巧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vsyour">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Openresty Python LUA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/24/python奇技淫巧/" itemprop="url">
-                  python奇技淫巧
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T12:21:52+08:00">
-                2017-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/VPN/" rel="tag"># VPN</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          <p>本文用作记录，在使用python过程中遇到的一些奇技淫巧，有些代码是本人所写，有些则是python内置函数，有些则取之互联网。在此记录，只为备份以及遗忘时方便查找。<br>　　本文将会继续更新，内容仅限记录一些常用好用却又永远记不住的代码或者模块。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/24/python奇技淫巧/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/04/24/Chrome模拟微信内置浏览器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vsyour">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Openresty Python LUA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/04/24/python奇技淫巧/" rel="prev" title="python奇技淫巧">
+                python奇技淫巧 <i class="fa fa-chevron-right"></i>
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/04/24/Chrome模拟微信内置浏览器/" itemprop="url">
-                  使用Chrome修改user agent模拟微信内置浏览器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T00:00:00+08:00">
-                2017-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/小技巧/" itemprop="url" rel="index">
-                    <span itemprop="name">小技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="模拟微信内置浏览器"><a href="#模拟微信内置浏览器" class="headerlink" title="模拟微信内置浏览器"></a>模拟微信内置浏览器</h1><p>很多时候，我们需要模拟微信内置浏览器，今天教大家用chrome简单模拟。如图设置：<br><img src="http://i.imgur.com/LCIwGSM.png" alt=""></p>
-<h2 id="进入开发者模式"><a href="#进入开发者模式" class="headerlink" title="进入开发者模式"></a>进入开发者模式</h2><p>F12或者右键审查元素进入开发者模式，点击Emulation，然后点击Network，把Spoof user agent改成Other，并把下面的带复制进去，有三句，大家自己尝试。回车然后刷新页面即可。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/24/Chrome模拟微信内置浏览器/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -722,6 +464,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -741,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg"
@@ -854,6 +609,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果图"><span class="nav-number">2.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#登陆说明"><span class="nav-number">3.</span> <span class="nav-text">登陆说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件组成"><span class="nav-number">4.</span> <span class="nav-text">软件组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序说明"><span class="nav-number">5.</span> <span class="nav-text">程序说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Strongswan"><span class="nav-number">5.1.</span> <span class="nav-text">Strongswan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenVPN"><span class="nav-number">5.2.</span> <span class="nav-text">OpenVPN</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -969,6 +740,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
