@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="阿里云优惠券领取 特点 支持使用OTP两步验证工具（例如Google Authenticator） 支持 IPSec Site-to-Site 支持 VPN、SNAT 基础服务 WEB管理方便效果图">
 <meta property="og:image" content="http://i.imgur.com/8kvIwA1.png">
-<meta property="og:updated_time" content="2017-04-25T04:17:26.000Z">
+<meta property="og:updated_time" content="2017-04-25T04:35:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在阿里云搭建IPSEC VPN">
 <meta name="twitter:description" content="阿里云优惠券领取 特点 支持使用OTP两步验证工具（例如Google Authenticator） 支持 IPSec Site-to-Site 支持 VPN、SNAT 基础服务 WEB管理方便效果图">
@@ -378,7 +378,7 @@
 <li>WEB管理方便<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><img src="http://i.imgur.com/8kvIwA1.png" alt=""><a id="more"></a> 
 </li>
 </ol>
-<p>#【Flex Gateway项目简介】#<br>使用 Flex Gateway 在阿里云搭建VPN<br>Flex GateWay 提供了 VPN、SNAT 基础服务。它主要提供以下几点功能：<br>①IPSec Site-to-Site 功能。可快速的帮助用户将两个不同的VPC 私网以IPSec Site-to-Site 的方式连接起来。<br>②拨号VPN 功能。可让用户通过拨号方式，接入VPC 私网，进行日常维护管理。<br>③SNAT 功能。可方便的设置Source NAT，以让VPC 私网内的VM 通过Gateway VM 访问外网。<br>【源码托管地址】 <a href="https://github.com/alibaba/FlexGW" target="_blank" rel="external">https://github.com/alibaba/FlexGW</a></p>
+<h1 id="【Flex-Gateway项目简介】"><a href="#【Flex-Gateway项目简介】" class="headerlink" title="【Flex Gateway项目简介】"></a>【Flex Gateway项目简介】</h1><p>使用 Flex Gateway 在阿里云搭建VPN<br>Flex GateWay 提供了 VPN、SNAT 基础服务。它主要提供以下几点功能：<br>①IPSec Site-to-Site 功能。可快速的帮助用户将两个不同的VPC 私网以IPSec Site-to-Site 的方式连接起来。<br>②拨号VPN 功能。可让用户通过拨号方式，接入VPC 私网，进行日常维护管理。<br>③SNAT 功能。可方便的设置Source NAT，以让VPC 私网内的VM 通过Gateway VM 访问外网。<br>【源码托管地址】 <a href="https://github.com/alibaba/FlexGW" target="_blank" rel="external">https://github.com/alibaba/FlexGW</a></p>
 <p>VPC 用户通过VPN 将云上环境和用户侧网络打通(Site-to-Site)。<br>同一用户名下多个VPC(包括同Region/不同Region)之间通过VPN 打通(Site-to-Site)。<br>跨账号、跨区域的云服务器之间内网互通(拨号VPN。可将不同账号下的云服务器拨入同一个FlexGW VPN 内，然后用VPN 分配的私网地址进行互通)。</p>
 <h1 id="登陆说明"><a href="#登陆说明" class="headerlink" title="登陆说明"></a>登陆说明</h1><p>登陆地址：<a href="https://VM公网IP" target="_blank" rel="external">https://VM公网IP</a><br>使用VM的系统账号密码即可登入系统，即所有可通过SSH登陆主机的用户都可以登入该系统。</p>
 <h1 id="软件组成"><a href="#软件组成" class="headerlink" title="软件组成"></a>软件组成</h1><p>Strongswan 版本：5.1.3<br>Website：<a href="http://www.strongswan.org" target="_blank" rel="external">http://www.strongswan.org</a><br>OpenVPN 版本：2.3.2<br>Website：<a href="https://openvpn.net/index.php/open-source.html" target="_blank" rel="external">https://openvpn.net/index.php/open-source.html</a></p>
@@ -618,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果图"><span class="nav-number">2.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#登陆说明"><span class="nav-number">3.</span> <span class="nav-text">登陆说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件组成"><span class="nav-number">4.</span> <span class="nav-text">软件组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序说明"><span class="nav-number">5.</span> <span class="nav-text">程序说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Strongswan"><span class="nav-number">5.1.</span> <span class="nav-text">Strongswan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenVPN"><span class="nav-number">5.2.</span> <span class="nav-text">OpenVPN</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果图"><span class="nav-number">2.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#【Flex-Gateway项目简介】"><span class="nav-number">3.</span> <span class="nav-text">【Flex Gateway项目简介】</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#登陆说明"><span class="nav-number">4.</span> <span class="nav-text">登陆说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件组成"><span class="nav-number">5.</span> <span class="nav-text">软件组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序说明"><span class="nav-number">6.</span> <span class="nav-text">程序说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Strongswan"><span class="nav-number">6.1.</span> <span class="nav-text">Strongswan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenVPN"><span class="nav-number">6.2.</span> <span class="nav-text">OpenVPN</span></a></li></ol></li></ol></div>
             
 
           </div>
