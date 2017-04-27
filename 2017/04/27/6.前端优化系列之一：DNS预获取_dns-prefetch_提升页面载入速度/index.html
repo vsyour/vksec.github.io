@@ -74,12 +74,10 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nginx,openresty,LUA,python,pentest" />
+  <meta name="keywords" content="web," />
 
 
 
-
-  
 
 
   <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml" />
@@ -94,16 +92,21 @@
 
 
 
-<meta name="description" content="404">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Openresty Python LUA">
-<meta property="og:url" content="http://openresti.com/404.html">
+<meta name="description" content="DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。 DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Pre">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度">
+<meta property="og:url" content="http://openresti.com/2017/04/27/6.前端优化系列之一：DNS预获取_dns-prefetch_提升页面载入速度/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="404">
-<meta property="og:updated_time" content="2017-04-24T06:08:53.353Z">
+<meta property="og:description" content="DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。 DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Pre">
+<meta property="og:image" content="http://img2.tuicool.com/auyeumm.png!web">
+<meta property="og:image" content="http://img2.tuicool.com/3E77zui.png!web">
+<meta property="og:image" content="http://img0.tuicool.com/YreAv2A.png!web">
+<meta property="og:updated_time" content="2017-04-27T07:45:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openresty Python LUA">
-<meta name="twitter:description" content="404">
+<meta name="twitter:title" content="前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度">
+<meta name="twitter:description" content="DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。 DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Pre">
+<meta name="twitter:image" content="http://img2.tuicool.com/auyeumm.png!web">
 
 
 
@@ -131,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://openresti.com/404.html"/>
+  <link rel="canonical" href="http://openresti.com/2017/04/27/6.前端优化系列之一：DNS预获取_dns-prefetch_提升页面载入速度/"/>
 
 
 
 
 
-  <title> | Openresty Python LUA</title>
+  <title>前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度 | Openresty Python LUA</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -162,7 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -267,31 +270,193 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline"></h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/04/27/6.前端优化系列之一：DNS预获取_dns-prefetch_提升页面载入速度/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T00:00:00+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-      <!DOCTYPE html>
-<html>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>404</title>
-    </head>
+    <div class="post-body" itemprop="articleBody">
 
-    <body>
-        <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="http://openresti.com" homepagename="我的博客"></script>
-    </body>
+      
+      
 
-</html>
+      
+        <p>DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。</p>
+<p>DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Prefetching 是让具有此属性的域名不需要用户点击链接就在后台解析，而域名解析和内容载入是串行的网络操作，所以这个方式能 减少用户的等待时间，提升用户体验 。</p>
+<p>默认情况下浏览器会对页面中和当前域名（正在浏览网页的域名）不在同一个域的域名进行预获取，并且缓存结果，这就是隐式的 DNS Prefetch。如果想对页面中没有出现的域进行预获取，那么就要使用显示的 DNS Prefetch 了。</p>
+<a id="more"></a> 
+<p>目前大多数浏览器已经支持此属性，支持版本如下：</p>
+<ul>
+<li>– Safari: 5+</li>
+<li>– Chrome: All</li>
+<li>– Firefox: 3.5+</li>
+<li>– Opera: Unknown</li>
+<li>– IE: 9+ (called “Pre-resolution” on blogs.msdn.com)<br>其中 Chrome 和 Firefox 3.5+ 内置了 DNS Prefetching 技术并对DNS预解析做了相应优化设置。所以 即使不设置此属性，Chrome 和 Firefox 3.5+ 也能自动在后台进行预解析 。</li>
+</ul>
+<p>目前很多大型站点也应用了这一优化，例如：</p>
+<p>淘宝：<br><img src="http://img2.tuicool.com/auyeumm.png!web" alt=""></p>
+<p>支付宝：<br><img src="http://img2.tuicool.com/3E77zui.png!web" alt=""></p>
+<p>网易：<br><img src="http://img0.tuicool.com/YreAv2A.png!web" alt=""></p>
+<p>DNS Prefetch 应该尽量的放在网页的前面，推荐放在 <meta charset="UTF-8"> 后面。具体使用方法如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"on"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//www.itechzero.com"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//api.share.baidu.com"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//bdimg.share.baidu.com"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>需要注意的是，虽然使用 DNS Prefetch 能够加快页面的解析速度，但是也不能滥用，因为有开发者指出 禁用DNS 预读取能节省每月100亿的DNS查询 。</p>
+<p>如果需要禁止隐式的 DNS Prefetch，可以使用以下的标签：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"off"</span>&gt;</span></div></pre></td></tr></table></figure></p>
 
-    
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/27/5.Linux_curl命令参数详解_-_副本/" rel="prev" title="Linux curl命令参数详解">
+                Linux curl命令参数详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -553,6 +718,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
