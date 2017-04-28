@@ -99,12 +99,10 @@
 <meta property="og:url" content="http://openresti.com/2017/04/28/7.2017最新Wingy搭建技巧/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="Wingy是什么?Wingy 是一个可以用来搭建科技上网的工具. 怎么使用WINGY安装Wingy APP 使用Wingy进行科学上网，首先当然是要安装Wingy这款APP了。安装地址：https://www.wingy.site/appstore.html安装过程很简单，直接在苹果的AppStore搜索Wingy，安装就可以了。(有两个版本，收费的是给老iOS准备的，免费的是新版本，都是同一个作">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2017-04-28T02:45:03.000Z">
+<meta property="og:updated_time" content="2017-04-28T02:48:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017最新Wingy搭建技巧">
 <meta name="twitter:description" content="Wingy是什么?Wingy 是一个可以用来搭建科技上网的工具. 怎么使用WINGY安装Wingy APP 使用Wingy进行科学上网，首先当然是要安装Wingy这款APP了。安装地址：https://www.wingy.site/appstore.html安装过程很简单，直接在苹果的AppStore搜索Wingy，安装就可以了。(有两个版本，收费的是给老iOS准备的，免费的是新版本，都是同一个作">
-<meta name="twitter:image" content="https://www.vultr.com/media/banner_1.png">
 
 
 
@@ -376,10 +374,12 @@
 <a id="more"></a> 
 <h1 id="搭建自己的Wingy代理服务器教程"><a href="#搭建自己的Wingy代理服务器教程" class="headerlink" title="搭建自己的Wingy代理服务器教程"></a>搭建自己的Wingy代理服务器教程</h1><p>使用Wingy给iPhone爬墙，需要一个代理服务器支持，而Wingy上面最方便的就是用Shadowsocks的代理服务器了。</p>
 <ol>
-<li><p>购买VPS.推荐使用 <a href="http://www.vultr.com/?ref=6822051" target="_blank" rel="external">Vultr</a> (可以用支付宝付款,实用方便)<br><a href="https://www.vultr.com/?ref=6822051" target="_blank" rel="external"><img src="https://www.vultr.com/media/banner_1.png" alt=""></a><br><a href="http://www.vultr.com/?ref=6822051" target="_blank" rel="external">http://www.vultr.com/?ref=6822051</a><br>可用的优惠码（通过我们网站的链接注册默认会赠送20美元，另外还可以试试这几个优惠码）<br>DOMORE<br>NGINX20<br>SSDVPS<br>TGIF15<br>GIVEME10<br>WHTPROMO<br>以上优惠码有的需要信用卡支付才有效，请自行测试。</p>
-</li>
-<li><p>下载SSH连接工具,推荐 用 PUTTY (小巧灵活,百度上直接有下的)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</div></pre></td></tr></table></figure>
+<li>购买VPS.推荐使用 <a href="http://www.vultr.com/?ref=6822051" target="_blank" rel="external">Vultr</a> (可以用支付宝付款,实用方便)</li>
+</ol>
+<p><a href="http://www.vultr.com/?ref=6822051" target="_blank" rel="external">http://www.vultr.com/?ref=6822051</a></p>
+<p>可用的优惠码（通过我们网站的链接注册默认会赠送20美元，另外还可以试试这几个优惠码）<br>    DOMORE<br>    NGINX20<br>    SSDVPS<br>    TGIF15<br>    GIVEME10<br>    WHTPROMO<br>以上优惠码有的需要信用卡支付才有效，请自行测试。</p>
+<ol>
+<li>下载SSH连接工具,推荐 用 PUTTY (小巧灵活,百度上直接有下的)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>上面这条命令是下载ss一键包，复制了粘贴进putty然后回车<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x shadowsocks.sh</div></pre></td></tr></table></figure></p>
