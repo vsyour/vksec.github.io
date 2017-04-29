@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nginx,openresty,LUA,python,pentest" />
+  <meta name="keywords" content="nginx," />
 
 
 
@@ -92,15 +92,17 @@
 
 
 
-<meta name="description" content="Nginx openresty python lua 网络安全 学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Openresty Python LUA">
-<meta property="og:url" content="http://openresti.com/tags/小技巧/index.html">
+<meta name="description" content="$document_uri  表示访问的url现在我的需求是，访问 www.abc.com  请求到 www.abc.com/abc/在nginx配置文件中加入">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx $document_uri 参数使用">
+<meta property="og:url" content="http://openresti.com/2017/04/29/11.nginx_document_uri/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta property="og:description" content="$document_uri  表示访问的url现在我的需求是，访问 www.abc.com  请求到 www.abc.com/abc/在nginx配置文件中加入">
+<meta property="og:updated_time" content="2017-04-29T10:10:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openresty Python LUA">
-<meta name="twitter:description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta name="twitter:title" content="nginx $document_uri 参数使用">
+<meta name="twitter:description" content="$document_uri  表示访问的url现在我的需求是，访问 www.abc.com  请求到 www.abc.com/abc/在nginx配置文件中加入">
 
 
 
@@ -128,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://openresti.com/tags/小技巧/"/>
+  <link rel="canonical" href="http://openresti.com/2017/04/29/11.nginx_document_uri/"/>
 
 
 
 
 
-  <title>标签: 小技巧 | Openresty Python LUA</title>
+  <title>nginx $document_uri 参数使用 | Openresty Python LUA</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,7 +161,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -263,46 +265,181 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        小技巧
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/04/29/11.nginx_document_uri/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nginx $document_uri 参数使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-29T00:00:00+08:00">
+                2017-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>$document_uri  表示访问的url<br>现在我的需求是，访问 www.abc.com  请求到 www.abc.com/abc/<br>在nginx配置文件中加入</p>
+<a id="more"></a> 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ($document_uri !~ &apos;abc&apos;)</div><div class="line">    &#123;</div><div class="line">            rewrite ^/(.*)$ http://www.abc.com/abc/$1 permanent;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>而不是单独加一句  rewrite ^/(.*)$ <a href="http://www.abc.com/abc/$1" target="_blank" rel="external">http://www.abc.com/abc/$1</a> permanent;<br>如果只加rewrite 规则，而不限定条件，那么会造成死循环。  会访问到   <a href="http://www.abc.com/abc/abc/abc/abc/" target="_blank" rel="external">http://www.abc.com/abc/abc/abc/abc/</a>….</p>
+<p>if ($document_uri !~ ‘abc’)有何含义?<br>若访问的网站目录不是abc，则跳转至该目录，如访问<a href="http://www.aming.com/index.php跳转至http://www.aming.com/abc/index.php" target="_blank" rel="external">http://www.aming.com/index.php跳转至http://www.aming.com/abc/index.php</a></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/04/24/1.Chrome模拟微信内置浏览器/" itemprop="url">
-              
-                <span itemprop="name">使用Chrome修改user agent模拟微信内置浏览器</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-24T00:00:00+08:00"
-              content="2017-04-24" >
-          04-24
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/29/10.Nginx直接返回值给ajax调用/" rel="prev" title="Nginx直接返回值给ajax调用">
+                Nginx直接返回值给ajax调用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -310,6 +447,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
 
         </div>
         
@@ -557,6 +700,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
@@ -588,6 +735,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1529815"></script>
+      <!-- UY END -->
     
   
 
