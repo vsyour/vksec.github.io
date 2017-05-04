@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nginx," />
+  <meta name="keywords" content="linux,ubuntu," />
 
 
 
@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="Nginx直接返回值给ajax调用的方法">
-<meta name="keywords" content="nginx">
+<meta name="description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
+<meta name="keywords" content="linux,ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nginx直接返回值给ajax调用">
-<meta property="og:url" content="http://openresti.com/2017/04/29/10.Nginx直接返回值给ajax调用/index.html">
+<meta property="og:title" content="ubuntu 乱码">
+<meta property="og:url" content="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="Nginx直接返回值给ajax调用的方法">
-<meta property="og:updated_time" content="2017-04-29T08:46:12.000Z">
+<meta property="og:description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
+<meta property="og:updated_time" content="2017-05-04T03:34:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nginx直接返回值给ajax调用">
-<meta name="twitter:description" content="Nginx直接返回值给ajax调用的方法">
+<meta name="twitter:title" content="ubuntu 乱码">
+<meta name="twitter:description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
 
 
 
@@ -116,7 +116,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -130,16 +130,16 @@
 
 
 
-  <link rel="canonical" href="http://openresti.com/2017/04/29/10.Nginx直接返回值给ajax调用/"/>
+  <link rel="canonical" href="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案/"/>
 
 
 
 
 
-  <title>Nginx直接返回值给ajax调用 | Openresty Python LUA</title>
+  <title>ubuntu 乱码 | Openresty Python LUA</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
 
@@ -202,7 +202,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -212,7 +212,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            分类
+            Kategorien
           </a>
         </li>
       
@@ -222,7 +222,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            关于
+            Über
           </a>
         </li>
       
@@ -232,7 +232,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -242,7 +242,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -275,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/04/29/10.Nginx直接返回值给ajax调用/">
+    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -296,7 +296,7 @@
             
             
               
-                Nginx直接返回值给ajax调用
+                ubuntu 乱码
               
             
           </h1>
@@ -309,10 +309,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-29T00:00:00+08:00">
-                2017-04-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-04T00:00:00+08:00">
+                2017-05-04
               </time>
             
 
@@ -330,7 +330,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -368,15 +368,29 @@
       
 
       
-        <p>Nginx直接返回值给ajax调用的方法</p>
+        <p>最烦乱码了,今天又碰到了.<br>解决Linux(Ubuntu)中文乱码，添加中文字符集</p>
 <a id="more"></a> 
-<h1 id="js调用代码"><a href="#js调用代码" class="headerlink" title="js调用代码 #:"></a>js调用代码 #:</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getDomain</span>(<span class="params"></span>)</span>&#123;  </div><div class="line"><span class="keyword">var</span> url=<span class="string">"http://47.81.12.22/get_t.do"</span>;</div><div class="line">$.ajax(&#123;</div><div class="line"><span class="attr">type</span> : <span class="string">"get"</span>,</div><div class="line"><span class="attr">url</span> : url,</div><div class="line"><span class="attr">async</span>: <span class="literal">false</span>,</div><div class="line"><span class="attr">dataType</span>: <span class="string">"text"</span>,</div><div class="line"><span class="attr">success</span> : <span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">mydoain=result;</div><div class="line">&#125;,</div><div class="line"><span class="attr">error</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;     </div><div class="line">mydoain=<span class="string">"http://www.xxx.com/"</span>;                  </div><div class="line">&#125;  </div><div class="line">&#125;); </div><div class="line">alert(mydoain);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="nginx服务器配置代码"><a href="#nginx服务器配置代码" class="headerlink" title="nginx服务器配置代码"></a>nginx服务器配置代码</h1><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">location</span> = <span class="string">'/get_t.do'</span> &#123;</div><div class="line"><span class="attribute">default_type</span> text/html;</div><div class="line"><span class="attribute">add_header</span> Access-Control-Allow-Origin *;</div><div class="line"><span class="attribute">return</span> <span class="number">200</span> <span class="string">'http://www.test.com/'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>add_header Access-Control-Allow-Origin *;<br>这一句很重要,不加的话取js不到结果哦.<br>也可以 add_header Access-Control-Allow-Origin <a href="http://xxoo.com" target="_blank" rel="external">http://xxoo.com</a>; –指定允许的url;</p>
-<p>这里面可以加很多头部信息</p>
-<h1 id="nginx中配置跨域支持功能"><a href="#nginx中配置跨域支持功能" class="headerlink" title="nginx中配置跨域支持功能"></a>nginx中配置跨域支持功能</h1><p>在nginx.conf中配置:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">http &#123;</div><div class="line">  ......</div><div class="line">  add_header Access-Control-Allow-Origin *;</div><div class="line">  add_header Access-Control-Allow-Headers X-Requested-With;</div><div class="line">  add_header Access-Control-Allow-Methods GET,POST,OPTIONS;</div><div class="line">  ......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这样就可以实现GET,POST,OPTIONS的跨域请求的支持<br>也可以 add_header Access-Control-Allow-Origin <a href="http://test.51testing.com" target="_blank" rel="external">http://test.51testing.com</a>; –指定允许的url;</p>
-<p>配置项详细解释：<a href="https://www.w3.org/TR/cors/#access-control-allow-methods-response-header" target="_blank" rel="external">w3c-Cross-Origin Resource Sharing</a></p>
+<p>添加中文字符编码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo vim /var/lib/locales/supported.d/local</div></pre></td></tr></table></figure></p>
+<p>#添加下面的中文字符集<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zh_CN.GBK GBK  </div><div class="line">zh_CN.GB2312 GB2312  </div><div class="line">zh_CN.GB18030 GB18030</div></pre></td></tr></table></figure></p>
+<p>使其生效：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo dpkg-reconfigure locales</div></pre></td></tr></table></figure></p>
+<h1 id="vim乱码"><a href="#vim乱码" class="headerlink" title="vim乱码"></a>vim乱码</h1><p>打开vim的配置文件，位置在/etc/vim/vimrc<br>在其中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set fileencodings=utf-8,gb2312,gbk,gb18030  </div><div class="line">set termencoding=utf-8  </div><div class="line">set encoding=prc</div></pre></td></tr></table></figure></p>
+<p>保存退出<br>source /etc/vim/vimrc </p>
+<p>此时vim就能正确显示中文了。 </p>
+<h1 id="pdf乱码"><a href="#pdf乱码" class="headerlink" title="pdf乱码"></a>pdf乱码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get install xpdf-chinese-simplifiedxpdf-chinese-traditional #安装pdf的中文字体</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get install poppler-data #安装解决pdf中文显示乱码的软件  </div><div class="line">$cd /etc/fonts/conf.d   </div><div class="line">$sudo cp 49-sansserif.conf 49-sansserif.conf_backup #先备份下  </div><div class="line">$sudo rm 49-sansserif.conf #删除</div></pre></td></tr></table></figure>
+<p>在打开pdf文件，就能呢个正常显示中文了 </p>
+<h1 id="gedit乱码"><a href="#gedit乱码" class="headerlink" title="gedit乱码"></a>gedit乱码</h1><p>缺省配置下，用 Ubuntu 的文本编辑器（gedit）打开 GB18030/GBK/GB2312 等类型的中文编码文本文件时，将会出现乱码。 </p>
+<p>出现这种情况的原因是，gedit 使用一个编码匹配列表，只有在这个列表中的编码才会进行匹配，不在这个列表中的编码将显示为乱码。您要做的就是将 GB18030 加入这个匹配列表。 </p>
+<p>命令行方式，适用于所有 Ubuntu 用户。<br>复制以下命令到终端中，然后回车即可： </p>
+<p>gconftool-2 –set –type=list –list-type=string /apps/gedit-2/preferences/encodings/auto_detected “[UTF-8,CURRENT,GB18030,BIG5-HKSCS,UTF-16]” </p>
+<p>图形化方式，适用于 Ubuntu 用户，而不适用于 KUbuntu/XUbuntu 用户。<br>您可以遵循以下步骤，使您的 gedit 正确显示中文编码文件。 </p>
+<p>按下 Alt-F2，打开“运行应用程序”对话框。<br>在文本框中键入“gconf-editor”，并按下回车键，打开“配置编辑器”。<br>展开左边的树节点，找到 /apps/gedit-2/preferences/encodings 节点并单击它。<br>双击右边的 auto_detected 键，打开“编辑键”对话框。<br>单击列表右边的“添加”按钮，输入“GB18030”，单击确定按钮。<br>列表的最底部新增加了一个“GB18030”。单击选中它，并单击右边的 “向上” 按钮直到 “GB18030” 位于列表的顶部为止。<br>单击确定按钮，关闭配置编辑器。<br>gedit3.x版本设置 </p>
+<p>终端输入dconf-editor </p>
+<p>展开org/gnome/gedit/preferences/encodings </p>
+<p>auto-detected的value中加入’GB18030′，加在uft8后面； </p>
+<p>show-in-menu的value中加入’GB18030′ </p>
+<p>现在，您的 gedit 应该能够顺利打开 GB18030 编码的文本文件了。 </p>
+<p>gedit 3.X版本命令设置：gsettings set org.gnome.gedit.preferences.encodings auto-detected “[‘UTF-8’,’GB18030’,’GB2312’,’GBK’,’BIG5’,’CURRENT’,’UTF-16’]” </p>
 
       
     </div>
@@ -406,7 +420,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nginx/" rel="tag"># nginx</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
           
         </div>
       
@@ -419,18 +435,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/01/12.nginx_location_and_rewrite/" rel="next" title="nginx location 和 rewrite 规则的书写方法">
-                <i class="fa fa-chevron-left"></i> nginx location 和 rewrite 规则的书写方法
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/29/11.nginx_document_uri/" rel="prev" title="nginx $document_uri 参数使用">
-                nginx $document_uri 参数使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/04/13.openresty用mvc框架配置测试/" rel="prev" title="openresty用mvc框架配置测试">
+                openresty用mvc框架配置测试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -482,10 +494,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -506,7 +518,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">日志</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -517,7 +529,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -528,7 +540,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">标签</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -612,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#js调用代码"><span class="nav-number">1.</span> <span class="nav-text">js调用代码 #:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx服务器配置代码"><span class="nav-number">2.</span> <span class="nav-text">nginx服务器配置代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx中配置跨域支持功能"><span class="nav-number">3.</span> <span class="nav-text">nginx中配置跨域支持功能</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim乱码"><span class="nav-number">1.</span> <span class="nav-text">vim乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pdf乱码"><span class="nav-number">2.</span> <span class="nav-text">pdf乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gedit乱码"><span class="nav-number">3.</span> <span class="nav-text">gedit乱码</span></a></li></ol></div>
             
 
           </div>
@@ -644,12 +656,12 @@
 
 
 <!-- <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
