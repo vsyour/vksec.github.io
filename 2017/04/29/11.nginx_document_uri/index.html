@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://openresti.com/2017/04/29/11.nginx_document_uri/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="$document_uri  表示访问的url现在我的需求是，访问 www.abc.com  请求到 www.abc.com/abc/在nginx配置文件中加入">
-<meta property="og:updated_time" content="2017-04-29T10:10:55.000Z">
+<meta property="og:updated_time" content="2017-05-05T19:45:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx $document_uri 参数使用">
 <meta name="twitter:description" content="$document_uri  表示访问的url现在我的需求是，访问 www.abc.com  请求到 www.abc.com/abc/在nginx配置文件中加入">
@@ -373,6 +373,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ($document_uri !~ &apos;abc&apos;)</div><div class="line">    &#123;</div><div class="line">            rewrite ^/(.*)$ http://www.abc.com/abc/$1 permanent;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>而不是单独加一句  rewrite ^/(.*)$ <a href="http://www.abc.com/abc/$1" target="_blank" rel="external">http://www.abc.com/abc/$1</a> permanent;<br>如果只加rewrite 规则，而不限定条件，那么会造成死循环。  会访问到   <a href="http://www.abc.com/abc/abc/abc/abc/" target="_blank" rel="external">http://www.abc.com/abc/abc/abc/abc/</a>….</p>
 <p>if ($document_uri !~ ‘abc’)有何含义?<br>若访问的网站目录不是abc，则跳转至该目录，如访问<a href="http://www.aming.com/index.php跳转至http://www.aming.com/abc/index.php" target="_blank" rel="external">http://www.aming.com/index.php跳转至http://www.aming.com/abc/index.php</a></p>
+<p>QQ群：397745473</p>
 
       
     </div>
@@ -415,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/29/10.Nginx直接返回值给ajax调用/" rel="next" title="Nginx直接返回值给ajax调用">
-                <i class="fa fa-chevron-left"></i> Nginx直接返回值给ajax调用
+              <a href="/2017/05/01/12.nginx_location_and_rewrite/" rel="next" title="nginx location 和 rewrite 规则的书写方法">
+                <i class="fa fa-chevron-left"></i> nginx location 和 rewrite 规则的书写方法
               </a>
             
           </div>
@@ -425,8 +426,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/28/9.Nginx配伪静态写法/" rel="prev" title="Nginx配伪静态写法">
-                Nginx配伪静态写法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/29/10.Nginx直接返回值给ajax调用/" rel="prev" title="Nginx直接返回值给ajax调用">
+                Nginx直接返回值给ajax调用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -492,7 +493,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

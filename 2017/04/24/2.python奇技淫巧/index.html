@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://openresti.com/2017/04/24/2.python奇技淫巧/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="本文用作记录，在使用python过程中遇到的一些奇技淫巧，有些代码是本人所写，有些则是python内置函数，有些则取之互联网。在此记录，只为备份以及遗忘时方便查找。　　本文将会继续更新，内容仅限记录一些常用好用却又永远记不住的代码或者模块。">
-<meta property="og:updated_time" content="2017-04-24T17:10:44.000Z">
+<meta property="og:updated_time" content="2017-05-05T19:44:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python奇技淫巧">
 <meta name="twitter:description" content="本文用作记录，在使用python过程中遇到的一些奇技淫巧，有些代码是本人所写，有些则是python内置函数，有些则取之互联网。在此记录，只为备份以及遗忘时方便查找。　　本文将会继续更新，内容仅限记录一些常用好用却又永远记不住的代码或者模块。">
@@ -429,6 +429,7 @@
 <h1 id="函数操作"><a href="#函数操作" class="headerlink" title="函数操作"></a>函数操作</h1><h2 id="装饰器函数"><a href="#装饰器函数" class="headerlink" title="装饰器函数"></a>装饰器函数</h2><p>输出当前时间装饰器<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">current_time</span><span class="params">(aclass)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">()</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"[Info]NowTimeis:"</span>,time.ctime()</div><div class="line">        <span class="keyword">return</span> aclass()</div><div class="line">    <span class="keyword">return</span> wrapper</div></pre></td></tr></table></figure></p>
 <h2 id="itertools迭代器"><a href="#itertools迭代器" class="headerlink" title="itertools迭代器"></a>itertools迭代器</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">p=product([<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>],repeat=<span class="number">2</span>)</div><div class="line">----</div><div class="line">[(<span class="string">"a"</span>,<span class="string">"a"</span>),(<span class="string">"b"</span>,<span class="string">"b"</span>)......]</div></pre></td></tr></table></figure>
 <h2 id="reduce函数"><a href="#reduce函数" class="headerlink" title="reduce函数"></a>reduce函数</h2><p>函数本次执行的结果传递给下一次。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(a,b)</span>:</span></div><div class="line">    <span class="keyword">return</span> a+b</div><div class="line">reduce(test,range(<span class="number">10</span>))</div><div class="line">结果：从<span class="number">0</span>+<span class="number">1</span>+<span class="number">2.</span>.....+<span class="number">9</span></div></pre></td></tr></table></figure></p>
+<p>QQ群：397745473</p>
 
       
     </div>
@@ -557,7 +558,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

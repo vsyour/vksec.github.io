@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://openresti.com/2017/04/29/10.Nginx直接返回值给ajax调用/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="Nginx直接返回值给ajax调用的方法">
-<meta property="og:updated_time" content="2017-04-29T08:46:12.000Z">
+<meta property="og:updated_time" content="2017-05-05T19:45:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx直接返回值给ajax调用">
 <meta name="twitter:description" content="Nginx直接返回值给ajax调用的方法">
@@ -377,6 +377,7 @@
 <h1 id="nginx中配置跨域支持功能"><a href="#nginx中配置跨域支持功能" class="headerlink" title="nginx中配置跨域支持功能"></a>nginx中配置跨域支持功能</h1><p>在nginx.conf中配置:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">http &#123;</div><div class="line">  ......</div><div class="line">  add_header Access-Control-Allow-Origin *;</div><div class="line">  add_header Access-Control-Allow-Headers X-Requested-With;</div><div class="line">  add_header Access-Control-Allow-Methods GET,POST,OPTIONS;</div><div class="line">  ......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这样就可以实现GET,POST,OPTIONS的跨域请求的支持<br>也可以 add_header Access-Control-Allow-Origin <a href="http://test.51testing.com" target="_blank" rel="external">http://test.51testing.com</a>; –指定允许的url;</p>
 <p>配置项详细解释：<a href="https://www.w3.org/TR/cors/#access-control-allow-methods-response-header" target="_blank" rel="external">w3c-Cross-Origin Resource Sharing</a></p>
+<p>QQ群：397745473</p>
 
       
     </div>
@@ -419,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/01/12.nginx_location_and_rewrite/" rel="next" title="nginx location 和 rewrite 规则的书写方法">
-                <i class="fa fa-chevron-left"></i> nginx location 和 rewrite 规则的书写方法
+              <a href="/2017/04/29/11.nginx_document_uri/" rel="next" title="nginx $document_uri 参数使用">
+                <i class="fa fa-chevron-left"></i> nginx $document_uri 参数使用
               </a>
             
           </div>
@@ -429,8 +430,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/29/11.nginx_document_uri/" rel="prev" title="nginx $document_uri 参数使用">
-                nginx $document_uri 参数使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/28/8.XSS平台CookieCatcher/" rel="prev" title="CookieCatcher">
+                CookieCatcher <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -505,7 +506,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
