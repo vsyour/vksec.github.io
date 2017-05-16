@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="小技巧," />
+  <meta name="keywords" content="linux,ubuntu," />
 
 
 
@@ -92,19 +92,17 @@
 
 
 
-<meta name="description" content="模拟微信内置浏览器很多时候，我们需要模拟微信内置浏览器，今天教大家用chrome简单模拟。如图设置： 进入开发者模式F12或者右键审查元素进入开发者模式，点击Emulation，然后点击Network，把Spoof user agent改成Other，并把下面的带复制进去，有三句，大家自己尝试。回车然后刷新页面即可。">
-<meta name="keywords" content="小技巧">
+<meta name="description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
+<meta name="keywords" content="linux,ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Chrome修改user agent模拟微信内置浏览器">
-<meta property="og:url" content="http://openresti.com/2017/04/24/1.Chrome模拟微信内置浏览器/index.html">
+<meta property="og:title" content="ubuntu 乱码">
+<meta property="og:url" content="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="模拟微信内置浏览器很多时候，我们需要模拟微信内置浏览器，今天教大家用chrome简单模拟。如图设置： 进入开发者模式F12或者右键审查元素进入开发者模式，点击Emulation，然后点击Network，把Spoof user agent改成Other，并把下面的带复制进去，有三句，大家自己尝试。回车然后刷新页面即可。">
-<meta property="og:image" content="http://i.imgur.com/LCIwGSM.png">
-<meta property="og:updated_time" content="2017-05-05T19:44:04.000Z">
+<meta property="og:description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
+<meta property="og:updated_time" content="2017-05-05T19:46:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Chrome修改user agent模拟微信内置浏览器">
-<meta name="twitter:description" content="模拟微信内置浏览器很多时候，我们需要模拟微信内置浏览器，今天教大家用chrome简单模拟。如图设置： 进入开发者模式F12或者右键审查元素进入开发者模式，点击Emulation，然后点击Network，把Spoof user agent改成Other，并把下面的带复制进去，有三句，大家自己尝试。回车然后刷新页面即可。">
-<meta name="twitter:image" content="http://i.imgur.com/LCIwGSM.png">
+<meta name="twitter:title" content="ubuntu 乱码">
+<meta name="twitter:description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
 
 
 
@@ -118,7 +116,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -132,16 +130,16 @@
 
 
 
-  <link rel="canonical" href="http://openresti.com/2017/04/24/1.Chrome模拟微信内置浏览器/"/>
+  <link rel="canonical" href="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案/"/>
 
 
 
 
 
-  <title>使用Chrome修改user agent模拟微信内置浏览器 | Openresty Python LUA</title>
+  <title>ubuntu 乱码 | Openresty Python LUA</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
 
@@ -204,7 +202,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -214,7 +212,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            分类
+            Kategorien
           </a>
         </li>
       
@@ -224,7 +222,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            关于
+            Über
           </a>
         </li>
       
@@ -234,7 +232,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -244,7 +242,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -277,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/04/24/1.Chrome模拟微信内置浏览器/">
+    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -298,7 +296,7 @@
             
             
               
-                使用Chrome修改user agent模拟微信内置浏览器
+                ubuntu 乱码
               
             
           </h1>
@@ -311,10 +309,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T00:00:00+08:00">
-                2017-04-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-04T00:00:00+08:00">
+                2017-05-04
               </time>
             
 
@@ -332,12 +330,12 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/小技巧/" itemprop="url" rel="index">
-                    <span itemprop="name">小技巧</span>
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
                   </a>
                 </span>
 
@@ -370,14 +368,29 @@
       
 
       
-        <h1 id="模拟微信内置浏览器"><a href="#模拟微信内置浏览器" class="headerlink" title="模拟微信内置浏览器"></a>模拟微信内置浏览器</h1><p>很多时候，我们需要模拟微信内置浏览器，今天教大家用chrome简单模拟。如图设置：<br><img src="http://i.imgur.com/LCIwGSM.png" alt=""></p>
-<h2 id="进入开发者模式"><a href="#进入开发者模式" class="headerlink" title="进入开发者模式"></a>进入开发者模式</h2><p>F12或者右键审查元素进入开发者模式，点击Emulation，然后点击Network，把Spoof user agent改成Other，并把下面的带复制进去，有三句，大家自己尝试。回车然后刷新页面即可。<br><a id="more"></a> </p>
-<pre><code>Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B176 MicroMessenger/4.3.2
-
-Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MicroMessenger/4.5.255
-</code></pre><p>自己获取的内容如下：</p>
-<pre><code>Mozilla/5.0 (Linux; Android 4.4.4; HM NOTE 1LTEW Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.0.54_r849063.501 NetType/WIFI
-</code></pre><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>主要通过 MicroMessenger 字段判断是否为微信客户端浏览器<br>如果有这个字段就是微信客户端浏览器</p>
+        <p>最烦乱码了,今天又碰到了.<br>解决Linux(Ubuntu)中文乱码，添加中文字符集</p>
+<a id="more"></a> 
+<p>添加中文字符编码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo vim /var/lib/locales/supported.d/local</div></pre></td></tr></table></figure></p>
+<p>#添加下面的中文字符集<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zh_CN.GBK GBK  </div><div class="line">zh_CN.GB2312 GB2312  </div><div class="line">zh_CN.GB18030 GB18030</div></pre></td></tr></table></figure></p>
+<p>使其生效：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo dpkg-reconfigure locales</div></pre></td></tr></table></figure></p>
+<h1 id="vim乱码"><a href="#vim乱码" class="headerlink" title="vim乱码"></a>vim乱码</h1><p>打开vim的配置文件，位置在/etc/vim/vimrc<br>在其中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set fileencodings=utf-8,gb2312,gbk,gb18030  </div><div class="line">set termencoding=utf-8  </div><div class="line">set encoding=prc</div></pre></td></tr></table></figure></p>
+<p>保存退出<br>source /etc/vim/vimrc </p>
+<p>此时vim就能正确显示中文了。 </p>
+<h1 id="pdf乱码"><a href="#pdf乱码" class="headerlink" title="pdf乱码"></a>pdf乱码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get install xpdf-chinese-simplifiedxpdf-chinese-traditional #安装pdf的中文字体</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get install poppler-data #安装解决pdf中文显示乱码的软件  </div><div class="line">$cd /etc/fonts/conf.d   </div><div class="line">$sudo cp 49-sansserif.conf 49-sansserif.conf_backup #先备份下  </div><div class="line">$sudo rm 49-sansserif.conf #删除</div></pre></td></tr></table></figure>
+<p>在打开pdf文件，就能呢个正常显示中文了 </p>
+<h1 id="gedit乱码"><a href="#gedit乱码" class="headerlink" title="gedit乱码"></a>gedit乱码</h1><p>缺省配置下，用 Ubuntu 的文本编辑器（gedit）打开 GB18030/GBK/GB2312 等类型的中文编码文本文件时，将会出现乱码。 </p>
+<p>出现这种情况的原因是，gedit 使用一个编码匹配列表，只有在这个列表中的编码才会进行匹配，不在这个列表中的编码将显示为乱码。您要做的就是将 GB18030 加入这个匹配列表。 </p>
+<p>命令行方式，适用于所有 Ubuntu 用户。<br>复制以下命令到终端中，然后回车即可： </p>
+<p>gconftool-2 –set –type=list –list-type=string /apps/gedit-2/preferences/encodings/auto_detected “[UTF-8,CURRENT,GB18030,BIG5-HKSCS,UTF-16]” </p>
+<p>图形化方式，适用于 Ubuntu 用户，而不适用于 KUbuntu/XUbuntu 用户。<br>您可以遵循以下步骤，使您的 gedit 正确显示中文编码文件。 </p>
+<p>按下 Alt-F2，打开“运行应用程序”对话框。<br>在文本框中键入“gconf-editor”，并按下回车键，打开“配置编辑器”。<br>展开左边的树节点，找到 /apps/gedit-2/preferences/encodings 节点并单击它。<br>双击右边的 auto_detected 键，打开“编辑键”对话框。<br>单击列表右边的“添加”按钮，输入“GB18030”，单击确定按钮。<br>列表的最底部新增加了一个“GB18030”。单击选中它，并单击右边的 “向上” 按钮直到 “GB18030” 位于列表的顶部为止。<br>单击确定按钮，关闭配置编辑器。<br>gedit3.x版本设置 </p>
+<p>终端输入dconf-editor </p>
+<p>展开org/gnome/gedit/preferences/encodings </p>
+<p>auto-detected的value中加入’GB18030′，加在uft8后面； </p>
+<p>show-in-menu的value中加入’GB18030′ </p>
+<p>现在，您的 gedit 应该能够顺利打开 GB18030 编码的文本文件了。 </p>
+<p>gedit 3.X版本命令设置：gsettings set org.gnome.gedit.preferences.encodings auto-detected “[‘UTF-8’,’GB18030’,’GB2312’,’GBK’,’BIG5’,’CURRENT’,’UTF-16’]” </p>
 <p>QQ群：397745473</p>
 
       
@@ -408,7 +421,9 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
       
         <div class="post-tags">
           
-            <a href="/tags/小技巧/" rel="tag"># 小技巧</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
           
         </div>
       
@@ -421,8 +436,8 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/24/2.python奇技淫巧/" rel="next" title="python奇技淫巧">
-                <i class="fa fa-chevron-left"></i> python奇技淫巧
+              <a href="/2017/05/10/16.python_使用aws亚马逊的boto3报错解决办法/" rel="next" title="使用aws亚马逊的boto3报错解决办法">
+                <i class="fa fa-chevron-left"></i> 使用aws亚马逊的boto3报错解决办法
               </a>
             
           </div>
@@ -431,8 +446,8 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/22/4.OpenResty新的正式版1.11.2.3/" rel="prev" title="OpenResty新的正式版1.11.2.3">
-                OpenResty新的正式版1.11.2.3 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/04/openresty使用MVC模板/" rel="prev" title="openresty使用MVC模板">
+                openresty使用MVC模板 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -484,10 +499,10 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -508,7 +523,7 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">21</span>
-                <span class="site-state-item-name">日志</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -519,7 +534,7 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -530,7 +545,7 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">16</span>
-                <span class="site-state-item-name">标签</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -614,7 +629,7 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模拟微信内置浏览器"><span class="nav-number">1.</span> <span class="nav-text">模拟微信内置浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进入开发者模式"><span class="nav-number">1.1.</span> <span class="nav-text">进入开发者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.2.</span> <span class="nav-text">原理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim乱码"><span class="nav-number">1.</span> <span class="nav-text">vim乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pdf乱码"><span class="nav-number">2.</span> <span class="nav-text">pdf乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gedit乱码"><span class="nav-number">3.</span> <span class="nav-text">gedit乱码</span></a></li></ol></div>
             
 
           </div>
@@ -646,12 +661,12 @@ Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWe
 
 
 <!-- <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
