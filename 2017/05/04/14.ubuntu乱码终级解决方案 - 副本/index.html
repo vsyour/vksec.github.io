@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="web," />
+  <meta name="keywords" content="linux,ubuntu," />
 
 
 
@@ -92,21 +92,17 @@
 
 
 
-<meta name="description" content="DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。 DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Pre">
-<meta name="keywords" content="web">
+<meta name="description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
+<meta name="keywords" content="linux,ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度">
-<meta property="og:url" content="http://openresti.com/2017/04/27/6.前端优化系列之一_DNS预获取_dns-prefetch_提升页面载入速度/index.html">
+<meta property="og:title" content="ubuntu 乱码">
+<meta property="og:url" content="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案 - 副本/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。 DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Pre">
-<meta property="og:image" content="http://i.imgur.com/JeRAQV8.png">
-<meta property="og:image" content="http://i.imgur.com/tjT1Gnb.png">
-<meta property="og:image" content="http://i.imgur.com/87GiPgT.png">
-<meta property="og:updated_time" content="2017-05-05T19:45:05.000Z">
+<meta property="og:description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
+<meta property="og:updated_time" content="2017-05-05T19:46:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度">
-<meta name="twitter:description" content="DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。 DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Pre">
-<meta name="twitter:image" content="http://i.imgur.com/JeRAQV8.png">
+<meta name="twitter:title" content="ubuntu 乱码">
+<meta name="twitter:description" content="最烦乱码了,今天又碰到了.解决Linux(Ubuntu)中文乱码，添加中文字符集">
 
 
 
@@ -120,7 +116,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -134,16 +130,16 @@
 
 
 
-  <link rel="canonical" href="http://openresti.com/2017/04/27/6.前端优化系列之一_DNS预获取_dns-prefetch_提升页面载入速度/"/>
+  <link rel="canonical" href="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案 - 副本/"/>
 
 
 
 
 
-  <title>前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度 | Openresty Python LUA</title>
+  <title>ubuntu 乱码 | Openresty Python LUA</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
 
@@ -206,7 +202,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -216,7 +212,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            分类
+            Kategorien
           </a>
         </li>
       
@@ -226,7 +222,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            关于
+            Über
           </a>
         </li>
       
@@ -236,7 +232,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -246,7 +242,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -279,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/04/27/6.前端优化系列之一_DNS预获取_dns-prefetch_提升页面载入速度/">
+    <link itemprop="mainEntityOfPage" href="http://openresti.com/2017/05/04/14.ubuntu乱码终级解决方案 - 副本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -300,7 +296,7 @@
             
             
               
-                前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度
+                ubuntu 乱码
               
             
           </h1>
@@ -313,10 +309,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T00:00:00+08:00">
-                2017-04-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-04T00:00:00+08:00">
+                2017-05-04
               </time>
             
 
@@ -334,7 +330,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -372,25 +368,29 @@
       
 
       
-        <p>DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。</p>
-<p>DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Prefetching 是让具有此属性的域名不需要用户点击链接就在后台解析，而域名解析和内容载入是串行的网络操作，所以这个方式能 减少用户的等待时间，提升用户体验 。</p>
-<p>默认情况下浏览器会对页面中和当前域名（正在浏览网页的域名）不在同一个域的域名进行预获取，并且缓存结果，这就是隐式的 DNS Prefetch。如果想对页面中没有出现的域进行预获取，那么就要使用显示的 DNS Prefetch 了。</p>
+        <p>最烦乱码了,今天又碰到了.<br>解决Linux(Ubuntu)中文乱码，添加中文字符集</p>
 <a id="more"></a> 
-<p>目前大多数浏览器已经支持此属性，支持版本如下：</p>
-<ul>
-<li>– Safari: 5+</li>
-<li>– Chrome: All</li>
-<li>– Firefox: 3.5+</li>
-<li>– Opera: Unknown</li>
-<li>– IE: 9+ (called “Pre-resolution” on blogs.msdn.com)<br>其中 Chrome 和 Firefox 3.5+ 内置了 DNS Prefetching 技术并对DNS预解析做了相应优化设置。所以 即使不设置此属性，Chrome 和 Firefox 3.5+ 也能自动在后台进行预解析 。</li>
-</ul>
-<p>目前很多大型站点也应用了这一优化，例如：</p>
-<p>淘宝：<br><img src="http://i.imgur.com/JeRAQV8.png" alt=""></p>
-<p>支付宝：<br><img src="http://i.imgur.com/tjT1Gnb.png" alt=""></p>
-<p>网易：<br><img src="http://i.imgur.com/87GiPgT.png" alt=""></p>
-<p>DNS Prefetch 应该尽量的放在网页的前面，推荐放在 <meta charset="UTF-8"> 后面。具体使用方法如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"on"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//www.itechzero.com"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//api.share.baidu.com"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//bdimg.share.baidu.com"</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>需要注意的是，虽然使用 DNS Prefetch 能够加快页面的解析速度，但是也不能滥用，因为有开发者指出 禁用DNS 预读取能节省每月100亿的DNS查询 。</p>
-<p>如果需要禁止隐式的 DNS Prefetch，可以使用以下的标签：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"off"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>添加中文字符编码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo vim /var/lib/locales/supported.d/local</div></pre></td></tr></table></figure></p>
+<p>#添加下面的中文字符集<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zh_CN.GBK GBK  </div><div class="line">zh_CN.GB2312 GB2312  </div><div class="line">zh_CN.GB18030 GB18030</div></pre></td></tr></table></figure></p>
+<p>使其生效：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo dpkg-reconfigure locales</div></pre></td></tr></table></figure></p>
+<h1 id="vim乱码"><a href="#vim乱码" class="headerlink" title="vim乱码"></a>vim乱码</h1><p>打开vim的配置文件，位置在/etc/vim/vimrc<br>在其中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set fileencodings=utf-8,gb2312,gbk,gb18030  </div><div class="line">set termencoding=utf-8  </div><div class="line">set encoding=prc</div></pre></td></tr></table></figure></p>
+<p>保存退出<br>source /etc/vim/vimrc </p>
+<p>此时vim就能正确显示中文了。 </p>
+<h1 id="pdf乱码"><a href="#pdf乱码" class="headerlink" title="pdf乱码"></a>pdf乱码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get install xpdf-chinese-simplifiedxpdf-chinese-traditional #安装pdf的中文字体</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get install poppler-data #安装解决pdf中文显示乱码的软件  </div><div class="line">$cd /etc/fonts/conf.d   </div><div class="line">$sudo cp 49-sansserif.conf 49-sansserif.conf_backup #先备份下  </div><div class="line">$sudo rm 49-sansserif.conf #删除</div></pre></td></tr></table></figure>
+<p>在打开pdf文件，就能呢个正常显示中文了 </p>
+<h1 id="gedit乱码"><a href="#gedit乱码" class="headerlink" title="gedit乱码"></a>gedit乱码</h1><p>缺省配置下，用 Ubuntu 的文本编辑器（gedit）打开 GB18030/GBK/GB2312 等类型的中文编码文本文件时，将会出现乱码。 </p>
+<p>出现这种情况的原因是，gedit 使用一个编码匹配列表，只有在这个列表中的编码才会进行匹配，不在这个列表中的编码将显示为乱码。您要做的就是将 GB18030 加入这个匹配列表。 </p>
+<p>命令行方式，适用于所有 Ubuntu 用户。<br>复制以下命令到终端中，然后回车即可： </p>
+<p>gconftool-2 –set –type=list –list-type=string /apps/gedit-2/preferences/encodings/auto_detected “[UTF-8,CURRENT,GB18030,BIG5-HKSCS,UTF-16]” </p>
+<p>图形化方式，适用于 Ubuntu 用户，而不适用于 KUbuntu/XUbuntu 用户。<br>您可以遵循以下步骤，使您的 gedit 正确显示中文编码文件。 </p>
+<p>按下 Alt-F2，打开“运行应用程序”对话框。<br>在文本框中键入“gconf-editor”，并按下回车键，打开“配置编辑器”。<br>展开左边的树节点，找到 /apps/gedit-2/preferences/encodings 节点并单击它。<br>双击右边的 auto_detected 键，打开“编辑键”对话框。<br>单击列表右边的“添加”按钮，输入“GB18030”，单击确定按钮。<br>列表的最底部新增加了一个“GB18030”。单击选中它，并单击右边的 “向上” 按钮直到 “GB18030” 位于列表的顶部为止。<br>单击确定按钮，关闭配置编辑器。<br>gedit3.x版本设置 </p>
+<p>终端输入dconf-editor </p>
+<p>展开org/gnome/gedit/preferences/encodings </p>
+<p>auto-detected的value中加入’GB18030′，加在uft8后面； </p>
+<p>show-in-menu的value中加入’GB18030′ </p>
+<p>现在，您的 gedit 应该能够顺利打开 GB18030 编码的文本文件了。 </p>
+<p>gedit 3.X版本命令设置：gsettings set org.gnome.gedit.preferences.encodings auto-detected “[‘UTF-8’,’GB18030’,’GB2312’,’GBK’,’BIG5’,’CURRENT’,’UTF-16’]” </p>
 <p>QQ群：397745473</p>
 
       
@@ -421,7 +421,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/web/" rel="tag"># web</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
           
         </div>
       
@@ -434,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/28/8.XSS平台CookieCatcher/" rel="next" title="CookieCatcher">
-                <i class="fa fa-chevron-left"></i> CookieCatcher
+              <a href="/2017/05/04/openresty使用MVC模板/" rel="next" title="openresty使用MVC模板">
+                <i class="fa fa-chevron-left"></i> openresty使用MVC模板
               </a>
             
           </div>
@@ -444,8 +446,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/27/5.Linux_curl命令参数详解_-_副本/" rel="prev" title="Linux curl命令参数详解">
-                Linux curl命令参数详解 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/04/lua生成随机数/" rel="prev" title="lua生成随机数">
+                lua生成随机数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -495,8 +497,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg"
@@ -512,7 +523,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">21</span>
-                <span class="site-state-item-name">日志</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -523,7 +534,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -534,7 +545,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">16</span>
-                <span class="site-state-item-name">标签</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -609,6 +620,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim乱码"><span class="nav-number">1.</span> <span class="nav-text">vim乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pdf乱码"><span class="nav-number">2.</span> <span class="nav-text">pdf乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gedit乱码"><span class="nav-number">3.</span> <span class="nav-text">gedit乱码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -634,12 +661,12 @@
 
 
 <!-- <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
