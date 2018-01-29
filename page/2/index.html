@@ -275,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/04/openresty使用MVC模板/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/04/lua生成随机数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -297,8 +297,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/04/openresty使用MVC模板/" itemprop="url">
-                  openresty使用MVC模板
+                <a class="post-title-link" href="/2017/05/04/lua生成随机数/" itemprop="url">
+                  lua生成随机数
                 </a>
               
             
@@ -372,11 +372,12 @@
 
       
         
-          <p>openresty使用MVC模板<br>我是用默认路径安装了openresty.<br>就是直接用.configure&amp;&amp;make&amp;&amp;make install<br>安装完成的.其他的什么都不改.</p>
-<p>官方说明:<a href="https://github.com/bungle/lua-resty-template">https://github.com/bungle/lua-resty-template</a><br>lua-resty-template</p>
+          <p>今天用到lua生成随机数的方法,生简单.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">math.randomseed(os.time())</div><div class="line">local ranNumber=math.random(1,99999999)</div></pre></td></tr></table></figure>
+<p>第二句必须有哦.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/04/openresty使用MVC模板/#more" rel="contents">
+            <a class="btn" href="/2017/05/04/lua生成随机数/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
