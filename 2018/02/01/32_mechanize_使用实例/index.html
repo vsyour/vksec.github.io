@@ -1,0 +1,843 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,mechanize," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="简介：Mechanize 是一个 Python 模块，用于模拟浏览器。由于考虑到爬虫所需要的是数据，所以该模块完全可以绕过验证码，直接使用 Cookie 登录就可以了。但是 Mechanize 模块使用 Cookie 登录，Cookie 的生存期较短，而且该模块也不支持 JavaScript。总体来说，该模块在面对验证码问题，算是个非常好的办法，应推荐使用。 官网:http://wwwsearch">
+<meta name="keywords" content="python,mechanize">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mechanize 使用实例">
+<meta property="og:url" content="http://vksec.com/2018/02/01/32_mechanize_使用实例/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="简介：Mechanize 是一个 Python 模块，用于模拟浏览器。由于考虑到爬虫所需要的是数据，所以该模块完全可以绕过验证码，直接使用 Cookie 登录就可以了。但是 Mechanize 模块使用 Cookie 登录，Cookie 的生存期较短，而且该模块也不支持 JavaScript。总体来说，该模块在面对验证码问题，算是个非常好的办法，应推荐使用。 官网:http://wwwsearch">
+<meta property="og:updated_time" content="2018-02-01T04:57:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mechanize 使用实例">
+<meta name="twitter:description" content="简介：Mechanize 是一个 Python 模块，用于模拟浏览器。由于考虑到爬虫所需要的是数据，所以该模块完全可以绕过验证码，直接使用 Cookie 登录就可以了。但是 Mechanize 模块使用 Cookie 登录，Cookie 的生存期较短，而且该模块也不支持 JavaScript。总体来说，该模块在面对验证码问题，算是个非常好的办法，应推荐使用。 官网:http://wwwsearch">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2018/02/01/32_mechanize_使用实例/"/>
+
+
+
+
+
+  <title>mechanize 使用实例 | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/02/01/32_mechanize_使用实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                mechanize 使用实例
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T12:21:52+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/02/01/32_mechanize_使用实例/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/02/01/32_mechanize_使用实例/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>简介：<br>Mechanize 是一个 Python 模块，用于模拟浏览器。由于考虑到爬虫所需要的是数据，所以该模块完全可以绕过验证码，直接使用 Cookie 登录就可以了。但是 Mechanize 模块使用 Cookie 登录，Cookie 的生存期较短，而且该模块也不支持 JavaScript。总体来说，该模块在面对验证码问题，算是个非常好的办法，应推荐使用。</p>
+<p>官网:<a href="http://wwwsearch.sourceforge.net/mechanize/" target="_blank" rel="external">http://wwwsearch.sourceforge.net/mechanize/</a><br>Mechanize&amp;Selenium<br>参考:<a href="http://blog.csdn.net/u011974639/article/details/73148949" target="_blank" rel="external">http://blog.csdn.net/u011974639/article/details/73148949</a></p>
+<a id="more"></a> 
+<p>QQ群：397745473</p>
+<h1 id="使用方法一"><a href="#使用方法一" class="headerlink" title="使用方法一"></a>使用方法一</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> mechanize <span class="comment">#导入模块</span></div><div class="line"></div><div class="line">br = mechanize.Browser()</div><div class="line">br.set_handle_equiv(<span class="keyword">True</span>)</div><div class="line">br.set_handle_redirect(<span class="keyword">True</span>)</div><div class="line">br.set_handle_referer(<span class="keyword">True</span>)</div><div class="line">br.set_handle_robots(<span class="keyword">False</span>)</div><div class="line">br.set_handle_gzip(<span class="keyword">False</span>)</div><div class="line">br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=<span class="number">1</span>)</div><div class="line"></div><div class="line">header = [</div><div class="line"></div><div class="line">(<span class="string">'Cookie'</span>, <span class="string">'PHPSESSID=11eb50f5bec637ec3506307daf1e02ea; ECS_ID=ef9ff8c13f0c4215c7935da16a7b206ca03c44fa; bdshare_firstime=1484752989129; Hm_lvt_6424edc88ffc5606738fadb6f51be89f=1484574708,1484752969; Hm_lpvt_6424edc88ffc5606738fadb6f51be89f=1484757613'</span>), </div><div class="line"></div><div class="line">(<span class="string">'User-Agent'</span>, <span class="string">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/55.0.2883.87 Chrome/55.0.2883.87 Safari/537.36'</span>)</div><div class="line"></div><div class="line">] </div><div class="line"><span class="comment">#获取用户登录百度后的Request Headers里面的Cookie值 和 User-Agent，</span></div><div class="line"><span class="comment">#其中，Cookie含有账号和密码信息，User-Agent是说明该请求是浏览器请求的，不是网络爬虫。</span></div><div class="line"><span class="comment">#需要注意的是，这些Cookie和User-Agent值，根据自己的情况去设置</span></div><div class="line"></div><div class="line">br.addheaders = getHeaders(header)</div><div class="line"></div><div class="line"><span class="comment">#以上都是初始化操作，下面正式操作</span></div><div class="line">br.open(<span class="string">'https://www.baidu.com'</span>) <span class="comment">#打开百度</span></div><div class="line"></div><div class="line">result = br.response().read() <span class="comment">#输出该网页的代码内容，</span></div><div class="line"></div><div class="line"><span class="comment">#若接触过BeautifulSoup，可以将获得的 result 网页内容,用于以下方法处理：</span></div><div class="line"></div><div class="line">soup = BeautifulSoup(result,<span class="string">'lxml'</span>)<span class="comment">#剩下的，可以用 BeautifulSoup的知识去解决了</span></div><div class="line"></div><div class="line"><span class="comment">#在安装好必要的模块后，以上代码可以直接拿过来使用</span></div></pre></td></tr></table></figure>
+<h1 id="使用方法二"><a href="#使用方法二" class="headerlink" title="使用方法二"></a>使用方法二</h1><p>Mechanize模拟浏览器还有其他一些操作，如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for form in br.forms():</div><div class="line">    print(form)</div></pre></td></tr></table></figure></p>
+<p>输出结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;f GET https://www.baidu.com/s application/x-www-form-urlencoded</div><div class="line">  &lt;HiddenControl(ie=utf-8) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(f=8) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(rsv_bp=1) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(rsv_idx=1) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(ch=) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(tn=baidu) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(bar=) (readonly)&gt;</div><div class="line">  &lt;TextControl(wd=)&gt;</div><div class="line">  &lt;SubmitControl(&lt;None&gt;=百度一下) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(rn=) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(oq=) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(rsv_pq=8e85a2600001382e) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(rsv_t=e2292vaXa6IOboaARHGB3ajcHkUM/7/UPf2NufNR+ninqHO+83EQ8YY76sg) (readonly)&gt;</div><div class="line">  &lt;HiddenControl(rqlang=cn) (readonly)&gt;&gt;</div></pre></td></tr></table></figure></p>
+<p>从输出的结果可以看出，其中&lt; HiddenControl(f=8) (readonly) &gt;是以 名字为 f 的框架（有时候框架没有名字，那就只能使用它们的顺序来选择）；输入文字的位置为文本输入框 &lt; TextControl(wd=) &gt;。选择框架，在框架内输入数据后提交数据。以搜索“Python 网络爬虫” 为例，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">br.select_form(name=&apos;f&apos;)</div><div class="line">br.form[&apos;wd&apos;] = &apos;Python 网络爬虫&apos;</div><div class="line">br.submit() # 提交</div><div class="line">result = br.response().read() </div><div class="line"></div><div class="line">#输出结果，可以将结果用BeautifulSoup来处理，即soup = BeautifulSoup(result,&apos;lxml&apos;)，然后提取想要的数据</div></pre></td></tr></table></figure></p>
+<h1 id="使用方法三"><a href="#使用方法三" class="headerlink" title="使用方法三"></a>使用方法三</h1><p>查看返回页面的链接，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for link in br.links():</div><div class="line">    print(&quot;%s : %s&quot; %(link.url,link.text))</div></pre></td></tr></table></figure></p>
+<h1 id="使用方法四"><a href="#使用方法四" class="headerlink" title="使用方法四"></a>使用方法四</h1><p>使用mechanize浏览器打开指定链接，例如：<br>    newLink = br.click_link(text=’自己动手写网络爬虫’)<br>    br.open(newLink)</p>
+<h1 id="Python：mechanize模拟浏览器行为"><a href="#Python：mechanize模拟浏览器行为" class="headerlink" title="Python：mechanize模拟浏览器行为"></a>Python：mechanize模拟浏览器行为</h1><p>Python有许许多多有趣的模块，每当自己需要解决某个问题的时候，Python总能冒出来一两个让你惊喜的小玩意。<br>比如说用于数值计算的Numpy（强大而方便的矩阵能力），<br>用于数据分析的Pandas（和R语言有非常多相似的功能，<br>在读写各种文件以及数据处理上会让人有种把excel、R、机器学习融合起来使用的感觉），<br>用于爬虫内容提取的BeautifulSoup（点对点的精准数据获取，使用非常方便），<br>以及最近正在使用的用于模拟浏览器登录的Mechanize。</p>
+<h2 id="业务需求"><a href="#业务需求" class="headerlink" title="业务需求"></a>业务需求</h2><p>既谈技术，先明需求，学习Mechanize的真实目的不方便描述，以下是学Mechanize带来的福利。</p>
+<p>现有一论坛，由于某种特殊原因需要定时发帖。比如一些校园内网的BBS，如果想浏览帖子，必须先登录。也就是说现在需要一个工具，能够登录该论坛，然后在相应的文本输入框中输入汉字，最后提交。</p>
+<p>其实原理就是模拟浏览器和Server交互的一个过程，主要在于协议的一些理解。经过一些调研，有两种方案可选：Java的HttpClient和Python的Mechanize。两者都可实现模拟浏览器进行交互的一些功能，实现难度都不大。</p>
+<p>HttpClient的方便之处在于文档比较全，还可以直接看源码，官网（<a href="https://hc.apache.org/index.html）还有各种小例子，有些可以直接使用。目前最新版本是4.5。" target="_blank" rel="external">https://hc.apache.org/index.html）还有各种小例子，有些可以直接使用。目前最新版本是4.5。</a></p>
+<p>Mechanize使用比较简单，它保留许多与出色的 Expect 脚本相同的东西，它的使用过程，比如.select_form()、.submit()、.follow_link()等方法确实比较还原真实的“查找并发送”操作。遗憾的是文档并不想网上说的那么详细，<br>官方给了几个例子，但是没有像Java那样的API，好多方法需要自己来摸索和看网上的例子，在使用的时候想查看所有的方法介绍比较麻烦。<br>但是这不能阻挡我使用它的决心。Mechanize很久没更新了，目前版本是0.2.5。<br>官网：<a href="http://wwwsearch.sourceforge.net/mechanize/" target="_blank" rel="external">http://wwwsearch.sourceforge.net/mechanize/</a></p>
+<p>Mechanize介绍<br>mechanize是对urllib2的部分功能的替换，能够更好的模拟浏览器行为，在Web访问控制方面做得更全面。它对protocol, cookie, redirection都做了比较好的支持，再结合beautifulsoup和re模块，可以非常有效的解析web页面。</p>
+<p>常用函数<br>.CookieJar()：设置cookie<br>.Browser()：打开浏览器<br>.addheaders()：User-Agent，用来欺骗服务器的<br>.open()：打开网页，按照官网描述可以打开任意网页，不仅限于http<br>.select_form()：选择表单的，选择表单的ID的时候需要注意。<br>.form[]：填写信息<br>.submit()：提交</p>
+<p>从百度搜索<br>比较简单，先获取表单信息，然后填入相应信息，提交即可，最后查看返回信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">import sys</div><div class="line">import mechanize</div><div class="line"></div><div class="line">#Browser</div><div class="line">br = mechanize.Browser()</div><div class="line"></div><div class="line">#options</div><div class="line">br.set_handle_equiv(True)</div><div class="line">#br.set_handle_gzip(True)</div><div class="line">br.set_handle_redirect(True)</div><div class="line">br.set_handle_referer(True)</div><div class="line">br.set_handle_robots(False)</div><div class="line"></div><div class="line">#Follows refresh 0 but not hangs on refresh &gt; 0</div><div class="line">br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)</div><div class="line"></div><div class="line">br.set_debug_http(True)</div><div class="line">br.set_debug_redirects(True)</div><div class="line">br.set_debug_responses(True)</div><div class="line"></div><div class="line">#欺骗行为</div><div class="line">br.addheaders = [(&apos;User-agent&apos;, &apos;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1&apos;)]</div><div class="line"></div><div class="line">#上面的代码主要用于初始化设置，最好设置一下</div><div class="line"></div><div class="line"></div><div class="line"># 打开百度</div><div class="line">r = br.open(&apos;https://www.baidu.com/&apos;)</div><div class="line">#获取百度的表单，从中找到输入汉字的位置</div><div class="line">for f in br.forms():</div><div class="line">    print f</div><div class="line"></div><div class="line">br.select_form(nr = 0)</div><div class="line"></div><div class="line">#搜索关键字“火车”</div><div class="line">br.form[&apos;wd&apos;] = &quot;火车&quot;</div><div class="line">br.submit()</div><div class="line"># 查看搜索结果</div><div class="line">brr=br.response().read()</div><div class="line">#是html代码，能看到火车的搜索结果</div><div class="line">print brr</div></pre></td></tr></table></figure>
+<p>登录某论坛，并发贴<br>比如<a href="http://examplehome.com论坛，需要在该论坛的http://examplehome.com/ID=001的帖子里面回复。大体流程如下：" target="_blank" rel="external">http://examplehome.com论坛，需要在该论坛的http://examplehome.com/ID=001的帖子里面回复。大体流程如下：</a></p>
+<p>先登录<a href="http://examplehome.com/login界面，启用cookie记录，记录cookie信息。" target="_blank" rel="external">http://examplehome.com/login界面，启用cookie记录，记录cookie信息。</a><br>登录界面之后，cookie中已保存了登录信息，获取该cookie信息，再打开<a href="http://examplehome.com/ID=001，获取表单信息。" target="_blank" rel="external">http://examplehome.com/ID=001，获取表单信息。</a><br>在相应位置填入信息，提交，最后查看结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">import sys</div><div class="line">import mechanize</div><div class="line"></div><div class="line">#cookie</div><div class="line">cj = mechanize.CookieJar()</div><div class="line"></div><div class="line">#Browser</div><div class="line">br = mechanize.Browser()</div><div class="line"></div><div class="line">#options</div><div class="line">br.set_handle_equiv(True)</div><div class="line">#br.set_handle_gzip(True)</div><div class="line">br.set_handle_redirect(True)</div><div class="line">br.set_handle_referer(True)</div><div class="line">br.set_handle_robots(False)</div><div class="line"></div><div class="line">#Follows refresh 0 but not hangs on refresh &gt; 0</div><div class="line">br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)</div><div class="line"></div><div class="line">#debugging?</div><div class="line">br.set_debug_http(True)</div><div class="line">br.set_debug_redirects(True)</div><div class="line">br.set_debug_responses(True)</div><div class="line"></div><div class="line">#User-Agent (this is cheating, ok?)</div><div class="line">br.addheaders = [(&apos;User-agent&apos;, &apos;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36&apos;)]</div><div class="line"></div><div class="line">#启用cookie</div><div class="line">br.set_cookiejar(cj)</div><div class="line">br.open(&quot;http://examplehome.com/login&quot;)</div><div class="line"></div><div class="line">#print br.title()</div><div class="line">br.select_form(nr = 0)</div><div class="line"></div><div class="line">#获取表单信息，我已知道信息，故注释掉</div><div class="line">#for f in br.forms():</div><div class="line">    #print f</div><div class="line"></div><div class="line">#account info</div><div class="line">br.form[&apos;username&apos;] = &quot;name&quot;</div><div class="line">br.form[&apos;password&apos;] = &apos;pawd&apos;</div><div class="line"></div><div class="line">br.submit()</div><div class="line"></div><div class="line">#登录成功，查看登录成功的后的信息</div><div class="line">#br_response = br.response().read()</div><div class="line"></div><div class="line">#print br_response</div><div class="line"></div><div class="line">#经过上面步骤，cookie里已经保存的登录信息，下面直接使用cookie即可免密码登录了</div><div class="line"></div><div class="line">#Browser</div><div class="line">br2 = mechanize.Browser()</div><div class="line">#options</div><div class="line">br2.set_handle_equiv(True)</div><div class="line">#br.set_handle_gzip(True)</div><div class="line">br2.set_handle_redirect(True)</div><div class="line">br2.set_handle_referer(True)</div><div class="line">br2.set_handle_robots(False)</div><div class="line"></div><div class="line">#Follows refresh 0 but not hangs on refresh &gt; 0</div><div class="line">br2.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)</div><div class="line"></div><div class="line">#debugging?</div><div class="line">br2.set_debug_http(True)</div><div class="line">br2.set_debug_redirects(True)</div><div class="line">br2.set_debug_responses(True)</div><div class="line"></div><div class="line">#User-Agent (this is cheating, ok?)</div><div class="line">br2.addheaders = [(&apos;User-agent&apos;, &apos;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36&apos;)]</div><div class="line">#设置 cookie</div><div class="line">br2.set_cookiejar(cj)</div><div class="line"></div><div class="line">#打开帖子的链接</div><div class="line">r = br2.open(&quot;http://examplehome.com/ID=001&quot;)</div><div class="line"></div><div class="line">br2.select_form(nr = 3)</div><div class="line"></div><div class="line">#获取表单的信息</div><div class="line">#for f in br2.forms():</div><div class="line">#    print f</div><div class="line"></div><div class="line">#在发帖处，填写回复内容</div><div class="line">br2.form[&apos;message&apos;] = &quot;我是使用程序自动发帖的~&quot;</div><div class="line"></div><div class="line">br2.submit()</div><div class="line"></div><div class="line">#查看发帖后的结果</div><div class="line">br2_response = br2.response().read()</div><div class="line">print br2_response</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> mechanize</div><div class="line"></div><div class="line">br = mechanize.Browser()</div><div class="line">br.open(<span class="string">"http://www.example.com/"</span>)</div><div class="line"><span class="comment"># follow second link with element text matching regular expression</span></div><div class="line">response1 = br.follow_link(text_regex=<span class="string">r"cheese\s*shop"</span>, nr=<span class="number">1</span>)</div><div class="line"><span class="keyword">assert</span> br.viewing_html()</div><div class="line"><span class="keyword">print</span> br.title()</div><div class="line"><span class="keyword">print</span> response1.geturl()</div><div class="line"><span class="keyword">print</span> response1.info()  <span class="comment"># headers</span></div><div class="line"><span class="keyword">print</span> response1.read()  <span class="comment"># body</span></div><div class="line"></div><div class="line">br.select_form(name=<span class="string">"order"</span>)</div><div class="line"><span class="comment"># Browser passes through unknown attributes (including methods)</span></div><div class="line"><span class="comment"># to the selected HTMLForm.</span></div><div class="line">br[<span class="string">"cheeses"</span>] = [<span class="string">"mozzarella"</span>, <span class="string">"caerphilly"</span>]  <span class="comment"># (the method here is __setitem__)</span></div><div class="line"><span class="comment"># Submit current form.  Browser calls .close() on the current response on</span></div><div class="line"><span class="comment"># navigation, so this closes response1</span></div><div class="line">response2 = br.submit()</div><div class="line"></div><div class="line"><span class="comment"># print currently selected form (don't call .submit() on this, use br.submit())</span></div><div class="line"><span class="keyword">print</span> br.form</div><div class="line"></div><div class="line">response3 = br.back()  <span class="comment"># back to cheese shop (same data as response1)</span></div><div class="line"><span class="comment"># the history mechanism returns cached response objects</span></div><div class="line"><span class="comment"># we can still use the response, even though it was .close()d</span></div><div class="line">response3.get_data()  <span class="comment"># like .seek(0) followed by .read()</span></div><div class="line">response4 = br.reload()  <span class="comment"># fetches from server</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> form <span class="keyword">in</span> br.forms():</div><div class="line"><span class="keyword">print</span> form</div><div class="line"><span class="comment"># .links() optionally accepts the keyword args of .follow_/.find_link()</span></div><div class="line"><span class="keyword">for</span> link <span class="keyword">in</span> br.links(url_regex=<span class="string">"python.org"</span>):</div><div class="line"><span class="keyword">print</span> link</div><div class="line">    br.follow_link(link)  <span class="comment"># takes EITHER Link instance OR keyword args</span></div><div class="line">    br.back()</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/mechanize/" rel="tag"># mechanize</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/01/31_selenium_使用实例/" rel="prev" title="selenium 使用实例">
+                selenium 使用实例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg"
+               alt="vsyour" />
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方法一"><span class="nav-number">1.</span> <span class="nav-text">使用方法一</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方法二"><span class="nav-number">2.</span> <span class="nav-text">使用方法二</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方法三"><span class="nav-number">3.</span> <span class="nav-text">使用方法三</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方法四"><span class="nav-number">4.</span> <span class="nav-text">使用方法四</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python：mechanize模拟浏览器行为"><span class="nav-number">5.</span> <span class="nav-text">Python：mechanize模拟浏览器行为</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#业务需求"><span class="nav-number">5.1.</span> <span class="nav-text">业务需求</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytroKXoo';
+      var conf = '80a0077517ca59974992825ae75a903c';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
