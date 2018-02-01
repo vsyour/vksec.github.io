@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nginx,openresty,LUA,python,pentest" />
+  <meta name="keywords" content="浏览器," />
 
 
 
@@ -92,15 +92,19 @@
 
 
 
-<meta name="description" content="Nginx openresty python lua 网络安全 学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Openresty Python LUA">
-<meta property="og:url" content="http://vksec.com/categories/vps推荐/index.html">
+<meta name="description" content="对于浏览器来讲小伙伴们肯定再熟悉不过了，浏览器是咱们居家旅行、访问网站之必用装备。有童鞋说了，杜克你聊得别的呗，浏览器谁不会用啊，还用你教呢？既然这样，那我就来给大家来点你所不懂的 – 伪造自己的IP地址！ QQ群：397745473">
+<meta name="keywords" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用火狐浏览器伪造IP地址">
+<meta property="og:url" content="http://vksec.com/2018/02/01/33_浏览器伪造IP地址/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta property="og:description" content="对于浏览器来讲小伙伴们肯定再熟悉不过了，浏览器是咱们居家旅行、访问网站之必用装备。有童鞋说了，杜克你聊得别的呗，浏览器谁不会用啊，还用你教呢？既然这样，那我就来给大家来点你所不懂的 – 伪造自己的IP地址！ QQ群：397745473">
+<meta property="og:image" content="https://i.imgur.com/NtMNbi2.jpg">
+<meta property="og:updated_time" content="2018-02-01T05:49:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openresty Python LUA">
-<meta name="twitter:description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta name="twitter:title" content="利用火狐浏览器伪造IP地址">
+<meta name="twitter:description" content="对于浏览器来讲小伙伴们肯定再熟悉不过了，浏览器是咱们居家旅行、访问网站之必用装备。有童鞋说了，杜克你聊得别的呗，浏览器谁不会用啊，还用你教呢？既然这样，那我就来给大家来点你所不懂的 – 伪造自己的IP地址！ QQ群：397745473">
+<meta name="twitter:image" content="https://i.imgur.com/NtMNbi2.jpg">
 
 
 
@@ -114,7 +118,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -128,16 +132,16 @@
 
 
 
-  <link rel="canonical" href="http://vksec.com/categories/vps推荐/"/>
+  <link rel="canonical" href="http://vksec.com/2018/02/01/33_浏览器伪造IP地址/"/>
 
 
 
 
 
-  <title>分类: vps推荐 | Openresty Python LUA</title>
+  <title>利用火狐浏览器伪造IP地址 | Openresty Python LUA</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
 
@@ -159,7 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -200,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -210,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            分类
+            Kategorien
           </a>
         </li>
       
@@ -220,7 +224,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            关于
+            Über
           </a>
         </li>
       
@@ -230,7 +234,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -240,7 +244,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -263,47 +267,200 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        vps推荐
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/29/24_vps_推荐001/" itemprop="url">
-              
-                <span itemprop="name">eukhost 性价比高/17.95美元一年/512MB内存/15GB硬盘/3TB流量/1Gbps/KVM/洛杉矶MC机房/三网都还算好</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-29T00:00:00+08:00"
-              content="2018-01-29" >
-          01-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/02/01/33_浏览器伪造IP地址/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用火狐浏览器伪造IP地址
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T13:44:08+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/02/01/33_浏览器伪造IP地址/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/02/01/33_浏览器伪造IP地址/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>对于浏览器来讲小伙伴们肯定再熟悉不过了，浏览器是咱们居家旅行、访问网站之必用装备。有童鞋说了，杜克你聊得别的呗，浏览器谁不会用啊，还用你教呢？既然这样，那我就来给大家来点你所不懂的 – 伪造自己的IP地址！</p>
+<p>QQ群：397745473</p>
+<a id="more"></a> 
+<h1 id="工具-原料"><a href="#工具-原料" class="headerlink" title="工具/原料"></a>工具/原料</h1><ol>
+<li>火狐浏览器</li>
+<li>Modify Headers</li>
+</ol>
+<h1 id="方法-步骤"><a href="#方法-步骤" class="headerlink" title="方法/步骤"></a>方法/步骤</h1><ol>
+<li>安装插件：<br>先打开火狐浏览器 =&gt; 找到下载好的 modify_headers.xpi<br>插件文件 =&gt; 鼠标按住插件文件不放，<br>拖拽到火狐浏览器界面 =&gt; 按提示重启浏览器<br>=&gt; 完成安装。<br>在浏览器右上角点小图标，选择打开“Open ModifyHeaders”，<br>如下图所示<br><img src="https://i.imgur.com/NtMNbi2.jpg" alt=""></li>
+</ol>
+<p>如图依次选择 Add → 输入 X-Forwarded-For → 自定义IP地址 → 点Add按钮完成添加 →  最后点击左上角的“Start”开启插件就搞定啦！</p>
+<h1 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h1><p>关闭插件配置小窗口，我们打开 www.ip138.com ，看到了嘛，自己的IP已经显示为刚刚自定义“伪造”的IP地址咧…</p>
+<h1 id="总结和思考"><a href="#总结和思考" class="headerlink" title="总结和思考"></a>总结和思考</h1><p>由此可见:<br>通过手动修改 HTTP请求头（X-Forwarded-For）的方式，<br>就可以轻易骗过服务器，<br>达到所谓的“伪造”客户端IP地址的目的，<br>当然这招并非对于所有的网站有效（这取决于服务器获取ClientIP的方式），<br>比如百度搜索IP所显示的IP还是你的真实IP。<br>同时举一反三对于网站管理员来讲，任何客户端发送的请求数据都是不可信的，想象一下，如果自定义的X-Forwarded-For值中含有敏感字符，甚至可以导致SQL注入的后果。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/浏览器/" rel="tag"># 浏览器</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/01/32_mechanize_使用实例/" rel="prev" title="mechanize 使用实例">
+                mechanize 使用实例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -311,6 +468,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
 
         </div>
         
@@ -330,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg"
@@ -347,7 +519,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">日志</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -358,7 +530,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">分类</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -369,7 +541,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">25</span>
-                <span class="site-state-item-name">标签</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -452,6 +624,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工具-原料"><span class="nav-number">1.</span> <span class="nav-text">工具/原料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法-步骤"><span class="nav-number">2.</span> <span class="nav-text">方法/步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试效果"><span class="nav-number">3.</span> <span class="nav-text">测试效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结和思考"><span class="nav-number">4.</span> <span class="nav-text">总结和思考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -477,12 +665,12 @@
 
 
 <!-- <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
@@ -566,6 +754,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
