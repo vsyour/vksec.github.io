@@ -1,0 +1,844 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,pyDes," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="pyDes库 实现python的des加密,注册机QQ群：397745473">
+<meta name="keywords" content="python,pyDes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pyDes库 实现python的des加密,注册机">
+<meta property="og:url" content="http://vksec.com/2017/05/22/20_pyDes库_实现python的des加密/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="pyDes库 实现python的des加密,注册机QQ群：397745473">
+<meta property="og:updated_time" content="2017-05-22T07:59:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pyDes库 实现python的des加密,注册机">
+<meta name="twitter:description" content="pyDes库 实现python的des加密,注册机QQ群：397745473">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2017/05/22/20_pyDes库_实现python的des加密/"/>
+
+
+
+
+
+  <title>pyDes库 实现python的des加密,注册机 | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/22/20_pyDes库_实现python的des加密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                pyDes库 实现python的des加密,注册机
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T00:00:00+08:00">
+                2017-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/05/22/20_pyDes库_实现python的des加密/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/05/22/20_pyDes库_实现python的des加密/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>pyDes库 实现python的des加密,注册机<br>QQ群：397745473</p>
+<a id="more"></a>
+<p>下载及简介地址：<a href="https://twhiteman.netfirms.com/des.html" target="_blank" rel="external">https://twhiteman.netfirms.com/des.html</a></p>
+<p>如需要在python中使用des加密，可以直接使用pyDes库加密，该库提供了CBC和ECB两种加密方式。</p>
+<p>1、Windows下安装</p>
+<p>　　下载后pyDes-x.x.x.zip并解压后，里面有setup.py文件，使用命令 setup.py –help可查看详细使用。</p>
+<p>　　你可以使用命令 python setup.py install 命令安装，也可以直接将压缩包内的pyDes.py拷贝到本地的python lib库下直接开始使用</p>
+<p>2、 使用</p>
+<p>　　使用参数如下（拷贝自上述提供的地址）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">Class initialization</div><div class="line">--------------------</div><div class="line">pyDes.des(key, [mode], [IV], [pad], [padmode])</div><div class="line">pyDes.triple_des(key, [mode], [IV], [pad], [padmode])</div><div class="line"></div><div class="line">key     -&gt; Bytes containing the encryption key. 8 bytes for DES, 16 or 24 bytes</div><div class="line">	   for Triple DES</div><div class="line">mode    -&gt; Optional argument for encryption type, can be either</div><div class="line">	   pyDes.ECB (Electronic Code Book) or pyDes.CBC (Cypher Block Chaining)</div><div class="line">IV      -&gt; Optional Initial Value bytes, must be supplied if using CBC mode.</div><div class="line">	   Length must be 8 bytes.</div><div class="line">pad     -&gt; Optional argument, set the pad character (PAD_NORMAL) to use during</div><div class="line">	   all encrypt/decrpt operations done with this instance.</div><div class="line">padmode -&gt; Optional argument, set the padding mode (PAD_NORMAL or PAD_PKCS5)</div><div class="line">	   to use during all encrypt/decrpt operations done with this instance.</div><div class="line"></div><div class="line">I recommend to use PAD_PKCS5 padding, as then you never need to worry about any</div><div class="line">padding issues, as the padding can be removed unambiguously upon decrypting</div><div class="line">data that was encrypted using PAD_PKCS5 padmode.</div><div class="line"></div><div class="line">Common methods</div><div class="line">--------------</div><div class="line">encrypt(data, [pad], [padmode])</div><div class="line">decrypt(data, [pad], [padmode])</div><div class="line"></div><div class="line">data    -&gt; Bytes to be encrypted/decrypted</div><div class="line">pad     -&gt; Optional argument. Only when using padmode of PAD_NORMAL. For</div><div class="line">	   encryption, adds this characters to the end of the data block when</div><div class="line">	   data is not a multiple of 8 bytes. For decryption, will remove the</div><div class="line">	   trailing characters that match this pad character from the last 8</div><div class="line">	   bytes of the unencrypted data block.</div><div class="line">padmode -&gt; Optional argument, set the padding mode, must be one of PAD_NORMAL</div><div class="line">	   or PAD_PKCS5). Defaults to PAD_NORMAL</div></pre></td></tr></table></figure>
+<p>使用实例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Example</div><div class="line">-------</div><div class="line">from pyDes import *</div><div class="line"></div><div class="line"># For Python3, you‘ll need to use bytes, i.e.:</div><div class="line">#   data = b&quot;Please encrypt my data&quot;</div><div class="line">#   k = des(b&quot;DESCRYPT&quot;, CBC, b&quot;\0\0\0\0\0\0\0\0&quot;, pad=None, padmode=PAD_PKCS5)</div><div class="line"></div><div class="line">data = &quot;Please encrypt my data&quot;</div><div class="line">k = des(&quot;DESCRYPT&quot;, CBC, &quot;\0\0\0\0\0\0\0\0&quot;, pad=None, padmode=PAD_PKCS5)</div><div class="line">d = k.encrypt(data)</div><div class="line">print &quot;Encrypted: %r&quot; % d</div><div class="line">print &quot;Decrypted: %r&quot; % k.decrypt(d)</div><div class="line">assert k.decrypt(d, padmode=PAD_PKCS5) == dat</div></pre></td></tr></table></figure></p>
+<p>以下是本人使用的例子,使用CBC加密的方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">import base64</div><div class="line">from pyDes import *</div><div class="line"></div><div class="line">Des_Key = &quot;BHC#@*UM&quot; # Key</div><div class="line">Des_IV = &quot;\x22\x33\x35\x81\xBC\x38\x5A\xE7&quot; # 自定IV向量</div><div class="line"></div><div class="line">def DesEncrypt(str):</div><div class="line">    k = des(Des_Key, CBC, Des_IV, pad=None, padmode=PAD_PKCS5)</div><div class="line"></div><div class="line">    EncryptStr = k.encrypt(str)</div><div class="line"></div><div class="line">    return base64.b64encode(EncryptStr) #转base64编码返回</div><div class="line">	</div><div class="line">```	</div><div class="line"></div><div class="line"></div><div class="line">Python DES 加密解密，就是大家所谓想要的那个非常快速的方法</div><div class="line">这个要借助Crypto.Cipher这个插件来实现的，引用后只需要写如下代码即可</div></pre></td></tr></table></figure></p>
+<p>from Crypto.Cipher import DES</p>
+<p>class MyDESCrypt:</p>
+<pre><code>key = chr(11)+chr(11)+chr(11)+chr(11)+chr(11)+chr(11)+chr(11)+chr(11)
+iv = chr(22)+chr(22)+chr(22)+chr(22)+chr(22)+chr(22)+chr(22)+chr(22)
+
+def __init__(self,key=&apos;&apos;,iv=&apos;&apos;):
+    if len(key)&gt; 0:
+        self.key = key
+    if len(iv)&gt;0 :
+        self.iv = iv
+
+def ecrypt(self,ecryptText):
+   try:
+       cipherX = DES.new(self.key, DES.MODE_CBC, self.iv)
+       pad = 8 - len(ecryptText) % 8
+       padStr = &quot;&quot;
+       for i in range(pad):
+          padStr = padStr + chr(pad)
+       ecryptText = ecryptText + padStr
+       x = cipherX.encrypt(ecryptText)
+       return x.encode(&apos;hex_codec&apos;).upper()
+   except:
+       return &quot;&quot;
+
+
+def decrypt(self,decryptText):
+    try:
+
+        cipherX = DES.new(self.key, DES.MODE_CBC, self.iv)
+        str = decryptText.decode(&apos;hex_codec&apos;)
+        y = cipherX.decrypt(str)
+        return y[0:ord(y[len(y)-1])*-1]
+    except:
+        return &quot;&quot;
+</code></pre><p>```</p>
+<p>QQ群：397745473</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/pyDes/" rel="tag"># pyDes</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/29/26_大量注册gmail账号/" rel="next" title="奇技淫巧：手工注册大量google账号的方法">
+                <i class="fa fa-chevron-left"></i> 奇技淫巧：手工注册大量google账号的方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/22/30_python_用pyqt开发/" rel="prev" title="pyqt开发记录">
+                pyqt开发记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg"
+               alt="vsyour" />
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23.vksec_%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytroKXoo';
+      var conf = '80a0077517ca59974992825ae75a903c';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
