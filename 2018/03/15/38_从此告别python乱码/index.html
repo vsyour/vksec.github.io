@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="用 virtualenv 建立python独立环境QQ群：397745473">
+<meta name="description" content="从此告别python乱码QQ群：397745473">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用virtualenv建立python独立环境">
-<meta property="og:url" content="http://vksec.com/2018/02/04/36_virtualenv建立python独立环境/index.html">
+<meta property="og:title" content="从此告别python乱码">
+<meta property="og:url" content="http://vksec.com/2018/03/15/38_从此告别python乱码/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="用 virtualenv 建立python独立环境QQ群：397745473">
-<meta property="og:updated_time" content="2018-02-03T17:50:31.000Z">
+<meta property="og:description" content="从此告别python乱码QQ群：397745473">
+<meta property="og:updated_time" content="2018-03-15T01:25:04.929Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用virtualenv建立python独立环境">
-<meta name="twitter:description" content="用 virtualenv 建立python独立环境QQ群：397745473">
+<meta name="twitter:title" content="从此告别python乱码">
+<meta name="twitter:description" content="从此告别python乱码QQ群：397745473">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://vksec.com/2018/02/04/36_virtualenv建立python独立环境/"/>
+  <link rel="canonical" href="http://vksec.com/2018/03/15/38_从此告别python乱码/"/>
 
 
 
 
 
-  <title>用virtualenv建立python独立环境 | Openresty Python LUA</title>
+  <title>从此告别python乱码 | Openresty Python LUA</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -275,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/02/04/36_virtualenv建立python独立环境/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/03/15/38_从此告别python乱码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -296,7 +296,7 @@
             
             
               
-                用virtualenv建立python独立环境
+                从此告别python乱码
               
             
           </h2>
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T01:16:58+08:00">
-                2018-02-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T14:00:30+08:00">
+                2018-03-15
               </time>
             
 
@@ -334,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络安全/" itemprop="url" rel="index">
-                    <span itemprop="name">网络安全</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -352,9 +352,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/04/36_virtualenv建立python独立环境/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/15/38_从此告别python乱码/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/02/04/36_virtualenv建立python独立环境/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/15/38_从此告别python乱码/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -379,13 +379,13 @@
       
 
       
-        <p>用 virtualenv 建立python独立环境<br>QQ群：397745473</p>
+        <p>从此告别python乱码<br>QQ群：397745473</p>
 <a id="more"></a> 
-<h1 id="第一步：安装-virtualenv"><a href="#第一步：安装-virtualenv" class="headerlink" title="第一步：安装 virtualenv"></a>第一步：安装 virtualenv</h1><pre><code>pip install virtualenv
-</code></pre><h1 id="第二步：-建立目录，配置环境"><a href="#第二步：-建立目录，配置环境" class="headerlink" title="第二步： 建立目录，配置环境"></a>第二步： 建立目录，配置环境</h1><pre><code>D:\&gt;mkdir flaskenv
-D:\flaskenv&gt;virtualenv env
-D:\flaskenv\env\Scripts&gt;activate
-</code></pre>
+<p>有些文件打开天身就是乱码,烦都要烦死人了.</p>
+<p>幸好有codecs库.<br>  python对多国语言的处理是支持的很好的，它可以处理现在任意编码的字符，这里深入的研究一下python对多种不同语言的处理。<br>    有一点需要清楚的是，当python要做编码转换的时候，会借助于内部的编码，转换过程是这样的：<br>        原有编码 -&gt; 内部编码 -&gt; 目的编码<br>    python的内部是使用unicode来处理的，但是unicode的使用需要考虑的是它的编码格式有两种，一是UCS-2，它一共有65536个码位，另一种是UCS-4，它有2147483648g个码位。对于这两种格式，python都是支持的，这个是在编译时通过–enable-unicode=ucs2或–enable-unicode=ucs4来指定的。那么我们自己默认安装的python有的什么编码怎么来确定呢？有一个办法，就是通过sys.maxunicode的值来判断：</p>
+<p>问:txt文本文档在pycharm里面打开乱码怎么办呀，文档有中文<br>答:<br>1.把txt文档另存为utf-8再打开试试<br>2.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">With open(...,encoding＝&apos;utf-8&apos;)</div></pre></td></tr></table></figure></p>
+<p>3.用codecs库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import codecs</div><div class="line">with codecs.open(&quot; xx. txt&quot;,&apos;r+&apos;) as f</div></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -427,18 +427,14 @@ D:\flaskenv\env\Scripts&gt;activate
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/06/37_Docker部署签到站教程/" rel="next" title="Docker部署签到站教程">
-                <i class="fa fa-chevron-left"></i> Docker部署签到站教程
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/01/35_xshell_将远程端口映射到本地/" rel="prev" title="xshell 将远程端口映射到本地">
-                xshell 将远程端口映射到本地 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/06/37_Docker部署签到站教程/" rel="prev" title="Docker部署签到站教程">
+                Docker部署签到站教程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -493,17 +489,8 @@ D:\flaskenv\env\Scripts&gt;activate
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg"
@@ -623,22 +610,6 @@ D:\flaskenv\env\Scripts&gt;activate
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一步：安装-virtualenv"><span class="nav-number">1.</span> <span class="nav-text">第一步：安装 virtualenv</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二步：-建立目录，配置环境"><span class="nav-number">2.</span> <span class="nav-text">第二步： 建立目录，配置环境</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -778,9 +749,9 @@ D:\flaskenv\env\Scripts&gt;activate
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://vksec.com/2018/02/04/36_virtualenv建立python独立环境/';
-          this.page.identifier = '2018/02/04/36_virtualenv建立python独立环境/';
-          this.page.title = '用virtualenv建立python独立环境';
+          this.page.url = 'http://vksec.com/2018/03/15/38_从此告别python乱码/';
+          this.page.identifier = '2018/03/15/38_从此告别python乱码/';
+          this.page.title = '从此告别python乱码';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://vksec.disqus.com/embed.js';
