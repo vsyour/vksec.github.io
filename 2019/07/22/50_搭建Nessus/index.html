@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="搭建Nessus 1.下载最新的安装包下载地址： https://www.tenable.com/downloads/nessus QQ群：397745473">
+<meta name="description" content="搭建Nessus 1.下载最新的安装包下载地址： https://www.tenable.com/downloads/nessus 参考：https://www.t00ls.net/viewthread.php?tid=51666 QQ群：397745473">
 <meta name="keywords" content="网络安全,搭建Nessus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker搭建Nessus">
 <meta property="og:url" content="http://vksec.com/2019/07/22/50_搭建Nessus/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="搭建Nessus 1.下载最新的安装包下载地址： https://www.tenable.com/downloads/nessus QQ群：397745473">
-<meta property="og:updated_time" content="2019-07-22T03:45:09.000Z">
+<meta property="og:description" content="搭建Nessus 1.下载最新的安装包下载地址： https://www.tenable.com/downloads/nessus 参考：https://www.t00ls.net/viewthread.php?tid=51666 QQ群：397745473">
+<meta property="og:updated_time" content="2019-07-22T03:48:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker搭建Nessus">
-<meta name="twitter:description" content="搭建Nessus 1.下载最新的安装包下载地址： https://www.tenable.com/downloads/nessus QQ群：397745473">
+<meta name="twitter:description" content="搭建Nessus 1.下载最新的安装包下载地址： https://www.tenable.com/downloads/nessus 参考：https://www.t00ls.net/viewthread.php?tid=51666 QQ群：397745473">
 
 
 
@@ -381,6 +381,7 @@
       
         <p>搭建Nessus</p>
 <h1 id="1-下载最新的安装包"><a href="#1-下载最新的安装包" class="headerlink" title="1.下载最新的安装包"></a>1.下载最新的安装包</h1><p>下载地址： <a href="https://www.tenable.com/downloads/nessus" target="_blank" rel="external">https://www.tenable.com/downloads/nessus</a></p>
+<p>参考：<a href="https://www.t00ls.net/viewthread.php?tid=51666" target="_blank" rel="external">https://www.t00ls.net/viewthread.php?tid=51666</a></p>
 <p>QQ群：397745473</p>
 <a id="more"></a> 
 <h1 id="安装nessus"><a href="#安装nessus" class="headerlink" title="安装nessus"></a>安装nessus</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">拉取/更新镜像</div><div class="line">docker pull ubuntu</div><div class="line"></div><div class="line">创建容器</div><div class="line">docker run -p 9922:22 -p 8834:8834 --name nessus -it ubuntu /bin/bash</div><div class="line"></div><div class="line">安装软件：</div><div class="line">apt-get update</div><div class="line">apt-get net-tools vim openssh-server lrzsz inetutils-ping</div><div class="line"></div><div class="line"># update-rc.d sshd defaults    //设置服务开机自启（默认条件） update-rc.d sshd enable</div><div class="line"># update-rc.d -f sshd remove    //设置服务删除开机自启</div><div class="line"></div><div class="line"> </div><div class="line"></div><div class="line">/etc/init.d/ssh start</div><div class="line">/etc/init.d/nessusd start</div><div class="line">passwd root</div><div class="line">用工具连 192.168.2.48:9922</div><div class="line"></div><div class="line">升级nessus</div><div class="line">/opt/nessus/sbin/nessuscli update all-2.0.tar.gz</div><div class="line"></div><div class="line">退出docker后重连方法</div><div class="line">docker start beb49556caa3</div><div class="line">docker exec -it beb49556caa3 /bin/bash</div></pre></td></tr></table></figure>
