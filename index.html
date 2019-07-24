@@ -386,59 +386,6 @@
 <h1 id="什么是CDN加速"><a href="#什么是CDN加速" class="headerlink" title="什么是CDN加速?"></a>什么是CDN加速?</h1><p>CDN的全称是 Content Delivery Network，即内容分发网络，这个概念是1998年提出的。当时美国麻省理工大学(MT)的一批研究生通过分析当时 Internet E的网络状况，提出了一套能够实现用户就近访问的解决方案，最终设计并实现了其独有的系统。</p>
 <h1 id="CDN有什么作用"><a href="#CDN有什么作用" class="headerlink" title="CDN有什么作用?"></a>CDN有什么作用?</h1><p>CDN基本思路就是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。CDN核心的就是使用户可就近访问网络,取得所需内容，解决网络拥挤的状况，明显提高用户访问网站的响应速度或者用户下载速度。</p>
 <p>对用户来说，如果一个网站开启了CDN，用户访问速度或者下载速度相比之前会更快。一般来说,网站开启CDN之后，可以提升用户体验。</p>
-<h1 id="CDN对网站有什么好处"><a href="#CDN对网站有什么好处" class="headerlink" title="CDN对网站有什么好处?"></a>CDN对网站有什么好处?</h1><p>首先，开启CDN后的网站，会根据用户所在地的不同访问CDN的节点服务器，并不直接访问源服务器，这样可以减少网站服务器宽带资源,降低服务器压力。这也就是大家都在ping百度,但是不同地区得到的反馈ip不一样的原因。</p>
-<p>其次，由于CDN节点的阻挡防护，可以更好的保护员服务器的安全。具体来说，CDN其实是充当了一个替身的角色，无论服务器是渗透还是DD0S攻击，攻击的目标都将是CDN节点，这样一来便间接的保护了网站本身。</p>
-<h1 id="验证目标网站是否使用了CDN？"><a href="#验证目标网站是否使用了CDN？" class="headerlink" title="验证目标网站是否使用了CDN？"></a>验证目标网站是否使用了CDN？</h1><h2 id="第一种方法："><a href="#第一种方法：" class="headerlink" title="第一种方法："></a>第一种方法：</h2><p>很简单，使用各种多地 ping 的服务，查看对应 IP 地址是否唯一，如果不唯一，多半是使用了CDN， 多地 Ping 网站有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://ping.chinaz.com/</span><br><span class="line">http://ping.aizhan.com/</span><br><span class="line">http://ce.cloud.360.cn/</span><br><span class="line">https://www.17ce.com/</span><br></pre></td></tr></table></figure>
-<h2 id="第二种方法："><a href="#第二种方法：" class="headerlink" title="第二种方法："></a>第二种方法：</h2><p>使用 nslookup 进行检测，原理同上，如果返回域名解析对应多个 IP 地址多半是使用了 CDN。</p>
-<p>有 CDN 的示例，如下图：</p>
-<p><img src="https://i.imgur.com/9wS4fCp.png" alt="nslookup 进行检测"></p>
-<h2 id="如何绕过CDN找到目标站点真实IP？"><a href="#如何绕过CDN找到目标站点真实IP？" class="headerlink" title="如何绕过CDN找到目标站点真实IP？"></a>如何绕过CDN找到目标站点真实IP？</h2><h3 id="一、主动连接我们"><a href="#一、主动连接我们" class="headerlink" title="一、主动连接我们"></a>一、主动连接我们</h3><p>就是让目标主动暴漏他们的真实P，比如电视剧的黑衣人洗脸要主动摘去面巾。</p>
-<p>1、发邮件给我们：(这就是黑衣人洗脸的时候要摘去面巾）</p>
-<p>比如注册的时候会有注册连接发送到我们的邮件，然后查看邮件全文源代码或邮件标头就可以了。如果是大站，会有自己的独立的邮件服务器给你发送，那么这个邮件服务器的有可能跟目标Web在一个段上，我们直接一个一个扫，看返回的HTML源代码是否跟web的对的上。</p>
-<p>下面给大家分别看一下网页版的126邮箱和QQ邮箱如何得到的源站点目标IP？此方法对于现在很多网站来说几乎都能中招，屡试不爽。</p>
-<p><img src="https://i.imgur.com/rm8ALMf.png" alt="126邮箱"></p>
-<p><img src="https://i.imgur.com/VOmo9zV.png" alt="QQ邮箱"></p>
-<p>2、还有一个就是RSS邮件阅，都是同上一个原理。因为有些网站我们点击RSS邮件订阅后会给我们发邮件的。</p>
-<p>3、利用网站漏洞：比如有代码执行漏洞、SSRF、存储型的XSS都可以让服务器主动访问我们预设的web服务器，那么就能在日志里面看见目标网站服务器的真实IP。</p>
-<h3 id="二、查询DNS历史记录"><a href="#二、查询DNS历史记录" class="headerlink" title="二、查询DNS历史记录"></a>二、查询DNS历史记录</h3><p>1、DNS缓存查询：这里主要是利用管理员疏忽，通过DNS缓存查询，查看 IP 与 域名绑定的历史记录，可能会存在使用 CDN 前的记录，相关查询网站有：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://dnsdb.io/zh-cn/</span><br><span class="line">https://x.threatbook.cn/</span><br><span class="line">http://toolbar.netcraft.com/site_report?url=</span><br><span class="line">http://viewdns.info/</span><br><span class="line">https://tools.ipip.net/cdn.php</span><br></pre></td></tr></table></figure>
-<p>2、利用SecurityTrails平台（<a href="https://securitytrails.com/），攻击者就可以精准的找到真实原始IP，只需在搜索字段中输入网站域名，然后按Enter键即可，这时“历史数据”就可以在左侧的菜单中找到。" target="_blank" rel="noopener">https://securitytrails.com/），攻击者就可以精准的找到真实原始IP，只需在搜索字段中输入网站域名，然后按Enter键即可，这时“历史数据”就可以在左侧的菜单中找到。</a></p>
-<p>SecurityTrails平台除了过去的DNS记录，即使是当前的记录也可能泄漏原始服务器IP。例如，MX记录是一种常见的查找IP的方式。如果网站在与web相同的服务器和IP上托管自己的邮件服务器，那么原始服务器IP将在MX记录中。</p>
-<h3 id="三、查询子域名"><a href="#三、查询子域名" class="headerlink" title="三、查询子域名"></a>三、查询子域名</h3><p>毕竟 CDN 还是不便宜的，所以很多站长可能只会对主站或者流量大的子站点做了 CDN，而很多小站子站点又跟主站在同一台服务器或者同一个C段内，此时就可以通过查询子域名对应的 IP 来辅助查找网站的真实IP。</p>
-<p>下面介绍些常用的子域名查找的方法和工具：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、https://x.threatbook.cn/</span><br><span class="line">2、https://dnsdb.io/zh-cn/</span><br><span class="line">3、Google 搜索；例如：用语法&quot;site:baidu.com -www&quot;就能查看除www外的子域名。</span><br><span class="line">4、子域名扫描器；这个我就不多说了，这种工具太多了。</span><br></pre></td></tr></table></figure>
-<h3 id="四、网络空间搜索引擎"><a href="#四、网络空间搜索引擎" class="headerlink" title="四、网络空间搜索引擎"></a>四、网络空间搜索引擎</h3><p>最常见的网络空间搜索引擎有钟馗之眼、shodan、fofa搜索。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、钟馗之眼：https://www.zoomeye.org/</span><br><span class="line">2、Shodan：https://www.shodan.io/</span><br><span class="line">3、FOFA：https://fofa.so/</span><br></pre></td></tr></table></figure>
-<p>这里主要是利用网站返回的内容寻找真实原始IP，如果原始服务器IP也返回了网站的内容，那么可以在网上搜索大量的相关数据。 </p>
-<p>只需要浏览网站源代码，寻找独特的代码片段。</p>
-<p>在JavaScript中使用具有访问或标识符参数的第三方服务（例如Google Analytics、reCAPTCHA、统计）是攻击者经常使用的方法。或者说用title，毕竟竟每个网站的title基本上都是独一无二的。 以fofa为例：可以直接以 title=””来搜索。</p>
-<p>再配合最常见的网络空间搜索引擎就可以轻而易举的找到网站的真实的IP。</p>
-<h3 id="五、利用SSL证书寻找真实原始IP"><a href="#五、利用SSL证书寻找真实原始IP" class="headerlink" title="五、利用SSL证书寻找真实原始IP"></a>五、利用SSL证书寻找真实原始IP</h3><p>以CloudFlare这款CDN加速器举例：假如你在 abc.com 上托管了一个服务，原始服务器IP是136.23.63.44。 而CloudFlare则会为你提供DDoS保护，Web应用程序防火墙和其他一些安全服务，以保护你的服务免受攻击。</p>
-<p>为此，你的Web服务器就必须支持SSL并具有证书，此时CloudFlare与你的服务器之间的通信，就像你和CloudFlare之间的通信一样，会被加密（即没有灵活的SSL存在）。这看起来很安全，但问题是，当你在端口443（<a href="https://136.23.63.44:443）上直接连接到IP时，SSL证书就会被暴露。" target="_blank" rel="noopener">https://136.23.63.44:443）上直接连接到IP时，SSL证书就会被暴露。</a></p>
-<p>此时，如果攻击者扫描0.0.0.0/0，即整个互联网，他们就可以在端口443上获取在 aaa.com上的有效证书，进而获取提供给你的Web服务器IP。</p>
-<p>目前Censys工具（<a href="https://censys.io/）就能实现对整个互联网的扫描，Censys是一款用以搜索联网设备信息的新型搜索引擎，安全专家可以使用它来评估他们实现方案的安全性，而黑客则可以使用它作为前期侦查攻击目标、收集目标信息的强大利器。" target="_blank" rel="noopener">https://censys.io/）就能实现对整个互联网的扫描，Censys是一款用以搜索联网设备信息的新型搜索引擎，安全专家可以使用它来评估他们实现方案的安全性，而黑客则可以使用它作为前期侦查攻击目标、收集目标信息的强大利器。</a></p>
-<p>Censys搜索引擎能够扫描整个互联网，Censys每天都会扫描IPv4地址空间，以搜索所有联网设备并收集相关的信息，并返回一份有关资源（如设备、网站和证书）配置和部署信息的总体报告。</p>
-<p>而攻击者唯一需要做的就是把上面用文字描述的搜索词翻译成实际的搜索查询参数。</p>
-<h4 id="Censys证书查询搜索步骤如下"><a href="#Censys证书查询搜索步骤如下" class="headerlink" title="Censys证书查询搜索步骤如下"></a>Censys证书查询搜索步骤如下</h4><p>1、aaa.com 证书的搜索查询参数为：parsed.names：aaa.com </p>
-<p>只显示有效证书的查询参数为：tags.raw：trusted</p>
-<p>攻击者可以在Censys上实现多个参数的组合，这可以通过使用简单的布尔逻辑来完成。</p>
-<p>2、组合后的搜索参数为：parsed.names: aaa.com and tags.raw: trusted </p>
-<p>3、Censys将向你显示符合上述搜索条件的所有标准证书。要逐个查看这些搜索结果，攻击者可以通过单击右侧的“<strong>Explore</strong>”，打开包含多个工具的下拉菜单。</p>
-<p>What’s using this certificate? &gt; <strong>IPv4 Hosts</strong>；</p>
-<p><img src="https://i.imgur.com/nGhbcdz.png" alt></p>
-<p><img src="https://i.imgur.com/SASKUfV.jpg" alt></p>
-<p>隐藏服务具有SSL证书，要查找它使用的IPv4，只需将”SHA1 fingerprint”（签名证书的sha1值，也就是SHA1指纹）粘贴到Censys平台IPv4主机搜索中，即可找到证书，使用此方法可以轻松找到配置错误的Web服务器真实IP。</p>
-<p>使用给定的SSL证书查找原始IP可以做很多事情，例如：如果你是执法部门的人员，想要找出一个隐藏在cheesecp5vaogohv.onion下的儿童色情网站。最好的办法，就是找到其原始IP，这样你就可以追踪到其托管的服务器，甚至查到背后的运营商以及金融线索。</p>
-<h3 id="六、全网扫描"><a href="#六、全网扫描" class="headerlink" title="六、全网扫描"></a>六、全网扫描</h3><p>扫描全网开放特定端口的IP，然后获取他们的特定页面的HTM源代码，用这些源代码和目标网站的特定页面的HTM源代码做对比，如果匹配上来了，就很可能是目标网站的真实P，工具匹配会匹配出来很多，最后还是要人工筛选。</p>
-<p>1、钟馗之眼、shodan、fofa空间搜索引擎，这里推荐用 <a href="https://fofa.so/" target="_blank" rel="noopener">https://fofa.so/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一步：打开fofa；</span><br><span class="line">第二步：title=&quot;&quot; 得到IP；</span><br><span class="line">第三步：再用  ip==&quot;&quot; 做对比。</span><br></pre></td></tr></table></figure>
-<p>2、用Zmap扫全网</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.ipdeny.com/ipblocks/data/countries/hk.zone #香港IP </span><br><span class="line">zmap -w hk.zone -p 80 -B 100M -o hk.res</span><br><span class="line">./zgrab -input-file=hk.res -senders=2000 -data-&quot;./http-reg&quot; | grep -E &apos;memberlogin&apos; &gt;&gt; x.txt</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://ftp.apnic.net/stats/apnic/delegated-apnic-latest #全网IP,天朝好像扫不到</span><br></pre></td></tr></table></figure>
-<h3 id="七、其它一些思路"><a href="#七、其它一些思路" class="headerlink" title="七、其它一些思路"></a>七、其它一些思路</h3><p>1、利用网站敏感信息：比如 phpinfo. php，这个就要看字典了。</p>
-<p>2、国内很多CDN厂商因为各种原因只做了国内的线路，而针对国外的线路可能几乎没有，此时我们使用国外的主机直接访问可能就能获取到真实P。</p>
-<p>3、搞到CDN账号：社工管理员，搞到CDN的账号。(Ps：我都能社这个了，还不能想办法社目标web的后台账号密码？还不能找到真实IP吗？)</p>
 <p>QQ群：397745473</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -803,7 +750,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/045_国外比较好用的文件分析系统/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/051_模拟器安装Burpsuite的证书/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -825,8 +772,8 @@
             
               
                 
-                <a class="post-title-link" href="/2019/07/20/045_国外比较好用的文件分析系统/" itemprop="url">
-                  国外比较好用的文件分析系统
+                <a class="post-title-link" href="/2019/07/20/051_模拟器安装Burpsuite的证书/" itemprop="url">
+                  模拟器安装Burpsuite的证书
                 </a>
               
             
@@ -883,8 +830,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/20/045_国外比较好用的文件分析系统/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/045_国外比较好用的文件分析系统/" itemprop="commentCount"></span>
+                <a href="/2019/07/20/051_模拟器安装Burpsuite的证书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/051_模拟器安装Burpsuite的证书/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -910,12 +857,171 @@
 
       
         
-          <p>国外比较好用的 文件分析系统</p>
-<p>国外比较好用的 文件分析系统</p>
+          <p>模拟器安装Burpsuite的证书</p>
 <p>QQ群：397745473</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/07/20/045_国外比较好用的文件分析系统/#more" rel="contents">
+            <a class="btn" href="/2019/07/20/051_模拟器安装Burpsuite的证书/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/049_kali之MSF渗透测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/07/20/049_kali之MSF渗透测试/" itemprop="url">
+                  kali之MSF渗透测试
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-20T03:03:03+08:00">
+                2019-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/20/049_kali之MSF渗透测试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/049_kali之MSF渗透测试/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="kali-使用中的常见问题"><a href="#kali-使用中的常见问题" class="headerlink" title="kali 使用中的常见问题"></a>kali 使用中的常见问题</h1><h2 id="关屏保"><a href="#关屏保" class="headerlink" title="关屏保"></a>关屏保</h2><p>搜 setting –&gt; 电源 –&gt; 从不</p>
+<h2 id="kali-win10-无法拖拽文件"><a href="#kali-win10-无法拖拽文件" class="headerlink" title="kali  win10 无法拖拽文件"></a>kali  win10 无法拖拽文件</h2><p>win10 无法再拖文件了，建议用win7</p>
+<h2 id="linux-常用传文件的工具有："><a href="#linux-常用传文件的工具有：" class="headerlink" title="linux 常用传文件的工具有："></a>linux 常用传文件的工具有：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xshell # 需要安装lrzsz</span><br><span class="line">filezilla</span><br><span class="line">winscp</span><br><span class="line">bitvise (推荐)</span><br><span class="line">SecureCRT</span><br><span class="line">putty</span><br></pre></td></tr></table></figure>
+<h2 id="sshd-开远程"><a href="#sshd-开远程" class="headerlink" title="sshd 开远程"></a>sshd 开远程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication yes #限制远程登陆</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes # 限制root登陆</span><br><span class="line">update-rc.d ssh enable #设置开机启动ssh</span><br></pre></td></tr></table></figure>
+<p>QQ群：397745473</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/20/049_kali之MSF渗透测试/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1119,7 +1225,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/049_kali之MSF渗透测试/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/052_xss_payload记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -1141,8 +1247,8 @@
             
               
                 
-                <a class="post-title-link" href="/2019/07/20/049_kali之MSF渗透测试/" itemprop="url">
-                  kali之MSF渗透测试
+                <a class="post-title-link" href="/2019/07/20/052_xss_payload记录/" itemprop="url">
+                  xss_payload记录
                 </a>
               
             
@@ -1199,8 +1305,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/20/049_kali之MSF渗透测试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/049_kali之MSF渗透测试/" itemprop="commentCount"></span>
+                <a href="/2019/07/20/052_xss_payload记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/052_xss_payload记录/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1226,14 +1332,11 @@
 
       
         
-          <h1 id="kali-使用中的常见问题"><a href="#kali-使用中的常见问题" class="headerlink" title="kali 使用中的常见问题"></a>kali 使用中的常见问题</h1><h2 id="关屏保"><a href="#关屏保" class="headerlink" title="关屏保"></a>关屏保</h2><p>搜 setting –&gt; 电源 –&gt; 从不</p>
-<h2 id="kali-win10-无法拖拽文件"><a href="#kali-win10-无法拖拽文件" class="headerlink" title="kali  win10 无法拖拽文件"></a>kali  win10 无法拖拽文件</h2><p>win10 无法再拖文件了，建议用win7</p>
-<h2 id="linux-常用传文件的工具有："><a href="#linux-常用传文件的工具有：" class="headerlink" title="linux 常用传文件的工具有："></a>linux 常用传文件的工具有：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xshell # 需要安装lrzsz</span><br><span class="line">filezilla</span><br><span class="line">winscp</span><br><span class="line">bitvise (推荐)</span><br><span class="line">SecureCRT</span><br><span class="line">putty</span><br></pre></td></tr></table></figure>
-<h2 id="sshd-开远程"><a href="#sshd-开远程" class="headerlink" title="sshd 开远程"></a>sshd 开远程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication yes #限制远程登陆</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes # 限制root登陆</span><br><span class="line">update-rc.d ssh enable #设置开机启动ssh</span><br></pre></td></tr></table></figure>
+          <p>xss记录</p>
 <p>QQ群：397745473</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/07/20/049_kali之MSF渗透测试/#more" rel="contents">
+            <a class="btn" href="/2019/07/20/052_xss_payload记录/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1441,7 +1544,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/052_xss_payload记录/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/045_国外比较好用的文件分析系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -1463,8 +1566,8 @@
             
               
                 
-                <a class="post-title-link" href="/2019/07/20/052_xss_payload记录/" itemprop="url">
-                  xss_payload记录
+                <a class="post-title-link" href="/2019/07/20/045_国外比较好用的文件分析系统/" itemprop="url">
+                  国外比较好用的文件分析系统
                 </a>
               
             
@@ -1521,8 +1624,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/20/052_xss_payload记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/052_xss_payload记录/" itemprop="commentCount"></span>
+                <a href="/2019/07/20/045_国外比较好用的文件分析系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/045_国外比较好用的文件分析系统/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1548,11 +1651,12 @@
 
       
         
-          <p>xss记录</p>
+          <p>国外比较好用的 文件分析系统</p>
+<p>国外比较好用的 文件分析系统</p>
 <p>QQ群：397745473</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/07/20/052_xss_payload记录/#more" rel="contents">
+            <a class="btn" href="/2019/07/20/045_国外比较好用的文件分析系统/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1598,7 +1702,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/046_Web应用程序技术/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/044_零基础新手如何学好Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -1620,8 +1724,8 @@
             
               
                 
-                <a class="post-title-link" href="/2019/07/20/046_Web应用程序技术/" itemprop="url">
-                  Web应用程序技术
+                <a class="post-title-link" href="/2019/07/20/044_零基础新手如何学好Python/" itemprop="url">
+                  零基础新手如何学好Python
                 </a>
               
             
@@ -1678,8 +1782,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/20/046_Web应用程序技术/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/046_Web应用程序技术/" itemprop="commentCount"></span>
+                <a href="/2019/07/20/044_零基础新手如何学好Python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/044_零基础新手如何学好Python/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1705,171 +1809,10 @@
 
       
         
-          <p>Web应用程序技术</p>
-<h3 id="1、HTTP请求与响应"><a href="#1、HTTP请求与响应" class="headerlink" title="1、HTTP请求与响应"></a>1、HTTP请求与响应</h3><p>http </p>
-<p>超文 本传输协议</p>
-<p>get post 请求</p>
-<p>QQ群：397745473</p>
+          <h1 id="零基础新手如何学好Python"><a href="#零基础新手如何学好Python" class="headerlink" title="零基础新手如何学好Python"></a>零基础新手如何学好Python</h1><p>QQ群：397745473</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/07/20/046_Web应用程序技术/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/20/051_模拟器安装Burpsuite的证书/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vsyour">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Openresty Python LUA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/07/20/051_模拟器安装Burpsuite的证书/" itemprop="url">
-                  模拟器安装Burpsuite的证书
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-20T03:03:03+08:00">
-                2019-07-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络安全/" itemprop="url" rel="index">
-                    <span itemprop="name">网络安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/20/051_模拟器安装Burpsuite的证书/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/20/051_模拟器安装Burpsuite的证书/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>模拟器安装Burpsuite的证书</p>
-<p>QQ群：397745473</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/20/051_模拟器安装Burpsuite的证书/#more" rel="contents">
+            <a class="btn" href="/2019/07/20/044_零基础新手如何学好Python/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
