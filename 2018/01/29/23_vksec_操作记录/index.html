@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="本文用作记录，vksec 操作记录QQ群：397745473">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-27T17:50:32.000Z">
+<meta property="og:updated_time" content="2019-08-09T07:00:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vksec 操作记录">
 <meta name="twitter:description" content="本文用作记录，vksec 操作记录QQ群：397745473">
@@ -392,6 +392,8 @@
 <p><a href="https://www.youtube.com/watch?v=ZPKtQ82h42c" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ZPKtQ82h42c</a></p>
 <p>免費圖片設計平台： <a href="https://www.canva.com" target="_blank" rel="noopener">https://www.canva.com</a></p>
 <p>每次寫英語文章都必用的改錯工具<br>      Grammarly（免費）<br> ‣‣  <a href="https://grammarly.go2cloud.org/SH1tu" target="_blank" rel="noopener">https://grammarly.go2cloud.org/SH1tu</a></p>
+<p>查出QQ列表不在某群中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> myQQList <span class="keyword">where</span> <span class="keyword">account</span> <span class="keyword">not</span> <span class="keyword">in</span> (<span class="keyword">select</span> uin <span class="keyword">from</span> groupInfo <span class="keyword">where</span> gc = 群号)</span><br></pre></td></tr></table></figure>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h1><ol>
 <li><a href="http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</a></li>
 <li><a href="https://www.jianshu.com/p/465830080ea9" target="_blank" rel="noopener">https://www.jianshu.com/p/465830080ea9</a></li>
@@ -441,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/22/20_pyDes库实现python的des加密/" rel="next" title="pyDes库 实现python的des加密,注册机">
-                <i class="fa fa-chevron-left"></i> pyDes库 实现python的des加密,注册机
+              <a href="/2017/05/22/30_python用pyqt开发/" rel="next" title="pyqt开发记录">
+                <i class="fa fa-chevron-left"></i> pyqt开发记录
               </a>
             
           </div>
@@ -530,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -552,7 +554,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
