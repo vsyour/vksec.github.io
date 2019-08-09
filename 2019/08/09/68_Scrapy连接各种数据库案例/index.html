@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="Scrapy连接各种数据库案例 Scrapy连接到各类数据库(SQLite,Mysql,Mongodb,Redis) 这次我给大家讲讲如何使用scrapy连接到(SQLite,Mysql,Mongodb,Redis)数据库，并把爬取的数据存储到相应的数据库中。 QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-09T09:31:23.000Z">
+<meta property="og:updated_time" content="2019-08-09T10:01:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy连接各种数据库案例">
 <meta name="twitter:description" content="Scrapy连接各种数据库案例 Scrapy连接到各类数据库(SQLite,Mysql,Mongodb,Redis) 这次我给大家讲讲如何使用scrapy连接到(SQLite,Mysql,Mongodb,Redis)数据库，并把爬取的数据存储到相应的数据库中。 QQ群：397745473">
@@ -408,7 +408,9 @@
 <p>在settings启动管道文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   &apos;toscrape_book.pipelines.RedisPipeline&apos;: 404,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>scrapy 连接各数据的设置并不复杂，首先在pipelines文件中建立管道，建立个数据的连接，然后处理数据，关闭连接。接下来我们在settings文件中定义各类数据库的基本配置，然后在item_pipelines中启动相应的管道</p>
-<p>原文参考：<a href="https://zhuanlan.zhihu.com/p/33816647" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33816647</a></p>
+<p>原文参考：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/33816647" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33816647</a></p>
+<p><a href="http://blog.dongfei.xin/2018-04-06/%E7%B2%BE%E9%80%9A-Scrapy-%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%EF%BC%89/" target="_blank" rel="noopener">http://blog.dongfei.xin/2018-04-06/%E7%B2%BE%E9%80%9A-Scrapy-%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%EF%BC%89/</a></p>
 <p>QQ群：397745473</p>
 
       
