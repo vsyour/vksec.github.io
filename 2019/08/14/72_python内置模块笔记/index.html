@@ -1,0 +1,849 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="python,网络安全,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="python内置模块笔记(持续更新) QQ群：397745473">
+<meta name="keywords" content="python,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python内置模块笔记(持续更新)">
+<meta property="og:url" content="http://vksec.com/2019/08/14/72_python内置模块笔记/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="python内置模块笔记(持续更新) QQ群：397745473">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-14T08:21:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python内置模块笔记(持续更新)">
+<meta name="twitter:description" content="python内置模块笔记(持续更新) QQ群：397745473">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2019/08/14/72_python内置模块笔记/">
+
+
+
+
+
+  <title>python内置模块笔记(持续更新) | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/08/14/72_python内置模块笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                python内置模块笔记(持续更新)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T03:03:03+08:00">
+                2019-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/14/72_python内置模块笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/14/72_python内置模块笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>python内置模块笔记(持续更新)</p>
+<p>QQ群：397745473</p>
+<a id="more"></a> 
+<h1 id="python-常用函数"><a href="#python-常用函数" class="headerlink" title="python 常用函数"></a>python 常用函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'&#123;wh&#125;my \t name is &#123;name&#125;,age is &#123;age&#125;.'</span></span><br><span class="line">print(name.capitalize())  　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 字符串的开头字母大写</span></span><br><span class="line">print(name.center(<span class="number">100</span>, <span class="string">"+"</span>))  　 　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 在字符串两边增加'+'号,使整个字符串的个数为50位置</span></span><br><span class="line">print(name.endswith(<span class="string">"."</span>))  　　　 　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 判断是否以X结尾,返回布尔值</span></span><br><span class="line">print(name.expandtabs(<span class="number">30</span>))  　　  　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 补充\t的次数\t按一个空格处理,\t一般为2个空格,但在字符串开头或者\n后为4个空格</span></span><br><span class="line">print(name.find(<span class="string">"n"</span>))  　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 查找字符串索引，如果不存在返回-1</span></span><br><span class="line">print(name.index(<span class="string">"n"</span>))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 查找元素，如果不存在报错</span></span><br><span class="line">print(name.count(<span class="string">"z"</span>))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 查找元素个数，如果不存在返回0</span></span><br><span class="line">print(name.format(wh=<span class="string">"nihao,"</span>, name=<span class="string">"1233"</span>, age=<span class="number">100</span>))  　　　　　　　　　　　　　　　 <span class="comment"># 格式化字符串</span></span><br><span class="line">print(<span class="string">'&#123;:^10&#125;,&#123;:6&#125;'</span>.format(<span class="string">'username'</span>,<span class="string">'password'</span>))　　　　　　　　　　　　　　　　<span class="comment">#格式化输出扩展　　username对应的:^10是右对齐10个字符后输出,password对应:6是默认左对齐6个字符后输出</span></span><br><span class="line">print(name.format_map(&#123;<span class="string">'wh'</span>: <span class="string">'huanying,'</span>, <span class="string">'name'</span>: <span class="string">'xiaoming'</span>, <span class="string">"age"</span>: <span class="string">"19"</span>&#125;))  　　　　<span class="comment"># 格式化字符串字典形式</span></span><br><span class="line">print(<span class="string">"sadads12313#$"</span>.isalnum())  　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 是否包含数字和字母</span></span><br><span class="line">print(<span class="string">"123"</span>.isalpha())  　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 是否是英文</span></span><br><span class="line">print(<span class="string">"abc"</span>.isdigit())  　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 是否是数字</span></span><br><span class="line">print(name.decimal())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 是否是十进制数字</span></span><br><span class="line">print(<span class="string">"#￥&amp;*……&amp;*"</span>.isidentifier())  　　　　　　　　　　　　　　　　　　　　　　　   <span class="comment"># 是否是一个合法的变量名，不常用</span></span><br><span class="line">print(<span class="string">"asdadA"</span>.islower()) 　　　　  　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 判断字符串中是否全部小写</span></span><br><span class="line">print(<span class="string">"name"</span>.isupper()) 　　　　　　 　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 判断字符串中是否全部是大写</span></span><br><span class="line">print(<span class="string">"@#@$#@QsaddsadS Sad "</span>.istitle())  　　　　　　　　　　　　　　　 　　　　　　　<span class="comment"># 判断是否首字母大写,后面小写，标题样式</span></span><br><span class="line">print(<span class="string">"___"</span>.join([name, <span class="string">"enen"</span>, <span class="string">"oo"</span>])) 　　　　　　　　　　　　　　　　　 　　　　　 <span class="comment"># 拼接字符串  前为拼接符，后为拼接字符串,之后变成一个新的字符串</span></span><br><span class="line">print(<span class="string">"SAHD #@OAHDa sd ad"</span>.lower())  　　 　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 全部变成小写</span></span><br><span class="line">print(<span class="string">"sahdk"</span>.upper()) 　　　　　　　　　　　　　　　　　　　　　　　　　　 　　　　　<span class="comment"># 全部变成大写</span></span><br><span class="line">print(<span class="string">'      \t  \nmysql\t\n'</span>.lstrip())  　　　　　　　　　　　　　　 　　　　　　　　<span class="comment"># 去除左边的换行和空格</span></span><br><span class="line">print(<span class="string">'      \t \nmysql\t\n '</span>.rstrip()) 　　　　　　　　　　　　　　　　　 　　　　　 <span class="comment"># 去除右边的换行和空格</span></span><br><span class="line">print(<span class="string">'      \t \nmysql\t\n '</span>.strip())  　　　　　　　　　　　　　　　　　　　 　　　 <span class="comment"># 去掉两边的换行和空格</span></span><br><span class="line">print(<span class="string">"   kongge    "</span>.isspace())　　　　　　　　　　　　　　　　　　　　　　　　　 　 <span class="comment"># 判断是否全是空格　</span></span><br><span class="line">print(<span class="string">" dasds    "</span>.split()　　　　　　　　 　　　　　　　　　　　　　　　　　　　   　<span class="comment"># 去除两边空格并以字典形式返回</span></span><br><span class="line">print(name.splitlines())　　　　　　　　　 　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 以换行符分割字符串　</span></span><br><span class="line">print(<span class="string">"mysql is db"</span>.replace(<span class="string">"mysql"</span>, <span class="string">"oracle"</span>))　　　　　　　　　　　　　　　　　　　 <span class="comment"># replace 全部替换 </span></span><br><span class="line">print(<span class="string">"mysql is dbisis"</span>.rfind(<span class="string">"is"</span>)) 　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 返回最右边字符的下标 </span></span><br><span class="line">print(<span class="string">"1+2+3+4"</span>.split(<span class="string">"+"</span>)) 　　　　　　　　　　　　　　　　　　　　　　　　　　　　  <span class="comment"># 以+分割字符串，以list形式返回 </span></span><br><span class="line">print(<span class="string">"1+2+3+4\n5+6+7+8"</span>.splitlines()) 　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 以换行符字符串，以list形式返回 </span></span><br><span class="line">print(<span class="string">"abcABC"</span>.swapcase()) 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 大小写全部反转</span></span><br><span class="line">print(<span class="string">"1"</span>.zfill(<span class="number">2</span>))　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　　    <span class="comment"># 将前面字符串中的位数补充0后面填的位数，结果为01</span></span><br><span class="line">print(name.endswith(<span class="string">"&#123;age&#125;."</span>))　　　　　　　　　 　　　　　　　　　　　　　　　　　 　<span class="comment"># 判断字符串结尾是否一致  返回布尔值</span></span><br><span class="line">print(name.startswith(<span class="string">"&#123;age&#125;."</span>))　　　　　　　　　 　　　　　　　　　　　　　　　　 　<span class="comment"># 判断字符串开头是否一致 返回布尔值</span></span><br><span class="line">print(bin(<span class="number">12</span>))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　　 <span class="comment"># 获取整数的二进数形式</span></span><br><span class="line">print(name.ljust(<span class="number">50</span>, <span class="string">'*'</span>))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 在name的左边补充50个*　　name.rjust()为在右侧</span></span><br><span class="line">str1 = <span class="string">"Runoob example....wow!!!"</span>　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># maketrans与tranlate的应用</span></span><br><span class="line">l = <span class="string">"12345"</span>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># l 和 r 字符串必须数量相同</span></span><br><span class="line">r = <span class="string">"abcde"</span></span><br><span class="line">res = str1.maketrans(r, l)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment"># 把r替换为l在和str1比对，找到相同的并修改</span></span><br><span class="line">print(str1.translate(res)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 打印结果为Runoo2 5x1mpl5....wow!!!</span></span><br><span class="line">print(max(name))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  <span class="comment"># 返回字符串中的最大字母 优先小写字母 其次大写字母 其次数字 最后是特殊字符   min()最小</span></span><br><span class="line">print(bool(<span class="string">''</span>))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#布尔值判断，例子中返回false，非零或者空为true</span></span><br><span class="line">print(round(<span class="number">3.1415926</span>,<span class="number">2</span>))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#取小数位数，例子中参数为2所以返回3.14</span></span><br><span class="line">print(sorted([<span class="number">1</span>,<span class="number">3</span>,<span class="number">400</span>,<span class="number">234</span>,<span class="number">23</span>],reverse=<span class="literal">True</span>))　　　　　　　　　　　　　　　　　　　　<span class="comment">#返回排序方式按降序排列，去掉revese按顺序排列</span></span><br><span class="line">print(any([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">45</span>]))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#返回布尔值，判断list中只要有一个非零非空的值就返回True，否则返回false</span></span><br><span class="line">print(all([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">45</span>]))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#返回布尔值，判断list中只要有一个零或者空的值就返回False，否则返回True</span></span><br><span class="line">print(dir(name))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#查询方法，输出name的所有方法</span></span><br><span class="line">print(eval(<span class="string">"1+1"</span>))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#执行一个字符串表达式，返回计算的结果,如例子中返回2，可以把执行简单的python代码</span></span><br><span class="line">print(exec(<span class="string">"print('nihao')"</span>))　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#执行python代码，常用于浏览器形式的代码编辑软件，但是略微不安全</span></span><br><span class="line">print(list(map(funcion,L)))　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#循环调用函数，然后保存函数返回值，放到一个list里,如果不加list返回的是一个生成器</span></span><br><span class="line">print(list(filter(funcion,L)))　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">#过滤，循环调用函数，如果函数返回的值为真，那么就保存这个值</span></span><br><span class="line">print(getattr(对象<span class="string">"函数名))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#获取一个对象里面的属性(方法,变量),如果要使用这个方法就返回值加括号()</span></span><br><span class="line"><span class="string">print(hasattr(模块,方法))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#查看模块下是否有该方法,返回布尔值</span></span><br><span class="line"><span class="string">print(isintance(对象,类))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#判断参数1是否是参数2的类或者父类的实例,返回布尔值</span></span><br><span class="line"><span class="string">数据类型转换</span></span><br><span class="line"><span class="string">a  = 1234</span></span><br><span class="line"><span class="string">print(0x4d2)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 #其他进制数输入直接转成10进制</span></span><br><span class="line"><span class="string">print(hex(a))   　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#转成16进制数</span></span><br><span class="line"><span class="string">print(oct(a))   　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#转成8进制数</span></span><br><span class="line"><span class="string">print(bin(a))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#转成2进制数</span></span><br><span class="line"><span class="string">print('asd'.encode())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#字符串转成二进制，返回b'asd';　　'asd'.encode()将encode转换成utf-8编码</span></span><br><span class="line"><span class="string">print(b'asd'.decode())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#二进制转成字符串，decode是bytes类型</span></span><br><span class="line"><span class="string">print(chr(78))    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#0-255内整数作为参数，返回一个对应的ascii码值</span></span><br><span class="line"><span class="string">print(ord('a'))     　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#将一个字符转换成ascii码</span></span><br><span class="line"><span class="string">b = ["</span><span class="number">1234</span><span class="string">",23,23,213,21341]</span></span><br><span class="line"><span class="string">list(b)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#转成列表</span></span><br><span class="line"><span class="string">tuple(b)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#转成元祖</span></span><br><span class="line"><span class="string">dist(b)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#转成字典</span></span><br><span class="line"><span class="string">int(a)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#转成整型</span></span><br><span class="line"><span class="string">float(a)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#转成浮点型</span></span><br><span class="line"><span class="string">res1= set(b)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#返回一个去重，无序,可变集合</span></span><br><span class="line"><span class="string">res2 = frozenset(b)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#返回一个去重，无序，不可变的集合，两者区别：变量不能点出add和remove方法</span></span><br><span class="line"><span class="string">b_str = str(b)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#str()一般是将数值转成字符串(返回一个字符串,包含对象的友好的可打印表示形式。对于字符串,它返回字符串本身)</span></span><br><span class="line"><span class="string">b_repr = repr(b)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#repr()是将一个对象转成字符串显示</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">random模块</span></span><br><span class="line"><span class="string">import random</span></span><br><span class="line"><span class="string">print(random.sample（[1,3,4,5,6],2))　　　　　　　　　　　　　　　　　　　　　　　   # 返回一个从0-100中取6位随机数,如位数超出会报错</span></span><br><span class="line"><span class="string">print(random.randrange(100))　　　　　　　　　　　　　　　　　　　　　　　　　　　　  # 返回一个从0到100之间的整数，包括0，不包括100</span></span><br><span class="line"><span class="string">print(random.randrange(5，10，2))　　　　　　　　　　　　　　　　　　　　　　　　     # 指定5到10之间并间隔为2整数</span></span><br><span class="line"><span class="string">print(random.randint(1, 3))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 指定包括1包括3之间的整数</span></span><br><span class="line"><span class="string">print(random.random())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　# 打印0到1之间的随机浮点数，包括0</span></span><br><span class="line"><span class="string">print(random.uniform(1.1,32.2))　　　　　　　　 　　　　　　　　　　　　　　　　　　　# 打印1.1到32.2之间随机的浮点数</span></span><br><span class="line"><span class="string">a = [1,23,4,5,6,7]</span></span><br><span class="line"><span class="string">print(random.choice(a))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 指定a列表或者是元祖中随机取一个元素，列表为空报错</span></span><br><span class="line"><span class="string">random.shuffle(a)　print(a)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  # 打乱a列表中的所有元素,注意输出为a而不能把它变成一个变量</span></span><br><span class="line"><span class="string">random.choices(population, weights=None, *, cum_weights=None, k=1) 　　　　　　　　   # 3.6版本新增。从population集群中随机抽取K个元素（可重复）weights是相对权重列表，cum_weights是累计权重，两个参数不能同时存在,k表示个数。</span></span><br><span class="line"><span class="string">random.choices(["</span>红球<span class="string">","</span>黄球<span class="string">"，"</span>篮球<span class="string">","</span>黑球<span class="string">"], [50,30,15,5], k=1)</span></span><br><span class="line"><span class="string">string模块</span></span><br><span class="line"><span class="string">import string</span></span><br><span class="line"><span class="string">string.ascii_letters　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　# 列出所有大小写字母</span></span><br><span class="line"><span class="string">string.ascii_lowercase　　　　　　　　　　　　                                        # 列出所有小写字母</span></span><br><span class="line"><span class="string">string.ascii_uppercase　　　　　　　　　　　　 　　　　　　　　　　　　　　　　　　　 # 列出所有大写字母</span></span><br><span class="line"><span class="string">string.digits　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 列出所有数字</span></span><br><span class="line"><span class="string">string.punctuation　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　# 列出所有特殊字符</span></span><br><span class="line"><span class="string">string.printable　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  # 列出所有字符，数字，字母</span></span><br><span class="line"><span class="string">string.hexdigits 　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　      # 列出所有16进制数</span></span><br><span class="line"><span class="string">string.octdigits　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　# 列出所有8进制数</span></span><br><span class="line"><span class="string">string.whitespace　　　　　　　　　　　　　　　   　　　　　　　　　　　　　　　　　  # 列出所有空白符</span></span><br><span class="line"><span class="string">os模块　　与操作系统进行交互</span></span><br><span class="line"><span class="string">import os</span></span><br><span class="line"><span class="string">os.system('ls')</span></span><br><span class="line"><span class="string">os.getcwd()　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 获取当前工作目录　　　</span></span><br><span class="line"><span class="string">os.chmod("</span>/local/upload/<span class="string">",7)　　　　　　　　 　　　　　　　　　　　　　　　　　　　　 # 给文件目录/添加权限　</span></span><br><span class="line"><span class="string">os.chdir("</span>../<span class="string">")　　　　　　　　　　　　　　　　  　　　　　　　　　　　　　　　　　　 # 更改当前目录</span></span><br><span class="line"><span class="string">os.curdir()　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 当前目录</span></span><br><span class="line"><span class="string">os.pardir()　　　　　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　    # 父目录</span></span><br><span class="line"><span class="string">os.makedir("</span>/usr/local/tomcat<span class="string">")　　　　　　 　　　　　　　　　　　　　　　　　　　　　# 递归创建目录，父目录不存在时自动创建</span></span><br><span class="line"><span class="string">os.removedir("</span>/usr/local/tomcat<span class="string">")　　　　　 　　　　　　　　　　　　　　　　　　　　  # 递归删除空目录，包括父目录</span></span><br><span class="line"><span class="string">os.mkdir("</span>a<span class="string">")　　　　　　　　　　　　　　　    　　　　　　　　　　　　　　　　　　　 # 创建文件夹</span></span><br><span class="line"><span class="string">os.rmdir("</span>a<span class="string">")　　　　　　　　　　　　　　　    　　　　　　　　　　　　　　　　　　 　# 删除空文件夹</span></span><br><span class="line"><span class="string">os.remove("</span>a.txt<span class="string">")　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　　 　　# 删除指定文件</span></span><br><span class="line"><span class="string">os.listdir()　　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　　　     # 列出指定目录下的所有文件，不传的话是当前目录　　.为当前路径</span></span><br><span class="line"><span class="string">os.rename("</span>a<span class="string">","</span><span class="string">b")　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　 　　　# 把a重命名成b</span></span><br><span class="line"><span class="string">os.stat("</span>a.py<span class="string">")　　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　　　　# 获取文件信息</span></span><br><span class="line"><span class="string">print(os.sep)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   # 当前操作系统的路径分隔符</span></span><br><span class="line"><span class="string">print(os.linesep)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   # 当前操作系统的换行符</span></span><br><span class="line"><span class="string">print(os.pathsep)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 当前系统的环境变量中每个路径的分隔符，linux是:，windows是;</span></span><br><span class="line"><span class="string">print(os.environ)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 当前系统的环境变量</span></span><br><span class="line"><span class="string">print(os.name)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　# 当前系统名称</span></span><br><span class="line"><span class="string">os.walk("</span>路径<span class="string">")　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 递归查询路径下的所有文件及文件夹，三个参数　　path（当前目录），dirs（当前目录的所有文件夹,不包括文件），files（当前目录的所有文件,不包括文件夹）</span></span><br><span class="line"><span class="string">os.system('操作系统命令')  或者 os.popen('操作系统命令')　　　　　　　　　　　　　　  # 前者只能将命令执行，获取不到结果，后者可以，res = os.popen('ipconfig').read()</span></span><br><span class="line"><span class="string">print(os.path.abspath(__file__))　　　　　　　　　　　　　　　　　　　　　　　　　　  # 获取绝对路径</span></span><br><span class="line"><span class="string">print(os.path.getsize('a.txt'))　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 取文件大小，单位是字节</span></span><br><span class="line"><span class="string">print(os.path.split("</span>/usr/hehe/hehe.txt<span class="string">"))　　　　　　　　　　　　　　　　　　　      # 分割路径和文件名</span></span><br><span class="line"><span class="string">print(os.path.dirname("</span>/usr/local<span class="string">"))　　　　 　　　　　　　　　　　　　　　　　　　　 # 获取父目录</span></span><br><span class="line"><span class="string">print(os.path.basename("</span>/usr/local<span class="string">"))　　　　　　　　　　　　　　　　　　　　　　　　 # 获取最后一级，如果是文件显示文件名，如果是目录显示目录名</span></span><br><span class="line"><span class="string">print(os.path.exists("</span>/usr/local<span class="string">"))　　　　　　　　　　　　　　　　　　　　　　　　　 # 目录/文件是否存在</span></span><br><span class="line"><span class="string">print(os.path.isabs("</span>.<span class="string">"))　　　　　　　　　　 　　　　　　　　　　　　　　　　　　　   # 判断是否是绝对路径</span></span><br><span class="line"><span class="string">print(os.path.isfile("</span>/usr/local<span class="string">"))　　　　 　　　　　　　　　　　　　　　　　　　　  # 判断是否是一个文件</span></span><br><span class="line"><span class="string">print(os.path.isdir("</span>/usr/local<span class="string">"))　　　　　　　　　　　　　　　　　　　　　　　　　  # 是否是一个路径</span></span><br><span class="line"><span class="string">print(os.path.join("</span>/root<span class="string">",'hehe','a.sql'))　　　　　　　　　　　　　　　　　　　　　 # 拼接成一个路径，系统能自动识别linux（"</span>/<span class="string">"）和windows("</span>\<span class="string">")</span></span><br><span class="line"><span class="string">print(os.path.getatime("</span>len_os.py<span class="string">"))　　　　　　　　　　　　　　　　　　　　　　　　  # 输出最近访问时间</span></span><br><span class="line"><span class="string">print(os.path.getmtime("</span>len_os.py<span class="string">"))　　　　 　　　　　　　　　　　　　　　　　　　　 # 输出最近访问时间</span></span><br><span class="line"><span class="string">print(os.path.getctime("</span>len_os.py<span class="string">"))　　　　　　　　　　　　　　　　　　　　　　　　  # 输出文件创建日期</span></span><br><span class="line"><span class="string">os.access("</span>../test.html<span class="string">", os.F_OK)　　　　　　　　　　　　　　　　　　　　　　　　　  #os.F_OK参数判断path路径是否存在此文件，返回布尔值</span></span><br><span class="line"><span class="string">os.access("</span>../test.html<span class="string">", os.R_OK)　　　　　　　　　　　　　　　　　　　　　　  　　  #os.R_OK参数判断此文件是否可读，返回布尔值</span></span><br><span class="line"><span class="string">os.access("</span>../test.html<span class="string">", os.W_OK)　　　　　　　　　　　　　　　　　　　　　　　　　  #os.W_OK参数判断此文件是否可写，返回布尔值</span></span><br><span class="line"><span class="string">os.access("</span>../test.html<span class="string">", os.X_OK)　　　　　　　　　　　　　　　　　　　　　　　　　  #os.X_OK参数判断此文件是否可执行，返回布尔值</span></span><br><span class="line"><span class="string">os.chown(path, uid, gid);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 #将指定的路径的所有者和组ID更改为数字uid和gid。　　　　　　　　　　　　　　　　　　　　　</span></span><br><span class="line"><span class="string">os.chroot(path) 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#方法用于更改当前进程的根目录为指定的目录，使用该函数需要管理员权限，path为设置的根目录路径。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">sys模块　　与python解释器进行交互</span></span><br><span class="line"><span class="string">import sys</span></span><br><span class="line"><span class="string">sys.argv           　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 命令行参数List，第一个元素是程序本身路径    </span></span><br><span class="line"><span class="string">sys.exit(n)        　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 退出程序，正常退出时exit(0)</span></span><br><span class="line"><span class="string">sys.version        　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   # 获取Python解释程序的版本信息</span></span><br><span class="line"><span class="string">sys.maxint         　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 最大的Int值</span></span><br><span class="line"><span class="string">sys.path           　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值</span></span><br><span class="line"><span class="string">sys.platform       　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 返回操作系统平台名称</span></span><br><span class="line"><span class="string">sys.stdout.write('please:')　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 向屏幕输出一句话</span></span><br><span class="line"><span class="string">val = sys.stdin.readline()[:-1]　　　　　　　　 　　　　　　　　　　　　　　　　　　  # 获取输入的值</span></span><br><span class="line"><span class="string">time,datetime模块　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 时间有三种表示方式，一种是时间戳、一种是格式化时间、一种是时间元组</span></span><br><span class="line"><span class="string">import time,datetime</span></span><br><span class="line"><span class="string">print(time.timezone)　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　   # 本地时间和标准时间相差的时间，单位是s</span></span><br><span class="line"><span class="string">print(time.time())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  # 返回当前时间戳</span></span><br><span class="line"><span class="string">print(time.clock())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 计算cpu处理执行的时间</span></span><br><span class="line"><span class="string">print(time.sleep(1))　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  # 休眠，单位秒</span></span><br><span class="line"><span class="string">print(time.gmtime())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  # 把时间戳转换成时间元组，如果不传的话，默认取标准时区的时间戳</span></span><br><span class="line"><span class="string">print(time.localtime())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   # 把时间戳转换成时间元组，如果不传的话，默认取当前时区的时间戳</span></span><br><span class="line"><span class="string">print(time.mktime(time.localtime()))　　　　　　　　　　　　　　　　　　　　　　　　  # 把时间元组转换成时间戳</span></span><br><span class="line"><span class="string">print(time.strftime("</span>%y%m%d %H%M%S<span class="string">"))　　　　　 　　　　　　　　　　　　　　　　　　  # 将时间元组转换成格式化输出的字符串</span></span><br><span class="line"><span class="string">print(time.strptime("</span><span class="number">20160204</span> <span class="number">191919</span><span class="string">","</span>%Y%m%d %H%M%S<span class="string">"))　　　　　　　　　　　　　　　 # 将格式化的时间转换成时间元组</span></span><br><span class="line"><span class="string">print(time.struct_time)　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　　  # 时间元组</span></span><br><span class="line"><span class="string">print(time.asctime())　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 # 时间元转换成格式化时间</span></span><br><span class="line"><span class="string">print(time.ctime())　　　　　　　　　　　　　　　　  　　　　　　　　　　　　　　　　 # 时间戳转换成格式化时间</span></span><br><span class="line"><span class="string">print(datetime.datetime.now())　　　　　　　　　　　　　　　　　　　　　　　　　　　　# 当然时间格式化输出</span></span><br><span class="line"><span class="string">print(datetime.datetime.now()+datetime.timedelta(3))　　　　　　　　　　　　　　　　  # 3天后的时间</span></span><br><span class="line"><span class="string">print(datetime.datetime.now()+datetime.timedelta(-3))　　　　　　　　　　　　　　　   # 3天前的时间</span></span><br><span class="line"><span class="string">time.asctime( time.localtime(time.time()) )　　　　　　　　　　　　　　　　　　　　   # 可读格式获取现在时间</span></span><br><span class="line"><span class="string">import calendar</span></span><br><span class="line"><span class="string">calendar.month(2021, 11)　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  # 获取2021年11月的日历，先导入import calendar模块</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">str类型的日期转换为时间戳</span></span><br><span class="line"><span class="string">tss1 = '2018-10-10 23:40:00'#字符型时间格式</span></span><br><span class="line"><span class="string">timeArray = time.strptime(tss1, "</span>%Y-%m-%d %H:%M:%S<span class="string">")#转成时间数组，所有时间数组都可以.出方法来调用所需要的字段</span></span><br><span class="line"><span class="string">timeStamp = int(time.mktime(timeArray))#转成时间戳</span></span><br><span class="line"><span class="string">修改str类型的日期格式</span></span><br><span class="line"><span class="string">tss2 = "</span><span class="number">2013</span><span class="number">-10</span><span class="number">-10</span> <span class="number">23</span>:<span class="number">40</span>:<span class="number">00</span><span class="string">"</span></span><br><span class="line"><span class="string">timeArray = time.strptime(tss2, "</span>%Y-%m-%d %H:%M:%S<span class="string">")</span></span><br><span class="line"><span class="string">otherStyleTime = time.strftime("</span>%Y/%m/%d %H:%M:%S<span class="string">", timeArray)</span></span><br><span class="line"><span class="string">时间戳转换为指定格式的日期　　</span></span><br><span class="line"><span class="string">#time</span></span><br><span class="line"><span class="string">timeStamp = 1381419600</span></span><br><span class="line"><span class="string">timeArray = time.localtime(timeStamp)</span></span><br><span class="line"><span class="string">otherStyleTime = time.strftime("</span>%Y--%m--%d %H:%M:%S<span class="string">", timeArray)</span></span><br><span class="line"><span class="string">#datetime</span></span><br><span class="line"><span class="string">timeStamp = 1381419600</span></span><br><span class="line"><span class="string">dateArray = datetime.datetime.utcfromtimestamp(timeStamp)</span></span><br><span class="line"><span class="string">otherStyleTime = dateArray.strftime("</span>%Y--%m--%d %H:%M:%S<span class="string">")</span></span><br><span class="line"><span class="string">时间戳变成指定格式</span></span><br><span class="line"><span class="string">#time</span></span><br><span class="line"><span class="string">now = int(time.time())     # 1533952277</span></span><br><span class="line"><span class="string">timeArray = time.localtime(now)</span></span><br><span class="line"><span class="string">otherStyleTime = time.strftime("</span>%Y--%m--%d %H:%M:%S<span class="string">", timeArray)</span></span><br><span class="line"><span class="string">#datetime</span></span><br><span class="line"><span class="string">now = datetime.datetime.now()</span></span><br><span class="line"><span class="string">otherStyleTime = now.strftime("</span>%Y--%m--%d %H:%M:%S<span class="string">")</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">configparser模块　　通常用作配置文件的增删改查</span></span><br><span class="line"><span class="string">#生成conf文件</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">import configparser</span></span><br><span class="line"><span class="string">conf = configparser.ConfigParser()</span></span><br><span class="line"><span class="string">conf['mysql'] = &#123;</span></span><br><span class="line"><span class="string">    'user': 'nihao',</span></span><br><span class="line"><span class="string">    'passwd': 123456,</span></span><br><span class="line"><span class="string">    'port': 3306</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">conf['redis'] = &#123;&#125;</span></span><br><span class="line"><span class="string">conf['redis']['user'] = 'nihao'</span></span><br><span class="line"><span class="string">conf['redis']['passwd'] = '123456'</span></span><br><span class="line"><span class="string">conf['redis']['port'] = '6379'</span></span><br><span class="line"><span class="string">with open('conf.txt', 'w') as configfile:</span></span><br><span class="line"><span class="string">    conf.write(configfile)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#读取conf文件</span></span><br><span class="line"><span class="string">import configparser</span></span><br><span class="line"><span class="string">conf = configparser.ConfigParser()</span></span><br><span class="line"><span class="string">conf.read('conf.txt')　　　　　　　　　　　　　　　　　　　　　　　　#读取conf文件</span></span><br><span class="line"><span class="string">sec = conf.sections()　　　　　　　　　　　　　　　　　　　　　　　　#获取所有父节点值</span></span><br><span class="line"><span class="string">opt = conf.options('mysql')　　　　　　　　　　　　　　　　　　　　#获取指定父节点下的所有子节点key</span></span><br><span class="line"><span class="string">item = conf.items('redis')　　　　　　　　　　　　　　　　　　　　　#获取指定父节点下的所有子节点的key，values</span></span><br><span class="line"><span class="string">v_int = conf.getint('redis', 'passwd')　　　　　　　　　　　　　#获取指定节点的int数据</span></span><br><span class="line"><span class="string">v_boolean = conf.getboolean('redis', 'tpye')　　　　　　　　　　#获取指定节点的布尔值数据</span></span><br><span class="line"><span class="string">v_float = conf.getfloat('redis', 'salary')　　　　　　　　　　　#获取指定节点的浮点数据</span></span><br><span class="line"><span class="string">v_all = conf.get('redis', 'all')　　　　　　　　　　　　　　　　　　　#获取指定节点的所有类型数据</span></span><br><span class="line"><span class="string">#修改conf文件</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">import configparser</span></span><br><span class="line"><span class="string">conf = configparser.ConfigParser()</span></span><br><span class="line"><span class="string">conf.read('conf.txt')　　　　　　　　　　　　　　　　　　　　　　#读取conf文件</span></span><br><span class="line"><span class="string">conf.add_section('db')　　　　　　　　　　　　　　　　　　　　  #添加一个父类节点</span></span><br><span class="line"><span class="string">conf.add_section('123')</span></span><br><span class="line"><span class="string">conf.remove_section('123')　　　　　　　　　　　　　　　　　　　#删除一个父节点</span></span><br><span class="line"><span class="string">conf.set('db','db_username','rainbol')　　　　　　　　　　　　#添加一个子节点并赋值</span></span><br><span class="line"><span class="string">conf.set('db','db_password','123456')</span></span><br><span class="line"><span class="string">conf.remove_option('mysql','user')　　　　　　　　　　　　　　#删除一个子节点</span></span><br><span class="line"><span class="string">conf.remove_option('mysql','passwd')</span></span><br><span class="line"><span class="string">conf.set('mysql','username','root')</span></span><br><span class="line"><span class="string">conf.set('mysql','password','654321')</span></span><br><span class="line"><span class="string">conf.clear()　　　　　　　　　　　　　　　　　　　　　　　　　　　　#清空配置文件</span></span><br><span class="line"><span class="string">conf.write(open('conf.txt','w',encoding='utf-8'))　　　　#修改完成写入配置文件</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">itsdangerous模块　　#一种的加密方式,程序解析加密和加密字符串,可以记录TTL和盐值</span></span><br><span class="line"><span class="string">salt = 'saO)(&amp;)H' #设置盐值</span></span><br><span class="line"><span class="string">t = itsdangerous.TimedJSONWebSignatureSerializer(salt,expires_in=600)#指定参数,第一个是盐值,第二个是TTL加密过期时间</span></span><br><span class="line"><span class="string">res = t.dumps(&#123;'username':'rainbol','password':'123456'&#125;)#设置加密的字典</span></span><br><span class="line"><span class="string">print(res.decode())#取加密信息</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">session = 'eyJhbGciOiJIUzUxMiIsImlhdCI6MTU0MjAwMTcwNCwiZXhwIjoxNTQyMDAyMzA0fQ.eyJ1c2VybmFtZSI6IkNoZW56dWFueWkxMjMiLCJwYXNzd29yZCI6IkN6eTEyMzQhISJ9.</span></span><br><span class="line"><span class="string">tOdU5gNQdIVONPoD5DLxsW4lRcDX_n3Bg82RR5C48uXT5JhW7Z_UYqpZYd16p9tlT7moXM-T0Son07_KGaBJvA'</span></span><br><span class="line"><span class="string">res  = t.loads(session)#解析加密信息,如果加密信息不正确会报错</span></span><br><span class="line"><span class="string">print(res)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">glod模块　　　#过滤目录</span></span><br><span class="line"><span class="string">* ，?，[]　　#匹配规则　　*   :匹配0个或多个字符；　　?　:匹配单个字符；　　[]　:匹配指定范围内的字符</span></span><br><span class="line"><span class="string">print(glob.glob('*.py'))#返回一个list,括号中填写过滤条件,*.py表示取结尾为py的文件</span></span><br><span class="line"><span class="string">_list = glob.glob(BASEPATH+ os.sep + '*' + os.sep + '/*.html') #只获取第二层路径的html文件</span></span><br><span class="line"><span class="string">_list = glob.glob('../*.html')　　#获取上一层的html文件</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">platform模块　　　　#判断操作系统,如os,linux,windows</span></span><br><span class="line"><span class="string">import platform</span></span><br><span class="line"><span class="string">import os</span></span><br><span class="line"><span class="string">if platform.system().lower()== 'linux':</span></span><br><span class="line"><span class="string">    os.system('ls')</span></span><br><span class="line"><span class="string">elif platform.system().lower()=='windows':</span></span><br><span class="line"><span class="string">    os.system('dir')</span></span><br><span class="line"><span class="string">else:</span></span><br><span class="line"><span class="string">    pass</span></span><br></pre></td></tr></table></figure>
+<h1 id="gevent模块"><a href="#gevent模块" class="headerlink" title="gevent模块"></a>gevent模块</h1><p>基于greenlet封装,避免多线程切换导致io执行效率降低</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">gevent模块　　<span class="comment">#基于greenlet封装,避免多线程切换导致io执行效率降低</span></span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">from</span> gevent <span class="keyword">import</span> monkey</span><br><span class="line">monkey.patch_all()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(name, url)</span>:</span></span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    open(name + <span class="string">'.html'</span>, <span class="string">'wb'</span>).write(r.content)</span><br><span class="line">url = &#123;<span class="string">'rainbol01'</span>: <span class="string">'https://www.cnblogs.com/RainBol/'</span>,</span><br><span class="line">       <span class="string">'rainbol02'</span>: <span class="string">'https://www.cnblogs.com/RainBol/p/9505438.html'</span>,</span><br><span class="line">       <span class="string">'rainbol03'</span>: <span class="string">'https://www.cnblogs.com/RainBol/p/10077388.html'</span></span><br><span class="line">       &#125;</span><br><span class="line"><span class="keyword">for</span> name, url <span class="keyword">in</span> url.items():</span><br><span class="line">    g = gevent.spawn(run, name, url)  <span class="comment"># 启动</span></span><br><span class="line">    g.join()  <span class="comment"># 等待并切换</span></span><br></pre></td></tr></table></figure>
+<h1 id="logger模板"><a href="#logger模板" class="headerlink" title="logger模板"></a>logger模板</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">logger模板[<span class="number">1</span>]　　<span class="comment">#日志是一种可以追踪某些软件运行时所发生事件的方法。python封装好了我们可以使用生成的日志报告框架</span></span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.DEBUG,</span><br><span class="line">                    format=<span class="string">'%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s'</span>,</span><br><span class="line">                    datefmt=<span class="string">'%a,%d %b %Y %H:%M:%S'</span>,</span><br><span class="line">                    filename=<span class="string">'test.log'</span>,</span><br><span class="line">                    filemode=<span class="string">'w'</span>)</span><br><span class="line"><span class="comment"># level 级别 = logging.DEBUG 设置debug级别</span></span><br><span class="line"><span class="comment"># format 格式完全可以自定义</span></span><br><span class="line"><span class="comment"># datefmt 根据format中的asctime来设置指定自定义时间</span></span><br><span class="line"><span class="comment"># filename 设置文件输出格式,如果如果去掉filename和filemode将以屏幕输出格式</span></span><br><span class="line"><span class="comment"># filemode 文件模式</span></span><br><span class="line">    <span class="comment"># 'w'记录到文件日志中,在w模式下,相当于打开文件的写操作,会覆盖之前的记录覆盖</span></span><br><span class="line">    <span class="comment"># 'a'记录到文件日志中,在a模式下,相当于打开文件的追加操作</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># format固定变量格式</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">%(name)s              打印日志名称                  </span></span><br><span class="line"><span class="string">%(levelno)s           打印日志级别的数值             </span></span><br><span class="line"><span class="string">%(levelname)s         打印对应filename参数中的设置的log路径           </span></span><br><span class="line"><span class="string">%(pathname)s          打印当前执行程序的路径                 </span></span><br><span class="line"><span class="string">%(filename)s          打印文件名</span></span><br><span class="line"><span class="string">%(module)s            打印日志输出函数的模块名</span></span><br><span class="line"><span class="string">%(lineno)d            记录执行代码行号         </span></span><br><span class="line"><span class="string">%(funcName)s          由哪个function发出的log， 调用日志输出函数的函数名</span></span><br><span class="line"><span class="string">%(created)f           当前时间，用UNIX标准的表示时间的浮点数表示； 日志事件发生的时间--时间戳，就是当时调用time.time()函数返回的值</span></span><br><span class="line"><span class="string">%(asctime)s           对应datefmt参数中设置的时间           </span></span><br><span class="line"><span class="string">%(msecs)d             日志事件发生事件的毫秒部分</span></span><br><span class="line"><span class="string">%(relativeCreated)d   日志记录创建时的时间(以毫秒为单位)，与加载日志模块的时间(通常在应用程序启动时)相关         </span></span><br><span class="line"><span class="string">%(thread)d            打印线程id </span></span><br><span class="line"><span class="string">%(threadName)s        打印线程名称      </span></span><br><span class="line"><span class="string">%(process)d           打印进程id      </span></span><br><span class="line"><span class="string">%(message)s           打印日志信息          </span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 日志级别   critical &gt; error &gt; warning &gt; info &gt; debug   </span></span><br><span class="line">logging.debug(<span class="string">'this is debug message'</span>)</span><br><span class="line">logging.info(<span class="string">'this is info message'</span>)</span><br><span class="line">logging.warning(<span class="string">'this is warning message'</span>)</span><br><span class="line">logging.error(<span class="string">'this is error message'</span>)</span><br><span class="line">logging.critical(<span class="string">'this is critical message'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="logger模板-1"><a href="#logger模板-1" class="headerlink" title="logger模板"></a>logger模板</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">logger模板[<span class="number">2</span>]    <span class="comment">#既想输出屏幕还输出到文件用此格式</span></span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="comment">#创建四个对象</span></span><br><span class="line">logger = logging.getLogger()<span class="comment">#拿到一个logger对象</span></span><br><span class="line">filer = logging.FileHandler(<span class="string">'test.log'</span>)<span class="comment">#创建一个把test.log路径放到FileHandler文件输出对象</span></span><br><span class="line">stream = logging.StreamHandler()<span class="comment">#创建一个屏幕输出对象</span></span><br><span class="line">formatter = logging.Formatter(<span class="string">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span>)<span class="comment">#创建一个把format输出到Formatter中的对象</span></span><br><span class="line"></span><br><span class="line">filer.setFormatter(formatter)<span class="comment">#fh文件添加输出格式</span></span><br><span class="line">stream.setFormatter(formatter)<span class="comment">#ch屏幕添加输出格式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#为logger添加文件输出格式和屏幕输出格式</span></span><br><span class="line">logger.addHandler(filer)</span><br><span class="line">logger.addHandler(stream)</span><br><span class="line"></span><br><span class="line">logger.setLevel(logging.DEBUG)<span class="comment">#指定日志级别设置为DEBUG</span></span><br><span class="line"></span><br><span class="line">logger.debug(<span class="string">'this is debug message'</span>)</span><br><span class="line">logger.info(<span class="string">'this is info message'</span>)</span><br><span class="line">logger.warning(<span class="string">'this is warning message'</span>)</span><br><span class="line">logger.error(<span class="string">'this is error message'</span>)</span><br><span class="line">logger.critical(<span class="string">'this is critical message'</span>) </span><br><span class="line"></span><br><span class="line">参考:</span><br><span class="line">https://www.cnblogs.com/Nicholas0707/p/<span class="number">9021672.</span>html</span><br></pre></td></tr></table></figure>
+<h1 id="hashlib模块"><a href="#hashlib模块" class="headerlink" title="hashlib模块"></a>hashlib模块</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">hashlib模块</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">password1 = <span class="string">'123456'</span></span><br><span class="line">res = password1.encode()<span class="comment">#将密码转出二进制，password2 = b'123456'或者直接加b</span></span><br><span class="line">m = hashlib.md5(res)<span class="comment">#进行md5加密</span></span><br><span class="line">print(m.hexdigest())<span class="comment">#显示md5加密</span></span><br><span class="line"></span><br><span class="line">加盐：二级加密，保证数据的安全，我们会在md5加密代码前加上一个特定的字符串，如<span class="number">123456</span>helloworld,输入密码为<span class="number">123456</span>，进过加盐对<span class="number">123456</span>helloworld进行md5加密，当用户登录输入密码，代码自动在用户输入密码后加盐，转出md5与数据库匹配</span><br><span class="line">　　　　　　除了MD5还有sha<span class="number">.224</span>,sha256更安全,由于md5算法是不可逆的,所以按照实际业务来实现算法</span><br><span class="line">　　　双重加密　　加密两次,我们使用os.urandom(n) <span class="comment">#表示一个生成n个字节随机字符串,当然每次打印生成的结果肯定是不一样的</span></span><br><span class="line">　　　uuid加密       <span class="keyword">import</span> uuid res=uuid.uuid4() <span class="comment">#根据机器号时间等信息生成的随机序列号 #e6684777-5166-455f-8c48-c6f5f3e79d2c</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> md5</span><br><span class="line">req = os.urandom(<span class="number">24</span>)</span><br><span class="line">res = md5(os.urandom(<span class="number">24</span>)).hexdigest()</span><br><span class="line">print(res)</span><br><span class="line"><span class="comment">#002747ea4bb0852767c9449307f8da93</span></span><br></pre></td></tr></table></figure>
+<h1 id="importlib模块"><a href="#importlib模块" class="headerlink" title="importlib模块"></a>importlib模块</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">importlib模块</span><br><span class="line"><span class="comment">#实现动态导入模块并执行</span></span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line">mode = <span class="string">'libtest.importlib_test'</span>   <span class="comment">#mode为libtest文件下的importlib_test.py文件</span></span><br><span class="line">fuc = <span class="string">'run'</span>    <span class="comment">#文件中的run函数名称</span></span><br><span class="line">moc = importlib.import_module(mode) <span class="comment">#将mode变量导入,该模块会拿到py文件对象</span></span><br><span class="line">res = getattr(moc,fuc) <span class="comment">#再通过getattr传入对象和函数名称</span></span><br><span class="line">res()<span class="comment">#最后执行模块方法</span></span><br></pre></td></tr></table></figure>
+<h1 id="heapq模块"><a href="#heapq模块" class="headerlink" title="heapq模块"></a>heapq模块</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">heapq模块</span><br><span class="line"><span class="comment">#从一个集合中查找最大最小的N个元素——Python heapq 堆数据结构</span></span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line">num = [<span class="number">23</span>,<span class="number">213</span>,<span class="number">1</span>,<span class="number">23</span>,<span class="number">2</span>,<span class="number">23</span>,<span class="number">24</span>,<span class="number">5</span>,<span class="number">345</span>,<span class="number">34.324</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">52</span>]</span><br><span class="line">max= heapq.nlargest(<span class="number">3</span>,num)<span class="comment">#显示列表中的最大前三个</span></span><br><span class="line">min = heapq.nsmallest(<span class="number">3</span>,num)<span class="comment">#显示列表中的最小前三个# heapq.nlargest(n, iterable[, key])第三参数key的使用</span></span><br><span class="line">portfolio = [</span><br><span class="line">         &#123;<span class="string">'name'</span>: <span class="string">'IBM'</span>, <span class="string">'shares'</span>: <span class="number">100</span>, <span class="string">'price'</span>: <span class="number">91.1</span>&#125;,</span><br><span class="line">        &#123;<span class="string">'name'</span>: <span class="string">'AAPL'</span>, <span class="string">'shares'</span>: <span class="number">50</span>, <span class="string">'price'</span>: <span class="number">543.22</span>&#125;,</span><br><span class="line">         &#123;<span class="string">'name'</span>: <span class="string">'FB'</span>, <span class="string">'shares'</span>: <span class="number">200</span>, <span class="string">'price'</span>: <span class="number">21.09</span>&#125;,</span><br><span class="line">       &#123;<span class="string">'name'</span>: <span class="string">'HPQ'</span>, <span class="string">'shares'</span>: <span class="number">35</span>, <span class="string">'price'</span>: <span class="number">31.75</span>&#125;,</span><br><span class="line">         &#123;<span class="string">'name'</span>: <span class="string">'YHOO'</span>, <span class="string">'shares'</span>: <span class="number">45</span>, <span class="string">'price'</span>: <span class="number">16.35</span>&#125;,</span><br><span class="line">         &#123;<span class="string">'name'</span>: <span class="string">'ACME'</span>, <span class="string">'shares'</span>: <span class="number">75</span>, <span class="string">'price'</span>: <span class="number">115.65</span>&#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(heapq.nlargest(<span class="number">3</span>,portfolio,<span class="keyword">lambda</span> x:x[<span class="string">'shares'</span>]))<span class="comment">#从例子中可以看出x['shares']可以取关键字shares值的数据作为排列规则,并且再取整行数据</span></span><br><span class="line"><span class="comment">#&gt;&gt;[&#123;'name': 'FB', 'shares': 200, 'price': 21.09&#125;, &#123;'name': 'IBM', 'shares': 100, 'price': 91.1&#125;, &#123;'name': 'ACME', 'shares': 75, 'price': 115.65&#125;]</span></span><br></pre></td></tr></table></figure>
+<h1 id="判断是否为函数"><a href="#判断是否为函数" class="headerlink" title="判断是否为函数"></a>判断是否为函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">callable() <span class="comment">#判断是否为函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hanshu</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">print(callable(hanshu))<span class="comment">#true</span></span><br><span class="line">print(callable(<span class="string">'我不是函数'</span>))<span class="comment">#false</span></span><br></pre></td></tr></table></figure>
+<h1 id="判断最小值"><a href="#判断最小值" class="headerlink" title="判断最小值"></a>判断最小值</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">min()函数 判断最小</span><br><span class="line"></span><br><span class="line">print(min(&apos;abc123&apos;))</span><br><span class="line">print(min([2,3,4,5,6,7,1]))</span><br><span class="line">print(min(&#123;1:&apos;213&apos;,2:&apos;42&apos;&#125;))</span><br><span class="line">print(min((2,3,4,5,6,7,8,1)))</span><br><span class="line">print(min(((&#123;4:&apos;a&apos;,2:&apos;b&apos;,1:&apos;c&apos;&#125;))))#不管里面有多少层</span><br><span class="line">print(min(&#123;&apos;a&apos;:&apos;213&apos;,&apos;b&apos;:&apos;42&apos;&#125;))</span><br><span class="line"></span><br><span class="line">#key参数</span><br><span class="line">print(min(&#123;&quot;username&quot;:&quot;123&quot;,&quot;password&quot;:&quot;321&quot;&#125;,&#123;&quot;username&quot;:&quot;342&quot;,&quot;password&quot;:&quot;5343&quot;&#125;,key=lambda x:x[&quot;username&quot;]))#多字典函数时指定函数区分</span><br><span class="line"></span><br><span class="line">#default参数</span><br><span class="line">print(min(&apos;&apos;, default=&apos;默认值&apos;))#空字符串,空列表,空元祖,空字段,可设返回默认值</span><br></pre></td></tr></table></figure>
+<h1 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">faker模块  不是打LoL的faker</span><br><span class="line"><span class="comment"># pip install faker</span></span><br><span class="line"><span class="comment">#github地址 https://github.com/joke2k/faker</span></span><br><span class="line"><span class="comment">#中文官方文档 https://faker.readthedocs.io/en/master/locales/zh_CN.html#</span></span><br><span class="line"><span class="keyword">import</span> faker</span><br><span class="line"><span class="comment">#该模块主要是用来做测试的假数据或者伪造数据</span></span><br><span class="line">f2 = faker.Faker(locale=<span class="string">'zh-CN'</span>)<span class="comment">#指定中文,如果不填就是英文数据,也可以指定其他国外地区</span></span><br><span class="line"><span class="comment">#常用</span></span><br><span class="line">print(f2.ssn())<span class="comment">#身份证号</span></span><br><span class="line">print(f2.phone_number())<span class="comment">#手机号</span></span><br><span class="line">print(f2.email())<span class="comment">#邮箱</span></span><br><span class="line">print(f2.address())<span class="comment">#地址</span></span><br><span class="line">print(f2.name())<span class="comment">#姓名</span></span><br><span class="line">print(f2.postcode())</span><br><span class="line">print(f2.street_address())<span class="comment">#街道地址</span></span><br><span class="line">print(f2.street_name())<span class="comment">#街道名</span></span><br><span class="line">print(f2.street_suffix())<span class="comment">#街、路</span></span><br><span class="line">print(f2.street_address())<span class="comment">#街道地址</span></span><br><span class="line">print(f2.date())<span class="comment">#随机日期</span></span><br><span class="line">print(f2.ipv4())<span class="comment">#随机IP4地址</span></span><br><span class="line">print(f2.url())<span class="comment">#随机URL地址</span></span><br><span class="line">print(f2.phone_number())<span class="comment">#随机生成手机号</span></span><br><span class="line">print(f2.simple_profile())<span class="comment">#随机档案信息</span></span><br></pre></td></tr></table></figure>
+<h1 id="jsonpath模块"><a href="#jsonpath模块" class="headerlink" title="jsonpath模块"></a>jsonpath模块</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">jsonpath模块　　<span class="comment">#方便取json的模块</span></span><br><span class="line"><span class="comment"># 安装 pip install jsonpath</span></span><br><span class="line"><span class="keyword">import</span> jsonpath</span><br><span class="line">es = &#123;</span><br><span class="line">    <span class="string">"mappings"</span>: &#123;</span><br><span class="line">        <span class="string">"article"</span>: &#123;</span><br><span class="line">            <span class="string">"properties"</span>: &#123;</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"string"</span>, <span class="string">"analyzer"</span>: <span class="string">"english"</span></span><br><span class="line">            &#125;</span><br><span class="line">            ,</span><br><span class="line">            <span class="string">"post_date"</span>: &#123;</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"date"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"title"</span>: &#123;</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"string"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"publiser_id"</span>: &#123;</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"long"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">result01 = jsonpath.jsonpath(es, <span class="string">'mappings'</span>)  <span class="comment"># 参数1:传一个正确的json,参数2:传想要获取的key,返回一个传入的键的value并以列表形式返回</span></span><br><span class="line">result02 = jsonpath.jsonpath(es, <span class="string">'article'</span>)  <span class="comment"># 返回False,如果超过第一层就要使用$..来查找,如下↓</span></span><br><span class="line">result03 = jsonpath.jsonpath(es, <span class="string">'$..analyzer'</span>)  <span class="comment"># 返回['english']</span></span><br><span class="line">print(result03)</span><br></pre></td></tr></table></figure>
+<p>参考原文：<a href="https://www.cnblogs.com/RainBol/p/9505438.html" target="_blank" rel="noopener">https://www.cnblogs.com/RainBol/p/9505438.html</a></p>
+<p>QQ群：397745473</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/14/71_下载youtube的工具/" rel="next" title="下载youtube工具">
+                <i class="fa fa-chevron-left"></i> 下载youtube工具
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/14/70_VMWare_Esxi_重启服务解决无法远程管理问题/" rel="prev" title="VMWare Esxi 重启服务解决无法远程管理问题">
+                VMWare Esxi 重启服务解决无法远程管理问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="http://ww4.sinaimg.cn/small/937882b5jw1f4db4lroy9j20hs0npmy6.jpg" alt="vsyour">
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vsyour.com/" title="Blog" target="_blank">Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python-常用函数"><span class="nav-number">1.</span> <span class="nav-text">python 常用函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gevent模块"><span class="nav-number">2.</span> <span class="nav-text">gevent模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#logger模板"><span class="nav-number">3.</span> <span class="nav-text">logger模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#logger模板-1"><span class="nav-number">4.</span> <span class="nav-text">logger模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hashlib模块"><span class="nav-number">5.</span> <span class="nav-text">hashlib模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#importlib模块"><span class="nav-number">6.</span> <span class="nav-text">importlib模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#heapq模块"><span class="nav-number">7.</span> <span class="nav-text">heapq模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断是否为函数"><span class="nav-number">8.</span> <span class="nav-text">判断是否为函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断最小值"><span class="nav-number">9.</span> <span class="nav-text">判断最小值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三方库"><span class="nav-number">10.</span> <span class="nav-text">第三方库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jsonpath模块"><span class="nav-number">11.</span> <span class="nav-text">jsonpath模块</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2019/08/14/72_python内置模块笔记/';
+          this.page.identifier = '2019/08/14/72_python内置模块笔记/';
+          this.page.title = 'python内置模块笔记(持续更新)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
