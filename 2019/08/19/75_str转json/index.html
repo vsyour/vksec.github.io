@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="将json存到数据库的时候会报错，所以使用str(content)转了一下 取出来的时候想使用json数据怎么办呢? QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-19T04:55:19.000Z">
+<meta property="og:updated_time" content="2019-08-19T05:02:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="str转json">
 <meta name="twitter:description" content="将json存到数据库的时候会报错，所以使用str(content)转了一下 取出来的时候想使用json数据怎么办呢? QQ群：397745473">
@@ -385,6 +385,9 @@
 <p>可以用如下方法:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">'''select * from meishi'''</span></span><br><span class="line">sqlite_db_cur.execute(sql)</span><br><span class="line">res = sqlite_db_cur.fetchall()</span><br><span class="line">x=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> res:</span><br><span class="line">    print(x,i[<span class="number">7</span>])</span><br><span class="line">    <span class="keyword">for</span> one <span class="keyword">in</span> eval(i[<span class="number">7</span>]):</span><br><span class="line">        print(one)</span><br><span class="line">        print(one[<span class="string">'position'</span>])</span><br><span class="line">    x+=<span class="number">1</span></span><br><span class="line">    exit()</span><br></pre></td></tr></table></figure>
 <p>使用eval方法转一下就可以用 了</p>
+<p>json.loads与eval都能将s转成python中的对象，</p>
+<p>json.loads将json中的字符串转成unicode(types.UnicodeType)，</p>
+<p>eval转成了str(types.StringType)。</p>
 <p>QQ群：397745473</p>
 
       
