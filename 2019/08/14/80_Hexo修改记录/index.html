@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="Hexo修改记录 记录所有Hexo修改 QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-29T07:09:07.000Z">
+<meta property="og:updated_time" content="2019-08-29T07:24:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo修改记录">
 <meta name="twitter:description" content="Hexo修改记录 记录所有Hexo修改 QQ群：397745473">
@@ -431,11 +431,33 @@
 <h1 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h1><p>参考: </p>
 <p><a href="https://hexo.io/docs/setup" target="_blank" rel="noopener">https://hexo.io/docs/setup</a></p>
 <p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p>
+<h1 id="Hexo-加本地搜功能"><a href="#Hexo-加本地搜功能" class="headerlink" title="Hexo 加本地搜功能"></a>Hexo 加本地搜功能</h1><ol>
+<li><p>安装本地搜索插件 hexo-generator-search</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装插件，用于生成博客索引数据（在博客根目录下执行下列命令）：</span></span><br><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure>
+<p>安装之后，会在站点目录的 public 文件夹下创建一个 search.xml 文件。</p>
+</li>
+<li><p>修改站点配置文件</p>
+<p>在站点配置文件 <code>_config.yml</code> 中添加如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Search </span></span><br><span class="line">search:</span><br><span class="line">  path: ./public/search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 10000</span><br></pre></td></tr></table></figure>
+<ul>
+<li>path：索引文件的路径，相对于站点根目录</li>
+<li>field：搜索范围，默认是 post，还可以选择 page、all，设置成 all 表示搜索所有页面</li>
+<li>limit：限制搜索的条目数</li>
+</ul>
+</li>
+<li><p>主题配置文件</p>
+<p>在主题配置文件 _config.yml 中找到如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  trigger: auto</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
+<p>确保 enable 设成 true。</p>
+<p>top_n_per_article 字段表示在每篇文章中显示的搜索结果数量，设成 -1 会显示每篇文章的所有搜索结果数量。</p>
+<p>然后，重新部署网站即可愉快的使用本地搜索功能了。</p>
+</li>
+</ol>
 <h1 id="Hexo-主题修改"><a href="#Hexo-主题修改" class="headerlink" title="Hexo 主题修改"></a>Hexo 主题修改</h1><p>官网的安装方式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd hexo</span><br><span class="line">$ git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 <p>主题位置:/blog/themes/next</p>
 <h2 id="tag栏中加入默认的tag"><a href="#tag栏中加入默认的tag" class="headerlink" title="tag栏中加入默认的tag"></a>tag栏中加入默认的tag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">编辑:</span><br><span class="line">themes/next/layout/_macro/post.swig</span><br><span class="line"></span><br><span class="line">找到 “post-footer”</span><br><span class="line">这里有个<span class="keyword">for</span>循环</span><br><span class="line">在 &#123;% endfor %&#125; 后面加入：</span><br><span class="line">&lt;a href=<span class="string">"https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/"</span> rel=<span class="string">"tag"</span>&gt;<span class="comment"># 黑客书籍&lt;/a&gt;</span></span><br><span class="line"></span><br><span class="line">生成:</span><br><span class="line"><span class="built_in">cd</span> /blog &amp;&amp; hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
-<h2 id="在TAG下面加一张默认图片"><a href="#在TAG下面加一张默认图片" class="headerlink" title="在TAG下面加一张默认图片"></a>在TAG下面加一张默认图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">同样需要编辑:</span><br><span class="line">themes/next/layout/_macro/post.swig</span><br><span class="line">找到 “post-footer”</span><br><span class="line">在&lt;/div&gt;与&#123;% endif %&#125;中间加入</span><br><span class="line">[img]https://i.imgur.com/0ivBlsQ.jpg[/img]</span><br></pre></td></tr></table></figure>
+<h2 id="在TAG下面加一张默认图片"><a href="#在TAG下面加一张默认图片" class="headerlink" title="在TAG下面加一张默认图片"></a>在TAG下面加一张默认图片</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">同样需要编辑:</span><br><span class="line">themes/next/layout/_macro/post.swig</span><br><span class="line">找到 “post-footer”</span><br><span class="line">在&lt;/div&gt;与&#123;% endif %&#125;中间加入</span><br><span class="line">&lt;img src=<span class="string">"https://i.imgur.com/0ivBlsQ.jpg"</span> alt=<span class="string">"知识星球"</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>如果是文章多还是需要用Hugo生成</p>
 <p>参考：Theme - <a href="https://github.com/jesselau76/hugo-w3-simple" target="_blank" rel="noopener">Hugo W3 Simple</a></p>
 <p>QQ群：397745473</p>
@@ -494,8 +516,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/14/74_Docker安装Linux版awvs最新版/" rel="prev" title="Docker安装Linux版awvs最新版">
-                Docker安装Linux版awvs最新版 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/14/72_python内置模块笔记/" rel="prev" title="python内置模块笔记(持续更新)">
+                python内置模块笔记(持续更新) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -574,7 +596,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -596,7 +618,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -693,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-常用工具"><span class="nav-number">1.</span> <span class="nav-text">Hexo 常用工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-安装"><span class="nav-number">2.</span> <span class="nav-text">Hexo 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-主题修改"><span class="nav-number">3.</span> <span class="nav-text">Hexo 主题修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tag栏中加入默认的tag"><span class="nav-number">3.1.</span> <span class="nav-text">tag栏中加入默认的tag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在TAG下面加一张默认图片"><span class="nav-number">3.2.</span> <span class="nav-text">在TAG下面加一张默认图片</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-常用工具"><span class="nav-number">1.</span> <span class="nav-text">Hexo 常用工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-安装"><span class="nav-number">2.</span> <span class="nav-text">Hexo 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-加本地搜功能"><span class="nav-number">3.</span> <span class="nav-text">Hexo 加本地搜功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-主题修改"><span class="nav-number">4.</span> <span class="nav-text">Hexo 主题修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tag栏中加入默认的tag"><span class="nav-number">4.1.</span> <span class="nav-text">tag栏中加入默认的tag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在TAG下面加一张默认图片"><span class="nav-number">4.2.</span> <span class="nav-text">在TAG下面加一张默认图片</span></a></li></ol></li></ol></div>
             
 
           </div>
