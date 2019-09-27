@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="python取文件的指定行 QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-27T04:14:27.000Z">
+<meta property="og:updated_time" content="2019-09-27T04:15:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python取文件的指定行">
 <meta name="twitter:description" content="python取文件的指定行 QQ群：397745473">
@@ -416,6 +416,8 @@
 <p>一堆文件,想把这些文件的第2行全部弄出来，用python实现就很方便了</p>
 <p>代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> linecache</span><br><span class="line"></span><br><span class="line">PATH = <span class="string">'/www/wwwroot/zmy.xd10086.com/zmy/content/chinese/posts'</span></span><br><span class="line"><span class="comment"># glob.glob(PATH + os.sep + '*.md') 取指定目录的md文件</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> glob.glob(PATH + os.sep + <span class="string">'*.md'</span>):</span><br><span class="line">    <span class="comment"># 取文件的指定行</span></span><br><span class="line">    text = linecache.getline(file, <span class="number">2</span>)</span><br><span class="line">    print(text)</span><br></pre></td></tr></table></figure>
+<p>Python中的read(),readline(),readlines()区别与用法</p>
+<p>参考:<a href="https://www.jianshu.com/p/a672f39287c4" target="_blank" rel="noopener">https://www.jianshu.com/p/a672f39287c4</a></p>
 <p>QQ群：397745473</p>
 
       
