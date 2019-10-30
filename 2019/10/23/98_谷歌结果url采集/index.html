@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="谷歌结果url采集 别想了，采不了，谷歌的人机验证码连人都过不了。就别想着用脚本来做了。 手工做倒是有一个比较方便的办法，代码如下： QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-23T01:32:09.000Z">
+<meta property="og:updated_time" content="2019-10-30T07:10:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="“谷歌结果url采集”">
 <meta name="twitter:description" content="谷歌结果url采集 别想了，采不了，谷歌的人机验证码连人都过不了。就别想着用脚本来做了。 手工做倒是有一个比较方便的办法，代码如下： QQ群：397745473">
@@ -419,7 +419,7 @@
 <p>2.打开 Console </p>
 <p>3.搜内容</p>
 <p>4.在 Console 中输入以下代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tag=<span class="built_in">document</span>.getElementsByClassName(<span class="string">'r'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;tag.length;i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> a=tag[i].getElementsByTagName(<span class="string">"a"</span>);</span><br><span class="line">      <span class="built_in">console</span>.log(a[<span class="number">0</span>].href)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tag=<span class="built_in">document</span>.getElementsByClassName(<span class="string">'r'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;tag.length;i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> a=tag[i].getElementsByTagName(<span class="string">"a"</span>);</span><br><span class="line">	  <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(a[<span class="number">0</span>].href)</span><br><span class="line">	  &#125;<span class="keyword">catch</span>(err)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">翻页代码:</span><br><span class="line"><span class="keyword">var</span> nextPageA=<span class="built_in">document</span>.getElementById(<span class="string">"pnnext"</span>);</span><br><span class="line"><span class="keyword">if</span>(nextPageA!=<span class="literal">null</span>)&#123;</span><br><span class="line">	location.href=nextPageA.href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>小技巧：按下一页列表就会清空,可以再按一下向上的键就能把刚才的输入调出来了</p>
 <p>QQ群：397745473</p>
 
