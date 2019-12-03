@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="linux,网络安全,">
+  <meta name="keywords" content="nginx,openresty,LUA,python,pentest">
 
 
 
@@ -91,18 +91,16 @@
 
 
 
-<meta name="description" content="find的高级用法 在linux命令中用find可以做很多事。 inux的终端上，没有windows的搜索那样好用的图形界面工具，但find命令确是很强大的。 比如按名字查找一个文件，可以用 find / -name targetfilename 。 唉，如果只知道名字，不知道地点，这样也不失为一个野蛮有效的方法。 按时间查找也有参数 -atime 访问时间 -ctime 改变状态的时间 -mt">
-<meta name="keywords" content="linux,网络安全">
-<meta property="og:type" content="article">
-<meta property="og:title" content="find的高级用法">
-<meta property="og:url" content="http://vksec.com/2019/11/01/104_find的高级用法/index.html">
+<meta name="description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Openresty Python LUA">
+<meta property="og:url" content="http://vksec.com/archives/2019/12/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="find的高级用法 在linux命令中用find可以做很多事。 inux的终端上，没有windows的搜索那样好用的图形界面工具，但find命令确是很强大的。 比如按名字查找一个文件，可以用 find / -name targetfilename 。 唉，如果只知道名字，不知道地点，这样也不失为一个野蛮有效的方法。 按时间查找也有参数 -atime 访问时间 -ctime 改变状态的时间 -mt">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-03T01:13:02.000Z">
+<meta property="og:description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="find的高级用法">
-<meta name="twitter:description" content="find的高级用法 在linux命令中用find可以做很多事。 inux的终端上，没有windows的搜索那样好用的图形界面工具，但find命令确是很强大的。 比如按名字查找一个文件，可以用 find / -name targetfilename 。 唉，如果只知道名字，不知道地点，这样也不失为一个野蛮有效的方法。 按时间查找也有参数 -atime 访问时间 -ctime 改变状态的时间 -mt">
+<meta name="twitter:title" content="Openresty Python LUA">
+<meta name="twitter:description" content="Nginx openresty python lua 网络安全 学习笔记">
 
 
 
@@ -130,16 +128,16 @@
 
 
 
-  <link rel="canonical" href="http://vksec.com/2019/11/01/104_find的高级用法/">
+  <link rel="canonical" href="http://vksec.com/archives/2019/12/">
 
 
 
 
 
-  <title>find的高级用法 | Openresty Python LUA</title>
+  <title>归档 | Openresty Python LUA</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -161,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -297,224 +295,63 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/11/01/104_find的高级用法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vsyour">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Openresty Python LUA">
+    <span class="archive-page-counter">
+      
+      
+       
+        
+      很好! 目前共计 105 篇日志。 继续努力。
     </span>
 
     
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                find的高级用法
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-01T03:03:03+08:00">
-                2019-11-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/11/01/104_find的高级用法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/01/104_find的高级用法/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
 
       
       
-
       
-        <p> find的高级用法</p>
-<p>在linux命令中用find可以做很多事。</p>
-<p>inux的终端上，没有windows的搜索那样好用的图形界面工具，但find命令确是很强大的。</p>
-<p>比如按名字查找一个文件，可以用 find / -name targetfilename 。 唉，如果只知道名字，不知道地点，这样也不失为一个野蛮有效的方法。</p>
-<p>按时间查找也有参数 -atime 访问时间 -ctime 改变状态的时间 -mtime修改的时间。但要注意，这里的时间是以24小时为单位的。</p>
-<p>查看man手册后使用，你会很迷惑： -mtime n： Files data was last modified n*24 hours ago. 字面上的理解是最后一次修改发生在n个24小时以前的文件，但实际上</p>
-<p>find ./ -mtime 0：返回最近24小时内修改过的文件。</p>
-<p>find ./ -mtime 1 ： 返回的是前48~24小时修改过的文件。而不是48小时以内修改过的文件。</p>
-<p>那怎么返回10天内修改过的文件？find还可以支持表达式关系运算，所以可以把最近几天的数据一天天的加起来：</p>
-<p>find ./ -mtime 0 -o -mtime 1 -o -mtime 2 ……虽然比较土，但也算是个方法了。</p>
-<p>还有没有更好的方法，我也想知道。</p>
-<p>另外， -mmin参数-cmin / - amin也是类似的。</p>
-<p>QQ群：397745473</p>
-<a id="more"></a> 
-<h1 id="Find应用实例"><a href="#Find应用实例" class="headerlink" title="Find应用实例"></a>Find应用实例</h1><p>查找最近30分钟修改的当前目录下的.php文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">'*.php'</span> -mmin -30</span><br></pre></td></tr></table></figure>
-<p>查找最近24小时修改的当前目录下的.php文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">'*.php'</span> -mtime 0</span><br></pre></td></tr></table></figure>
-<p>查找最近24小时修改的当前目录下的.php文件，并列出详细信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">'*.inc'</span> -mtime 0 -ls</span><br></pre></td></tr></table></figure>
-<p>查找当前目录下，最近24-48小时修改过的常规文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -mtime 1</span><br></pre></td></tr></table></figure>
-<p>查找当前目录下，最近1天前修改过的常规文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -mtime +1</span><br></pre></td></tr></table></figure>
-<h2 id="·find-path-option-print-exec-ok-command"><a href="#·find-path-option-print-exec-ok-command" class="headerlink" title="·find  path  -option  [  -print ]  [ -exec  -ok  command ]  {} \;"></a>·find  path  -option  [  -print ]  [ -exec  -ok  command ]  {} \;</h2><p>find命令的参数；</p>
-<p>pathname: find命令所查找的目录路径。例如用.来表示当前目录，用/来表示系统根目录。<br>-print： find命令将匹配的文件输出到标准输出。<br>-exec： find命令对匹配的文件执行该参数所给出的shell命令。相应命令的形式为’command’ { } \;，注意{ }和\；之间的空格。<br>-ok： 和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行。</p>
-<p>#-print 将查找到的文件输出到标准输出<br>#-exec  command  {} \;   —–将查到的文件执行command操作,{} 和 \;之间有空格<br>#-ok 和-exec相同，只不过在操作前要询用户</p>
-<p>例：find . -name .svn | xargs rm -rf</p>
-<p>参考： <a href="https://www.cnblogs.com/hechunhua/p/4860544.html" target="_blank" rel="noopener">https://www.cnblogs.com/hechunhua/p/4860544.html</a> </p>
-<p>QQ群：397745473</p>
 
-      
-    </div>
-
-    <div>
       
         
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
-          
-           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
         </div>
       
+      
 
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
-      
+            <a class="post-title-link" href="/2019/12/03/104_find的高级用法/" itemprop="url">
+              
+                <span itemprop="name">find的高级用法</span>
+              
+            </a>
+        
+      </h2>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/10/28/99_ubuntu升级java版本/" rel="next" title="ubuntu升级java版本">
-                <i class="fa fa-chevron-left"></i> ubuntu升级java版本
-              </a>
-            
-          </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-12-03T03:03:03+08:00" content="2019-12-03">
+          12-03
+        </time>
+      </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/07/101_用scrapy收集url/" rel="prev" title="用scrapy收集url">
-                用scrapy收集url <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-    <div class="post-spread">
-<img src="https://i.imgur.com/0ivBlsQ.jpg" alt="知识星球">
 
-      
-    </div>
-  </div>
+    
+
+  </section>
+
+  
+
 
 
           </div>
@@ -522,17 +359,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -552,17 +378,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
           <p class="site-author-name" itemprop="name">vsyour</p>
@@ -685,22 +502,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Find应用实例"><span class="nav-number">1.</span> <span class="nav-text">Find应用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#·find-path-option-print-exec-ok-command"><span class="nav-number">1.1.</span> <span class="nav-text">·find  path  -option  [  -print ]  [ -exec  -ok  command ]  {} \;</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -815,9 +616,11 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   
@@ -836,18 +639,6 @@
       <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
     
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://vksec.com/2019/11/01/104_find的高级用法/';
-          this.page.identifier = '2019/11/01/104_find的高级用法/';
-          this.page.title = 'find的高级用法';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://vksec.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
     
 
   
