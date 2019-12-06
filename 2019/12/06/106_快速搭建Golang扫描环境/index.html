@@ -1,0 +1,1075 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="网络安全,golang,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="请输入密码,有问题请加QQ群:397745473">
+<meta name="keywords" content="网络安全,golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速搭建Golang扫描环境">
+<meta property="og:url" content="http://vksec.com/2019/12/06/106_快速搭建Golang扫描环境/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="请输入密码,有问题请加QQ群:397745473">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-06T00:52:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速搭建Golang扫描环境">
+<meta name="twitter:description" content="请输入密码,有问题请加QQ群:397745473">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2019/12/06/106_快速搭建Golang扫描环境/">
+
+
+
+
+
+  <title>快速搭建Golang扫描环境 | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/12/06/106_快速搭建Golang扫描环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                快速搭建Golang扫描环境
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T03:03:03+08:00">
+                2019-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index">
+                    <span itemprop="name">golang</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/06/106_快速搭建Golang扫描环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/06/106_快速搭建Golang扫描环境/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="请输入密码,有问题请加QQ群:397745473">
+    <label for="pass">请输入密码,有问题请加QQ群:397745473</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+          
+            <a href="/tags/golang/" rel="tag"># golang</a>
+          
+           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/05/105_linux修改文件时间/" rel="next" title="linux复制文件修改文件时间">
+                <i class="fa fa-chevron-left"></i> linux复制文件修改文件时间
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    <div class="post-spread">
+<img src="https://i.imgur.com/0ivBlsQ.jpg" alt="知识星球">
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">107</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vsyour.com/" title="Blog" target="_blank">Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2019/12/06/106_快速搭建Golang扫描环境/';
+          this.page.identifier = '2019/12/06/106_快速搭建Golang扫描环境/';
+          this.page.title = '快速搭建Golang扫描环境';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            var resultItems = [];
+            if (this.value.trim().length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCountInArticle = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCountInArticle = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  var resultItem = '';
+
+                  function highlightKeyword(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+
+                    var matchText = text.substring(start, end);
+                    var matchResult = [];
+                    var prevEnd = 0;
+                    while (position + word.length <= end && index.length != 0) {
+
+                      // highlight keyword
+
+                      var wordBegin = position - start;
+                      var wordEnd = position - start + word.length;
+                      matchResult.push(matchText.substring(prevEnd, wordBegin));
+                      matchResult.push("<b class=\"search-keyword\">" + matchText.substring(wordBegin, wordEnd) + "</b>");
+
+                      // move to next position of hit
+
+                      index.pop();
+                      prevEnd = wordEnd;
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (prevEnd > position - start) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    matchResult.push(matchText.substring(prevEnd));
+                    return matchResult.join('');
+                  }
+
+                  // sort index by position of keyword
+
+                  indexOfTitle.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  indexOfContent.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  // highlight title
+
+                  if (indexOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, 0, title.length, indexOfTitle) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  // highlight content
+
+                  var resultUpperBound = parseInt(1);
+                  var withoutUpperBound = false;
+                  if (resultUpperBound === -1) {
+                    withoutUpperBound = true;
+                  }
+                  var currentResultNum = 0;
+                  while (indexOfContent.length != 0 && (withoutUpperBound || (currentResultNum < resultUpperBound))) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                    "<p class=\"search-result\">" + highlightKeyword(content, start, end, indexOfContent) +
+                    "...</p>" + "</a>";
+                    currentResultNum++;
+                  }
+                  resultItem += "</li>";
+                  resultItems.push({item: resultItem, hitCount: hitCountInArticle, id: resultItems.length});
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.hitCount != resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultLeft.id - resultRight.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result, i) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              $resultContent.innerHTML = searchResultList;
+            }
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
