@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="本文用作记录，在使用python过程中遇到的一些奇技淫巧，有些代码是本人所写，有些则是python内置函数，有些则取之互联网。在此记录，只为备份以及遗忘时方便查找。　　本文将会继续更新，内容仅限记录一些常用好用却又永远记不住的代码或者模块。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-23T01:25:44.000Z">
+<meta property="og:updated_time" content="2019-12-31T02:21:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python奇技淫巧">
 <meta name="twitter:description" content="本文用作记录，在使用python过程中遇到的一些奇技淫巧，有些代码是本人所写，有些则是python内置函数，有些则取之互联网。在此记录，只为备份以及遗忘时方便查找。　　本文将会继续更新，内容仅限记录一些常用好用却又永远记不住的代码或者模块。">
@@ -426,7 +426,7 @@
 <p>方案三<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> progressbar <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">rows, columns = os.popen(<span class="string">'stty size'</span>, <span class="string">'r'</span>).read().split() <span class="comment">#获取控制台size    </span></span><br><span class="line">console_width=int(columns)</span><br><span class="line">total = <span class="number">10</span></span><br><span class="line">progress = ProgressBar()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    进度条函数，记录进度</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> progress(range(total)):</span><br><span class="line">        test2()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test2</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    执行函数，输出结果</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    content=<span class="string">"nMask'Blog is http://thief.one"</span></span><br><span class="line">    sys.stdout.write(<span class="string">"\r"</span>+content+<span class="string">" "</span>*(console_width-len(content)))</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
 <p>更多高级用法可以使用progressbar模块。</p>
 <h1 id="系统操作"><a href="#系统操作" class="headerlink" title="系统操作"></a>系统操作</h1><h2 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h2><p>获取python安装路径<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> distutils.sysconfig <span class="keyword">import</span> get_python_lib</span><br><span class="line"><span class="keyword">print</span> get_python_lib</span><br></pre></td></tr></table></figure></p>
-<p>获取当前时间<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">c=time.ctime()</span><br><span class="line"><span class="comment">#自定义格式输出</span></span><br><span class="line">ISOTIMEFORMAT=’%Y-%m-%d %X’</span><br><span class="line">time.strftime( ISOTIMEFORMAT, time.localtime() )</span><br></pre></td></tr></table></figure></p>
+<p>获取当前时间<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c=time.ctime()</span><br><span class="line"><span class="comment">#自定义格式输出</span></span><br><span class="line">ISOTIMEFORMAT=<span class="string">'%Y-%m-%d %X'</span></span><br><span class="line">time.strftime( ISOTIMEFORMAT, time.localtime() )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用来打日志的当前时间格式</span></span><br><span class="line">now=time.strftime(<span class="string">'%Y-%m-%d %X'</span>, time.localtime())</span><br></pre></td></tr></table></figure></p>
 <p>查看系统环境变量<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.environ[<span class="string">"PATH"</span>]</span><br></pre></td></tr></table></figure></p>
 <p>获取系统磁盘<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.popen(<span class="string">"wmic VOLUME GET Name"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>获取当前路径(包括当前py文件名)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.realpath(__file__)</span><br></pre></td></tr></table></figure></p>
@@ -515,8 +515,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/24/01_Chrome模拟微信内置浏览器/" rel="next" title="使用Chrome修改user agent模拟微信内置浏览器">
-                <i class="fa fa-chevron-left"></i> 使用Chrome修改user agent模拟微信内置浏览器
+              <a href="/2017/04/22/04_OpenResty新的正式版1.11.2.3/" rel="next" title="OpenResty新的正式版1.11.2.3">
+                <i class="fa fa-chevron-left"></i> OpenResty新的正式版1.11.2.3
               </a>
             
           </div>
@@ -525,8 +525,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/24/00_托管网站在Tor网络上_Ubuntu主机/" rel="prev" title="托管网站在Tor网络上">
-                托管网站在Tor网络上 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/24/01_Chrome模拟微信内置浏览器/" rel="prev" title="使用Chrome修改user agent模拟微信内置浏览器">
+                使用Chrome修改user agent模拟微信内置浏览器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
