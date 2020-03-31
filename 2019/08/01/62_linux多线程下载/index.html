@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="linux多线程下载 一般情况，在 Linux 下我们习惯于用 wget 下载，但该工具的缺点就是无法进行多线程下载，所以往往有时候速度不够快。这里介绍的 Axel，是 Linux 下一款不错的 HTTP 或 FTP 高速下载工具。支持多线程下载、断点续传，且可以从多个地址或者从一个地址的多个连接来下载同一个文件，适合网速不给力时多线程下载以提高下载速度。需要注意的是，该软件只有命令行界面。 QQ">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-12T06:40:58.000Z">
+<meta property="og:updated_time" content="2020-03-31T03:17:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux多线程下载">
 <meta name="twitter:description" content="linux多线程下载 一般情况，在 Linux 下我们习惯于用 wget 下载，但该工具的缺点就是无法进行多线程下载，所以往往有时候速度不够快。这里介绍的 Axel，是 Linux 下一款不错的 HTTP 或 FTP 高速下载工具。支持多线程下载、断点续传，且可以从多个地址或者从一个地址的多个连接来下载同一个文件，适合网速不给力时多线程下载以提高下载速度。需要注意的是，该软件只有命令行界面。 QQ">
@@ -439,6 +439,8 @@
 <h1 id="解决Too-many-redirects问题"><a href="#解决Too-many-redirects问题" class="headerlink" title="解决Too many redirects问题"></a>解决Too many redirects问题</h1><p>使用 axel 报 Too many redirects 错误?</p>
 <p>Too many redirects-重定向过多<br>原因是你的 axel 版本太低了!(包括yum install axel的安装)<br>所以你就看我咋安装就 ok 了</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">下载源码包</span></span><br><span class="line">wget -O axel-2.16.1.tar.gz https://file.idait.cn/axel-2.16.1.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash">解压</span></span><br><span class="line">tar xzvf axel-2.16.1.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash">进入目录</span></span><br><span class="line">cd axel-2.16.1/</span><br><span class="line"><span class="meta">#</span><span class="bash">检查编译</span></span><br><span class="line">./configure --prefix=/usr/local/axel</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"><span class="meta">#</span><span class="bash">报错请安装 gcc 工具 不报错请忽略</span></span><br><span class="line">yum groupinstall "Development tools"</span><br><span class="line"><span class="meta">#</span><span class="bash">axel 执行路径</span></span><br><span class="line">echo 'PATH=/usr/local/axel/bin:$PATH' &gt; /etc/profile.d/axel.sh</span><br><span class="line"><span class="meta">#</span><span class="bash">使文件生效</span></span><br><span class="line">. /etc/profile</span><br></pre></td></tr></table></figure>
+<h1 id="解决卡住在初始化时不动问题"><a href="#解决卡住在初始化时不动问题" class="headerlink" title="解决卡住在初始化时不动问题"></a>解决卡住在初始化时不动问题</h1><p>如果yum install axel无法正常运行，可以尝试以下手动方法安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget &apos;http://www.ha97.com/code/axel-2.4.tar.gz&apos;</span><br><span class="line">tar -xf axel-2.4.tar.gz</span><br><span class="line">cd axel-2.4</span><br><span class="line">yum -y install gcc</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">默认安装路径是/usr/local/bin/axel，再加一个下述链接即可：</span><br><span class="line">ln -s /usr/local/bin/axel /usr/bin/axel</span><br></pre></td></tr></table></figure>
 <p>QQ群：397745473</p>
 
       
@@ -485,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/28/60_python文件更新检测/" rel="next" title="python 文件更新检测">
-                <i class="fa fa-chevron-left"></i> python 文件更新检测
+              <a href="/2019/08/01/63_常用sql记录/" rel="next" title="常用sql记录">
+                <i class="fa fa-chevron-left"></i> 常用sql记录
               </a>
             
           </div>
@@ -495,8 +497,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/01/63_常用sql记录/" rel="prev" title="常用sql记录">
-                常用sql记录 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/05/65_linux命令行连接vpn/" rel="prev" title="linux命令行连接vpn">
+                linux命令行连接vpn <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -694,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#axel"><span class="nav-number">1.</span> <span class="nav-text">axel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-7安装Axel"><span class="nav-number">1.1.</span> <span class="nav-text">CentOS 7安装Axel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-6安装Axel："><span class="nav-number">1.2.</span> <span class="nav-text">CentOS 6安装Axel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#64位CentOS-6执行下面命令："><span class="nav-number">1.3.</span> <span class="nav-text">64位CentOS 6执行下面命令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debian-Ubuntu安装Axel："><span class="nav-number">1.4.</span> <span class="nav-text">Debian/Ubuntu安装Axel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Axel命令使用方法："><span class="nav-number">1.5.</span> <span class="nav-text">Axel命令使用方法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决Too-many-redirects问题"><span class="nav-number">2.</span> <span class="nav-text">解决Too many redirects问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#axel"><span class="nav-number">1.</span> <span class="nav-text">axel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-7安装Axel"><span class="nav-number">1.1.</span> <span class="nav-text">CentOS 7安装Axel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-6安装Axel："><span class="nav-number">1.2.</span> <span class="nav-text">CentOS 6安装Axel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#64位CentOS-6执行下面命令："><span class="nav-number">1.3.</span> <span class="nav-text">64位CentOS 6执行下面命令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debian-Ubuntu安装Axel："><span class="nav-number">1.4.</span> <span class="nav-text">Debian/Ubuntu安装Axel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Axel命令使用方法："><span class="nav-number">1.5.</span> <span class="nav-text">Axel命令使用方法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决Too-many-redirects问题"><span class="nav-number">2.</span> <span class="nav-text">解决Too many redirects问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决卡住在初始化时不动问题"><span class="nav-number">3.</span> <span class="nav-text">解决卡住在初始化时不动问题</span></a></li></ol></div>
             
 
           </div>
