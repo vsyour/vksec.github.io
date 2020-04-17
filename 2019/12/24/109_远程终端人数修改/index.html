@@ -100,7 +100,7 @@
 <meta property="og:description" content="windows2012远程终端人数修改 QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/nGfjDUA.png?1">
-<meta property="og:updated_time" content="2019-12-24T08:08:13.000Z">
+<meta property="og:updated_time" content="2020-04-17T07:23:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows2012远程终端人数修改">
 <meta name="twitter:description" content="windows2012远程终端人数修改 QQ群：397745473">
@@ -417,6 +417,9 @@
 <a id="more"></a> 
 <p> 使用远程桌面链接登录到终端服务器时经常会遇到“终端服务器超出最大允许链接数”诸如此类错误导致无法正常登录终端服务器，引起该问题的原因在于终端服务的缺省链接数为2个链接，并且当登录远程桌面后如果不是采用注销方式退出，而是直接关闭远程桌面窗口，那么实际上会话并没有释放掉，而是继续保留在服务器端，这样就会占用总的链接数，当这个数量达到最大允许值时就会出现上面的提示。<br>　　解决方式：<br>　　一、用注销来退出远程桌面而不是直接关闭窗口<br>　　二、限制已断开链接的会话存在时间<br>　　三、增加最多链接数，即设置可连接的数量多些 </p>
 <p><img src="https://i.imgur.com/nGfjDUA.png?1" alt></p>
+<p>修改完后还是不可以同时在线多个用户,需参考下面这篇继续修改服务器</p>
+<h1 id="Windows-2012-R2設定同一使用者-2人使用相同使用者賬號登入-同時多點遠端系統（Win2016-Win2008R2-類似）"><a href="#Windows-2012-R2設定同一使用者-2人使用相同使用者賬號登入-同時多點遠端系統（Win2016-Win2008R2-類似）" class="headerlink" title="Windows 2012 R2設定同一使用者(2人使用相同使用者賬號登入)同時多點遠端系統（Win2016 Win2008R2 類似）"></a>Windows 2012 R2設定同一使用者(2人使用相同使用者賬號登入)同時多點遠端系統（Win2016 Win2008R2 類似）</h1><p>原文链接: <a href="https://www.itread01.com/content/1549212134.html" target="_blank" rel="noopener">https://www.itread01.com/content/1549212134.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">說明：Windows Server 2012預設情況下，只執行2個使用者遠端桌面登陸，這裡我們可以通過安裝遠端桌面會話主機配置來實現2個以上使用者的遠端桌面登陸。</span><br><span class="line">1、 安裝桌面會話主機和遠端桌面授權</span><br><span class="line">  1）在“控制面板”中，開啟“伺服器管理器”，選擇“基於角色或基於功能的安裝”，出現以下的安裝介面 </span><br><span class="line">  2) 下一步 </span><br><span class="line">  3) 選擇遠端桌面服務 </span><br><span class="line">  4) 下一步 </span><br><span class="line">  5) 下一步 </span><br><span class="line">  6) 選擇 桌面會話主機和遠端桌面授權 </span><br><span class="line">  7) 選擇安裝 </span><br><span class="line">  8) 重新啟動後設置便會生效。</span><br><span class="line"></span><br><span class="line">2、 web申請啟用碼</span><br><span class="line">1) 管理工具---遠端桌面服務---遠端桌面授權管理器，選擇未啟用的伺服器，選擇”屬性”，請記下對話方塊中出現的產品ID,我們要用這20位的ID號到網上註冊例如：00184-50100-21572-AT706 </span><br><span class="line">注意：如果終端伺服器授權中沒有伺服器，請選擇連線，然後輸入本機伺服器IP地址。 </span><br><span class="line"> </span><br><span class="line">必需資訊，如圖下填寫： </span><br><span class="line"></span><br><span class="line">2) 開啟Internet Explorer瀏覽器,在位址列中輸入https://activate.microsoft.com這個地址，此時是英文介面。選擇GO </span><br><span class="line"></span><br><span class="line">3) 確保已選中&quot;啟用許可證伺服器&quot;項，再單擊&quot;下一步&quot;按鈕。 </span><br><span class="line"></span><br><span class="line">4) 在隨後要求提供的資訊介面中，&quot;產品ID&quot;處輸入剛才抄下的那個20位數字，再填寫剛才步驟1中必需資訊，然後再選&quot;下一步&quot;繼續。 </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">5) 可以得到&quot;已成功處理您的許可證伺服器啟動申請。你的許可證ID是：…&quot;，又是一個需要抄下的分為七段的35位數，裡面包含有數字也有大寫的英文字母；並且還會問你&quot;需要此時獲取客戶機許可證嗎？&quot;選擇”是” </span><br><span class="line">許可伺服器ID：CCB9Q-Y44D6-BR2HD-9H4VM-YPXMM-KF2KJ-RJ473 </span><br><span class="line"></span><br><span class="line">6) 如果沒有許可證，那麼許可證程式選擇“企業協議”，確定您的資訊後,便可繼續”下一步”； </span><br><span class="line"></span><br><span class="line">7) &quot;產品型別&quot;一項應為&quot;Windows 2003終端服務客戶端訪問許可證&quot;；&quot;數量&quot;為你欲連線的最大使用者數（比如為&quot;500&quot;）；在&quot;註冊號碼&quot;中輸入你從微軟獲得的那個七位數（如果自己沒有許可證，那麼就輸入6565792,4954438,6879321或者5296992），再&quot;下一步&quot;； </span><br><span class="line">注意：建議選擇Windwos Server 2012遠端桌面伺服器每使用者訪問許可。 </span><br><span class="line"></span><br><span class="line">8) 下一步 </span><br><span class="line"></span><br><span class="line">9) 記錄前面的35位數的&quot;許可證伺服器ID&quot;，一個是現在才取得的另一個七段共35位數的&quot;許可證金鑰包ID&quot;。 </span><br><span class="line"></span><br><span class="line">許可金鑰ID：RBG28-9884M-GXC4V-WKXGJ-8QPXG-FG8YP-9RV8Q</span><br><span class="line">10) 選擇結束</span><br><span class="line">3、 啟用終端服務</span><br><span class="line">1) 1) 管理工具---遠端桌面服務---遠端桌面授權管理器，選擇伺服器名稱後點擊右鍵,將”屬性”中的”安裝方法”設為”Web瀏覽器”； </span><br><span class="line"> </span><br><span class="line">2) 再選擇伺服器,點選右鍵,選擇”啟用許可”； </span><br><span class="line"></span><br><span class="line">3) 下一步 </span><br><span class="line"></span><br><span class="line">4) 選擇WEB </span><br><span class="line"></span><br><span class="line">5) 輸入許可伺服器ID：CCB9Q-Y44D6-BR2HD-9H4VM-YPXMM-KF2KJ-RJ473 </span><br><span class="line"></span><br><span class="line">6) 選擇立即啟動許可安裝嚮導，下一步 </span><br><span class="line"></span><br><span class="line">7) 下一步 </span><br><span class="line"> </span><br><span class="line">8) 輸入許可金鑰ID：RBG28-9884M-GXC4V-WKXGJ-8QPXG-FG8YP-9RV8Q </span><br><span class="line"></span><br><span class="line">9) 點選完成 </span><br><span class="line"></span><br><span class="line">4、 配置遠端桌面會話主機授權伺服器</span><br><span class="line">1） 管理工具---遠端桌面服務---RD授權診斷程式，檢視當前伺服器為沒有授權 </span><br><span class="line">2） 執行—&gt;gpedit.msc-&gt;計算機配置---管理模板---windows元件---遠端桌面服務---遠端桌面會話主機----授權， 找到 “使用指定的遠端桌面許可伺服器”，設定為啟用，並在“要使用的許可證伺服器”中，設定當前伺服器的IP或者主機名。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">9）執行—&gt;gpedit.msc-&gt;計算機配置---管理模板---windows元件---終端服務 找到 “限制連線數量”，設定為Disable,即禁用或者未配置。也可以設定具體數量，如圖：</span><br><span class="line"></span><br><span class="line">5、配置遠端桌面會話主機授權模式</span><br><span class="line">3） 管理工具---遠端桌面服務---RD授權診斷程式，檢視當前伺服器授權為0 </span><br><span class="line">4） 執行—&gt;gpedit.msc-&gt;計算機配置---管理模板---windows元件---遠端桌面服務---遠端桌面會話主機----授權， 找到 “設定遠端桌面授權模式”，設定為啟用，並在“指定RD 會話主機伺服器授權模式”中，選擇“按使用者”。 </span><br><span class="line"></span><br><span class="line">5） 重新開啟RD授權診斷程式 </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">6、配置遠端桌面會話主機連線</span><br><span class="line">1) 執行—&gt;gpedit.msc-&gt;計算機配置---管理模板---windows元件---遠端桌面服務---遠端桌面會話主機----連線，可以在“限制連線的數量”中設定最大連線數量（預設無限制）。如圖 </span><br><span class="line"></span><br><span class="line">2) 設定一個使用者是否可以使用多個遠端桌面連線。選擇“將遠端桌面服務限制到單獨的遠端桌面會話”，這裡必須設定禁用，否則一個使用者只能連線一個遠端桌面。</span><br></pre></td></tr></table></figure>
 <p>QQ群：397745473</p>
 
       
@@ -530,8 +533,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
           <p class="site-author-name" itemprop="name">vsyour</p>
@@ -653,6 +665,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-2012-R2設定同一使用者-2人使用相同使用者賬號登入-同時多點遠端系統（Win2016-Win2008R2-類似）"><span class="nav-number">1.</span> <span class="nav-text">Windows 2012 R2設定同一使用者(2人使用相同使用者賬號登入)同時多點遠端系統（Win2016 Win2008R2 類似）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
