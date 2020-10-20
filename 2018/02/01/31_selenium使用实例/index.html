@@ -1,0 +1,1205 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="python,selenium,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="selenium 使用实例环境配置:http://vksec.com/2018/01/31/28_selenium环境配置Firefox和Chrome/ QQ群：397745473">
+<meta name="keywords" content="python,selenium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="selenium 使用实例">
+<meta property="og:url" content="http://vksec.com/2018/02/01/31_selenium使用实例/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="selenium 使用实例环境配置:http://vksec.com/2018/01/31/28_selenium环境配置Firefox和Chrome/ QQ群：397745473">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.zh30.com/wp-content/uploads/2017/08/python-qqzone-album.gif">
+<meta property="og:image" content="https://i.imgur.com/HUwmVAf.png">
+<meta property="og:image" content="https://i.imgur.com/WlDRhcd.png">
+<meta property="og:image" content="https://i.imgur.com/RxeyH5x.png">
+<meta property="og:image" content="https://i.imgur.com/43FdX7W.png">
+<meta property="og:image" content="https://i.imgur.com/C9b4JL5.jpg">
+<meta property="og:image" content="https://i.imgur.com/6P898QG.jpg">
+<meta property="og:image" content="https://i.imgur.com/15kblyo.png">
+<meta property="og:image" content="https://i.imgur.com/WX73sDb.png">
+<meta property="og:image" content="https://i.imgur.com/BKwRSuE.png">
+<meta property="og:image" content="https://i.imgur.com/eBi0IQt.gif">
+<meta property="og:image" content="https://i.imgur.com/FWGh0Ux.jpg">
+<meta property="og:image" content="https://i.imgur.com/b9oEPNg.jpg">
+<meta property="og:image" content="https://i.imgur.com/EqMTGHA.png">
+<meta property="og:image" content="https://i.imgur.com/E7y0IpD.png">
+<meta property="og:updated_time" content="2019-11-05T01:16:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="selenium 使用实例">
+<meta name="twitter:description" content="selenium 使用实例环境配置:http://vksec.com/2018/01/31/28_selenium环境配置Firefox和Chrome/ QQ群：397745473">
+<meta name="twitter:image" content="https://www.zh30.com/wp-content/uploads/2017/08/python-qqzone-album.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2018/02/01/31_selenium使用实例/">
+
+
+
+  <title>selenium 使用实例 | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/02/01/31_selenium使用实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                selenium 使用实例
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T03:03:03+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/31_selenium使用实例/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/01/31_selenium使用实例/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>selenium 使用实例<br>环境配置:<a href="http://vksec.com/2018/01/31/28_selenium环境配置Firefox和Chrome/">http://vksec.com/2018/01/31/28_selenium环境配置Firefox和Chrome/</a></p>
+<p>QQ群：397745473</p>
+<a id="more"></a> 
+<h1 id="selenium-使用实例1"><a href="#selenium-使用实例1" class="headerlink" title="selenium 使用实例1"></a>selenium 使用实例1</h1><h2 id="python-selenium实现QQ群自动签到"><a href="#python-selenium实现QQ群自动签到" class="headerlink" title="python+selenium实现QQ群自动签到"></a>python+selenium实现QQ群自动签到</h2><p>python+selenium实现的QQ群自动签到！<br>QQ群里的群签到功能经常会断签，如果能用脚本去自动签到，就再也不怕忘签了~下面郑晓会告诉你如何使用python来实现QQ群的定时自动签到(邪恶脸)。<br>以下代码基于linux(centos)，Python2.7，且须要有pyvirtualdisplay和selenium库支持。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> pyvirtualdisplay <span class="keyword">import</span> Display</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="comment">#要签到的QQ群号列表</span></span><br><span class="line">groupid = [<span class="number">123456789</span>,<span class="number">987654321</span>]</span><br><span class="line">headers = &#123;<span class="string">"Content-Type"</span>:<span class="string">"application/x-www-form-urlencoded"</span>,<span class="string">"Host"</span>:<span class="string">"qiandao.qun.qq.com"</span>,<span class="string">"Origin"</span>:<span class="string">"http://qiandao.qun.qq.com"</span>,<span class="string">"Referer"</span>: <span class="string">"http://qiandao.qun.qq.com"</span>,<span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36"</span>&#125;</span><br><span class="line"><span class="comment">#创建一个启动session的请求对象</span></span><br><span class="line">s = requests.Session()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment">#启动一个虚拟桌面</span></span><br><span class="line">                display = Display(visible=<span class="number">0</span>, size=(<span class="number">1100</span>,<span class="number">700</span>))</span><br><span class="line">                display.start()</span><br><span class="line">                driver = webdriver.Firefox()</span><br><span class="line">                driver.set_window_position(<span class="number">20</span>, <span class="number">40</span>)</span><br><span class="line">                driver.set_window_size(<span class="number">1100</span>,<span class="number">700</span>)</span><br><span class="line">                <span class="comment">#打开QQ登录界面 准备登录</span></span><br><span class="line">                driver.get(<span class="string">'http://qzone.qq.com'</span>)</span><br><span class="line">                driver.switch_to_frame(<span class="string">'login_frame'</span>)</span><br><span class="line">                driver.find_element_by_id(<span class="string">'switcher_plogin'</span>).click()</span><br><span class="line">                driver.find_element_by_id(<span class="string">'u'</span>).clear()</span><br><span class="line">                <span class="comment">#填写QQ帐号</span></span><br><span class="line">                driver.find_element_by_id(<span class="string">'u'</span>).send_keys(<span class="string">'qq号'</span>)</span><br><span class="line">                driver.find_element_by_id(<span class="string">'p'</span>).clear()</span><br><span class="line">                <span class="comment">#填写QQ密码</span></span><br><span class="line">                driver.find_element_by_id(<span class="string">'p'</span>).send_keys(<span class="string">'****zh30.com****'</span>)</span><br><span class="line">                <span class="comment">#模拟点击登录按钮 执行登录 获取cookie</span></span><br><span class="line">                driver.find_element_by_id(<span class="string">'login_button'</span>).click()</span><br><span class="line">                cookies = driver.get_cookies()</span><br><span class="line">                <span class="comment">#退出浏览器</span></span><br><span class="line">                driver.quit()</span><br><span class="line">                display.stop()</span><br><span class="line">        <span class="keyword">return</span> cookies</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">cookies = login()</span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">        <span class="keyword">if</span> cookie[<span class="string">'name'</span>] == <span class="string">'skey'</span>:</span><br><span class="line">                skey = cookie[<span class="string">'value'</span>]</span><br><span class="line">        s.cookies.set(cookie[<span class="string">'name'</span>], cookie[<span class="string">'value'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算bkn并存入cookie</span></span><br><span class="line">e = <span class="number">5381</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(skey)):</span><br><span class="line">    e = e + (e&lt;&lt;<span class="number">5</span>)+ord(skey[i])</span><br><span class="line">bkn = str(<span class="number">2147483647</span> &amp; e)</span><br><span class="line">s.cookies.set(<span class="string">"Gtk"</span>, bkn)</span><br><span class="line"><span class="comment">#签到方法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sign</span><span class="params">(groupid)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> gid <span class="keyword">in</span> groupid:</span><br><span class="line">        response = s.post(<span class="string">"http://qiandao.qun.qq.com/cgi-bin/sign"</span>, data=&#123;<span class="string">"gc"</span>:gid, <span class="string">"is_sign"</span>:<span class="number">0</span>, <span class="string">"bkn"</span>:bkn&#125;, headers=headers)</span><br><span class="line">        responseJson = response.json()</span><br><span class="line">        <span class="keyword">if</span> responseJson.has_key(<span class="string">'em'</span>) <span class="keyword">and</span> responseJson[<span class="string">'em'</span>] == <span class="string">'no&amp;nbsp;login'</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"><span class="comment">#开始签到</span></span><br><span class="line">sign(groupid)</span><br></pre></td></tr></table></figure></p>
+<p>好了，这样就完成了一个自动签到的脚本，运行它便会自动启动浏览器、自动填上帐号密码登录、循环签到。但它只执行一次，我们要把它加入到计划任务crontab中。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> <span class="number">0</span> * * * python /root/QQsign.py</span><br><span class="line"><span class="comment">#为了测试可以加个输出日志，如</span></span><br><span class="line"><span class="number">0</span> <span class="number">0</span> * * * python /root/QQsign.py &gt;/root/crontab-run.log <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>以上任务郑晓是在root帐户中创建，定时于每天0点执行/root/目录下的QQsign.py脚本，输出日志到crontab-run.log文件中。<br>完成！看看以下的效果截图，是不是很贱啊？</p>
+<h1 id="selenium-使用实例2"><a href="#selenium-使用实例2" class="headerlink" title="selenium 使用实例2"></a>selenium 使用实例2</h1><h2 id="python-selenium自动登录qq空间并下载相册"><a href="#python-selenium自动登录qq空间并下载相册" class="headerlink" title="python+selenium自动登录qq空间并下载相册"></a>python+selenium自动登录qq空间并下载相册</h2><p>基于selenium的自动登录qq空间并遍历所有相册及相片的功能。只能访问自己或好友(有访问权限)的相册，好友有密码的相册不可能。。。这里只是介绍流程，所以只是实现了遍历，并未实现图片文件的下载保存。读取相册信息是请求的手机版qq空间的相册相关接口，其中写死了只遍历前50个相册，可以自己改。</p>
+<p>脚本并未处理任何可能出现的错误，请自己完善。</p>
+<p>在环境:64位win7+python2.7+selenium3.5.0+chromedriver2.31 下测试通过。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!coding:utf-8</span></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> requests,time,json</span><br><span class="line"></span><br><span class="line">login_uin = <span class="string">'123456789'</span> <span class="comment">#登录qq</span></span><br><span class="line">pwd = <span class="string">'zx1233211234567'</span> <span class="comment">#登录密码</span></span><br><span class="line">album_uin = <span class="string">'123456789'</span> <span class="comment">#要读取相册的qq</span></span><br><span class="line"></span><br><span class="line">s = requests.Session()</span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化出浏览器开始登录</span></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.set_window_size(<span class="number">1000</span>,<span class="number">600</span>)</span><br><span class="line">driver.get(<span class="string">'https://mobile.qzone.qq.com'</span>)</span><br><span class="line">driver.find_element_by_id(<span class="string">'u'</span>).clear()</span><br><span class="line">driver.find_element_by_id(<span class="string">'u'</span>).send_keys(login_uin)</span><br><span class="line">driver.find_element_by_id(<span class="string">'p'</span>).clear()</span><br><span class="line">driver.find_element_by_id(<span class="string">'p'</span>).send_keys(pwd)</span><br><span class="line">driver.find_element_by_id(<span class="string">'go'</span>).click()</span><br><span class="line"><span class="comment">#等待浏览器中js计算出qzonetoken</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    qzonetoken = driver.execute_script(<span class="string">"return window.shine0callback"</span>)</span><br><span class="line">    <span class="keyword">if</span> qzonetoken:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    time.sleep(<span class="number">0.1</span>)</span><br><span class="line"><span class="comment">#读取cookie后关闭浏览器</span></span><br><span class="line">cookies = driver.get_cookies()</span><br><span class="line">driver.quit()</span><br><span class="line"></span><br><span class="line">cookies_ = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">    <span class="keyword">if</span> cookie[<span class="string">'name'</span>] == <span class="string">'p_skey'</span>:</span><br><span class="line">        skey = cookie[<span class="string">'value'</span>]</span><br><span class="line">    <span class="comment">#s.cookies.set(cookie['name'], cookie['value'])</span></span><br><span class="line">    cookies_[cookie[<span class="string">'name'</span>]] = cookie[<span class="string">'value'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算gtk</span></span><br><span class="line">e = <span class="number">5381</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(skey)):</span><br><span class="line">    e = e + (e&lt;&lt;<span class="number">5</span>)+ord(skey[i])</span><br><span class="line">g_tk = str(<span class="number">2147483647</span> &amp; e)</span><br><span class="line"></span><br><span class="line"><span class="comment">###################### www.zh30.com ######################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请求中添加cookie，开始读取相册列表</span></span><br><span class="line">requests.utils.add_dict_to_cookiejar(s.cookies, cookies_)</span><br><span class="line">url=<span class="string">"https://mobile.qzone.qq.com/list?qzonetoken="</span>+qzonetoken+<span class="string">"&amp;g_tk="</span>+g_tk+<span class="string">"&amp;format=json&amp;list_type=album&amp;action=0&amp;res_uin="</span>+album_uin+<span class="string">"&amp;count=50"</span></span><br><span class="line">r = s.get(url);</span><br><span class="line">data = json.loads(r.text.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> album <span class="keyword">in</span> data[<span class="string">'data'</span>][<span class="string">'vFeeds'</span>]:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'相册名:'</span>+album[<span class="string">'pic'</span>][<span class="string">'albumname'</span>].encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'相册id:'</span>+album[<span class="string">'pic'</span>][<span class="string">'albumid'</span>].encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'图片数量:'</span> + str(album[<span class="string">'pic'</span>][<span class="string">'albumnum'</span>])</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'开始下载相册图片:'</span></span><br><span class="line">    <span class="comment">#读取当前相册中的图片列表</span></span><br><span class="line">    url = <span class="string">"https://h5.qzone.qq.com/webapp/json/mqzone_photo/getPhotoList2?qzonetoken="</span>+qzonetoken+<span class="string">"&amp;g_tk="</span>+g_tk+<span class="string">"&amp;uin="</span>+album_uin+<span class="string">"&amp;albumid="</span>+album[<span class="string">'pic'</span>][<span class="string">'albumid'</span>].encode(<span class="string">'utf-8'</span>)+<span class="string">"&amp;ps=0"</span></span><br><span class="line">    r = s.get(url)</span><br><span class="line">    photo_datas = json.loads(r.text.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">    <span class="keyword">for</span> T <span class="keyword">in</span> photo_datas[<span class="string">'data'</span>][<span class="string">'photos'</span>]:</span><br><span class="line">        <span class="keyword">for</span> pic <span class="keyword">in</span> photo_datas[<span class="string">'data'</span>][<span class="string">'photos'</span>][T]:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'图片名:'</span>+pic[<span class="string">'picname'</span>].encode(<span class="string">'utf-8'</span>)+<span class="string">'，url:'</span>+pic[<span class="string">'1'</span>][<span class="string">'url'</span>].encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"="</span>*<span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>以下是运行截屏，右键图片在新标签页打开，可以高清~<br><img src="https://www.zh30.com/wp-content/uploads/2017/08/python-qqzone-album.gif" alt></p>
+<h1 id="selenium-使用实例3"><a href="#selenium-使用实例3" class="headerlink" title="selenium 使用实例3"></a>selenium 使用实例3</h1><h2 id="自动抓取摩拜单车车辆位置数据"><a href="#自动抓取摩拜单车车辆位置数据" class="headerlink" title="自动抓取摩拜单车车辆位置数据"></a>自动抓取摩拜单车车辆位置数据</h2><p>每天从下车站到公司还有好几米的路要走，这对于现在能免费骑车的懒癌患者怎么能忍？车站人流量大，能找到辆车实属不易，所以就得在下公交车前不停的刷新app查看下车点是否有车，有车就马上预订。</p>
+<p>一路上不停的拿着手机刷新太麻烦了，身为码农怎么能忍？我这里要实现的就是把刷新查看目的地是否有车的这个过程实现了自动化。</p>
+<p>实现思路是首先找到摩拜单车在地图上标记车辆位置的这个接口，然后想办法使用程序模拟这个请求，从获得的车辆数据中检查是否有符合的车辆，如果有则发送提示消息。</p>
+<p>使用的抓包工具是charles，它可以很轻松的获取到移动设备的数据请求，具体使用方法不做介绍，请百度。</p>
+<p>开始时是使用charles开启ssl代理，抓取手机上摩拜单车app的请求，摩拜的每个https请求都是unknow(http method是connect)，看错误提示应该是证书的问题，但手机上其它的https请求是正常的（比如京东），网上的说法是使用了http隧道通信，代理工具无法抓取。<br><img src="https://i.imgur.com/HUwmVAf.png" alt><br>app无法抓包，转战微信小程序，在摩拜的微信小程序中查看附近车辆时，charles成功抓取到车辆位置的api（nearbyBikeInfo.do）<br><img src="https://i.imgur.com/WlDRhcd.png" alt><br>知道了api后就可以很轻松的模拟出请求，这里使用了python+requests进行post请求。多次测试发现header中有些看似很关键的参数其实不必要的，所以这里已经移除。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"><span class="comment">#www.zh30.com</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"Host"</span>: <span class="string">"mwx.mobike.com"</span>,</span><br><span class="line">    <span class="string">"time"</span>: <span class="string">"1500887680"</span>,</span><br><span class="line">    <span class="string">"eption"</span>: <span class="string">"bb15c"</span>,</span><br><span class="line">    <span class="string">"open_src"</span>: <span class="string">"list"</span>,</span><br><span class="line">    <span class="string">"platform"</span>: <span class="string">"3"</span>,</span><br><span class="line">    <span class="string">"citycode"</span>: <span class="string">"0532"</span>,</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (iPhone;www.zh30.com; CPU iPhone OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Mobile/14F89 MicroMessenger/6.5.12 NetType/WIFI Language/zh_CN"</span>,</span><br><span class="line">    <span class="string">"lang"</span>: <span class="string">"zh"</span>,</span><br><span class="line">    <span class="string">"Referer"</span>: <span class="string">"https://servicewechat.com/wxxxxxxxx/70/page-frame.html"</span></span><br><span class="line">&#125;</span><br><span class="line">body = &#123;</span><br><span class="line">    <span class="string">"longitude"</span>:<span class="string">"120.413333"</span>,</span><br><span class="line">    <span class="string">"latitude"</span>:<span class="string">"36.087741"</span>,</span><br><span class="line">    <span class="string">"citycode"</span>:<span class="string">"0532"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">r = requests.post(<span class="string">"https://mwx.mobike.com/mobike-api/rent/nearbyBikesInfo.do"</span>,data=body, headers=headers, verify=<span class="literal">False</span>);</span><br><span class="line"><span class="keyword">print</span> r.text.encode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>注意，代码有改动:)</p>
+<p>成功返回json数据<br><img src="https://i.imgur.com/RxeyH5x.png" alt><br>格式化后，数据很清晰明白，接口返回查询的坐标周围有几辆车，并包含有每辆车的编号、坐标和与目标坐标的相对距离等信息。<br><img src="https://i.imgur.com/43FdX7W.png" alt><br>接下来要做的就是从数据里过滤出比较近的车辆（distance的单位是米，值可按自己的需求定），并给出提示消息。提示消息推送可以使用pushbullet这类工具，实现也很方便。更复杂点儿可以距离坐标计算一下每个车辆在目标位置的哪个方向。这里就不实现了~</p>
+<p>完。</p>
+<h1 id="selenium-使用实例4"><a href="#selenium-使用实例4" class="headerlink" title="selenium 使用实例4"></a>selenium 使用实例4</h1><h2 id="使用antiword读取word文档"><a href="#使用antiword读取word文档" class="headerlink" title="使用antiword读取word文档"></a>使用antiword读取word文档</h2><p>antiword是linux及其他RISC OS下免费的ms word文档读取器。使用它可以很方便的在Linux中读取word文档并输出为纯文本字符串。</p>
+<p>下载地址：<a href="http://www.winfield.demon.nl" target="_blank" rel="noopener">http://www.winfield.demon.nl</a></p>
+<p>下载后解压、编译安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf antiword-0.37.tar.gz</span><br><span class="line">cd antiword-0.37</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+<p>默认安装到当前账户下的bin目录中。</p>
+<p>使用：<br>终端中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/pi/bin/antiword antiword-test.doc</span><br></pre></td></tr></table></figure></p>
+<p>其他语言中通过各自执行系统命令的方式来执行，比如Python中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import subprocess</span><br><span class="line">word_file = &quot;antiword-test.doc&quot;</span><br><span class="line">content   = subprocess.check_output([&quot;/home/pi/antiword&quot;, word_file])</span><br><span class="line">print content</span><br></pre></td></tr></table></figure></p>
+<p>比如我有个doc文件是这样的：<br><img src="https://i.imgur.com/C9b4JL5.jpg" alt><br>执行结果类似这样：<br><img src="https://i.imgur.com/6P898QG.jpg" alt><br>其中的非字符串部分被过滤了。</p>
+<h1 id="selenium-使用实例5"><a href="#selenium-使用实例5" class="headerlink" title="selenium 使用实例5"></a>selenium 使用实例5</h1><h2 id="python-DHT爬虫中路由表的实现"><a href="#python-DHT爬虫中路由表的实现" class="headerlink" title="python-DHT爬虫中路由表的实现"></a>python-DHT爬虫中路由表的实现</h2><p>这是DHT协议中路由表的实现，在DHT网络中，每个节点维护着一张路由表(table)，表中储存着已获取的状态良好的节点(node)。路由表又被划分为多个区间桶(bucket)，节点应该储存在这些桶中，空的表只有一个桶。当桶满时不能再插入该桶中，除非当前节点（自己）ID也在这个桶中，在这种情况下，原桶需分裂为两个相同大小的桶，旧桶中的节点重新分配到新的子桶中。具体细节可查阅DHT协议。</p>
+<p>以下代码逻辑主要来源于网络，我只是改了两个bug。。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line">from time import time</span><br><span class="line">from hashlib import sha1</span><br><span class="line">from random import randint</span><br><span class="line">#生成一个20字节长度的node_id</span><br><span class="line">def node_id():  </span><br><span class="line">    hash = sha1()  </span><br><span class="line">    s = &quot;&quot;.join(chr(randint(0, 255)) for i in xrange(20))</span><br><span class="line">    hash.update(s)  </span><br><span class="line">    return hash.digest()  </span><br><span class="line">#返回Node_id的10进制长整型表示 node_id-&gt;16-&gt;10</span><br><span class="line">def int_ify(nid):  </span><br><span class="line">    assert len(nid) == 20 </span><br><span class="line">    return long(nid.encode(&apos;hex&apos;), 16)</span><br><span class="line">#node 节点类 每个节点都有id、ip和端口属性 重新定义了节点的等于和不等于操作</span><br><span class="line">class KNode:</span><br><span class="line">    def __init__(self, nid, ip, port):</span><br><span class="line">        self.nid = nid</span><br><span class="line">        self.ip = ip</span><br><span class="line">        self.port = port</span><br><span class="line">    def __eq__(self, other):</span><br><span class="line">        return self.nid == other.nid</span><br><span class="line">    def __ne__(self, other):</span><br><span class="line">        return self.nid != other.nid</span><br><span class="line">#桶满的异常类</span><br><span class="line">class BucketFull:</span><br><span class="line">    pass</span><br><span class="line">#bucket 桶类</span><br><span class="line">class KBucket:</span><br><span class="line">    def __init__(self, min, max):</span><br><span class="line">        self.min = min</span><br><span class="line">        self.max = max</span><br><span class="line">        self.nodes = []</span><br><span class="line">        self.lastTime = time() #当前桶的最后更新时间</span><br><span class="line">    #检查一个node_id是否在桶的范围内</span><br><span class="line">    def nid_in_range(self, nid):</span><br><span class="line">        return self.min &lt;= int_ify(nid) &lt; self.max</span><br><span class="line">    #向桶中添加节点</span><br><span class="line">    def append(self, node):</span><br><span class="line">        if len(node.nid) != 20: return</span><br><span class="line">        if len(self.nodes) &lt; 8:</span><br><span class="line">            if node in self.nodes:</span><br><span class="line">                self.nodes.remove(node)</span><br><span class="line">                self.nodes.append(node)</span><br><span class="line">            else:</span><br><span class="line">                self.nodes.append(node)</span><br><span class="line">            self.lastTime = time()</span><br><span class="line">        else:</span><br><span class="line">            raise BucketFull</span><br><span class="line">#路由表类</span><br><span class="line">class KTable:</span><br><span class="line">    def __init__(self, nid):</span><br><span class="line">        self.nid = nid</span><br><span class="line">        self.nodeTotal = 0;</span><br><span class="line">        self.buckets = [KBucket(0, 2 ** 160)] #路由表中所有的桶的列表 默认只有一个桶</span><br><span class="line">    #向路由表添加节点，即向表中某个桶中添加节点，桶满时要进行拆分</span><br><span class="line">    def append(self, node):</span><br><span class="line">        if node.nid == self.nid: return</span><br><span class="line">        index = self.bucket_index(node.nid)</span><br><span class="line">        bucket = self.buckets[index]</span><br><span class="line">        try:</span><br><span class="line">            bucket.append(node)</span><br><span class="line">            self.nodeTotal = self.nodeTotal+1</span><br><span class="line">        except BucketFull:</span><br><span class="line">            if not bucket.nid_in_range(self.nid): return</span><br><span class="line">            self.split_bucket(index)</span><br><span class="line">            self.append(node)</span><br><span class="line">    #返回待添加节点id应该在哪个桶的范围中</span><br><span class="line">    def bucket_index(self, nid):</span><br><span class="line">        for index, bucket in enumerate(self.buckets):</span><br><span class="line">            if bucket.nid_in_range(nid):</span><br><span class="line">                return index</span><br><span class="line">        return index</span><br><span class="line">    #拆分桶</span><br><span class="line">    def split_bucket(self, index):</span><br><span class="line">        old = self.buckets[index]</span><br><span class="line">        point = old.max - (old.max - old.min)/2</span><br><span class="line">        new = KBucket(point, old.max)</span><br><span class="line">        old.max = point</span><br><span class="line">        self.buckets.insert(index + 1, new)</span><br><span class="line">        for node in old.nodes:</span><br><span class="line">            if new.nid_in_range(node.nid):</span><br><span class="line">                new.append(node)</span><br><span class="line">        for node in new.nodes:</span><br><span class="line">            old.nodes.remove(node)</span><br><span class="line">    #返回离目标最近的8个node</span><br><span class="line">    def get_neighbor(self, target):</span><br><span class="line">        nodes = []</span><br><span class="line">        if len(self.buckets) == 0: return nodes</span><br><span class="line">        index = self.bucket_index(target)</span><br><span class="line">        nodes = self.buckets[index].nodes</span><br><span class="line">        min = index - 1</span><br><span class="line">        max = index + 1</span><br><span class="line">        while len(nodes) &lt; K and (min &gt;= 0 or max &lt; len(self.buckets)):</span><br><span class="line">            if min &gt;= 0:</span><br><span class="line">                nodes.extend(self.buckets[min].nodes)</span><br><span class="line">            if max &lt; len(self.buckets):</span><br><span class="line">                nodes.extend(self.buckets[max].nodes)</span><br><span class="line">            min -= 1</span><br><span class="line">            max += 1</span><br><span class="line">        num = int_ify(target)</span><br><span class="line">        nodes.sort(lambda a, b, num=num: cmp(num^int_ify(a.nid), num^int_ify(b.nid)))</span><br><span class="line">        return nodes[:8]</span><br><span class="line">    #打印调试信息</span><br><span class="line">    def print_info(self):</span><br><span class="line">        print &apos;桶数量:&apos;+str(len(self.buckets))</span><br><span class="line">        print &apos;节点量:&apos;+str(self.nodeTotal)</span><br><span class="line">#Demo</span><br><span class="line">#实例化出路由表， 随机生成一千个node，放入表中并打印表的状态</span><br><span class="line">routeTable = KTable(node_id())</span><br><span class="line">for i in xrange(0,1000):</span><br><span class="line">    routeTable.append(KNode(node_id(), &apos;127.0.0.1&apos;, &apos;80012&apos;))</span><br><span class="line">routeTable.print_info()</span><br></pre></td></tr></table></figure></p>
+<p>打印出的结果显示路由表中的桶和节点数量十分有限，说明有大量的节点已经被抛弃，原因在代码中的第67行，当待加入节点所需要加入的桶已满且自身id不在这个桶中时直接忽略。<br>由于这种路由表实现复杂、需要不停的ping检查每个节点是否有效且储存的节点数量有限。实际做DHT爬虫时可不实现，爬虫只需要不停的认识新的node，并获取资源infohash，所以直接通过向有效的node发送完find_node后即可删除该node，只需等待node发送的get_peers和announce_peer通知即可。</p>
+<h1 id="selenium-使用实例6"><a href="#selenium-使用实例6" class="headerlink" title="selenium 使用实例6"></a>selenium 使用实例6</h1><h2 id="SublimeText3按ctrl-b执行python无反应"><a href="#SublimeText3按ctrl-b执行python无反应" class="headerlink" title="SublimeText3按ctrl+b执行python无反应"></a>SublimeText3按ctrl+b执行python无反应</h2><p>最后更新时间：2017-09-14<br>现象：<br>在Sublime中打开.py文件，按”ctrl+b”执行时无反应。点击工具-&gt;编译系统中已经有且识别到Python，但执行”run（ctrl+shift+b）”时无反应，Sublime左下角提示”No Build System with variant run”。</p>
+<p>解决：<br>首先打开一个CMD，在左上角单击，选择”属性”。在属性-&gt;选项中查看”当前代码页”一项中的数值。(这一步可选)<br><img src="https://i.imgur.com/15kblyo.png" alt><br>然后打开Sublime安装目录，打开Packages，找到里面的”Python.sublime-package”文件，复制出来一份留作备份。把这个文件后缀改为.zip，打开这个压缩包。</p>
+<p>在打开压缩包中找到”Python.sublime-build”文件拖出来编辑一下它(编辑工具可用sublime或其它文本编辑器直接打开)。<br>原文件内容应该类似这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;shell_cmd&quot;: &quot;python -u &quot;$file&quot;&quot;,</span><br><span class="line">    &quot;file_regex&quot;: &quot;^[ ]*File &quot;(...*?)&quot;, line ([0-9]*)&quot;,</span><br><span class="line">    &quot;selector&quot;: &quot;source.python&quot;,</span><br><span class="line"></span><br><span class="line">    &quot;env&quot;: &#123;&quot;PYTHONIOENCODING&quot;: &quot;utf-8&quot;&#125;,</span><br><span class="line"></span><br><span class="line">    &quot;variants&quot;:</span><br><span class="line">    [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Syntax Check&quot;,</span><br><span class="line">            &quot;shell_cmd&quot;: &quot;python -m py_compile &quot;$&#123;file&#125;&quot;&quot;,</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>改成这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;cmd&quot;: [&quot;python&quot;, &quot;-u&quot;, &quot;$file&quot;],</span><br><span class="line">    &quot;file_regex&quot;: &quot;^[ ]*File &quot;(...*?)&quot;, line ([0-9]*)&quot;,</span><br><span class="line">    &quot;selector&quot;: &quot;source.python&quot;,</span><br><span class="line">    &quot;encoding&quot;: &quot;utf-8&quot;,</span><br><span class="line">    &quot;env&quot;: &#123;&quot;PYTHONIOENCODING&quot;: &quot;utf-8&quot;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存后拖回zip中覆盖，然后把.zip改回.sublime-package，覆盖回Packages目录即修改完成。</p>
+<p>打开一个.py，敲一句print ‘hello world’, ctrl+b，成功执行。<br><img src="https://i.imgur.com/WX73sDb.png" alt><br>PS:不成功的原因可能是第一行cmd命令问题或encoding编码不对（如果上述法不成功，尝试将encoding的值改为第一步查看到的数值）或其它参数有问题比如我这里的variants也有问题，所以我就直接去掉了。。。。</p>
+<p>======================2017-09-14 更新======================<br>另一方法：<br>菜单中点击–&gt; 工具 –&gt; 编译系统 –&gt; 新建编译系统<br>把里面的默认配置内容删除，改成下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">    &quot;cmd&quot;: [&quot;python&quot;, &quot;$file&quot;],</span><br><span class="line">    &quot;file_regex&quot;: &quot;py$&quot;, </span><br><span class="line">    &quot;selector&quot;: &quot;source.python&quot; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>保存，命名为python.sublime-build即可，重命名时的这个python字符串，我觉得改成其它的也可以，它只是会显示在你菜单编译系统列表里而已。<br>关掉sublime重新打开测试，新建一个.py文件，写一个helloworld， ctrl+b 成功。<br><img src="https://i.imgur.com/BKwRSuE.png" alt></p>
+<h1 id="selenium-使用实例7"><a href="#selenium-使用实例7" class="headerlink" title="selenium 使用实例7"></a>selenium 使用实例7</h1><h2 id="使用Python-Selenium模拟登录QQ空间"><a href="#使用Python-Selenium模拟登录QQ空间" class="headerlink" title="使用Python+Selenium模拟登录QQ空间"></a>使用Python+Selenium模拟登录QQ空间</h2><p>使用Python+Selenium模拟登录QQ空间<br>爬QQ空间之类的页面时大多需要进行登录，研究QQ登录规则的话，得分析大量Javascript的加密解密，这绝对能掉好几斤头发。而现在有了selenium工具，麻麻再也不用担心你的QQ登录！</p>
+<p>Selenium是一个WEB自动化测试工具，它运行时会直接实例化出一个浏览器，完全模拟用户的操作，比如点击链接、输入表单，点击按钮提交等。所以我们使用它可以很方便的来登录QQ空间。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#导入selenium2中的webdriver库</span><br><span class="line">from selenium import webdriver</span><br><span class="line"></span><br><span class="line">#实例化出一个Firefox浏览器</span><br><span class="line">driver = webdriver.Firefox()</span><br><span class="line"></span><br><span class="line">#设置浏览器窗口的位置和大小</span><br><span class="line">driver.set_window_position(20, 40)</span><br><span class="line">driver.set_window_size(1100,700)</span><br><span class="line"></span><br><span class="line">#打开一个页面（QQ空间登录页）</span><br><span class="line">driver.get(‘http://qzone.qq.com’)</span><br><span class="line">#登录表单在页面的框架中，所以要切换到该框架</span><br><span class="line">driver.switch_to_frame(‘login_frame’)</span><br><span class="line">#通过使用选择器选择到表单元素进行模拟输入和点击按钮提交</span><br><span class="line">driver.find_element_by_id(‘switcher_plogin’).click()</span><br><span class="line">driver.find_element_by_id(‘u’).clear()</span><br><span class="line">driver.find_element_by_id(‘u’).send_keys(‘917464311’)</span><br><span class="line">driver.find_element_by_id(‘p’).clear()</span><br><span class="line">driver.find_element_by_id(‘p’).send_keys(‘123456’)</span><br><span class="line">driver.find_element_by_id(‘login_button’).click()</span><br><span class="line"></span><br><span class="line">#do something….</span><br><span class="line">#退出窗口</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure></p>
+<p>这样就能方便的登录到QQ空间，下一步就可以利用这个登录状态去抓取页面内容或其它脑洞大开的应用了~~~<br>安装selenium库，建议直接使用pip工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pip install selenium</span><br></pre></td></tr></table></figure>
+<p>2017-02-28 更新:<br>有网友反映登录时出现异常，我只能表示无能为力，我只是用过selenium，并不能解决各种疑难杂症，今天又收到回复说是无法使用，我以为是腾讯改什么规则了，所以又测试了一下没发现问题，并录制了gif，如下图(点击查看高清…)：<br><img src="https://i.imgur.com/eBi0IQt.gif" alt><br>环境：64位Win10 + chromedriver(2.27) + python2.7 + 密码在运行时已经修改了:)</p>
+<h1 id="selenium-使用实例8"><a href="#selenium-使用实例8" class="headerlink" title="selenium 使用实例8"></a>selenium 使用实例8</h1><h2 id="python抓取安居客小区数据"><a href="#python抓取安居客小区数据" class="headerlink" title="python抓取安居客小区数据"></a>python抓取安居客小区数据</h2><p>某功能需要一套城市所有小区的位置信息数据，一开始是使用的百度地图api来进行关键词搜索，勉强能用，但数据量非常少，还是有大量的社区/小区搜不到。</p>
+<p>周末在家上网时发现安居客上直接就有每个城市的小区大全，欣喜若狂，于是就立即写了个爬虫试试。<br>以下贴代码，python2.7，lxml+request库。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="comment">#author : zx</span></span><br><span class="line"><span class="comment">#date   : 2015/07/27</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="comment">#ua头信息 get时可以随机使用</span></span><br><span class="line">headers = [</span><br><span class="line">    &#123; <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Linux; U; Android 4.1; en-us; GT-N7100 Build/JRO03C) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"</span>&#125;,</span><br><span class="line">    &#123; <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 520)"</span>&#125;,</span><br><span class="line">    &#123; <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (BB10; Touch) AppleWebKit/537.10+ (KHTML, like Gecko) Version/10.0.9.2372 Mobile Safari/537.10+"</span>&#125;,</span><br><span class="line">    &#123; <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Linux; Android 4.4.2; GT-I9505 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36"</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">#城市入口页面</span></span><br><span class="line"><span class="comment">#我只抓的青岛本地</span></span><br><span class="line"><span class="comment">#其它城市或全国城市可通过这个页面抓取城市列表http://m.anjuke.com/cityList</span></span><br><span class="line">url = <span class="string">'http://m.anjuke.com/qd/xiaoqu/'</span></span><br><span class="line">req = requests.get(url)</span><br><span class="line">cookie = req.cookies.get_dict()</span><br><span class="line"></span><br><span class="line"><span class="comment">#链接数据库</span></span><br><span class="line">conn = MySQLdb.connect(<span class="string">'localhost'</span>, <span class="string">'*****'</span>, <span class="string">'******'</span>, <span class="string">'***'</span>, charset=<span class="string">'utf8'</span>)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line">sql = <span class="string">"insert into xiaoqu (name, lat, lng, address, district) values (%s, %s, %s, %s, %s)"</span></span><br><span class="line">sql_v = []  </span><br><span class="line"></span><br><span class="line">page = etree.HTML(req.text)</span><br><span class="line">districtHTML = page.xpath(<span class="string">u"//div[@class='listcont cont_hei']"</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#采集目标城市的各行政区域url</span></span><br><span class="line"><span class="comment">#当然如果不想区分行政区可以直接抓“全部” 即上面url中的所有小区及分页</span></span><br><span class="line">districtUrl = &#123;&#125;</span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> districtHTML:</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">0</span>:</span><br><span class="line">        i = <span class="number">1</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    districtUrl[a.text] = a.get(<span class="string">'href'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#开始采集</span></span><br><span class="line">total_all = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> k,u <span class="keyword">in</span> districtUrl.items():</span><br><span class="line">    p = <span class="number">1</span> <span class="comment">#分页</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        header_i = random.randint(<span class="number">0</span>, len(headers)<span class="number">-1</span>)</span><br><span class="line">        url_p = u.rstrip(<span class="string">'/'</span>) + <span class="string">'-p'</span> + str(p)</span><br><span class="line">        r = requests.get(url_p, cookies=cookie, headers=headers[header_i])</span><br><span class="line">        page = etree.HTML(r.text) <span class="comment">#这里转换大小写要按情况...</span></span><br><span class="line">        communitysUrlDiv = page.xpath(<span class="string">u"//div[@class='items']"</span>)[<span class="number">0</span>]</span><br><span class="line">        total = len(communitysUrlDiv)</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> communitysUrlDiv:</span><br><span class="line">            i+=<span class="number">1</span></span><br><span class="line">            r = requests.get(a.get(<span class="string">'href'</span>), cookies=cookie, headers=headers[header_i])</span><br><span class="line">            <span class="comment">#抓取时发现有少量404页会直接导致程序报错退出- -!</span></span><br><span class="line">            <span class="comment">#唉 说明代码写的还不够健壮啊</span></span><br><span class="line">            <span class="comment">#加了if判断和try， 错误时可以跳过或做一些简单处理和调试...</span></span><br><span class="line">            <span class="keyword">if</span> r.status_code == <span class="number">404</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            page = etree.HTML(r.text)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                name = page.xpath(<span class="string">u"//h1[@class='f1']"</span>)[<span class="number">0</span>].text</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">print</span> a.get(<span class="string">'href'</span>)</span><br><span class="line">                <span class="keyword">print</span> r.text</span><br><span class="line">                raw_input()</span><br><span class="line">            <span class="comment">#有少量小区未设置经纬度信息</span></span><br><span class="line">            <span class="comment">#只能得到它的地址了</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                latlng = page.xpath(<span class="string">u"//a[@class='comm_map']"</span>)[<span class="number">0</span>]</span><br><span class="line">                lat = latlng.get(<span class="string">'lat'</span>)</span><br><span class="line">                lng = latlng.get(<span class="string">'lng'</span>)</span><br><span class="line">                address = latlng.get(<span class="string">'address'</span>)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                lat = <span class="string">''</span></span><br><span class="line">                lng = <span class="string">''</span></span><br><span class="line">                address = page.xpath(<span class="string">u"//span[@class='rightArea']/em"</span>)[<span class="number">0</span>].text</span><br><span class="line">            sql_v.append((name, lat, lng, address, k))</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"\r\r\r"</span>,</span><br><span class="line">            <span class="keyword">print</span> <span class="string">u"正在下载 %s 的数据,第 %d 页,共 %d 条，当前:"</span>.encode(<span class="string">'gbk'</span>) %(k.encode(<span class="string">'gbk'</span>),p, total) + string.rjust(str(i),<span class="number">3</span>).encode(<span class="string">'gbk'</span>),</span><br><span class="line">            time.sleep(<span class="number">0.5</span>) <span class="comment">#每次抓取停顿</span></span><br><span class="line">        <span class="comment">#执行插入数据库</span></span><br><span class="line">        cursor.executemany(sql, sql_v)</span><br><span class="line">        sql_v = []</span><br><span class="line">        time.sleep(<span class="number">5</span>)  <span class="comment">#每页完成后停顿</span></span><br><span class="line"></span><br><span class="line">        total_all += total</span><br><span class="line">        <span class="keyword">print</span> <span class="string">''</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">u"成功入库 %d 条数据，总数 %d"</span>.encode(<span class="string">'gbk'</span>) % (total, total_all)</span><br><span class="line">        <span class="keyword">if</span> total &lt; <span class="number">500</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            p += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#及时关闭数据库 做个好孩子 任务完成~</span></span><br><span class="line">cursor.close()</span><br><span class="line">conn.close()</span><br><span class="line"><span class="keyword">print</span> <span class="string">u'所有数据采集完成! 共 %d 条数据'</span>.encode(<span class="string">'gbk'</span>) % (total_all)</span><br><span class="line">raw_input()</span><br></pre></td></tr></table></figure>
+<p>注释我觉得已经写的很详细了，在cmd中显示，字符串当然要转一下码。<br>以下是运行状态和得到的数据截图。<br><img src="https://i.imgur.com/FWGh0Ux.jpg" alt><br><img src="https://i.imgur.com/b9oEPNg.jpg" alt></p>
+<h1 id="selenium-使用实例9"><a href="#selenium-使用实例9" class="headerlink" title="selenium 使用实例9"></a>selenium 使用实例9</h1><h2 id="Python模拟百度登录"><a href="#Python模拟百度登录" class="headerlink" title="Python模拟百度登录"></a>Python模拟百度登录</h2><p>本来写这个玩意儿是想用来自动登录百度，然后根据贴吧内的的排名抓取会员头像的，比如生成一个贴吧千人头像图或万人头像图。也算是练练手。<br>完成后才发现抓那个贴吧排名完全不需要登录…也好，以后用来做自动一键签到(经常忘打卡)，抢二楼什么的，也不错~~</p>
+<p>如今在博客上发个文章用不了多长时间就被抄走了，感觉自己能做的也只有在此鄙视一下它们。<br>废话太多，容易招人恨，以下是代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:gbk -*-</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 模拟百度登录 for Python2.7</span></span><br><span class="line"><span class="comment"># 其中显示验证码部分 需要使用PIL库</span></span><br><span class="line"><span class="comment"># 需要验证码时，会创建一个Tkinter窗口，用于显示和输入验证码，回车后窗口关闭。</span></span><br><span class="line"><span class="comment"># author:zx(www.zh30.com)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">import</span> urllib, urllib2, cookielib, re, time</span><br><span class="line">username   = <span class="string">'yourusernamehere'</span> <span class="comment">#用户名</span></span><br><span class="line">password   = <span class="string">'yourpasswordhere'</span> <span class="comment">#密码</span></span><br><span class="line">cookiefile = <span class="string">'--login-baidu--'</span>  <span class="comment">#cookie文件</span></span><br><span class="line"><span class="comment">#模拟header信息</span></span><br><span class="line">headers = &#123;</span><br><span class="line">        <span class="string">"Host"</span>:<span class="string">"passport.baidu.com"</span>,</span><br><span class="line">        <span class="string">"Referer"</span>:<span class="string">"http://www.baidu.com/cache/user/html/login-1.2.html"</span>,</span><br><span class="line">        <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36"</span>,</span><br><span class="line">        <span class="string">"Origin"</span>:<span class="string">"http://www.baidu.com"</span>,</span><br><span class="line">        <span class="string">"""yufang xiao tou.  this code by zhengxiao(www.zh30.om)"""</span></span><br><span class="line">        <span class="string">"Accept"</span>:<span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"</span>,</span><br><span class="line">        <span class="string">"Cache-Control"</span>:<span class="string">"max-age=0"</span>,</span><br><span class="line">        <span class="string">"Connection"</span>:<span class="string">"keep-alive"</span>   </span><br><span class="line">        &#125;</span><br><span class="line">cookie = cookielib.MozillaCookieJar(cookiefile)</span><br><span class="line"><span class="comment">#尝试加载cookie文件并验证有效性</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    cookie.load(ignore_discard=<span class="literal">True</span>, ignore_expires=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'读取登录状态的cookie成功'</span></span><br><span class="line">    <span class="comment">#do something...</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    <span class="comment">#cookie不存在或无效时 开始进行模拟登录并重新生成cookie文件</span></span><br><span class="line">    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))</span><br><span class="line"></span><br><span class="line">    loginUrl = <span class="string">'http://www.baidu.com/cache/user/html/login-1.2.html'</span></span><br><span class="line">    getTokenUrl = <span class="string">'https://passport.baidu.com/v2/api/?getapi&amp;class=login&amp;tpl=mn&amp;tangram=true'</span> <span class="string">"""www . zh30 . com """</span></span><br><span class="line">    getCodeStringUrl = <span class="string">'https://passport.baidu.com/v2/api/?logincheck&amp;callback=bdPass.api.login._needCodestringCheckCallback&amp;tpl=mn&amp;charset=UTF-8&amp;index=0&amp;username='</span> + username + <span class="string">'&amp;isphone=false&amp;time=1436429688644'</span></span><br><span class="line">    loginPostUrl = <span class="string">'https://passport.baidu.com/v2/api/?login'</span></span><br><span class="line">    <span class="comment">#获取BAIDUID、token</span></span><br><span class="line">    request = urllib2.Request(loginUrl, headers=headers)</span><br><span class="line">    response = opener.open(request)</span><br><span class="line"></span><br><span class="line">    request = urllib2.Request(getTokenUrl, headers=headers)</span><br><span class="line">    response = opener.open(request)</span><br><span class="line">    hasToken = response.read()</span><br><span class="line">    token = re.search(<span class="string">r'login_token\s*=\s*\'(.+?)\''</span>,hasToken).group(<span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#检查username是否需要验证码</span></span><br><span class="line">    request = urllib2.Request(getCodeStringUrl, headers=headers)</span><br><span class="line">    response = opener.open(request)</span><br><span class="line">    getCodeString = response.read()</span><br><span class="line">    codestring = re.search(<span class="string">r'"codestring":"?([^"]+)"?,'</span>, getCodeString).group(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> codestring == <span class="string">'null'</span> :</span><br><span class="line">        codestring = <span class="string">''</span></span><br><span class="line">        verifycode = <span class="string">''</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment">#需要验证码 创建一个tk显示验证码 并提示用户输入</span></span><br><span class="line">        genimageUrl = <span class="string">'https://passport.baidu.com/cgi-bin/genimage?'</span> + codestring + <span class="string">'&amp;v='</span> + str(long(time.time()*<span class="number">1000</span>))</span><br><span class="line">        <span class="keyword">import</span> io, Tkinter <span class="keyword">as</span> tk</span><br><span class="line">        <span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageTk</span><br><span class="line">        request = urllib2.Request(genimageUrl, headers=headers)</span><br><span class="line">        image_bytes = opener.open(request).read()</span><br><span class="line">        pil_image = Image.open(io.BytesIO(image_bytes))</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">presskey</span><span class="params">(event)</span>:</span></span><br><span class="line">            <span class="keyword">global</span> verifycode</span><br><span class="line">            <span class="keyword">if</span> event.keycode == <span class="number">13</span>:</span><br><span class="line">                    verifycode = entry.get()</span><br><span class="line">                    tk_root.destroy()</span><br><span class="line"></span><br><span class="line">        tk_root = tk.Tk()</span><br><span class="line">        tk_image = ImageTk.PhotoImage(pil_image)</span><br><span class="line">        label1 = tk.Label(tk_root, text=<span class="string">'您的帐号异常，需要输入验证码'</span>)</span><br><span class="line">        label1.pack()</span><br><span class="line"></span><br><span class="line">        label2 = tk.Label(tk_root, image=tk_image)</span><br><span class="line">        label2.pack()</span><br><span class="line"></span><br><span class="line">        label3 = tk.Label(tk_root, text=<span class="string">'输入验证码并按回车确认'</span>)</span><br><span class="line">        label3.pack()</span><br><span class="line">        entry = tk.Entry(tk_root)</span><br><span class="line">        entry.bind(<span class="string">'&lt;Key&gt;'</span>, presskey)</span><br><span class="line">        entry.pack()</span><br><span class="line">        tk_root.mainloop()</span><br><span class="line"></span><br><span class="line">    <span class="comment">#构造登录表单</span></span><br><span class="line">    data = &#123;</span><br><span class="line">            <span class="string">"ppui_logintime"</span>:<span class="string">"134198"</span>,</span><br><span class="line">            <span class="string">"charset"</span>:<span class="string">"utf-8"</span>,</span><br><span class="line">            <span class="string">"codestring"</span>:<span class="string">""</span>,</span><br><span class="line">            <span class="string">"isPhone"</span>:<span class="string">"false"</span>,</span><br><span class="line">            <span class="string">"index"</span>:<span class="string">"0"</span>,</span><br><span class="line">            <span class="string">"u"</span>:<span class="string">""</span>,</span><br><span class="line">            <span class="string">"safeflg"</span>:<span class="string">"0"</span>,</span><br><span class="line">            <span class="string">"staticpage"</span>:<span class="string">"http://www.baidu.com/"</span>,</span><br><span class="line">            <span class="string">"loginType"</span>:<span class="string">"1"</span>,</span><br><span class="line">            <span class="string">"tpl"</span>:<span class="string">"mn"</span>,</span><br><span class="line">            <span class="string">"""yufang xiao tou.  this code by zhengxiao"""</span></span><br><span class="line">            <span class="string">"callback"</span>:<span class="string">"parent.bdPass.api.login._postCallback"</span>,</span><br><span class="line">            <span class="string">"mem_pass"</span>:<span class="string">"on"</span></span><br><span class="line">    &#125;</span><br><span class="line">    data[<span class="string">'token'</span>] = token</span><br><span class="line">    data[<span class="string">'username'</span>] = username</span><br><span class="line">    data[<span class="string">'password'</span>] = password</span><br><span class="line">    data[<span class="string">'codestring'</span>] = codestring</span><br><span class="line">    data[<span class="string">'verifycode'</span>] = verifycode</span><br><span class="line">    <span class="comment">#开始登录</span></span><br><span class="line">    req = urllib2.Request(loginPostUrl, urllib.urlencode(data), headers)</span><br><span class="line">    result = opener.open(req).read()</span><br><span class="line">    <span class="comment">#验证登录结果</span></span><br><span class="line">    </span><br><span class="line">    errno = re.search(<span class="string">r'&amp;error=(\d+)'</span>, result).group(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> errno == <span class="string">'0'</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'登录成功'</span></span><br><span class="line">        cookie.save(ignore_discard=<span class="literal">True</span>,ignore_expires=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">elif</span> errno == <span class="string">'4'</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'登录失败：密码错误'</span></span><br><span class="line">    <span class="keyword">elif</span> errno == <span class="string">'257'</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'登录失败：验证码错误'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'登录失败'</span></span><br><span class="line">        <span class="keyword">print</span> result <span class="comment">#失败后 打印返回字符 by zh30.com</span></span><br></pre></td></tr></table></figure></p>
+<p>百度登录时，主要有四个步骤。<br>第一步：访问任意百度页面，得到名为BAIDUID的cookie<br>第二步：根据cookie去请求得到token（登录时要提交这个值）。<br>第三步：验证username是否需要验证码。返回值中如果存在codestring，说明需要验证码，然后根据这个codestring请求得到验证码。<br>第四步：提交登录表单，检查登录状态，记录cookie。判断登录是否成功，可以检查是否生成名为BDUSS的cookie，郑晓在这里判断的是返回字符串中的跳转链接，成功时error参数为0。<br>have fun!</p>
+<h1 id="selenium-使用实例10"><a href="#selenium-使用实例10" class="headerlink" title="selenium 使用实例10"></a>selenium 使用实例10</h1><h2 id="用TKinter实现的一个简版HTTP请求模拟器"><a href="#用TKinter实现的一个简版HTTP请求模拟器" class="headerlink" title="用TKinter实现的一个简版HTTP请求模拟器"></a>用TKinter实现的一个简版HTTP请求模拟器</h2><p>平时开发过程中经常会遇到需要模拟POST或GET请求的时候，当然GET一般直接通过浏览器也可以，方便快捷。郑晓看到网上也有不少软件版的HTTP模拟器，功能也非常强大。郑晓最近在学习Python，正好手闲的慌，就用Python自带的TKinter库写了个HTTP模拟工具，功能比较简单，只是实现了基本的功能。</p>
+<p>最近我发现有的网站复制了我的文章，还把里面的各种信息都替换成了他自己的，还自己运行了程序截的图，也是挺郁闷的…所以以后发的代码中，郑晓可能会随机在其中加一点儿小点心…</p>
+<p>这个tkinter的http模拟器代码如下，开发环境(win7 + Python2.7)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> Tkinter <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> ttk <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> urlparse <span class="keyword">import</span> urlparse</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="comment">#提交时的响应事件</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">btn_submitOp</span><span class="params">(e)</span>:</span></span><br><span class="line">    <span class="comment">#获取输入的值 并进行编码</span></span><br><span class="line">    url = entry_url.get().encode(<span class="string">"utf-8"</span>)</span><br><span class="line">    entry_query = entry_para.get().encode(<span class="string">"utf-8"</span>)</span><br><span class="line">    </span><br><span class="line">    result = <span class="string">"请求的地址："</span> + url</span><br><span class="line">    result = result + <span class="string">"\n请求的方式："</span> + [<span class="string">"GET"</span>, <span class="string">"POST"</span>][v.get()]</span><br><span class="line">    result = result + <span class="string">"\n请求的参数："</span> + entry_query</span><br><span class="line">    </span><br><span class="line">    url_parse = urlparse(url)</span><br><span class="line">    query = url_parse.query.strip(<span class="string">'&amp;'</span>) +entry_query</span><br><span class="line">    <span class="comment">#POST(请求原始URL， 使用编码后的参数)</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> v.get() == <span class="number">1</span>:</span><br><span class="line">            r = urllib.urlopen(url, entry_query)</span><br><span class="line">        <span class="comment">#GET(根据提交的参数重新组合URL)</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            url = url_parse.scheme+<span class="string">"://"</span>+url_parse.netloc+url_parse.path+<span class="string">"?%s"</span> % query</span><br><span class="line">            article_from_zhengxiao_blog_www_zh30_com = <span class="number">0</span></span><br><span class="line">            r = urllib.urlopen(url)</span><br><span class="line">        data = r.read()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        data = <span class="string">"\n请求失败！"</span></span><br><span class="line">    result = result + <span class="string">"\n"</span> + <span class="string">"-"</span>*<span class="number">28</span> + <span class="string">'请求返回结果'</span> + <span class="string">"-"</span>*<span class="number">28</span> + data</span><br><span class="line">    <span class="comment">#将结果输出(更新)到文本域</span></span><br><span class="line">    text_result.delete(<span class="number">0.0</span>, END)</span><br><span class="line">    text_result.insert(<span class="number">1.0</span>, result)</span><br><span class="line"></span><br><span class="line"><span class="comment">#####创建窗口#####</span></span><br><span class="line">app = Tk()</span><br><span class="line">app.title(<span class="string">"HTTP请求模拟  v0.1"</span>)</span><br><span class="line">app.geometry(<span class="string">'500x500'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#####创建控件#####</span></span><br><span class="line"><span class="comment">#第一行 地址</span></span><br><span class="line">lbl_url = Label(app, text=<span class="string">"请求地址："</span>)</span><br><span class="line">lbl_url.grid(row=<span class="number">0</span>, column=<span class="number">0</span>, sticky=W, pady=<span class="number">5</span>, padx=<span class="number">10</span>)</span><br><span class="line">entry_url = Entry(app, width=<span class="number">50</span>)</span><br><span class="line">entry_url.grid(row=<span class="number">0</span>, column=<span class="number">1</span>, sticky=W)</span><br><span class="line"><span class="comment">#第二行 方式</span></span><br><span class="line">lbl_addr = Label(app, text=<span class="string">"请求方式："</span>)</span><br><span class="line">lbl_addr.grid(row=<span class="number">1</span>, column=<span class="number">0</span>, sticky=W, pady=<span class="number">5</span>, padx=<span class="number">10</span>)</span><br><span class="line">fm1 = Frame()</span><br><span class="line">fm1.grid(row=<span class="number">1</span>, column=<span class="number">1</span>, sticky=W)</span><br><span class="line">v = IntVar()</span><br><span class="line">v.set(<span class="number">1</span>)</span><br><span class="line">btn_method = Radiobutton(fm1, variable=v, value=<span class="number">1</span>, text=<span class="string">"POST"</span>)</span><br><span class="line">btn_method.pack(side = LEFT)</span><br><span class="line">btn_method = Radiobutton(fm1, variable=v, value=<span class="number">0</span>, text=<span class="string">"GET"</span>)</span><br><span class="line">btn_method.pack()</span><br><span class="line"><span class="comment">#第三行 参数</span></span><br><span class="line">lbl_para = Label(app, text=<span class="string">"请求参数："</span>)</span><br><span class="line">lbl_para.grid(row=<span class="number">2</span>, column=<span class="number">0</span>, sticky=W, padx=<span class="number">10</span>)</span><br><span class="line">entry_para = Entry(app, width=<span class="number">50</span>)</span><br><span class="line">entry_para.grid(row=<span class="number">2</span>, column=<span class="number">1</span>, sticky=W)</span><br><span class="line"><span class="comment">#第四行 提交</span></span><br><span class="line">btn_submit = Button(app, text=<span class="string">"发送请求"</span>)</span><br><span class="line">btn_submit.bind(<span class="string">'&lt;Button-1&gt;'</span>, btn_submitOp)</span><br><span class="line">btn_submit.grid(row=<span class="number">3</span>, column=<span class="number">0</span>, sticky=W, padx=<span class="number">10</span>,pady=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第五行 返回结果</span></span><br><span class="line">text_result = Text(app, width=<span class="number">68</span>, height=<span class="number">25</span>)</span><br><span class="line">text_result.grid(row=<span class="number">4</span>, column=<span class="number">0</span>, columnspan=<span class="number">2</span>, sticky=W, padx=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第六行 其它</span></span><br><span class="line">Label(app, text=<span class="string">"-- by 郑晓"</span>).grid(row=<span class="number">5</span>, column=<span class="number">1</span>, sticky=E, padx=<span class="number">10</span>, pady=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">app.mainloop()</span><br></pre></td></tr></table></figure></p>
+<p>过程式编程看上去比较乱… 以下是运行截图，测试请求的是图灵机器人聊天接口。<br><img src="https://i.imgur.com/EqMTGHA.png" alt><br>python-tkinter-http请求模拟器</p>
+<h1 id="selenium-使用实例11"><a href="#selenium-使用实例11" class="headerlink" title="selenium 使用实例11"></a>selenium 使用实例11</h1><h2 id="web-py使用session时报错AttributeError的解决办法"><a href="#web-py使用session时报错AttributeError的解决办法" class="headerlink" title="web.py使用session时报错AttributeError的解决办法"></a>web.py使用session时报错AttributeError的解决办法</h2><p>web.py使用session时报错AttributeError的解决办法<br>最近在学习web.py使用session时，经常会遇到AttributeError错误，大体报错内容是:<br>AttributeError: ‘ThreadedDict’ object has no attribute ‘xxxxx’<br>网上找的解决办法都是关闭web.py的调试模式，但有时关闭后也会报错，很是郁闷。</p>
+<p>最后郑晓摸索出了使用session时需要注意的几点，在这里记录一下：</p>
+<ol>
+<li><p>首先请关闭调试模式：<br> web.config.debug = False<br>代码需加到import web后，调用web.application之前，像这样：</p>
+<p> import web<br> web.config.debug = False<br> urls = (‘/‘, ‘index’)<br> app = web.application(urls, globals())</p>
+</li>
+<li><p>创建session时，加上initializer参数，给你的session设置个默认值，像这样：</p>
+<p> session = web.session.Session(app, web.session.DiskStore(‘sessions’), initializer={‘user’:None, ‘login’:None})<br>按说不加initializer也应该可以使用啊，不知道为什么我不加的话，就会报错，不管你是不是判断了is not None，只要你调用了session.xxx就报错。</p>
+</li>
+</ol>
+<p>3.最囧的一点：删除之前创建的sessions文件。<br>上一步中，郑晓设置了将session以文件的形式储存到当前目录下的sessions目录中。所以在上二步确认无问题后，手动将sessions目录中的已存在的文件删除。不删除的话，程序还是使用的旧版session，还会报错- -！</p>
+<p>4.have fun!</p>
+<h1 id="selenium-使用实例12"><a href="#selenium-使用实例12" class="headerlink" title="selenium 使用实例12"></a>selenium 使用实例12</h1><h2 id="python函数式实现的多线程爬虫练习"><a href="#python函数式实现的多线程爬虫练习" class="headerlink" title="python函数式实现的多线程爬虫练习"></a>python函数式实现的多线程爬虫练习</h2><p>写的一个爬虫练习，目的是抓取目标站点下所有链接， 并记录下问题链接url（包括问题url，入口链接，http状态码）。可以自行设置线程数量，程序开启一个子线程来维护当前线程数量。之前还好点儿，现在是越改bug越多，问题越多。</p>
+<p>目前发现的问题有：<br>1.线程的管理上，之前用传统的方法，三个for循环来创建固定数量线程，不过发现如果某线程抛出异常后，线程终止，总线程数就会减少。所以自己改成了用一个死循环不停的监听活动线程数量。发现执行过程中，线程name的数量不断增长，每一个创建的线程在执行完一次方法后好像就退出了。。。<br>2.url_new列表保存待抓取的url，发现还是有重复的现象。 感觉用函数式的线程实现的话，线程间的同步好像不太好。。<br>3.lock有问题。。。因为自己还是没有掌握lock的锁法，发现url有重复时，自己把整个def都用lock锁了起来。。 还是问题不断啊。。<br>4.目标站还是写死在程序中。。。<br>待改进为面向对象！<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#encoding: gb2312</span></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">"utf-8"</span>)</span><br><span class="line"><span class="comment">#日志初始化</span></span><br><span class="line">FILE = os.getcwd()</span><br><span class="line">logging.basicConfig(filename=os.path.join(FILE, <span class="string">'log.txt'</span>),level=logging.DEBUG)</span><br><span class="line"><span class="comment">#待抓取的任务队列</span></span><br><span class="line">url_new = [(<span class="string">'none'</span>,<span class="string">'http://www.xxxxxx.com/'</span>)]</span><br><span class="line"><span class="comment">#已完成的任务</span></span><br><span class="line">url_old = []</span><br><span class="line"><span class="comment">#已完成的状态</span></span><br><span class="line">url_err = &#123;<span class="number">200</span>:[]&#125;</span><br><span class="line"><span class="comment">#锁</span></span><br><span class="line">lock = threading.Lock()</span><br><span class="line">lock2= threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="comment">#线程执行主方法</span></span><br><span class="line"><span class="comment">#从任务列表中获取一条url进行抓取</span></span><br><span class="line"><span class="comment">#分析url，去重复，将得到的urls重新放入任务列表</span></span><br><span class="line"><span class="comment">#保存当前url的访问状态</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">geturl</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> url_new</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            lock.acquire()</span><br><span class="line">            <span class="keyword">if</span> len(url_new)&lt;=<span class="number">0</span>:</span><br><span class="line">                lock.release()</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            url_t = url_new.pop(<span class="number">0</span>)</span><br><span class="line">            url = url_t[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                req = urllib2.urlopen(url)</span><br><span class="line">            <span class="keyword">except</span> urllib2.HTTPError, e:</span><br><span class="line">                <span class="comment">#记录到对应的列表中</span></span><br><span class="line">                <span class="keyword">if</span> url_err.has_key(e.code):</span><br><span class="line">                    url_err[e.code].append((url,url_t[<span class="number">0</span>]))</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    url_err[e.code] = [(url,url_t[<span class="number">0</span>])]</span><br><span class="line">                <span class="keyword">with</span> open(<span class="string">'log.html'</span>, <span class="string">'a+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                        f.write(str(e.code)+<span class="string">'：'</span>+url+<span class="string">', 来路：'</span>+url_t[<span class="number">0</span>]+<span class="string">'&lt;br&gt;'</span>)</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                url_err[<span class="number">200</span>].append(url)</span><br><span class="line">                <span class="keyword">with</span> open(<span class="string">'log.html'</span>, <span class="string">'a+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                        f.write(<span class="string">'200：'</span>+url+<span class="string">', 来路：'</span>+url_t[<span class="number">0</span>]+<span class="string">'&lt;br&gt;'</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="comment">#记录到已访问的列表中</span></span><br><span class="line">            url_old.append(url)</span><br><span class="line">            <span class="comment">#开始提取页面url</span></span><br><span class="line">            soup = BeautifulSoup(req.read().decode(<span class="string">'UTF-8'</span>, <span class="string">'ignore'</span>))</span><br><span class="line">            alink= soup.find_all(<span class="string">'a'</span>, attrs=&#123;<span class="string">'href'</span>:re.compile(<span class="string">".*?xxxxxx.*?"</span>)&#125;)</span><br><span class="line">            tmp_url = []</span><br><span class="line">            <span class="keyword">for</span> a <span class="keyword">in</span> alink:</span><br><span class="line">                href = a.get(<span class="string">'href'</span>)</span><br><span class="line">                tmp_url.append(a.get(<span class="string">'href'</span>) <span class="keyword">if</span> a.get(<span class="string">'href'</span>).find(<span class="string">'http:'</span>)&gt;=<span class="number">0</span> <span class="keyword">else</span> <span class="string">'http://www.xxxxxx.com'</span>+a.get(<span class="string">'href'</span>))</span><br><span class="line">            tmp_url= &#123;&#125;.fromkeys(tmp_url).keys()</span><br><span class="line">            <span class="keyword">for</span> link <span class="keyword">in</span> tmp_url:</span><br><span class="line">                <span class="keyword">if</span> link <span class="keyword">not</span> <span class="keyword">in</span> url_old:</span><br><span class="line">                    url_new.append((url, link))</span><br><span class="line">            tmp = []</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(url_new)):</span><br><span class="line">                <span class="keyword">if</span> url_new[i][<span class="number">1</span>] <span class="keyword">not</span> <span class="keyword">in</span> tmp:</span><br><span class="line">                    tmp.append(url_new[i][<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">del</span> url_new[i] </span><br><span class="line">                </span><br><span class="line">            <span class="comment">#url_new = &#123;&#125;.fromkeys(url_new).keys()</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">#输出一下状态信息</span></span><br><span class="line">            os.system(<span class="string">'cls'</span>)</span><br><span class="line">            <span class="keyword">print</span> threading.Thread().getName()+<span class="string">":当前线程数："</span>+str(threading.activeCount())+<span class="string">"，当前剩余任务量："</span>+str(len(url_new))+<span class="string">", 已访问:"</span>+str(len(url_old))</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> url_err.keys():</span><br><span class="line">                <span class="keyword">print</span> str(k)+<span class="string">'：'</span>+str(len(url_err[k]))</span><br><span class="line"></span><br><span class="line">            lock.release()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        logging.debug(str(e))</span><br><span class="line">        lock.release()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#线程数检测 死循环持续检测当前活动线程数</span></span><br><span class="line"><span class="comment">#不够数量时自动创建启动新线程</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">threadcheck</span><span class="params">(num)</span>:</span></span><br><span class="line">    t=threading.Thread(target=geturl)</span><br><span class="line">    t.start()</span><br><span class="line">    t.join()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#定义主方法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""初始 创建200个线程</span></span><br><span class="line"><span class="string">    for i in xrange(190):</span></span><br><span class="line"><span class="string">        t = threading.Thread(target=geturl)</span></span><br><span class="line"><span class="string">        threads.append(t)</span></span><br><span class="line"><span class="string">    for i in xrange(190):</span></span><br><span class="line"><span class="string">        threads[i].start()</span></span><br><span class="line"><span class="string">    for i in xrange(190):</span></span><br><span class="line"><span class="string">        threads[i].join()"""</span></span><br><span class="line">    t = threading.Thread(target=threadcheck, args=(<span class="number">10</span>,))</span><br><span class="line">    t.start()</span><br><span class="line">    t.join()</span><br><span class="line">    <span class="comment">#geturl(url_new.pop(0))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#开始</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br><span class="line">input(<span class="string">'整站抓取已结束！'</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="qpython-–-安卓上的python编辑利器"><a href="#qpython-–-安卓上的python编辑利器" class="headerlink" title="qpython – 安卓上的python编辑利器!"></a>qpython – 安卓上的python编辑利器!</h1><p>在手机上敲代码纯属娱乐，输入速度比较蛋疼，不过装上玩玩也好。所以一直想找个可以在android安卓手机上编辑和运行python的软件。之前就尝试安装过qpython，不过是基于python2.7的。我是学习的python3，所以就一直没用。今天在三星app商店里找到了基于python3.2版本的qpython３,所以在这里拿出来分享给各位安卓控们。</p>
+<p>以下是两个软件的部分截图，功能很全。<br>在手机上玩python的利器，Qpyton。这里提供了qpython的python2.7(即qpython0.9.7.3版)和python3.2(名字为qpython3，安装后名字叫Qpython+)的两个版本。<br><a href="http://pan.baidu.com/s/1c0jARKk" target="_blank" rel="noopener">qpython</a><br><a href="http://pan.baidu.com/s/1dDh6YOh" target="_blank" rel="noopener">qpython3</a></p>
+<h1 id="selenium-使用实例13"><a href="#selenium-使用实例13" class="headerlink" title="selenium 使用实例13"></a>selenium 使用实例13</h1><h2 id="python采集新浪热门微博"><a href="#python采集新浪热门微博" class="headerlink" title="python采集新浪热门微博"></a>python采集新浪热门微博</h2><p>这是之前学习python采集时的一个练习程序，程序基于python3和BeautifulSoup库。用来抓取新浪微博（热门微博hot.weibo.com）页面的信息，包括每条微博的发布人，微博内容和包含的图片，微博中含有的多张图片采集为一个图片列表。</p>
+<p>由于在页面中没有发现比较精确的发布时间字段，所以也没有去弄（目前思路是获取到它的页面中的时间信息，然后做判断去转换）。这里以热门笑话的一个页面做为采集对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="comment">#伪造的header</span></span><br><span class="line">headers = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 5.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36'</span>&#125;</span><br><span class="line"><span class="comment">#抓取地址 读入页面源文件</span></span><br><span class="line">fromurl=<span class="string">'http://hot.weibo.com/?v=1899&amp;page=2'</span></span><br><span class="line">r = urllib.request.Request(url=fromurl, headers=headers)</span><br><span class="line">response=urllib.request.urlopen(r)</span><br><span class="line">page=response.read()</span><br><span class="line"><span class="comment">#实例化BS对象</span></span><br><span class="line">soup= BeautifulSoup(page)</span><br><span class="line"><span class="comment">#定位到微博信息主节点 页面中每一条微博是它的子节点</span></span><br><span class="line">tags = soup.find_all(name=<span class="string">'div'</span>, attrs=&#123;<span class="string">'class'</span>:<span class="string">'WB_detail'</span>&#125;)</span><br><span class="line"><span class="comment">#遍历所有子节点</span></span><br><span class="line"><span class="keyword">for</span> tag <span class="keyword">in</span> tags:</span><br><span class="line">    <span class="comment">#从子节点中找到发布人</span></span><br><span class="line">    sender = tag.find(name=<span class="string">'a'</span>, attrs=&#123;<span class="string">'class'</span>:<span class="string">'WB_name S_func1'</span>&#125;).get_text()</span><br><span class="line">    <span class="comment">#从子节点中找到微博内容</span></span><br><span class="line">    text = tag.find(name=<span class="string">'div'</span>, attrs=&#123;<span class="string">'class'</span>:<span class="string">'WB_text'</span>&#125;).get_text()</span><br><span class="line">    <span class="comment">#查找节点下的微博图片</span></span><br><span class="line">    thumbList = tag.find_all(name=<span class="string">'img'</span>, attrs=&#123;<span class="string">'class'</span>:<span class="string">'bigcursor'</span>&#125;)</span><br><span class="line">    img = []</span><br><span class="line">    <span class="comment">#如果有图，把所有图片的地址放到img数组中</span></span><br><span class="line">    <span class="keyword">if</span> thumbList:</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> thumbList:</span><br><span class="line">            img.append(t[<span class="string">'src'</span>])</span><br><span class="line">    print(sender+text)</span><br><span class="line">    print(img)</span><br><span class="line">    print()</span><br><span class="line">    print()</span><br><span class="line">input()</span><br></pre></td></tr></table></figure>
+<h1 id="python抓取糗百信息并入库mysql"><a href="#python抓取糗百信息并入库mysql" class="headerlink" title="python抓取糗百信息并入库mysql"></a>python抓取糗百信息并入库mysql</h1><p>这里抓取的页面是糗百的最近8小时糗事页面。感觉它的列表规则比较简单一些。学习pytho的urllib库基本操作与mysql的基础使用。<br>连接mysql使用的是mysql自家的connector。<a href="http://dev.mysql.com/doc/connector-python/en/index.html" target="_blank" rel="noopener">http://dev.mysql.com/doc/connector-python/en/index.html</a><br>环境win2003+python3.3代码如下。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入urllib、mysql和正则类库</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="comment">#设置要抓取的页面</span></span><br><span class="line">url=<span class="string">"http://www.qiushibaike.com/8hr/page/1"</span></span><br><span class="line"><span class="comment">#模拟访问页面，抓取页面内容到page变量中</span></span><br><span class="line">response=urllib.request.urlopen(url)</span><br><span class="line">page=response.read()</span><br><span class="line"><span class="comment">#匹配糗事正文及图片的正则</span></span><br><span class="line">p = re.compile(<span class="string">r'&lt;div class="content" title="([\d\-\s:]+)"&gt;([^&lt;]*(?=&lt;br\/&gt;[^&lt;]+)*)&lt;\/div&gt;(?=\s*&lt;div class="thumb"&gt;\s*&lt;a[^&gt;]+&gt;\s*(&lt;img[^&gt;]+\/&gt;)\s*&lt;\/a&gt;\s*&lt;\/div&gt;)?'</span>)</span><br><span class="line"><span class="comment">#对抓取的utf8的内容转为unicode 并执行匹配 将匹配结果放到resultlist列表。</span></span><br><span class="line">resultlist = p.findall(page.decode(<span class="string">'utf-8'</span>))</span><br><span class="line">print(resultlist)</span><br><span class="line"><span class="comment">#以下是数据库操作部分</span></span><br><span class="line"><span class="comment">#数据库连接配置字典</span></span><br><span class="line">conn = &#123;<span class="string">'host'</span>:<span class="string">'localhost'</span>, <span class="string">'user'</span>:<span class="string">'root'</span>, <span class="string">'password'</span>:<span class="string">'flake'</span>, <span class="string">'database'</span>:<span class="string">'test'</span>&#125;</span><br><span class="line"><span class="comment">#建立数据库连接</span></span><br><span class="line">conn = mysql.connector.connect(**conn)</span><br><span class="line"><span class="comment">#获得游标</span></span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"><span class="comment">#插入数据库的sql 将内容中的换行符直接替换掉</span></span><br><span class="line">insertSql = <span class="string">"insert into qiubai (dates, text, img) values (%s, replace(replace(%s,'\n',''),'\r',''), %s)"</span></span><br><span class="line"><span class="comment">#执行批量插入操作</span></span><br><span class="line">cursor.executemany(insertSql, resultlist)</span><br><span class="line"><span class="comment">#关闭游标及数据库连接</span></span><br><span class="line">cursor.close()</span><br><span class="line">conn.close()</span><br><span class="line">input()</span><br></pre></td></tr></table></figure></p>
+<h1 id="python-tkinter的键盘事件监听"><a href="#python-tkinter的键盘事件监听" class="headerlink" title="python-tkinter的键盘事件监听"></a>python-tkinter的键盘事件监听</h1><p>python-tkinter的键盘事件监听的实现，特殊字符直接打印是不会显示的，但都是正常的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#导入tkinter</span><br><span class="line">from tkinter import *</span><br><span class="line">#定义的方法 监听键盘事件</span><br><span class="line">def printkey(event):</span><br><span class="line">    print(&apos;你按下了: &apos; + event.char)</span><br><span class="line">#实例化tk</span><br><span class="line">root = Tk()</span><br><span class="line">#实例化一个输入框</span><br><span class="line">entry = Entry(root)</span><br><span class="line">#给输入框绑定按键监听事件&lt;Key&gt;为监听任何按键 &lt;Key-x&gt;监听其它键盘，如大写的A&lt;Key-A&gt;、回车&lt;Key-Return&gt;</span><br><span class="line">entry.bind(&apos;&lt;Key&gt;&apos;, printkey)</span><br><span class="line">#显示窗体</span><br><span class="line">entry.pack()</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<p>结果如下：<br><img src="https://i.imgur.com/E7y0IpD.png" alt></p>
+<p>转自:<a href="https://www.zh30.com" target="_blank" rel="noopener">https://www.zh30.com</a></p>
+<h1 id="自动化测试-selenium-模块-webdriver使用（一）"><a href="#自动化测试-selenium-模块-webdriver使用（一）" class="headerlink" title="自动化测试 selenium 模块 webdriver使用（一）"></a>自动化测试 selenium 模块 webdriver使用（一）</h1><h2 id="一、webdriver基本使用命令"><a href="#一、webdriver基本使用命令" class="headerlink" title="一、webdriver基本使用命令"></a>一、webdriver基本使用命令</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver   <span class="comment"># 导入webdriver模块</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome_obj = webdriver.Chrome()              <span class="comment"># 打开Google浏览器</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome_obj.get(<span class="string">"https://www.baidu.com"</span>)      <span class="comment"># 打开 网址</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome_obj.get(<span class="string">r"C:\desktop\text.html"</span>)      <span class="comment"># 打开本地 html页面</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome_obj.title          <span class="comment"># 获取打开网址 的名字 </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome_obj.current_url    <span class="comment"># 获取打开网址的 url&lt;br&gt;&lt;br&gt;&gt;&gt;&gt; chrome_obj.close() #关闭浏览器窗口</span></span><br></pre></td></tr></table></figure>
+<h2 id="二、标签导航"><a href="#二、标签导航" class="headerlink" title="二、标签导航　"></a>二、标签导航　</h2><p>普通 定位标签</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找标签</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_id(<span class="string">"kw"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_name(<span class="string">"wd"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_class_name(<span class="string">"s_ipt"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_tag_name(<span class="string">"imput"</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_link_text(<span class="string">"a标签中的内容 准确定位"</span>)  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_partial_link_text(<span class="string">"a标签中的内容 模糊定位 "</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(“放入 copy 标签中的常css路径”)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_css_selector(“input=[id=<span class="string">'id_name'</span>/name=<span class="string">'name_name'</span>/……/]<span class="string">")</span></span><br></pre></td></tr></table></figure>
+<p>标签导航  xpath  标签定位复杂的情况下 考虑使用xpath</p>
+<p>XPath即为XML路径语言，它是一种用来确定XML（标准通用标记语言的子集）文档中某部分位置的语言。XPath基于XML的树状结构，有不同类型的节点，包括元素节点，属性节点和文本节点，提供在数据结构树中找寻节点的能力。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绝对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"html/boday/p/input"</span>)   <span class="comment"># 绝对路径 导航</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"html/boday/p/input[1]"</span>) <span class="comment"># 绝对路径导航，多个input框，确定第一个input框</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#相对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//input"</span>)  <span class="comment"># 相对路径导航  表示 整个文档当中的 input标签 默认为第一个  * 第一个“//” 表示 在整个文档中</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//input[2]"</span>) <span class="comment"># 指定页面中的第二个 input框 没有就报错 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 父节点下找子节点</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//form//input"</span>)  <span class="comment"># // 父节点//子节点  * 返回子节点 input</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//form//input[2]"</span>) <span class="comment"># // 父节点//子节点 [2] * 指定 父节点下的 第二个 input子节点</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过子节点 定位父节点</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//form//input/.."</span>)  <span class="comment"># 返回input的父节点 form 标签</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//form//input/."</span>)   <span class="comment"># 当前节点</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过属性查找节点</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//input[@id]"</span>)  <span class="comment"># 相对路径导航  找到所有的 input标签 其中有 id属性的标签</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//input[@id='1']"</span>)  <span class="comment"># 属性查找 在所有的input标签中 找到 具有 id=1 的input标签 </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//input[@name='xiahua']"</span>)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签统计 countains</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_xpath(<span class="string">"//*[countains(input)=1]"</span>)  <span class="comment"># //* 表示 整个文档中 的所有标签，[count(input)=1] 表示 父标签下只有 一个input子标签 的 input标签</span></span><br><span class="line">&gt;&gt;&gt;label = chrome_obj.find_element_by_xpath(<span class="string">"//*[countains(input)=2]"</span>)  <span class="comment"># //* 表示 整个文档中 的所有标签，[count(input)=1] 表示 父标签下有 两个input子标签 的 input标签</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># local-name 模糊查找  </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by _xpath(<span class="string">"//*[local-name()='input']"</span>)  <span class="comment"># 查找当前文档中 的所有input标签 默认返回第一个</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by _xpath(<span class="string">"//*input"</span>)      <span class="comment"># 查找当前文档中 的所有input标签 默认返回第一个</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by _xpath(<span class="string">"//*[local-name(),'i']"</span>)  <span class="comment"># 查找当前文档中 标签名字中 包含字母 i的标签，比如 input title</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by _xpath(<span class="string">"//*[local-name(),'i']"</span>)  <span class="comment"># 查找当前文档中 的所有input标签 默认返回第一个</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by _xpath(<span class="string">"//*[countains(local-name(),'i')] [last()])  # 查找当前文档中 所有包含 字母“i”的 标签 的子标签 的 最后一个元素  （有点懵逼）</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; label = chrome_obj.find_element_by _xpath("</span>//*[strint-length(local-name()=<span class="number">3</span>)] [last()])  <span class="comment"># 查找当前文档中 所有 标签字符个数为5的标签，并且制定返回 最后一个标签。 title input（5个str）</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、-模拟用户操作"><a href="#三、-模拟用户操作" class="headerlink" title="三、 模拟用户操作"></a>三、 模拟用户操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>label.get_attribute(<span class="string">"type"</span>) <span class="comment"># 显示标签的type属性 name type id placeholder</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label.tag_name()  <span class="comment">#获取标签名字  input p form ……</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label.size</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label.id</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome_obj.maximize_window()<span class="comment"># 窗口最大化 &lt;br&gt;&gt;&gt;&gt; #模拟鼠标悬浮</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label.click() <span class="comment"># 模拟a标签  点击事件</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label.send_keys(<span class="string">"模拟搜索内容"</span>)  <span class="comment"># 模拟input框 输入内容&gt;&gt;&gt; label.clear() # 清除input标签中 输入的内容&gt;&gt;&gt; chrome_obj.back() # 模拟浏览器 返回上一个浏览页面</span></span><br></pre></td></tr></table></figure>
+<h4 id="1、模拟鼠标操作"><a href="#1、模拟鼠标操作" class="headerlink" title="1、模拟鼠标操作"></a>1、模拟鼠标操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.common.action_chains <span class="keyword">import</span> ActionChains <span class="comment">#导入模块</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label = chrome_obj.find_element_by_link_text(<span class="string">"点我 悬浮 显示其他 a标签"</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ActionChains(chrome_obj).move_to_element(label).perform()    <span class="comment"># 模拟用户悬浮</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""　　ActionChains(chrome_obj) 用于生成模拟用户行为 ；</span></span><br><span class="line"><span class="string">perform()  执行存储行为　　"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label_bel = chrome_obj.find_element_by_link_text(<span class="string">"我是 a标签，点我页面跳转"</span>)&gt;&gt;&gt; label_bel.click()   <span class="comment"># 模拟用户点击</span></span><br><span class="line"></span><br><span class="line">　其他鼠标操作</span><br><span class="line"></span><br><span class="line">label.countext_lick() <span class="comment"># 右击</span></span><br><span class="line">label.double_click() <span class="comment"># 双击</span></span><br><span class="line">label.drag_and_drop() <span class="comment"># 拖动</span></span><br><span class="line">label.move_to_element  <span class="comment"># 悬浮</span></span><br><span class="line">label.click_and_hold  <span class="comment"># 按鼠标左键一直不动</span></span><br></pre></td></tr></table></figure>
+<h4 id="2、模拟键盘操作"><a href="#2、模拟键盘操作" class="headerlink" title="2、模拟键盘操作"></a>2、模拟键盘操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys  <span class="comment">#  引入模块</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label.send_keys(<span class="string">"input输入的内容"</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>label.send_keys(Keys.BACK_SPANCE)  <span class="comment"># 退格键</span></span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt;label.send_keys(Keys.CONTRL,<span class="string">'a'</span>)  <span class="comment"># 全选</span></span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt;label.send_keys(Keys.CONTRL,<span class="string">'v'</span>)  <span class="comment"># 粘贴</span></span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt;label.send_keys(Keys.CONTRL,<span class="string">'c'</span>)  <span class="comment"># 复制</span></span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt;label.send_keys(Keys.CONTRL,<span class="string">'x‘’) # 剪切</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">&gt;&gt;&gt;label.send_keys(Keys.ENTER)   # 回车</span></span><br></pre></td></tr></table></figure>
+<h2 id="四、处理对话框"><a href="#四、处理对话框" class="headerlink" title="四、处理对话框"></a>四、处理对话框</h2><p> python脚本实现自动登录 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">automatic_login</span><span class="params">(name,pwd,url)</span>:</span></span><br><span class="line">    chrome = webdriver.Chrome()</span><br><span class="line">    chrome.get(url)</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    chrome.maximize_window()</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    chrome.find_element_by_xpath(<span class="string">"/html/body/div[3]/div[2]/div[3]/div/div"</span>).click()</span><br><span class="line"></span><br><span class="line">    chrome.find_element_by_link_text(<span class="string">"登录"</span>).click()</span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    name_label = chrome.find_element_by_id(<span class="string">"id_account_l"</span>)</span><br><span class="line">    name_label.clear()</span><br><span class="line">    name_label.send_keys(name)</span><br><span class="line"></span><br><span class="line">    pwd_label = chrome.find_element_by_id(<span class="string">"id_password_l"</span>)</span><br><span class="line">    pwd_label.clear()</span><br><span class="line">    pwd_label.send_keys(pwd)</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    login_label = chrome.find_element_by_id(<span class="string">"login_btn"</span>)</span><br><span class="line">    login_label.click()</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">15</span>)</span><br><span class="line">    chrome.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__  == <span class="string">"__main__"</span>:</span><br><span class="line">    name = <span class="string">"helloyiwantong@163.com"</span></span><br><span class="line">    pwd = <span class="string">"helloyiwantong@1234"</span></span><br><span class="line">    url = <span class="string">"http://www.maiziedu.com/"</span></span><br><span class="line">    automatic_login(name,pwd,url)</span><br><span class="line"></span><br><span class="line">python automatic login</span><br></pre></td></tr></table></figure>
+<h2 id="五、控制多窗口"><a href="#五、控制多窗口" class="headerlink" title="五、控制多窗口"></a>五、控制多窗口</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>frome selenium <span class="keyword">import</span> webdrive</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome  = webdrive.Chrome()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome.get(<span class="string">"https://www.baidu.come"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome.find_element_by_id(<span class="string">"kw"</span>).send_keys(<span class="string">"红花"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome.find_element_by_id(<span class="string">"su"</span>).click()   <span class="comment"># 打开百度搜索的第一个窗口</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome.find_element_by_partial_link_text(<span class="string">"百度百科"</span>).click() <span class="comment"># 打开第二个窗口</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome.find_element_by_partial_link_text(<span class="string">"中药"</span>).click()  <span class="comment"># 打开第三个窗口</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome.window_handles  <span class="comment"># 查看当前 打开窗口</span></span><br><span class="line"></span><br><span class="line">[<span class="string">'CDwindow-D41F1F3BF5038E36E91EA7F7E7E9770D'</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">'CDwindow-F2D1553323BDC39BE99DBF280804FCCC'</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">'CDwindow-B41B29B8A7CB49BF191E46FF936E6A52'</span>,]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome.switch_to_window(chrome.window_handles[<span class="number">1</span>])  <span class="comment"># 使用索引切换到第二个窗</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chrome.current_url()  <span class="comment"># 查看当前url</span></span><br></pre></td></tr></table></figure>
+<h2 id="六、模拟用户自动登录"><a href="#六、模拟用户自动登录" class="headerlink" title="六、模拟用户自动登录"></a>六、模拟用户自动登录</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wait_response_time</span><span class="params">(chrome,waittime,func)</span>:</span></span><br><span class="line">    <span class="comment"># 返回 func执行结果</span></span><br><span class="line">    <span class="keyword">return</span> WebDriverWait(chrome,waittime).until(func)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">automatic_login</span><span class="params">(name,pwd,url)</span>:</span></span><br><span class="line">    chrome = webdriver.Chrome()</span><br><span class="line">    chrome.get(url)</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    chrome.maximize_window()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># time.sleep(2)</span></span><br><span class="line">    <span class="comment"># chrome.find_element_by_xpath("/html/body/div[3]/div[2]/div[3]/div/div").click()</span></span><br><span class="line">    <span class="comment">############## 第二种方法 设置时间延迟</span></span><br><span class="line">    <span class="comment"># login_btn_lable = wait_response_time(chrome,5,</span></span><br><span class="line">    <span class="comment">#                                      lambda chrome: chrome.find_element_by_xpath("/html/body/div[3]/div[2]/div[3]/div/div"))</span></span><br><span class="line">    <span class="comment"># login_btn_lable.click()   ## 利用函数设置等待响应时间</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    chrome.find_element_by_link_text(<span class="string">"登录"</span>).click()</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    name_label = chrome.find_element_by_id(<span class="string">"id_account_l"</span>)</span><br><span class="line">    name_label.send_keys(<span class="string">" "</span>) <span class="comment"># 防止发送不成功</span></span><br><span class="line">    name_label.clear()</span><br><span class="line">    name_label.send_keys(name)</span><br><span class="line"></span><br><span class="line">    pwd_label = chrome.find_element_by_id(<span class="string">"id_password_l"</span>)</span><br><span class="line">    pwd_label.clear()</span><br><span class="line">    pwd_label.send_keys(pwd)</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    login_label = chrome.find_element_by_id(<span class="string">"login_btn"</span>)</span><br><span class="line">    login_label.click()</span><br><span class="line"></span><br><span class="line">    error_id=<span class="string">"login-form-tips"</span></span><br><span class="line">    error_message=chrome.find_element_by_id(error_id)</span><br><span class="line">    err=error_message.text</span><br><span class="line">    print(error_message,type(error_message))</span><br><span class="line">    print(err)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># time.sleep(10)</span></span><br><span class="line">    <span class="comment"># chrome.close()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__  == <span class="string">"__main__"</span>:</span><br><span class="line">    name = <span class="string">"helloyiwantong@163.com"</span></span><br><span class="line">    pwd = <span class="string">"helloyiwantong@134"</span></span><br><span class="line">    url = <span class="string">"http://www.maiziedu.com/"</span></span><br><span class="line">    automatic_login(name,pwd,url)</span><br><span class="line"></span><br><span class="line">automatic login</span><br></pre></td></tr></table></figure>
+<h2 id="七、模拟用户自动登录-封装接口"><a href="#七、模拟用户自动登录-封装接口" class="headerlink" title="七、模拟用户自动登录 封装接口"></a>七、模拟用户自动登录 封装接口</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">open_browse</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    open browser obj</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    browse_obj = webdriver.Chrome()</span><br><span class="line">    <span class="keyword">return</span> browse_obj</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">click_url_and_clicl_loginbtn</span><span class="params">(browse,url)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    open url and click "登录" btn</span></span><br><span class="line"><span class="string">    :param browse:</span></span><br><span class="line"><span class="string">    :param url:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    browse.get(url)</span><br><span class="line">    browse.maximize_window()</span><br><span class="line">    loginbtn_lable=browse.find_element_by_link_text(<span class="string">"登录"</span>)</span><br><span class="line">    loginbtn_lable.click()</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_element_label</span><span class="params">(browse,element_id_dict)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    get element lable</span></span><br><span class="line"><span class="string">    :param browse:</span></span><br><span class="line"><span class="string">    :param element_id_dict:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    user_label = browse.find_element_by_id(element_id_dict[<span class="string">"name"</span>])</span><br><span class="line">    pwd_label = browse.find_element_by_id(element_id_dict.get(<span class="string">"pwd"</span>))</span><br><span class="line">    login_label = browse.find_element_by_id(element_id_dict.get(<span class="string">"login"</span>))</span><br><span class="line">    <span class="keyword">return</span> (user_label,pwd_label,login_label)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_key_s</span><span class="params">(lable_tuple,userinfo_dict,userinfo_list)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    send userinfo and logian</span></span><br><span class="line"><span class="string">    :param lable_tuple:</span></span><br><span class="line"><span class="string">    :param userinfo_dict:</span></span><br><span class="line"><span class="string">    :param userinfo_list:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> i&lt;=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> userinfo_list:</span><br><span class="line">            <span class="comment"># lable_tuple[i].send_keys(" ")</span></span><br><span class="line">            <span class="comment"># lable_tuple[i].click()</span></span><br><span class="line">            lable_tuple[i].send_keys(userinfo_dict.get(key))</span><br><span class="line">            i+=<span class="number">1</span></span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    lable_tuple[<span class="number">2</span>].click()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### 封装数据</span></span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://www.maiziedu.com/"</span></span><br><span class="line">id_dict = &#123;</span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"id_account_l"</span>,</span><br><span class="line">    <span class="string">"pwd"</span> : <span class="string">"id_password_l"</span>,</span><br><span class="line">    <span class="string">"login"</span>:<span class="string">"login_btn"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">userinfo_dict=&#123;</span><br><span class="line">    <span class="string">"name"</span> : <span class="string">"helloyiwantong@163.com"</span>,</span><br><span class="line">    <span class="string">"pwd"</span> : <span class="string">"helloyiwantong@1234"</span>,</span><br><span class="line">    <span class="string">"url"</span> : <span class="string">"http://www.maiziedu.com/"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数使用</span></span><br><span class="line"></span><br><span class="line">userinfo_list =[<span class="string">"name"</span>,<span class="string">"pwd"</span>]</span><br><span class="line"></span><br><span class="line">chrome = open_browse()</span><br><span class="line">click_url_and_clicl_loginbtn(chrome,url)</span><br><span class="line"></span><br><span class="line">lable_tuple = get_element_label(chrome,id_dict)</span><br><span class="line"></span><br><span class="line">send_key_s(lable_tuple,userinfo_dict,userinfo_list)</span><br><span class="line"></span><br><span class="line">automatic login</span><br></pre></td></tr></table></figure>
+<p>更多参考: <a href="https://www.cnblogs.com/hellosecretgarden/p/9206648.html" target="_blank" rel="noopener">https://www.cnblogs.com/hellosecretgarden/p/9206648.html</a> </p>
+<p>经典参考文档:</p>
+<p> <a href="https://blog.csdn.net/u010986776/article/details/79266448" target="_blank" rel="noopener">https://blog.csdn.net/u010986776/article/details/79266448</a> </p>
+<p> <a href="https://blog.csdn.net/Yeoman92/article/details/83105318" target="_blank" rel="noopener">https://blog.csdn.net/Yeoman92/article/details/83105318</a> </p>
+<p>QQ群：397745473</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/selenium/" rel="tag"># selenium</a>
+          
+           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/01/32_mechanize使用实例/" rel="next" title="mechanize 使用实例">
+                <i class="fa fa-chevron-left"></i> mechanize 使用实例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/01/29_python键盘记录器/" rel="prev" title="python 键盘记录器">
+                python 键盘记录器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    <div class="post-spread">
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<img src="https://i.imgur.com/0ivBlsQ.jpg" alt="知识星球">
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">131</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vsyour.com/" title="Blog" target="_blank">Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例1"><span class="nav-number">1.</span> <span class="nav-text">selenium 使用实例1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python-selenium实现QQ群自动签到"><span class="nav-number">1.1.</span> <span class="nav-text">python+selenium实现QQ群自动签到</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例2"><span class="nav-number">2.</span> <span class="nav-text">selenium 使用实例2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python-selenium自动登录qq空间并下载相册"><span class="nav-number">2.1.</span> <span class="nav-text">python+selenium自动登录qq空间并下载相册</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例3"><span class="nav-number">3.</span> <span class="nav-text">selenium 使用实例3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动抓取摩拜单车车辆位置数据"><span class="nav-number">3.1.</span> <span class="nav-text">自动抓取摩拜单车车辆位置数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例4"><span class="nav-number">4.</span> <span class="nav-text">selenium 使用实例4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用antiword读取word文档"><span class="nav-number">4.1.</span> <span class="nav-text">使用antiword读取word文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例5"><span class="nav-number">5.</span> <span class="nav-text">selenium 使用实例5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python-DHT爬虫中路由表的实现"><span class="nav-number">5.1.</span> <span class="nav-text">python-DHT爬虫中路由表的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例6"><span class="nav-number">6.</span> <span class="nav-text">selenium 使用实例6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SublimeText3按ctrl-b执行python无反应"><span class="nav-number">6.1.</span> <span class="nav-text">SublimeText3按ctrl+b执行python无反应</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例7"><span class="nav-number">7.</span> <span class="nav-text">selenium 使用实例7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Python-Selenium模拟登录QQ空间"><span class="nav-number">7.1.</span> <span class="nav-text">使用Python+Selenium模拟登录QQ空间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例8"><span class="nav-number">8.</span> <span class="nav-text">selenium 使用实例8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python抓取安居客小区数据"><span class="nav-number">8.1.</span> <span class="nav-text">python抓取安居客小区数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例9"><span class="nav-number">9.</span> <span class="nav-text">selenium 使用实例9</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python模拟百度登录"><span class="nav-number">9.1.</span> <span class="nav-text">Python模拟百度登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例10"><span class="nav-number">10.</span> <span class="nav-text">selenium 使用实例10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用TKinter实现的一个简版HTTP请求模拟器"><span class="nav-number">10.1.</span> <span class="nav-text">用TKinter实现的一个简版HTTP请求模拟器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例11"><span class="nav-number">11.</span> <span class="nav-text">selenium 使用实例11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web-py使用session时报错AttributeError的解决办法"><span class="nav-number">11.1.</span> <span class="nav-text">web.py使用session时报错AttributeError的解决办法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例12"><span class="nav-number">12.</span> <span class="nav-text">selenium 使用实例12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python函数式实现的多线程爬虫练习"><span class="nav-number">12.1.</span> <span class="nav-text">python函数式实现的多线程爬虫练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qpython-–-安卓上的python编辑利器"><span class="nav-number">13.</span> <span class="nav-text">qpython – 安卓上的python编辑利器!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium-使用实例13"><span class="nav-number">14.</span> <span class="nav-text">selenium 使用实例13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python采集新浪热门微博"><span class="nav-number">14.1.</span> <span class="nav-text">python采集新浪热门微博</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python抓取糗百信息并入库mysql"><span class="nav-number">15.</span> <span class="nav-text">python抓取糗百信息并入库mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python-tkinter的键盘事件监听"><span class="nav-number">16.</span> <span class="nav-text">python-tkinter的键盘事件监听</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动化测试-selenium-模块-webdriver使用（一）"><span class="nav-number">17.</span> <span class="nav-text">自动化测试 selenium 模块 webdriver使用（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、webdriver基本使用命令"><span class="nav-number">17.1.</span> <span class="nav-text">一、webdriver基本使用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、标签导航"><span class="nav-number">17.2.</span> <span class="nav-text">二、标签导航　</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、-模拟用户操作"><span class="nav-number">17.3.</span> <span class="nav-text">三、 模拟用户操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、模拟鼠标操作"><span class="nav-number">17.3.0.1.</span> <span class="nav-text">1、模拟鼠标操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、模拟键盘操作"><span class="nav-number">17.3.0.2.</span> <span class="nav-text">2、模拟键盘操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、处理对话框"><span class="nav-number">17.4.</span> <span class="nav-text">四、处理对话框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、控制多窗口"><span class="nav-number">17.5.</span> <span class="nav-text">五、控制多窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、模拟用户自动登录"><span class="nav-number">17.6.</span> <span class="nav-text">六、模拟用户自动登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、模拟用户自动登录-封装接口"><span class="nav-number">17.7.</span> <span class="nav-text">七、模拟用户自动登录 封装接口</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2018/02/01/31_selenium使用实例/';
+          this.page.identifier = '2018/02/01/31_selenium使用实例/';
+          this.page.title = 'selenium 使用实例';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            var resultItems = [];
+            if (this.value.trim().length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCountInArticle = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCountInArticle = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  var resultItem = '';
+
+                  function highlightKeyword(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+
+                    var matchText = text.substring(start, end);
+                    var matchResult = [];
+                    var prevEnd = 0;
+                    while (position + word.length <= end && index.length != 0) {
+
+                      // highlight keyword
+
+                      var wordBegin = position - start;
+                      var wordEnd = position - start + word.length;
+                      matchResult.push(matchText.substring(prevEnd, wordBegin));
+                      matchResult.push("<b class=\"search-keyword\">" + matchText.substring(wordBegin, wordEnd) + "</b>");
+
+                      // move to next position of hit
+
+                      index.pop();
+                      prevEnd = wordEnd;
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (prevEnd > position - start) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    matchResult.push(matchText.substring(prevEnd));
+                    return matchResult.join('');
+                  }
+
+                  // sort index by position of keyword
+
+                  indexOfTitle.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  indexOfContent.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  // highlight title
+
+                  if (indexOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, 0, title.length, indexOfTitle) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  // highlight content
+
+                  var resultUpperBound = parseInt(1);
+                  var withoutUpperBound = false;
+                  if (resultUpperBound === -1) {
+                    withoutUpperBound = true;
+                  }
+                  var currentResultNum = 0;
+                  while (indexOfContent.length != 0 && (withoutUpperBound || (currentResultNum < resultUpperBound))) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                    "<p class=\"search-result\">" + highlightKeyword(content, start, end, indexOfContent) +
+                    "...</p>" + "</a>";
+                    currentResultNum++;
+                  }
+                  resultItem += "</li>";
+                  resultItems.push({item: resultItem, hitCount: hitCountInArticle, id: resultItems.length});
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.hitCount != resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultLeft.id - resultRight.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result, i) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              $resultContent.innerHTML = searchResultList;
+            }
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

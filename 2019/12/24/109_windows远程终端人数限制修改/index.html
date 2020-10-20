@@ -1,0 +1,1201 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="网络安全,windows,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="windows2012远程终端人数修改 windows server 2012/2016服务器设置多人同时远程桌面方法 这篇文章主要介绍了windows server 2012/2016 设置多用户远程桌面设置方法，服务器设置多用户同时远程桌面，可以提高访问效率，避免人多抢登服务器,需要的朋友可以参考下 服务器设置多用户同时远程桌面，可以提高访问效率，避免人多抢登服务器。 解决这个问题网上找了很久">
+<meta name="keywords" content="网络安全,windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows2012远程终端人数修改">
+<meta property="og:url" content="http://vksec.com/2019/12/24/109_windows远程终端人数限制修改/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="windows2012远程终端人数修改 windows server 2012/2016服务器设置多人同时远程桌面方法 这篇文章主要介绍了windows server 2012/2016 设置多用户远程桌面设置方法，服务器设置多用户同时远程桌面，可以提高访问效率，避免人多抢登服务器,需要的朋友可以参考下 服务器设置多用户同时远程桌面，可以提高访问效率，避免人多抢登服务器。 解决这个问题网上找了很久">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/ECgUylq.png">
+<meta property="og:image" content="https://i.imgur.com/DvfvKw4.png">
+<meta property="og:image" content="https://i.imgur.com/pMAScvH.jpg">
+<meta property="og:image" content="https://i.imgur.com/zcxugBT.jpg">
+<meta property="og:image" content="https://i.imgur.com/EQvRI8y.jpg">
+<meta property="og:image" content="https://i.imgur.com/jXTgQEo.jpg">
+<meta property="og:image" content="https://i.imgur.com/7M59fOk.jpg">
+<meta property="og:image" content="https://i.imgur.com/dGIdAck.jpg">
+<meta property="og:image" content="https://i.imgur.com/AIfl3uT.jpg">
+<meta property="og:image" content="https://i.imgur.com/1UFQYop.jpg">
+<meta property="og:image" content="https://i.imgur.com/lRFV9oP.jpg">
+<meta property="og:image" content="https://i.imgur.com/fXnVPgS.jpg">
+<meta property="og:image" content="https://i.imgur.com/2XAVdFH.jpg">
+<meta property="og:image" content="https://i.imgur.com/JrS6gpJ.jpg">
+<meta property="og:image" content="https://i.imgur.com/IFHT1y9.jpg">
+<meta property="og:image" content="https://i.imgur.com/ImsKiqp.jpg">
+<meta property="og:image" content="https://i.imgur.com/7I7OXEJ.jpg">
+<meta property="og:image" content="https://i.imgur.com/xpzF6W6.jpg">
+<meta property="og:image" content="https://i.imgur.com/k7oGOrm.jpg">
+<meta property="og:image" content="https://i.imgur.com/nGfjDUA.png?1">
+<meta property="og:updated_time" content="2020-04-23T07:40:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows2012远程终端人数修改">
+<meta name="twitter:description" content="windows2012远程终端人数修改 windows server 2012/2016服务器设置多人同时远程桌面方法 这篇文章主要介绍了windows server 2012/2016 设置多用户远程桌面设置方法，服务器设置多用户同时远程桌面，可以提高访问效率，避免人多抢登服务器,需要的朋友可以参考下 服务器设置多用户同时远程桌面，可以提高访问效率，避免人多抢登服务器。 解决这个问题网上找了很久">
+<meta name="twitter:image" content="https://i.imgur.com/ECgUylq.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2019/12/24/109_windows远程终端人数限制修改/">
+
+
+
+  <title>windows2012远程终端人数修改 | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/12/24/109_windows远程终端人数限制修改/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                windows2012远程终端人数修改
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-24T03:03:03+08:00">
+                2019-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/24/109_windows远程终端人数限制修改/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/24/109_windows远程终端人数限制修改/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>windows2012远程终端人数修改</p>
+<p>windows server 2012/2016服务器设置多人同时远程桌面方法</p>
+<p>这篇文章主要介绍了windows server 2012/2016 设置多用户远程桌面设置方法，服务器设置多用户同时远程桌面，可以提高访问效率，避免人多抢登服务器,需要的朋友可以参考下</p>
+<p>服务器设置多用户同时远程桌面，可以提高访问效率，避免人多抢登服务器。</p>
+<p>解决这个问题网上找了很久,有的是是连接里加/admin 强制连上去,有的改组策略,没有得到完美解决.</p>
+<p>现在记录一下我的最终解决过程</p>
+<p>QQ群：397745473</p>
+<a id="more"></a> 
+<h1 id="1-首先需要先安装远程桌面服务"><a href="#1-首先需要先安装远程桌面服务" class="headerlink" title="1. 首先需要先安装远程桌面服务"></a>1. 首先需要先安装远程桌面服务</h1><p><img src="https://i.imgur.com/ECgUylq.png" alt></p>
+<p>配置组策略，</p>
+<p>运行框输入gpedit.msc，</p>
+<p>打开 计算机配置–&gt;管理模板—&gt;windows组件—&gt;然后在右边的菜单中选择远程桌面服务；</p>
+<p>双击打开。</p>
+<p>双击远程桌面会话主机-&gt;连接，点击限制连接的数量，设置如下。</p>
+<p><img src="https://i.imgur.com/DvfvKw4.png" alt></p>
+<p>这样设置就完成了,亲测成功。网上大部份都是解决到这里就没有了.</p>
+<p>但这样设置远程多用户只有120天期限，要破解120天限制，还需要配置远程桌面授权。<br>能成功的前提：系统是激活的。</p>
+<p>(网上查到说要删个注册表把时间改到2099年解决的,但还是没有解决，只是提示时间变长了而已.)</p>
+<h1 id="2-web申请激活码"><a href="#2-web申请激活码" class="headerlink" title="2. web申请激活码"></a>2. web申请激活码</h1><p>1) 管理工具—远程桌面服务—远程桌面授权管理器，选择未激活的服务器，选择”属性”，</p>
+<p>请记下对话框中出现的产品ID,我们要用这20位的ID号到网上注册</p>
+<p>例如：00184-50100-21572-AT706<br>注意：如果终端服务器授权中没有服务器，请选择连接，然后输入本机服务器IP地址。</p>
+<p><img src="https://i.imgur.com/pMAScvH.jpg" alt></p>
+<p>必需信息，如图下填写:</p>
+<p><img src="https://i.imgur.com/zcxugBT.jpg" alt></p>
+<p>2) 打开Internet Explorer浏览器,</p>
+<p>在地址栏中输入 <a href="https://activate.microsoft.com" target="_blank" rel="noopener">https://activate.microsoft.com</a> 这个地址，此时是英文界面。</p>
+<p>选择 Chinese (Simplified)  点 GO</p>
+<p>3) 确保已选中”启用许可证服务器”项，再单击”下一步”按钮</p>
+<p>4) 在随后要求提供的信息界面中，”产品ID”处输入刚才抄下的那个20位数字，再填写刚才步骤1中必需信息，然后再选”下一步”继续。</p>
+<p><img src="https://i.imgur.com/EQvRI8y.jpg" alt></p>
+<p><img src="https://i.imgur.com/jXTgQEo.jpg" alt></p>
+<p>5) 可以得到”已成功处理您的许可证服务器启动申请。你的许可证ID是：…”，</p>
+<p>又是一个需要抄下的分为七段的35位数，里面包含有数字也有大写的英文字母；</p>
+<p>并且还会问你”需要此时获取客户机许可证吗 ”  选择 ”是”<br>许可服务器ID：CCB9Q-Y44D6-BR2HD-9H4VM-YPXMM-KF2KJ-RJ473</p>
+<p><img src="https://i.imgur.com/7M59fOk.jpg" alt></p>
+<p>6) 如果没有许可证，那么许可证程序选择“企业协议”，确定您的信息后,便可继续”下一步”；</p>
+<p>7) “产品类型”一项应为”Windows 2003终端服务客户端访问许可证”；</p>
+<p>”数量”  为你欲连接的最大用户数（比如为”500”）；</p>
+<p>在”注册号码”中输入你从微软获得的那个七位数</p>
+<p>（如果自己没有许可证，那么就输入6565792,4954438,6879321或者5296992），</p>
+<p>再”下一步”；<br>注意：建议选择Windwos Server 2012远程桌面服务器每用户访问许可。</p>
+<p><img src="https://i.imgur.com/dGIdAck.jpg" alt></p>
+<p>8) 下一步</p>
+<p>9) 记录前面的35位数的”许可证服务器ID”，一个是现在才取得的另一个七段共35位数的”许可证密钥包ID”。</p>
+<p><img src="https://i.imgur.com/AIfl3uT.jpg" alt></p>
+<p>许可密钥ID：RBG28-9884M-GXC4V-WKXGJ-8QPXG-FG8YP-9RV8Q<br>10) 选择结束</p>
+<h1 id="3-激活终端服务"><a href="#3-激活终端服务" class="headerlink" title="3. 激活终端服务"></a>3. 激活终端服务</h1><p>1) 管理工具—远程桌面服务—远程桌面授权管理器，选择服务器名称后点击右键,</p>
+<p>将”属性”中的”安装方法”设为”Web浏览器”；</p>
+<p><img src="https://i.imgur.com/1UFQYop.jpg" alt></p>
+<p>2) 再选择服务器,点击右键,选择”激活许可”；</p>
+<p><img src="https://i.imgur.com/lRFV9oP.jpg" alt></p>
+<p>3) 下一步</p>
+<p><img src="https://i.imgur.com/fXnVPgS.jpg" alt></p>
+<p>4) 选择WEB</p>
+<p><img src="https://i.imgur.com/2XAVdFH.jpg" alt></p>
+<p>5) 输入许可服务器ID：CCB9Q-Y44D6-BR2HD-9H4VM-YPXMM-KF2KJ-RJ473</p>
+<p><img src="https://i.imgur.com/JrS6gpJ.jpg" alt></p>
+<p>6) 选择立即启动许可安装向导，下一步</p>
+<p>7) 下一步<br>8) 输入许可密钥ID：RBG28-9884M-GXC4V-WKXGJ-8QPXG-FG8YP-9RV8Q</p>
+<p>9) 点击完成</p>
+<h1 id="4-配置远程桌面会话主机授权服务器"><a href="#4-配置远程桌面会话主机授权服务器" class="headerlink" title="4. 配置远程桌面会话主机授权服务器"></a>4. 配置远程桌面会话主机授权服务器</h1><p>1） 管理工具—远程桌面服务—RD授权诊断程序，查看当前服务器为没有授权</p>
+<p><img src="https://i.imgur.com/IFHT1y9.jpg" alt></p>
+<p>2） 运行—&gt;gpedit.msc-&gt;</p>
+<p>计算机配置—管理模板—windows组件—远程桌面服务—远程桌面会话主机—-授权， </p>
+<p>找到 “使用指定的远程桌面许可服务器”，设置为启用，并在“要使用的许可证服务器”中，</p>
+<p>设置当前服务器的IP或者主机名。</p>
+<p><img src="https://i.imgur.com/ImsKiqp.jpg" alt></p>
+<p><img src="https://i.imgur.com/7I7OXEJ.jpg" alt></p>
+<p>9）运行—&gt;gpedit.msc-&gt;计算机配置—管理模板—windows组件—终端服务 找到 “限制连接数量”，</p>
+<p>设置为Disable,即禁用或者未配置。也可以设置具体数量.</p>
+<h1 id="5-配置远程桌面会话主机授权模式"><a href="#5-配置远程桌面会话主机授权模式" class="headerlink" title="5. 配置远程桌面会话主机授权模式"></a>5. 配置远程桌面会话主机授权模式</h1><p>1） 管理工具—远程桌面服务—RD授权诊断程序，查看当前服务器授权为0<br>2） 运行—&gt;gpedit.msc-&gt;计算机配置—管理模板—windows组件—远程桌面服务—远程桌面会话主机—-授权， 找到 “设置远程桌面授权模式”，设置为启用，并在“指定RD 会话主机服务器授权模式”中，选择“按用户”。</p>
+<p><img src="https://i.imgur.com/xpzF6W6.jpg" alt></p>
+<p>3） 重新打开RD授权诊断程序</p>
+<p><img src="https://i.imgur.com/k7oGOrm.jpg" alt></p>
+<h1 id="6-配置远程桌面会话主机连接"><a href="#6-配置远程桌面会话主机连接" class="headerlink" title="6. 配置远程桌面会话主机连接"></a>6. 配置远程桌面会话主机连接</h1><p>1) 运行—&gt;gpedit.msc-&gt;计算机配置—管理模板—windows组件—远程桌面服务—远程桌面会话主机—-连接，</p>
+<p>可以在“限制连接的数量”中设置最大连接数量（默认无限制）。</p>
+<p>2) 设置一个用户是否可以使用多个远程桌面连接。选择“将远程桌面服务限制到单独的远程桌面会话”，</p>
+<p>这里必须设置禁用，否则一个用户只能连接一个远程桌面。</p>
+<hr>
+<p>更多参考:</p>
+<p> 使用远程桌面链接登录到终端服务器时经常会遇到“终端服务器超出最大允许链接数”诸如此类错误导致无法正常登录终端服务器，引起该问题的原因在于终端服务的缺省链接数为2个链接，并且当登录远程桌面后如果不是采用注销方式退出，而是直接关闭远程桌面窗口，那么实际上会话并没有释放掉，而是继续保留在服务器端，这样就会占用总的链接数，当这个数量达到最大允许值时就会出现上面的提示。<br>　　解决方式：<br>　　一、用注销来退出远程桌面而不是直接关闭窗口<br>　　二、限制已断开链接的会话存在时间<br>　　三、增加最多链接数，即设置可连接的数量多些 </p>
+<p><img src="https://i.imgur.com/nGfjDUA.png?1" alt></p>
+<p>修改完后还是不可以同时在线多个用户,需参考下面这篇继续修改服务器</p>
+<p>Windows 2012 R2設定同一使用者(2人使用相同使用者賬號登入)同時多點遠端系統（Win2016 Win2008R2 類似）</p>
+<p>原文链接: <a href="https://www.itread01.com/content/1549212134.html" target="_blank" rel="noopener">https://www.itread01.com/content/1549212134.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">說明：Windows Server 2012預設情況下，只執行2個使用者遠端桌面登陸，這裡我們可以通過安裝遠端桌面會話主機配置來實現2個以上使用者的遠端桌面登陸。</span><br><span class="line">1、 安裝桌面會話主機和遠端桌面授權</span><br><span class="line">  1）在“控制面板”中，開啟“伺服器管理器”，選擇“基於角色或基於功能的安裝”，出現以下的安裝介面 </span><br><span class="line">  2) 下一步 </span><br><span class="line">  3) 選擇遠端桌面服務 </span><br><span class="line">  4) 下一步 </span><br><span class="line">  5) 下一步 </span><br><span class="line">  6) 選擇 桌面會話主機和遠端桌面授權 </span><br><span class="line">  7) 選擇安裝 </span><br><span class="line">  8) 重新啟動後設置便會生效。</span><br><span class="line"></span><br><span class="line">2、 web申請啟用碼</span><br><span class="line">1) 管理工具---遠端桌面服務---遠端桌面授權管理器，選擇未啟用的伺服器，選擇”屬性”，請記下對話方塊中出現的產品ID,我們要用這20位的ID號到網上註冊例如：00184-50100-21572-AT706 </span><br><span class="line">注意：如果終端伺服器授權中沒有伺服器，請選擇連線，然後輸入本機伺服器IP地址。 </span><br><span class="line"> </span><br><span class="line">必需資訊，如圖下填寫： </span><br><span class="line"></span><br><span class="line">2) 開啟Internet Explorer瀏覽器,在位址列中輸入https://activate.microsoft.com這個地址，此時是英文介面。選擇GO </span><br><span class="line"></span><br><span class="line">3) 確保已選中&quot;啟用許可證伺服器&quot;項，再單擊&quot;下一步&quot;按鈕。 </span><br><span class="line"></span><br><span class="line">4) 在隨後要求提供的資訊介面中，&quot;產品ID&quot;處輸入剛才抄下的那個20位數字，再填寫剛才步驟1中必需資訊，然後再選&quot;下一步&quot;繼續。 </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">5) 可以得到&quot;已成功處理您的許可證伺服器啟動申請。你的許可證ID是：…&quot;，又是一個需要抄下的分為七段的35位數，裡面包含有數字也有大寫的英文字母；並且還會問你&quot;需要此時獲取客戶機許可證嗎？&quot;選擇”是” </span><br><span class="line">許可伺服器ID：CCB9Q-Y44D6-BR2HD-9H4VM-YPXMM-KF2KJ-RJ473 </span><br><span class="line"></span><br><span class="line">6) 如果沒有許可證，那麼許可證程式選擇“企業協議”，確定您的資訊後,便可繼續”下一步”； </span><br><span class="line"></span><br><span class="line">7) &quot;產品型別&quot;一項應為&quot;Windows 2003終端服務客戶端訪問許可證&quot;；&quot;數量&quot;為你欲連線的最大使用者數（比如為&quot;500&quot;）；在&quot;註冊號碼&quot;中輸入你從微軟獲得的那個七位數（如果自己沒有許可證，那麼就輸入6565792,4954438,6879321或者5296992），再&quot;下一步&quot;； </span><br><span class="line">注意：建議選擇Windwos Server 2012遠端桌面伺服器每使用者訪問許可。 </span><br><span class="line"></span><br><span class="line">8) 下一步 </span><br><span class="line"></span><br><span class="line">9) 記錄前面的35位數的&quot;許可證伺服器ID&quot;，一個是現在才取得的另一個七段共35位數的&quot;許可證金鑰包ID&quot;。 </span><br><span class="line"></span><br><span class="line">許可金鑰ID：RBG28-9884M-GXC4V-WKXGJ-8QPXG-FG8YP-9RV8Q</span><br><span class="line">10) 選擇結束</span><br><span class="line">3、 啟用終端服務</span><br><span class="line">1) 1) 管理工具---遠端桌面服務---遠端桌面授權管理器，選擇伺服器名稱後點擊右鍵,將”屬性”中的”安裝方法”設為”Web瀏覽器”； </span><br><span class="line"> </span><br><span class="line">2) 再選擇伺服器,點選右鍵,選擇”啟用許可”； </span><br><span class="line"></span><br><span class="line">3) 下一步 </span><br><span class="line"></span><br><span class="line">4) 選擇WEB </span><br><span class="line"></span><br><span class="line">5) 輸入許可伺服器ID：CCB9Q-Y44D6-BR2HD-9H4VM-YPXMM-KF2KJ-RJ473 </span><br><span class="line"></span><br><span class="line">6) 選擇立即啟動許可安裝嚮導，下一步 </span><br><span class="line"></span><br><span class="line">7) 下一步 </span><br><span class="line"> </span><br><span class="line">8) 輸入許可金鑰ID：RBG28-9884M-GXC4V-WKXGJ-8QPXG-FG8YP-9RV8Q </span><br><span class="line"></span><br><span class="line">9) 點選完成 </span><br><span class="line"></span><br><span class="line">4、 配置遠端桌面會話主機授權伺服器</span><br><span class="line">1） 管理工具---遠端桌面服務---RD授權診斷程式，檢視當前伺服器為沒有授權 </span><br><span class="line">2） 執行—&gt;gpedit.msc-&gt;計算機配置---管理模板---windows元件---遠端桌面服務---遠端桌面會話主機----授權， 找到 “使用指定的遠端桌面許可伺服器”，設定為啟用，並在“要使用的許可證伺服器”中，設定當前伺服器的IP或者主機名。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">9）執行—&gt;gpedit.msc-&gt;計算機配置---管理模板---windows元件---終端服務 找到 “限制連線數量”，設定為Disable,即禁用或者未配置。也可以設定具體數量，如圖：</span><br><span class="line"></span><br><span class="line">5、配置遠端桌面會話主機授權模式</span><br><span class="line">3） 管理工具---遠端桌面服務---RD授權診斷程式，檢視當前伺服器授權為0 </span><br><span class="line">4） 執行—&gt;gpedit.msc-&gt;計算機配置---管理模板---windows元件---遠端桌面服務---遠端桌面會話主機----授權， 找到 “設定遠端桌面授權模式”，設定為啟用，並在“指定RD 會話主機伺服器授權模式”中，選擇“按使用者”。 </span><br><span class="line"></span><br><span class="line">5） 重新開啟RD授權診斷程式 </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">6、配置遠端桌面會話主機連線</span><br><span class="line">1) 執行—&gt;gpedit.msc-&gt;計算機配置---管理模板---windows元件---遠端桌面服務---遠端桌面會話主機----連線，可以在“限制連線的數量”中設定最大連線數量（預設無限制）。如圖 </span><br><span class="line"></span><br><span class="line">2) 設定一個使用者是否可以使用多個遠端桌面連線。選擇“將遠端桌面服務限制到單獨的遠端桌面會話”，這裡必須設定禁用，否則一個使用者只能連線一個遠端桌面。</span><br></pre></td></tr></table></figure>
+<p>QQ群：397745473</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+          
+            <a href="/tags/windows/" rel="tag"># windows</a>
+          
+           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/24/110_VPS日常操作记录/" rel="next" title="Vps 日常操作记录">
+                <i class="fa fa-chevron-left"></i> Vps 日常操作记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/25/112_Golang常用代码片段/" rel="prev" title="GoLang常用代码片段">
+                GoLang常用代码片段 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    <div class="post-spread">
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<img src="https://i.imgur.com/0ivBlsQ.jpg" alt="知识星球">
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">131</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vsyour.com/" title="Blog" target="_blank">Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-首先需要先安装远程桌面服务"><span class="nav-number">1.</span> <span class="nav-text">1. 首先需要先安装远程桌面服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-web申请激活码"><span class="nav-number">2.</span> <span class="nav-text">2. web申请激活码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-激活终端服务"><span class="nav-number">3.</span> <span class="nav-text">3. 激活终端服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-配置远程桌面会话主机授权服务器"><span class="nav-number">4.</span> <span class="nav-text">4. 配置远程桌面会话主机授权服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-配置远程桌面会话主机授权模式"><span class="nav-number">5.</span> <span class="nav-text">5. 配置远程桌面会话主机授权模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-配置远程桌面会话主机连接"><span class="nav-number">6.</span> <span class="nav-text">6. 配置远程桌面会话主机连接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2019/12/24/109_windows远程终端人数限制修改/';
+          this.page.identifier = '2019/12/24/109_windows远程终端人数限制修改/';
+          this.page.title = 'windows2012远程终端人数修改';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            var resultItems = [];
+            if (this.value.trim().length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCountInArticle = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCountInArticle = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  var resultItem = '';
+
+                  function highlightKeyword(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+
+                    var matchText = text.substring(start, end);
+                    var matchResult = [];
+                    var prevEnd = 0;
+                    while (position + word.length <= end && index.length != 0) {
+
+                      // highlight keyword
+
+                      var wordBegin = position - start;
+                      var wordEnd = position - start + word.length;
+                      matchResult.push(matchText.substring(prevEnd, wordBegin));
+                      matchResult.push("<b class=\"search-keyword\">" + matchText.substring(wordBegin, wordEnd) + "</b>");
+
+                      // move to next position of hit
+
+                      index.pop();
+                      prevEnd = wordEnd;
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (prevEnd > position - start) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    matchResult.push(matchText.substring(prevEnd));
+                    return matchResult.join('');
+                  }
+
+                  // sort index by position of keyword
+
+                  indexOfTitle.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  indexOfContent.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  // highlight title
+
+                  if (indexOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, 0, title.length, indexOfTitle) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  // highlight content
+
+                  var resultUpperBound = parseInt(1);
+                  var withoutUpperBound = false;
+                  if (resultUpperBound === -1) {
+                    withoutUpperBound = true;
+                  }
+                  var currentResultNum = 0;
+                  while (indexOfContent.length != 0 && (withoutUpperBound || (currentResultNum < resultUpperBound))) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                    "<p class=\"search-result\">" + highlightKeyword(content, start, end, indexOfContent) +
+                    "...</p>" + "</a>";
+                    currentResultNum++;
+                  }
+                  resultItem += "</li>";
+                  resultItems.push({item: resultItem, hitCount: hitCountInArticle, id: resultItems.length});
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.hitCount != resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultLeft.id - resultRight.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result, i) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              $resultContent.innerHTML = searchResultList;
+            }
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

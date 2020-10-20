@@ -1,0 +1,1117 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="python,网络安全,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="centos自动谷歌搜关键词并收集URL QQ群：397745473">
+<meta name="keywords" content="python,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos自动谷歌搜关键词并收集URL">
+<meta property="og:url" content="http://vksec.com/2019/10/03/100_centos自动谷歌搜关键词并收集URL/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="centos自动谷歌搜关键词并收集URL QQ群：397745473">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-03T14:58:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos自动谷歌搜关键词并收集URL">
+<meta name="twitter:description" content="centos自动谷歌搜关键词并收集URL QQ群：397745473">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2019/10/03/100_centos自动谷歌搜关键词并收集URL/">
+
+
+
+  <title>centos自动谷歌搜关键词并收集URL | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2019/10/03/100_centos自动谷歌搜关键词并收集URL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                centos自动谷歌搜关键词并收集URL
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T03:03:03+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/03/100_centos自动谷歌搜关键词并收集URL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/03/100_centos自动谷歌搜关键词并收集URL/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>centos自动谷歌搜关键词并收集URL</p>
+<p>QQ群：397745473</p>
+<a id="more"></a> 
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>需要安装centos 桌面环境,只需要在装系统的时候选上desktop就行了。</p>
+<h1 id="centos-7-安装RDP"><a href="#centos-7-安装RDP" class="headerlink" title="centos 7 安装RDP"></a>centos 7 安装RDP</h1><p>参考:<a href="https://www.cnblogs.com/lenmom/p/9516210.html" target="_blank" rel="noopener">https://www.cnblogs.com/lenmom/p/9516210.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release xrdp tigervnc-server tmux</span><br><span class="line">vncpasswd root</span><br><span class="line">yum -y update &amp;&amp; yum -y upgrade</span><br><span class="line"></span><br><span class="line">sed -i &apos;s/max_bpp=32/max_bpp=24/g&apos; /etc/xrdp/xrdp.ini</span><br><span class="line">修改XRDP最大连接数，否则远程连接可能无法成功,把max_bpp=32, 改为max_bpp=24</span><br><span class="line"></span><br><span class="line">sed -i &apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos; /etc/selinux/config</span><br><span class="line"></span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">或 </span><br><span class="line">firewall-cmd --permanent --zone=public --add-port=3389/tcp</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"></span><br><span class="line">systemctl start xrdp</span><br><span class="line"></span><br><span class="line">systemctl enable xrdp</span><br><span class="line"></span><br><span class="line">systemctl enable sshd</span><br><span class="line"></span><br><span class="line">yum -y install tmux</span><br><span class="line">tmux new -s vsyour</span><br><span class="line">tmux ls</span><br><span class="line">tmux a -d -t vsyour</span><br><span class="line"></span><br><span class="line">左右分屏：prefix + %</span><br><span class="line">上下分屏：prefix + &apos;</span><br></pre></td></tr></table></figure>
+<p>安装软件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">anaconda</span><br><span class="line">参考:https://www.anaconda.com/</span><br><span class="line">wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh</span><br><span class="line"></span><br><span class="line">pycharm </span><br><span class="line">参考:https://www.cnblogs.com/niuli1987/p/9917650.html</span><br><span class="line">wget https://download.jetbrains.com/python/pycharm-professional-2018.1.tar.gz</span><br><span class="line">ln -s /root/pycharm-2018.1/bin/pycharm.sh /root/桌面/pycharm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">用xfce4 桌面环境</span><br><span class="line">yum install epel-release</span><br><span class="line">yum groupinstall xfce4</span><br><span class="line"></span><br><span class="line">执行 yum groupinstall xfce4安装Xfce4桌面环境。如果需要，可选安装xfce4的其他模块。</span><br><span class="line">执行sudo systemctl isolate graphical.target,进入Xfce</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">yum groupinstall <span class="string">"X Window system"</span></span><br></pre></td></tr></table></figure>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><h2 id="Centos-xrdp-远程连接后突然闪退"><a href="#Centos-xrdp-远程连接后突然闪退" class="headerlink" title="Centos xrdp 远程连接后突然闪退"></a>Centos xrdp 远程连接后突然闪退</h2><p>由于anconda 与xrdp冲突所以重启后连接xrdp远程桌面时会出现闪退的现象，所以需要启动的时候把原来的anconda的注释掉,改成下面这样就可以了</p>
+<p>供参考：vim ~/.bashrc</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .bashrc</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User specific aliases and functions</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> rm=<span class="string">'rm -i'</span></span><br><span class="line"><span class="built_in">alias</span> cp=<span class="string">'cp -i'</span></span><br><span class="line"><span class="built_in">alias</span> mv=<span class="string">'mv -i'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Source global definitions</span></span><br><span class="line"><span class="keyword">if</span> [ -f /etc/bashrc ]; <span class="keyword">then</span></span><br><span class="line">        . /etc/bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">. <span class="string">"/root/.acme.sh/acme.sh.env"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span></span><br><span class="line"><span class="comment"># !! Contents within this block are managed by 'conda init' !!</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:/root/anaconda3/bin"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#__conda_setup="$('/root/anaconda3/bin/conda' 'shell.bash' 'hook' 2&gt; /dev/null)"</span></span><br><span class="line"><span class="comment">#if [ $? -eq 0 ]; then</span></span><br><span class="line"><span class="comment">#    eval "$__conda_setup"</span></span><br><span class="line"><span class="comment">#else</span></span><br><span class="line"><span class="comment">#    if [ -f "/root/anaconda3/etc/profile.d/conda.sh" ]; then</span></span><br><span class="line"><span class="comment">#        . "/root/anaconda3/etc/profile.d/conda.sh"</span></span><br><span class="line"><span class="comment">#    else</span></span><br><span class="line"><span class="comment">#        #export PATH="/root/anaconda3/bin:$PATH"</span></span><br><span class="line"><span class="comment">#        export PATH="$PATH:/root/anaconda3/bin"</span></span><br><span class="line"><span class="comment">#    fi</span></span><br><span class="line"><span class="comment">#fi</span></span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://www.cnblogs.com/infoo/p/11239490.html" target="_blank" rel="noopener">https://www.cnblogs.com/infoo/p/11239490.html</a><br><a href="http://blog.sina.com.cn/s/blog_71bd750b010312q3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_71bd750b010312q3.html</a></p>
+<h2 id="另一种无法进入桌面的情况"><a href="#另一种无法进入桌面的情况" class="headerlink" title="另一种无法进入桌面的情况"></a>另一种无法进入桌面的情况</h2><p>都没干啥 就又进不了桌面了….</p>
+<p>于是又是一顿操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">参考:https://bugzilla.redhat.com/show_bug.cgi?id=1529419</span><br><span class="line">abrt-auto-reporting enabled</span><br><span class="line">1.Fresh install RHEL7.7alpha via mimi mode;</span><br><span class="line">2.Install GUI via the <span class="built_in">command</span> <span class="string">" yum groupinstall "</span>Server with GUI<span class="string">" "</span>,boot into GUI,it is not reproduce;</span><br><span class="line">3.Update libX11(libX11-1.6.7-2.el7.x86_64) ,reboot and check the messages <span class="built_in">log</span>,it still not reproduce.</span><br><span class="line">重启后就恢复正常了</span><br></pre></td></tr></table></figure>
+<h1 id="安装浏览器驱动"><a href="#安装浏览器驱动" class="headerlink" title="安装浏览器驱动"></a>安装浏览器驱动</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz</span><br><span class="line">tar -xvzf geckodriver-v0.23.0-linux64.tar.gz</span><br><span class="line">chmod +x geckodriver</span><br><span class="line">mv geckodriver /usr/<span class="built_in">local</span>/bin/</span><br></pre></td></tr></table></figure>
+<h1 id="安装输入法"><a href="#安装输入法" class="headerlink" title="安装输入法"></a>安装输入法</h1><p>​               注意 装完后进不了桌面了，查了很久原因，原来是这个引起的。。。这一步最好就不操作了！！！</p>
+<p>参考:</p>
+<p> <a href="https://jingyan.baidu.com/article/cbf0e500b791142eaa28932f.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/cbf0e500b791142eaa28932f.html</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum remove ibus</span><br><span class="line">yum install ibus ibus-table</span><br><span class="line">yum install ibus ibus-table-wubi</span><br><span class="line">这个操作完有问题，直接进不了桌面了</span><br></pre></td></tr></table></figure>
+<h1 id="自动搜索代码"><a href="#自动搜索代码" class="headerlink" title="自动搜索代码"></a>自动搜索代码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="comment"># pip install selenium -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</span></span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from selenium import webdriver</span><br><span class="line">import datetime</span><br><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line">import os</span><br><span class="line">import time</span><br><span class="line">import random</span><br><span class="line">from selenium.webdriver.common.keys import Keys  <span class="comment">#  引入模块</span></span><br><span class="line">from selenium.webdriver.common.action_chains import ActionChains</span><br><span class="line"></span><br><span class="line">class GetGoogleUrl(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.printInfo(<span class="string">'开始获取关键词....'</span>)</span><br><span class="line">        self.keys=[]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(0,31):</span><br><span class="line">            pastTime = (datetime.datetime.now() - datetime.timedelta(days=i)).strftime(<span class="string">'%Y%m%d'</span>)</span><br><span class="line">            url = f<span class="string">'https://trends.google.com/trends/api/dailytrends?hl=en-US&amp;tz=0&amp;ed=&#123;pastTime&#125;&amp;geo=US&amp;ns=15'</span></span><br><span class="line">            try:</span><br><span class="line">                response = requests.get(url)</span><br><span class="line">                response.encoding = <span class="string">'utf-8'</span></span><br><span class="line">                jdata = json.loads(response.text.strip().replace(<span class="string">')]&#125;\'</span>,\n<span class="string">', '</span><span class="string">'))</span></span><br><span class="line"><span class="string">                for x in jdata['</span>default<span class="string">']['</span>trendingSearchesDays<span class="string">'][0]['</span>trendingSearches<span class="string">']:</span></span><br><span class="line"><span class="string">                    self.keys.append(x['</span>title<span class="string">']['</span>query<span class="string">'])</span></span><br><span class="line"><span class="string">            except Exception as e:</span></span><br><span class="line"><span class="string">                self.printInfo(f'</span>获取关键词&#123;url&#125;出错,提示信息:&#123;e&#125;<span class="string">')</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            self.printInfo(f'</span>使用URL &#123;url&#125; 当前词量 &#123;len(self.keys)&#125;个<span class="string">')</span></span><br><span class="line"><span class="string">        self.keys=set(self.keys)</span></span><br><span class="line"><span class="string">        self.printInfo(f'</span>去重后还有&#123;len(self.keys)&#125;个<span class="string">')</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        firefox_options = webdriver.FirefoxOptions()</span></span><br><span class="line"><span class="string">        firefox_options.add_argument("--disable-infobars")  # 设置禁用浏览器正在被自动化程序控制的提示</span></span><br><span class="line"><span class="string">        #firefox_options.add_argument('</span>--headless<span class="string">')  # 以所谓的headless模式打开chrome</span></span><br><span class="line"><span class="string">        firefox_options.add_argument("--incognito")  # 设置无痕模式</span></span><br><span class="line"><span class="string">        self.Firefox_driver = webdriver.Firefox(options=firefox_options)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    def printInfo(self,string):</span></span><br><span class="line"><span class="string">        nowTime = datetime.datetime.now().strftime('</span>%Y-%m-%d %H:%M:%S<span class="string">')  # 现在</span></span><br><span class="line"><span class="string">        printContent=f'</span>[*] &#123;nowTime&#125; &#123;string&#125;<span class="string">'</span></span><br><span class="line"><span class="string">        print(printContent)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    def getUrl(self):</span></span><br><span class="line"><span class="string">        try:</span></span><br><span class="line"><span class="string">            soup=BeautifulSoup(self.Firefox_driver.page_source,'</span>lxml<span class="string">')</span></span><br><span class="line"><span class="string">            if soup:</span></span><br><span class="line"><span class="string">                for i in soup.find_all('</span>div<span class="string">',attrs=&#123;'</span>class<span class="string">':'</span>r<span class="string">'&#125;):</span></span><br><span class="line"><span class="string">                    try:</span></span><br><span class="line"><span class="string">                        writeUrl=i.a.get('</span>href<span class="string">')</span></span><br><span class="line"><span class="string">                    except Exception as e:</span></span><br><span class="line"><span class="string">                        self.printInfo(f'</span>&#123;i&#125; 获取url 失败,提示: &#123;e&#125;<span class="string">')</span></span><br><span class="line"><span class="string">                        continue</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                    if writeUrl:</span></span><br><span class="line"><span class="string">                        with open('</span>urls.txt<span class="string">','</span>a<span class="string">') as f:</span></span><br><span class="line"><span class="string">                            f.write(i.a.get('</span>href<span class="string">')+'</span>\n<span class="string">')</span></span><br><span class="line"><span class="string">                if soup.find('</span>a<span class="string">',attrs=&#123;'</span>id<span class="string">':'</span>pnnext<span class="string">'&#125;):</span></span><br><span class="line"><span class="string">                    return True</span></span><br><span class="line"><span class="string">                else:</span></span><br><span class="line"><span class="string">                    return False</span></span><br><span class="line"><span class="string">        except Exception as e:</span></span><br><span class="line"><span class="string">            self.printInfo(f'</span>&#123;self.Firefox_driver.current_url&#125; 获取网站源码失败,提示: &#123;e&#125;<span class="string">')</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        return True</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    def seachKey(self,key):</span></span><br><span class="line"><span class="string">        self.printInfo(f'</span>正在搜索: &#123;key&#125;<span class="string">')</span></span><br><span class="line"><span class="string">        down = "var q=document.documentElement.scrollTop=100000"</span></span><br><span class="line"><span class="string">        try:</span></span><br><span class="line"><span class="string">            self.Firefox_driver.find_element_by_name("q").clear()</span></span><br><span class="line"><span class="string">            self.Firefox_driver.find_element_by_name("q").send_keys(key, Keys.RETURN)</span></span><br><span class="line"><span class="string">            time.sleep(random.randint(1, 60))</span></span><br><span class="line"><span class="string">            pageNumber=0</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            while True:</span></span><br><span class="line"><span class="string">                pageNumber+=1</span></span><br><span class="line"><span class="string">                # 获取内容</span></span><br><span class="line"><span class="string">                if not self.getUrl():</span></span><br><span class="line"><span class="string">                    time.sleep(random.randint(1, 60))</span></span><br><span class="line"><span class="string">                    self.printInfo(f'</span>抓取&#123;pageNumber&#125;页完成!<span class="string">')</span></span><br><span class="line"><span class="string">                    break</span></span><br><span class="line"><span class="string">                time.sleep(random.randint(1, 10))</span></span><br><span class="line"><span class="string">                self.Firefox_driver.execute_script(down)  # 下拉</span></span><br><span class="line"><span class="string">                #self.Firefox_driver.execute_script('</span>window.scrollTo(0,1000000)<span class="string">')</span></span><br><span class="line"><span class="string">                #self.Firefox_driver.execute_script(pnnext) # 翻页</span></span><br><span class="line"><span class="string">                ActionChains(self.Firefox_driver).move_to_element(self.Firefox_driver.find_element_by_id("pnnext")).perform() # 模拟鼠标移动</span></span><br><span class="line"><span class="string">                time.sleep(random.randint(1, 3))</span></span><br><span class="line"><span class="string">                self.Firefox_driver.find_element_by_id("pnnext").click()  # 点击翻页</span></span><br><span class="line"><span class="string">                time.sleep(random.randint(1, 10))</span></span><br><span class="line"><span class="string">        except Exception as e:</span></span><br><span class="line"><span class="string">            self.printInfo(f'</span>搜索失败,提示: &#123;e&#125;<span class="string">')</span></span><br><span class="line"><span class="string">            tipMessage='</span><span class="string">''</span> Message: Unable to clear element that cannot be edited: &lt;input name=<span class="string">"q"</span> <span class="built_in">type</span>=<span class="string">"hidden"</span>&gt; <span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">            if tipMessage in e:</span></span><br><span class="line"><span class="string">                return '</span><span class="built_in">exit</span><span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    def firefoxDriver(self, url):</span></span><br><span class="line"><span class="string">        time.sleep(random.randint(1,3))  # sleep一下，否则有可能报错</span></span><br><span class="line"><span class="string">        self.Firefox_driver.implicitly_wait(1)</span></span><br><span class="line"><span class="string">        self.Firefox_driver.get(url)</span></span><br><span class="line"><span class="string">        keyNumber=0</span></span><br><span class="line"><span class="string">        for key in self.keys:</span></span><br><span class="line"><span class="string">            keyNumber+=1</span></span><br><span class="line"><span class="string">            self.printInfo(f'</span>[&#123;str(keyNumber).zfill(3)&#125;]<span class="string">'.center(100,'</span>+<span class="string">'))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            if self.seachKey(key) == '</span><span class="built_in">exit</span><span class="string">':</span></span><br><span class="line"><span class="string">                return '</span><span class="built_in">exit</span><span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">if __name__ == '</span>__main__<span class="string">':</span></span><br><span class="line"><span class="string">    for _ in range(2):</span></span><br><span class="line"><span class="string">        getGoogleUrl = GetGoogleUrl()</span></span><br><span class="line"><span class="string">        if getGoogleUrl.firefoxDriver('</span>https://www.google.com/ncr<span class="string">') == '</span><span class="built_in">exit</span><span class="string">':</span></span><br><span class="line"><span class="string">            getGoogleUrl.Firefox_driver.quit()</span></span><br></pre></td></tr></table></figure>
+<h1 id="去重代码"><a href="#去重代码" class="headerlink" title="去重代码"></a>去重代码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line">import glob</span><br><span class="line">def fun_set(l):</span><br><span class="line">    <span class="built_in">return</span> list(<span class="built_in">set</span>(l))</span><br><span class="line"></span><br><span class="line">allDomain=[]</span><br><span class="line"><span class="keyword">for</span> fileName <span class="keyword">in</span> glob.glob(<span class="string">'urls*.txt'</span>):</span><br><span class="line">    with open(fileName,<span class="string">'r'</span>) as f:</span><br><span class="line">        allUrl=f.read().split(<span class="string">'\n'</span>)</span><br><span class="line">        <span class="built_in">print</span>(f<span class="string">'&#123;fileName&#125; 取到条 &#123;len(allUrl)&#125; URL.'</span>)</span><br><span class="line">        allDomain+=allUrl</span><br><span class="line"></span><br><span class="line">allDomain_1=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fun_set(allDomain):</span><br><span class="line">    data=<span class="string">'/'</span>.join(i.split(<span class="string">'/'</span>)[2:3])</span><br><span class="line">    <span class="keyword">if</span> data:</span><br><span class="line">        allDomain_1.append(data)</span><br><span class="line">n=0</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fun_set(allDomain_1):</span><br><span class="line">    n+=1</span><br><span class="line">    <span class="built_in">print</span>(n,i)</span><br></pre></td></tr></table></figure>
+<h1 id="新发现"><a href="#新发现" class="headerlink" title="新发现"></a>新发现</h1><p>在windows 上安装过 TunSafe 或者 WireGuard 的客户端后,就能直接用cmd中打开ssh连接远程的linux电脑了。</p>
+<p>QQ群：397745473</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+          
+           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/02/96_scp非22端口复制远程文件/" rel="next" title="linux中scp非22端口复制远程文件">
+                <i class="fa fa-chevron-left"></i> linux中scp非22端口复制远程文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/10/95_U盘变光驱/" rel="prev" title="U盘变光驱安装ESXI">
+                U盘变光驱安装ESXI <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    <div class="post-spread">
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<img src="https://i.imgur.com/0ivBlsQ.jpg" alt="知识星球">
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">131</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vsyour.com/" title="Blog" target="_blank">Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos-7-安装RDP"><span class="nav-number">2.</span> <span class="nav-text">centos 7 安装RDP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决问题"><span class="nav-number">2.1.</span> <span class="nav-text">解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Centos-xrdp-远程连接后突然闪退"><span class="nav-number">2.2.</span> <span class="nav-text">Centos xrdp 远程连接后突然闪退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#另一种无法进入桌面的情况"><span class="nav-number">2.3.</span> <span class="nav-text">另一种无法进入桌面的情况</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装浏览器驱动"><span class="nav-number">3.</span> <span class="nav-text">安装浏览器驱动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装输入法"><span class="nav-number">4.</span> <span class="nav-text">安装输入法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动搜索代码"><span class="nav-number">5.</span> <span class="nav-text">自动搜索代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#去重代码"><span class="nav-number">6.</span> <span class="nav-text">去重代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新发现"><span class="nav-number">7.</span> <span class="nav-text">新发现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2019/10/03/100_centos自动谷歌搜关键词并收集URL/';
+          this.page.identifier = '2019/10/03/100_centos自动谷歌搜关键词并收集URL/';
+          this.page.title = 'centos自动谷歌搜关键词并收集URL';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            var resultItems = [];
+            if (this.value.trim().length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCountInArticle = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCountInArticle = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  var resultItem = '';
+
+                  function highlightKeyword(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+
+                    var matchText = text.substring(start, end);
+                    var matchResult = [];
+                    var prevEnd = 0;
+                    while (position + word.length <= end && index.length != 0) {
+
+                      // highlight keyword
+
+                      var wordBegin = position - start;
+                      var wordEnd = position - start + word.length;
+                      matchResult.push(matchText.substring(prevEnd, wordBegin));
+                      matchResult.push("<b class=\"search-keyword\">" + matchText.substring(wordBegin, wordEnd) + "</b>");
+
+                      // move to next position of hit
+
+                      index.pop();
+                      prevEnd = wordEnd;
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (prevEnd > position - start) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    matchResult.push(matchText.substring(prevEnd));
+                    return matchResult.join('');
+                  }
+
+                  // sort index by position of keyword
+
+                  indexOfTitle.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  indexOfContent.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  // highlight title
+
+                  if (indexOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, 0, title.length, indexOfTitle) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  // highlight content
+
+                  var resultUpperBound = parseInt(1);
+                  var withoutUpperBound = false;
+                  if (resultUpperBound === -1) {
+                    withoutUpperBound = true;
+                  }
+                  var currentResultNum = 0;
+                  while (indexOfContent.length != 0 && (withoutUpperBound || (currentResultNum < resultUpperBound))) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                    "<p class=\"search-result\">" + highlightKeyword(content, start, end, indexOfContent) +
+                    "...</p>" + "</a>";
+                    currentResultNum++;
+                  }
+                  resultItem += "</li>";
+                  resultItems.push({item: resultItem, hitCount: hitCountInArticle, id: resultItems.length});
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.hitCount != resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultLeft.id - resultRight.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result, i) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              $resultContent.innerHTML = searchResultList;
+            }
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
