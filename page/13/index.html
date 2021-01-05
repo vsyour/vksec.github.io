@@ -1711,7 +1711,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/10/16_python使用aws亚马逊的boto3报错解决办法/">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/05/10/15_python批量注册apple_id/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vsyour">
@@ -1733,8 +1733,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/10/16_python使用aws亚马逊的boto3报错解决办法/" itemprop="url">
-                  使用aws亚马逊的boto3报错解决办法
+                <a class="post-title-link" href="/2017/05/10/15_python批量注册apple_id/" itemprop="url">
+                  批量注册apple id的脚本
                 </a>
               
             
@@ -1791,8 +1791,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/10/16_python使用aws亚马逊的boto3报错解决办法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/10/16_python使用aws亚马逊的boto3报错解决办法/" itemprop="commentCount"></span>
+                <a href="/2017/05/10/15_python批量注册apple_id/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/10/15_python批量注册apple_id/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1818,18 +1818,21 @@
 
       
         
-          <p>使用aws亚马逊的boto3报错解决办法<br>QQ群：397745473</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">C:\Python27\python.exe D:/python/test_boto3.py</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;D:/python/test_boto3.py&quot;, line 5, in &lt;module&gt;</span><br><span class="line">    client = boto3.client(&apos;ses&apos;)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\boto3\__init__.py&quot;, line 83, in client</span><br><span class="line">    return _get_default_session().client(*args, **kwargs)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\boto3\session.py&quot;, line 263, in client</span><br><span class="line">    aws_session_token=aws_session_token, config=config)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\botocore\session.py&quot;, line 836, in create_client</span><br><span class="line">    client_config=config, api_version=api_version)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\botocore\client.py&quot;, line 70, in create_client</span><br><span class="line">    verify, credentials, scoped_config, client_config, endpoint_bridge)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\botocore\client.py&quot;, line 224, in _get_client_args</span><br><span class="line">    verify, credentials, scoped_config, client_config, endpoint_bridge)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\botocore\args.py&quot;, line 45, in get_client_args</span><br><span class="line">    endpoint_url, is_secure, scoped_config)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\botocore\args.py&quot;, line 103, in compute_client_args</span><br><span class="line">    service_name, region_name, endpoint_url, is_secure)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\botocore\client.py&quot;, line 297, in resolve</span><br><span class="line">    service_name, region_name)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\botocore\regions.py&quot;, line 122, in construct_endpoint</span><br><span class="line">    partition, service_name, region_name)</span><br><span class="line">  File &quot;C:\Python27\lib\site-packages\botocore\regions.py&quot;, line 135, in _endpoint_for_partition</span><br><span class="line">    raise NoRegionError()</span><br><span class="line">botocore.exceptions.NoRegionError: You must specify a region.</span><br></pre></td></tr></table></figure>
+          <p>批量注册apple id的脚本<br>这里只作python技术研究.无法实践利用.更多期待后续更新.<br>待改进：</p>
+<p>1、支持多种邮箱注册，或者尝试自己搭建一个邮件服务器。</p>
+<p>2、注册一批后自动切换vpn。</p>
+<p>3、日志细化，注册结果分到2个csv文件。</p>
+<p>待实现：自动激活apple id功能。<br>QQ群：397745473<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/10/16_python使用aws亚马逊的boto3报错解决办法/#more" rel="contents">
+            <a class="btn" href="/2017/05/10/15_python批量注册apple_id/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     <div>
       
