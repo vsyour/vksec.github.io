@@ -1,0 +1,1151 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="网络安全,golang,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="golang执行操作系统命令 Go 语言使用 os/exec 执行 Shell 命令 QQ群：397745473">
+<meta name="keywords" content="网络安全,golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang执行操作系统命令">
+<meta property="og:url" content="http://vksec.com/2021/01/20/153_go执行操作系统命令/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="golang执行操作系统命令 Go 语言使用 os/exec 执行 Shell 命令 QQ群：397745473">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-01-20T04:17:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="golang执行操作系统命令">
+<meta name="twitter:description" content="golang执行操作系统命令 Go 语言使用 os/exec 执行 Shell 命令 QQ群：397745473">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2021/01/20/153_go执行操作系统命令/">
+
+
+
+  <title>golang执行操作系统命令 | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2021/01/20/153_go执行操作系统命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                golang执行操作系统命令
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T03:03:03+08:00">
+                2021-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index">
+                    <span itemprop="name">golang</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/01/20/153_go执行操作系统命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/01/20/153_go执行操作系统命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>golang执行操作系统命令</p>
+<p>Go 语言使用 os/exec 执行 Shell 命令</p>
+<p>QQ群：397745473</p>
+<a id="more"></a> 
+<h1 id="1-os-exec"><a href="#1-os-exec" class="headerlink" title="1. os/exec"></a>1. os/exec</h1><p>1.1 只执行命令，不要输出结果</p>
+<p>执行命令可以使用<code>Run()</code>或者<code>Start()</code>方法，<code>Run()</code>是阻塞的执行，<code>Start()</code>是非阻塞的执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;os/exec&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    command := exec.Command(&quot;ping&quot;,&quot;www.baidu.com&quot;)</span><br><span class="line">    err := command.Run() // 阻塞执行</span><br><span class="line">    if err != nil&#123;</span><br><span class="line">        fmt.Println(err.Error())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-go-sh"><a href="#2-go-sh" class="headerlink" title="2. go-sh"></a>2. go-sh</h3><ul>
+<li><a href="https://github.com/codeskyblue/go-sh" target="_blank" rel="noopener">go-sh - 替代 os/exec 执行命令 | Github</a></li>
+</ul>
+<h3 id="3-ssh-远程执行命令"><a href="#3-ssh-远程执行命令" class="headerlink" title="3. ssh 远程执行命令"></a>3. ssh 远程执行命令</h3><p><strong><em>// TODO: To be updated…\</em></strong></p>
+<ul>
+<li><a href="https://mojotv.cn/2019/05/22/golang-ssh-session" target="_blank" rel="noopener">golang-ssh-01: 执行远程命令 | MojoTech</a></li>
+<li><a href="https://blog.csdn.net/dirk2014/article/details/53700435" target="_blank" rel="noopener">Golang 远程执行命令 | CSDN</a></li>
+<li><a href="https://www.bbsmax.com/A/D854nBvQzE/" target="_blank" rel="noopener">Go 执行远程 ssh 命令 | bbsmax</a></li>
+<li><a href="https://www.teakki.com/p/57df64ceda84a0c453381566" target="_blank" rel="noopener">如何使用 Go 语言实现远程执行命令 | TeaKKi</a></li>
+<li><a href="https://github.com/andesli/gossh" target="_blank" rel="noopener">gossh - 极简的 ssh 管理工具，支持多台主机、远程执行命令、传递文件 | Github</a></li>
+<li><a href="https://github.com/andesli/gossh/blob/master/docs/example.md" target="_blank" rel="noopener">gossh 使用示例 | Github</a></li>
+<li><a href="https://blog.csdn.net/hittata/article/details/82657103" target="_blank" rel="noopener">Linux 自动化远程管理工具 gossh 开源了 - 李文塔 | CSDN</a></li>
+</ul>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><h4 id="相关的库"><a href="#相关的库" class="headerlink" title="相关的库"></a>相关的库</h4><blockquote>
+<ol>
+<li><a href="https://github.com/codeskyblue/go-sh" target="_blank" rel="noopener">go-sh - 替代 os/exec 执行命令 | Github</a></li>
+<li><a href="https://github.com/mitchellh/go-homedir" target="_blank" rel="noopener">go-homedir - 替代 os/user 获取 home 目录，支持交叉编译 | Github</a></li>
+<li><a href="https://github.com/andesli/gossh" target="_blank" rel="noopener">gossh - 极简的 ssh 管理工具，支持多台主机、远程执行命令、传递文件 | Github</a></li>
+</ol>
+</blockquote>
+<h4 id="文章教程"><a href="#文章教程" class="headerlink" title="文章教程"></a>文章教程</h4><blockquote>
+<ol>
+<li><a href="https://www.yangyanxing.com/article/exec_command_in_go.html" target="_blank" rel="noopener">Go 语言中执行命令的几种方式 | 杨彦星</a></li>
+<li><a href="https://www.jianshu.com/p/9787e30552ce" target="_blank" rel="noopener">Golang exec 命令执行 | 简书</a></li>
+<li><a href="https://www.jianshu.com/p/151e06833c9a" target="_blank" rel="noopener">Golang os/exec 执行外部命令 | 简书</a></li>
+<li><a href="http://www.01happy.com/golang-os-exec/" target="_blank" rel="noopener">Golang 执行系统命令 os/exec | 01happy</a></li>
+<li><a href="https://razeencheng.com/post/breaking-all-the-rules-using-go-to-call-windows-api.html" target="_blank" rel="noopener">如何用 Go 调用 Windows API | Razeen’s Blog</a></li>
+<li><a href="https://razeencheng.com/post/simple-use-go-exec-command.html" target="_blank" rel="noopener">Go 学习笔记 (八) - 使用 os/exec 执行命令 | Razeen’s Blog</a></li>
+<li><a href="https://colobu.com/2017/06/19/advanced-command-execution-in-Go-with-os-exec/#管道" target="_blank" rel="noopener">[译]使用 os/exec 执行命令 | 鸟窝</a></li>
+<li><a href="https://mojotv.cn/2019/05/22/golang-ssh-session" target="_blank" rel="noopener">golang-ssh-01: 执行远程命令 | MojoTech</a></li>
+<li><a href="https://blog.csdn.net/dirk2014/article/details/53700435" target="_blank" rel="noopener">Golang 远程执行命令 | CSDN</a></li>
+<li><a href="https://www.bbsmax.com/A/D854nBvQzE/" target="_blank" rel="noopener">Go 执行远程 ssh 命令 | bbsmax</a></li>
+<li><a href="https://www.teakki.com/p/57df64ceda84a0c453381566" target="_blank" rel="noopener">如何使用 Go 语言实现远程执行命令 | TeaKKi</a></li>
+</ol>
+</blockquote>
+<h4 id="其他暂存"><a href="#其他暂存" class="headerlink" title="其他暂存"></a>其他暂存</h4><blockquote>
+<ol>
+<li><a href="https://razeencheng.com/post/go-swagger.html" target="_blank" rel="noopener">Go 学习笔记 (六) - 使用 swaggo 自动生成 Restful API 文档 | Razeen’s Blog</a></li>
+<li><a href="https://www.yangyanxing.com/article/file_path_in_go.html" target="_blank" rel="noopener">Go 语言中关于文件路径的使用总结 | 杨彦星</a></li>
+<li><a href="https://www.yangyanxing.com/article/func_viriadic_in_go.html" target="_blank" rel="noopener">Go 语言中函数使用不定参数问题 | 杨彦星</a></li>
+<li><a href="https://studygolang.com/articles/11965" target="_blank" rel="noopener">Go 语言“可变参数函数”终极指南 | Go 语言中文网</a></li>
+<li><a href="https://blog.coding.net/blog/Upgrade1011" target="_blank" rel="noopener">CODING 代码多仓库实践 | CODING 博客</a></li>
+</ol>
+</blockquote>
+<h4 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h4><blockquote>
+<ol>
+<li><a href="https://blog.csdn.net/Abysscarry/article/details/79402695" target="_blank" rel="noopener">Centos7 搭建 GitLab 服务器并配置项目全过程 | CSDN</a></li>
+<li><a href="https://segmentfault.com/a/1190000011632220" target="_blank" rel="noopener">搭建 GitLab 服务 | SegmentFault</a></li>
+</ol>
+</blockquote>
+<p>QQ群：397745473</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+          
+            <a href="/tags/golang/" rel="tag"># golang</a>
+          
+           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/15/150_linux搭建渗透测试环境记录/" rel="next" title="linux搭建渗透测试环境记录">
+                <i class="fa fa-chevron-left"></i> linux搭建渗透测试环境记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/18/151_shell脚本中使用getopts接收参数的使用方法/" rel="prev" title="shell脚本中使用getopts接收参数的使用方法">
+                shell脚本中使用getopts接收参数的使用方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    <div class="post-spread">
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<img src="https://i.imgur.com/0ivBlsQ.jpg" alt="知识星球">
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">154</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vsyour.com/" title="Blog" target="_blank">Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-os-exec"><span class="nav-number">1.</span> <span class="nav-text">1. os/exec</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-go-sh"><span class="nav-number">1.0.1.</span> <span class="nav-text">2. go-sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ssh-远程执行命令"><span class="nav-number">1.0.2.</span> <span class="nav-text">3. ssh 远程执行命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">1.0.3.</span> <span class="nav-text">参考文章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关的库"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">相关的库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章教程"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">文章教程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他暂存"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">其他暂存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GitLab"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">GitLab</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2021/01/20/153_go执行操作系统命令/';
+          this.page.identifier = '2021/01/20/153_go执行操作系统命令/';
+          this.page.title = 'golang执行操作系统命令';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            var resultItems = [];
+            if (this.value.trim().length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCountInArticle = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCountInArticle = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  var resultItem = '';
+
+                  function highlightKeyword(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+
+                    var matchText = text.substring(start, end);
+                    var matchResult = [];
+                    var prevEnd = 0;
+                    while (position + word.length <= end && index.length != 0) {
+
+                      // highlight keyword
+
+                      var wordBegin = position - start;
+                      var wordEnd = position - start + word.length;
+                      matchResult.push(matchText.substring(prevEnd, wordBegin));
+                      matchResult.push("<b class=\"search-keyword\">" + matchText.substring(wordBegin, wordEnd) + "</b>");
+
+                      // move to next position of hit
+
+                      index.pop();
+                      prevEnd = wordEnd;
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (prevEnd > position - start) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    matchResult.push(matchText.substring(prevEnd));
+                    return matchResult.join('');
+                  }
+
+                  // sort index by position of keyword
+
+                  indexOfTitle.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  indexOfContent.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  // highlight title
+
+                  if (indexOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, 0, title.length, indexOfTitle) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  // highlight content
+
+                  var resultUpperBound = parseInt(1);
+                  var withoutUpperBound = false;
+                  if (resultUpperBound === -1) {
+                    withoutUpperBound = true;
+                  }
+                  var currentResultNum = 0;
+                  while (indexOfContent.length != 0 && (withoutUpperBound || (currentResultNum < resultUpperBound))) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                    "<p class=\"search-result\">" + highlightKeyword(content, start, end, indexOfContent) +
+                    "...</p>" + "</a>";
+                    currentResultNum++;
+                  }
+                  resultItem += "</li>";
+                  resultItems.push({item: resultItem, hitCount: hitCountInArticle, id: resultItems.length});
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.hitCount != resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultLeft.id - resultRight.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result, i) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              $resultContent.innerHTML = searchResultList;
+            }
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
