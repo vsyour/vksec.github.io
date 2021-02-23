@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://i.imgur.com/lZH5Pnw.png">
 <meta property="og:image" content="https://i.imgur.com/HNTs7Q1.png">
 <meta property="og:image" content="https://i.imgur.com/NHORmaM.png">
-<meta property="og:updated_time" content="2021-02-23T02:04:56.000Z">
+<meta property="og:updated_time" content="2021-02-23T06:13:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一键部署Swarm获得空投100万枚BZZ代币">
 <meta name="twitter:description" content="一键部署Swarm获得空投100万枚BZZ代币 英文文档知道大家都不喜欢看。 看视频也费时间。 那么这些都交给我来做成一键脚本。 一步到位！奥利给！ QQ群：397745473">
@@ -436,6 +436,8 @@
 <h1 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h1><p>使用 root 用户登录系统，运行以下命令下载脚本，赋予执行权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O /root/run.sh https://git.io/JtHhx &amp;&amp; chmod 755 /root/run.sh &amp;&amp; apt install dos2unix &amp;&amp; dos2unix /root/run.sh &amp;&amp; bash /root/run.sh</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/HNTs7Q1.png" alt></p>
+<p>登陆成功后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux ls  查看后台执行的任务</span><br><span class="line">tmux at -t bee  切换到bee 获取提交地址到水龙头领取代币</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/NHORmaM.png" alt></p>
 <p>将上面标记的等于号后面的地址提交到下面水龙头地址中,验证成功后即可以开跑啦</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">水龙头地址: https://faucet.ethswarm.org/</span><br><span class="line">查询交易记录： https://goerli.etherscan.io/</span><br><span class="line">curl -s http://localhost:1635/peers -确保已连接到群集</span><br><span class="line">curl -s http://localhost:1635/balances-看到正在与同级交换数据</span><br><span class="line">curl -s http://localhost:1635/settlements -查看其中任何余额是否超过了要结算的阈值。</span><br><span class="line">curl -s http://localhost:1635/chequebook/cheque 查看是否有支票。 lastReceived代表可以兑现！</span><br><span class="line">curl -s http://localhost:1635/addresses 获取自己的钱包地址，公钥信息</span><br><span class="line">curl -s http://localhost:1635/peers | jq &apos;.peers | length&apos; 查节点数量</span><br><span class="line"></span><br><span class="line">bee-clef私钥导出：</span><br><span class="line">bash &lt;(curl -s -L https://raw.githubusercontent.com/ethersphere/bee-clef/master/packaging/bee-clef-keys)</span><br></pre></td></tr></table></figure>
