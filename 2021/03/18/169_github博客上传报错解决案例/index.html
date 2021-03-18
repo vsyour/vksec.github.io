@@ -91,18 +91,18 @@
 
 
 
-<meta name="description" content="github博客上传报错解决案例 QQ群：397745473">
+<meta name="description" content="请输入密码,有问题请加QQ群:397745473">
 <meta name="keywords" content="python,网络安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="github博客上传报错解决案例">
 <meta property="og:url" content="http://vksec.com/2021/03/18/169_github博客上传报错解决案例/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="github博客上传报错解决案例 QQ群：397745473">
+<meta property="og:description" content="请输入密码,有问题请加QQ群:397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-18T01:20:24.000Z">
+<meta property="og:updated_time" content="2021-03-18T01:31:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github博客上传报错解决案例">
-<meta name="twitter:description" content="github博客上传报错解决案例 QQ群：397745473">
+<meta name="twitter:description" content="请输入密码,有问题请加QQ群:397745473">
 
 
 
@@ -408,19 +408,20 @@
       
 
       
-        <p>github博客上传报错解决案例</p>
-<p>QQ群：397745473</p>
-<a id="more"></a> 
-<h1 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h1><p>执行命令:</p>
-<p>cd /blog &amp;&amp; hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</p>
-<p>时提示如下信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access &apos;https://github.com/vsyour/vksec.github.io/&apos;: gnutls_handshake() failed: Err</span><br><span class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.</span><br><span class="line">Error: fatal: unable to access &apos;https://github.com/vsyour/vksec.github.io/&apos;: gnutls_handshake() fail</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (/blog/node_modules/hexo-util/lib/spawn.js:37:17)</span><br><span class="line">    at ChildProcess.emit (events.js:209:13)</span><br><span class="line">    at maybeClose (internal/child_process.js:1021:16)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:283:5)</span><br></pre></td></tr></table></figure>
-<h1 id="原因分析："><a href="#原因分析：" class="headerlink" title="原因分析："></a>原因分析：</h1><p>这是由于github被拦截导致无法上传。</p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法:"></a>解决办法:</h1><p>参考文章:<a href="https://blog.csdn.net/dashi_lu/article/details/89641778" target="_blank" rel="noopener">https://blog.csdn.net/dashi_lu/article/details/89641778</a></p>
-<p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://192.168.2.114:7890</span><br><span class="line">git config --global https.proxy http://192.168.2.114:7890</span><br></pre></td></tr></table></figure>
-<p>QQ群：397745473</p>
-
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="请输入密码,有问题请加QQ群:397745473">
+    <label for="pass">请输入密码,有问题请加QQ群:397745473</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
 
@@ -532,17 +533,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
           <p class="site-author-name" itemprop="name">vsyour</p>
@@ -664,22 +656,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#错误提示"><span class="nav-number">1.</span> <span class="nav-text">错误提示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原因分析："><span class="nav-number">2.</span> <span class="nav-text">原因分析：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法:</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
