@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="debian安装wpscan 在Linux上安装和使用WPScan – WordPress漏洞扫描程序 WPScan是一个命令行WordPress漏洞扫描程序，可用于扫描WordPress漏洞。它预装在以下渗透测试Linux发行版中 QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-17T01:36:54.000Z">
+<meta property="og:updated_time" content="2021-04-01T09:25:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debian安装wpscan">
 <meta name="twitter:description" content="debian安装wpscan 在Linux上安装和使用WPScan – WordPress漏洞扫描程序 WPScan是一个命令行WordPress漏洞扫描程序，可用于扫描WordPress漏洞。它预装在以下渗透测试Linux发行版中 QQ群：397745473">
@@ -413,8 +413,8 @@
 <p>WPScan是一个命令行WordPress漏洞扫描程序，可用于扫描WordPress漏洞。它预装在以下渗透测试Linux发行版中</p>
 <p>QQ群：397745473</p>
 <a id="more"></a> 
-<p>wpscan 安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ruby</span><br><span class="line">sudo apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev</span><br><span class="line">sudo gem install wpscan</span><br><span class="line"></span><br><span class="line">wpscan --update</span><br></pre></td></tr></table></figure>
+<h1 id="wpscan-安装命令"><a href="#wpscan-安装命令" class="headerlink" title="wpscan 安装命令"></a>wpscan 安装命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ruby</span><br><span class="line">sudo apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev</span><br><span class="line">sudo gem install wpscan</span><br><span class="line"></span><br><span class="line">wpscan --update</span><br></pre></td></tr></table></figure>
+<h1 id="简单用法"><a href="#简单用法" class="headerlink" title="简单用法"></a>简单用法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wpscan --url www.vksec.com --enumerate p <span class="comment">#扫描插件基本信息</span></span><br><span class="line">wpscan --url www.vksec.com --enumerate vp <span class="comment">#扫描容易受攻击的插件</span></span><br><span class="line">wpscan --url www.vksec.com --enumerate ap <span class="comment">#扫描所有插件</span></span><br><span class="line">wpscan --url www.vksec.com --enumerate u <span class="comment">#扫描后台用户</span></span><br><span class="line">wpscan --url www.vksec.com --wordlist wordlist.lst --username root <span class="comment">#通过用户名爆破密码</span></span><br><span class="line"></span><br><span class="line">wpscan --url [wordpress网址] --wordlist [字典文件] --username [要破解的用户] --threads [开启的线程数]</span><br></pre></td></tr></table></figure>
 <p>QQ群：397745473</p>
 
       
@@ -532,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
           <p class="site-author-name" itemprop="name">vsyour</p>
@@ -655,6 +664,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#wpscan-安装命令"><span class="nav-number">1.</span> <span class="nav-text">wpscan 安装命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单用法"><span class="nav-number">2.</span> <span class="nav-text">简单用法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
