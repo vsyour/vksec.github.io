@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="bash写shell脚本常用的一些命令总结 QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-02T05:10:02.000Z">
+<meta property="og:updated_time" content="2021-04-02T05:10:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell脚本常用命令总结">
 <meta name="twitter:description" content="bash写shell脚本常用的一些命令总结 QQ群：397745473">
@@ -450,6 +450,82 @@
 <p>其实shell内置一系列操作符号，可以达到类似效果，大家知道，</p>
 <p>使用内部操作符会省略启动外部程序等时间，因此速度会非常的快。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">原文参考：https://www.cnblogs.com/chengmo/archive/2010/10/02/1841355.html</span><br></pre></td></tr></table></figure>
+<p><strong>一、判断读取字符串值</strong></p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${var}</td>
+<td>变量var的值, 与$var相同</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>${var-DEFAULT}</td>
+<td>如果var没有被声明, 那么就以$DEFAULT作为其值 *</td>
+</tr>
+<tr>
+<td>${var:-DEFAULT}</td>
+<td>如果var没有被声明, 或者其值为空, 那么就以$DEFAULT作为其值 *</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>${var=DEFAULT}</td>
+<td>如果var没有被声明, 那么就以$DEFAULT作为其值 *</td>
+</tr>
+<tr>
+<td>${var:=DEFAULT}</td>
+<td>如果var没有被声明, 或者其值为空, 那么就以$DEFAULT作为其值 *</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>${var+OTHER}</td>
+<td>如果var声明了, 那么其值就是$OTHER, 否则就为null字符串</td>
+</tr>
+<tr>
+<td>${var:+OTHER}</td>
+<td>如果var被设置了, 那么其值就是$OTHER, 否则就为null字符串</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>${var?ERR_MSG}</td>
+<td>如果var没被声明, 那么就打印$ERR_MSG *</td>
+</tr>
+<tr>
+<td>${var:?ERR_MSG}</td>
+<td>如果var没被设置, 那么就打印$ERR_MSG *</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>${!varprefix*}</td>
+<td>匹配之前所有以varprefix开头进行声明的变量</td>
+</tr>
+<tr>
+<td>${!varprefix@}</td>
+<td>匹配之前所有以varprefix开头进行声明的变量</td>
+</tr>
+</tbody>
+</table>
+<p>加入了“*” 不是意思是： 当然, 如果变量var已经被设置的话, 那么其值就是$var.</p>
 <h1 id="30个Linux-Shell脚本经典案例（上）"><a href="#30个Linux-Shell脚本经典案例（上）" class="headerlink" title="30个Linux Shell脚本经典案例（上）"></a>30个Linux Shell脚本经典案例（上）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">原文地址: https://zhuanlan.zhihu.com/p/161356277</span><br></pre></td></tr></table></figure>
 <p>编写Shell过程中注意事项： </p>
 <ol>
