@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="nginx,openresty,LUA,python,pentest">
+  <meta name="keywords" content="python,网络安全,">
 
 
 
@@ -91,16 +91,18 @@
 
 
 
-<meta name="description" content="Nginx openresty python lua 网络安全 学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Openresty Python LUA">
-<meta property="og:url" content="http://vksec.com/tags/kali之MSF渗透测试/index.html">
+<meta name="description" content="tcppc蜜罐搭建记录只是记录一下tcppc蜜罐的搭建步骤,不一定适合所有人 购买VPS主机：https://www.vultr.com/?ref=8391117-6G QQ群：397745473 1234参考：https://www.freebuf.com/articles/network/240041.html做少量修改才跑起来不修改路径好像会有点问题。">
+<meta name="keywords" content="python,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蜜罐搭建记录">
+<meta property="og:url" content="http://vksec.com/2021/04/12/179_蜜罐搭建记录/index.html">
 <meta property="og:site_name" content="Openresty Python LUA">
-<meta property="og:description" content="Nginx openresty python lua 网络安全 学习笔记">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:description" content="tcppc蜜罐搭建记录只是记录一下tcppc蜜罐的搭建步骤,不一定适合所有人 购买VPS主机：https://www.vultr.com/?ref=8391117-6G QQ群：397745473 1234参考：https://www.freebuf.com/articles/network/240041.html做少量修改才跑起来不修改路径好像会有点问题。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-04-12T09:53:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openresty Python LUA">
-<meta name="twitter:description" content="Nginx openresty python lua 网络安全 学习笔记">
+<meta name="twitter:title" content="蜜罐搭建记录">
+<meta name="twitter:description" content="tcppc蜜罐搭建记录只是记录一下tcppc蜜罐的搭建步骤,不一定适合所有人 购买VPS主机：https://www.vultr.com/?ref=8391117-6G QQ群：397745473 1234参考：https://www.freebuf.com/articles/network/240041.html做少量修改才跑起来不修改路径好像会有点问题。">
 
 
 
@@ -128,14 +130,14 @@
 
 
 
-  <link rel="canonical" href="http://vksec.com/tags/kali之MSF渗透测试/">
+  <link rel="canonical" href="http://vksec.com/2021/04/12/179_蜜罐搭建记录/">
 
 
 
-  <title>标签: kali之MSF渗透测试 | Openresty Python LUA</title>
+  <title>蜜罐搭建记录 | Openresty Python LUA</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
 
@@ -157,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,44 +295,213 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2>
-        kali之MSF渗透测试
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2021/04/12/179_蜜罐搭建记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                蜜罐搭建记录
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-12T03:03:03+08:00">
+                2021-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/04/12/179_蜜罐搭建记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/04/12/179_蜜罐搭建记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="tcppc蜜罐搭建记录"><a href="#tcppc蜜罐搭建记录" class="headerlink" title="tcppc蜜罐搭建记录"></a>tcppc蜜罐搭建记录</h1><p>只是记录一下tcppc蜜罐的搭建步骤,不一定适合所有人</p>
+<p>购买VPS主机：<a href="https://www.vultr.com/?ref=8391117-6G" target="_blank" rel="noopener">https://www.vultr.com/?ref=8391117-6G</a></p>
+<p>QQ群：397745473</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">参考：https://www.freebuf.com/articles/network/240041.html</span><br><span class="line"></span><br><span class="line">做少量修改才跑起来</span><br><span class="line">不修改路径好像会有点问题。</span><br></pre></td></tr></table></figure>
+<a id="more"></a> 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get upgrade</span><br><span class="line">sed -i &apos;s/#Port 22/Port 9922/g&apos;  /etc/ssh/sshd_config &amp;&amp; dd if=/dev/zero of=/var/swapfile bs=1M count=2048 &amp;&amp; /sbin/mkswap /var/swapfile &amp;&amp; /sbin/swapon /var/swapfile &amp;&amp; chmod 0600 /var/swapfile &amp;&amp; echo &quot;/var/swapfile swap swap defaults 0 0&quot; &gt;&gt;/etc/fstab</span><br><span class="line">apt install -y docker.io</span><br><span class="line">apt-get install python3-pip</span><br><span class="line">pip3 install docker-compose</span><br><span class="line">service docker start</span><br><span class="line"></span><br><span class="line">mkdir docker_test</span><br></pre></td></tr></table></figure>
+<p>vim Dockerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">###使用golang作为基础镜像提供程序运行环境</span><br><span class="line">FROM golang</span><br><span class="line">#设置时区变量</span><br><span class="line">ENV TZ=Asia/Shanghai</span><br><span class="line">#调整时区,从github拉取相应源码，并编译</span><br><span class="line">run ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone &amp;&amp; \</span><br><span class="line">    go get github.com/md-irohas/tcppc-go</span><br><span class="line">#跳转至生成的程序位置</span><br><span class="line">WORKDIR /go/bin/</span><br><span class="line">#执行命令</span><br><span class="line">cmd [&quot;./tcppc-go&quot;, &quot;-T&quot;,&quot;86400&quot;,&quot;-w&quot;,&quot;log/tcppc-%Y%m%d.jsonl&quot;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker build -t all_port:1.0 .</span><br><span class="line"></span><br><span class="line">mkdir log</span><br><span class="line">docker run -it  -d --restart=always  --net=host -v `pwd`/log:/go/bin/log/ all_port:1.0 /bin/bash</span><br><span class="line">docker ps</span><br><span class="line">【进入docker】docker exec -i -t 23e896b7fb20 /bin/bash</span><br></pre></td></tr></table></figure>
+<p>开启iptables日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">1. 在文件/etc/rsyslog.conf中添加一行内容，kern.info /var/log/iptables.log</span><br><span class="line"></span><br><span class="line">2. 为了让日志和ssh日志一样回滚，将文件名/var/log/iptables.log加入文件/etc/logrotate.d/rsyslog中</span><br><span class="line">参考:</span><br><span class="line">/var/log/syslog</span><br><span class="line">&#123;</span><br><span class="line">        rotate 7</span><br><span class="line">        daily</span><br><span class="line">        missingok</span><br><span class="line">        notifempty</span><br><span class="line">        delaycompress</span><br><span class="line">        compress</span><br><span class="line">        postrotate</span><br><span class="line">                /usr/lib/rsyslog/rsyslog-rotate</span><br><span class="line">        endscript</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/var/log/mail.info</span><br><span class="line">/var/log/mail.warn</span><br><span class="line">/var/log/mail.err</span><br><span class="line">/var/log/mail.log</span><br><span class="line">/var/log/daemon.log</span><br><span class="line">/var/log/kern.log</span><br><span class="line">/var/log/auth.log</span><br><span class="line">/var/log/user.log</span><br><span class="line">/var/log/lpr.log</span><br><span class="line">/var/log/cron.log</span><br><span class="line">/var/log/debug</span><br><span class="line">/var/log/messages</span><br><span class="line">/var/log/iptables.log</span><br><span class="line">&#123;</span><br><span class="line">        rotate 4</span><br><span class="line">        weekly</span><br><span class="line">        missingok</span><br><span class="line">        notifempty</span><br><span class="line">        compress</span><br><span class="line">        delaycompress</span><br><span class="line">        sharedscripts</span><br><span class="line">        postrotate</span><br><span class="line">                /usr/lib/rsyslog/rsyslog-rotate</span><br><span class="line">        endscript</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service rsyslog restart</span><br></pre></td></tr></table></figure>
+<p>iptables日志规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -i ens3 --dport 80:8000 -j LOG --log-level 6 --log-prefix &quot;port_for&quot;</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp -i ens3 --dport 80:8000 -j REDIRECT --to-ports 12345</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">参考: https://github.com/siberkuvvet/siberkuvvet-honeypot</span><br><span class="line">【进入docker】docker exec -i -t 23e896b7fb20 /bin/bash</span><br><span class="line">$ openssl genrsa 2048 &gt; server.key</span><br><span class="line">$ openssl req -new -key server.key &gt; server.csr</span><br><span class="line">$ openssl x509 -days 36500 -req -signkey server.key &lt; server.csr &gt; server.crt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cd /go/bin/;./tcppc-go -T 86400 -C server.crt -K server.key -w log/tcppc-%Y%m%d.json</span><br></pre></td></tr></table></figure>
+<h1 id="HFish-搭建记录"><a href="#HFish-搭建记录" class="headerlink" title="HFish 搭建记录"></a>HFish 搭建记录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get upgrade -y</span><br><span class="line"></span><br><span class="line">sed -i &apos;s/#Port 22/Port 9922/g&apos;  /etc/ssh/sshd_config &amp;&amp; dd if=/dev/zero of=/var/swapfile bs=1M count=2048 &amp;&amp; /sbin/mkswap /var/swapfile &amp;&amp; /sbin/swapon /var/swapfile &amp;&amp; chmod 0600 /var/swapfile &amp;&amp; echo &quot;/var/swapfile swap swap defaults 0 0&quot; &gt;&gt;/etc/fstab</span><br><span class="line"></span><br><span class="line">wget http://hfish.cn-bj.ufileos.com/hfish-linux-amd64.tar.gz</span><br><span class="line">mkdir hfish</span><br><span class="line">tar -xzvf hfish-linux-amd64.tar.gz -C hfish</span><br><span class="line">cd hfish</span><br><span class="line">nohup ./server &amp;</span><br></pre></td></tr></table></figure>
+<p>QQ群：397745473</p>
 
-      <h2 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2019/07/20/49_kali之MSF渗透测试/" itemprop="url">
-              
-                <span itemprop="name">kali之MSF渗透测试</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-20T03:03:03+08:00" content="2019-07-20">
-          07-20
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+          
+           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/09/176_vulhub复现环境搭建/" rel="next" title="vulhub复现环境搭建">
+                <i class="fa fa-chevron-left"></i> vulhub复现环境搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/12/178_防御Webshell/" rel="prev" title="防御Webshell">
+                防御Webshell <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
+    <div class="post-spread">
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-  
+<img src="https://i.imgur.com/0ivBlsQ.jpg" alt="知识星球">
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +509,19 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -357,8 +541,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
           <p class="site-author-name" itemprop="name">vsyour</p>
@@ -481,6 +674,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tcppc蜜罐搭建记录"><span class="nav-number">1.</span> <span class="nav-text">tcppc蜜罐搭建记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HFish-搭建记录"><span class="nav-number">2.</span> <span class="nav-text">HFish 搭建记录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -595,6 +804,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
@@ -612,6 +825,18 @@
       <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2021/04/12/179_蜜罐搭建记录/';
+          this.page.identifier = '2021/04/12/179_蜜罐搭建记录/';
+          this.page.title = '蜜罐搭建记录';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
