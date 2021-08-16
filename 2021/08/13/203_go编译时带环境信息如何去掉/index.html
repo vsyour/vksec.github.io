@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="go编译时带环境信息如何去掉 QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-13T06:24:43.000Z">
+<meta property="og:updated_time" content="2021-08-16T06:56:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go编译时带环境信息如何去掉">
 <meta name="twitter:description" content="go编译时带环境信息如何去掉 QQ群：397745473">
@@ -414,7 +414,8 @@
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>go编译时带环境信息如何去掉</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">原文参考：https://www.t00ls.net/thread-61355-1-1.html</span><br><span class="line"></span><br><span class="line">编译的时候用的命令是 go build -ldflags &quot;-w -s&quot;</span><br><span class="line">然后把我编译后的文件扔进了IDA查看</span><br><span class="line">发现程序中包含了很多我本地的一些路径信息</span><br></pre></td></tr></table></figure>
 <h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>用这句话编译都可以去掉路径信息了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build -gcflags=-trimpath=$GOPATH -asmflags=-trimpath=$GOPATH -ldflags &quot;-w -s&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">参考： https:<span class="comment">//www.t00ls.net/redirect.php?goto=findpost&amp;ptid=61355&amp;pid=1009889</span></span><br><span class="line"><span class="keyword">go</span> build -trimpath -ldflags=<span class="string">"-w -s"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">或者：</span><br><span class="line"><span class="keyword">go</span> build -gcflags=-trimpath=$GOPATH -asmflags=-trimpath=$GOPATH -ldflags <span class="string">"-w -s"</span></span><br></pre></td></tr></table></figure>
 <p>QQ群：397745473</p>
 
       
