@@ -99,12 +99,12 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="python并行案例 QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://vksec.com/2021/07/30/200_python并行案例/images/200_python%E5%B9%B6%E8%A1%8C%E6%A1%88%E4%BE%8B/perf.png">
-<meta property="og:updated_time" content="2021-07-30T02:15:13.000Z">
+<meta property="og:image" content="https://myapollo.com.tw/images/python-concurrent-futures/perf.png">
+<meta property="og:updated_time" content="2021-11-18T02:33:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python并行案例">
 <meta name="twitter:description" content="python并行案例 QQ群：397745473">
-<meta name="twitter:image" content="http://vksec.com/2021/07/30/200_python并行案例/images/200_python%E5%B9%B6%E8%A1%8C%E6%A1%88%E4%BE%8B/perf.png">
+<meta name="twitter:image" content="https://myapollo.com.tw/images/python-concurrent-futures/perf.png">
 
 
 
@@ -449,7 +449,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from concurrent.futures import ProcessPoolExecutor, as_completed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def say_hello_to(name):</span><br><span class="line">    return f&apos;Hi, &#123;name&#125;&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">names = [&apos;John&apos;, &apos;Ben&apos;, &apos;Bill&apos;, &apos;Alex&apos;, &apos;Jenny&apos;] * 1000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">with ProcessPoolExecutor(max_workers=4) as executor:</span><br><span class="line">    results = executor.map(say_hello_to, names)</span><br></pre></td></tr></table></figure>
 <p>以下用 <a href="https://jupyter.org/" target="_blank" rel="noopener">Jupyter</a> 中的 <code>%timeit</code> 測試其效能：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%timeit with ProcessPoolExecutor(max_workers=4) as executor: executor.map(say_hello_to, names, chunksize=6)</span><br></pre></td></tr></table></figure>
-<p><a href="https://myapollo.com.tw/images/python-concurrent-futures/perf.png" target="_blank" rel="noopener"><img src="images/200_python%E5%B9%B6%E8%A1%8C%E6%A1%88%E4%BE%8B/perf.png" alt="img"></a></p>
+<p><a href="https://myapollo.com.tw/images/python-concurrent-futures/perf.png" target="_blank" rel="noopener"><img src="https://myapollo.com.tw/images/python-concurrent-futures/perf.png" alt="img"></a></p>
 <p>上圖可以看到隨著 <code>chunksize</code> 的增加，程式平均的執行時間越來越短，但也不是無限制的增加，到某個數量之後，加速的幅度就開始趨緩，因此 chunksize 的設定還是得花點心思才行。</p>
 <p>以上，就是 concurrent.futures 模組的介紹。</p>
 <p>Happy Coding!</p>
@@ -594,7 +594,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">226</span>
+                <span class="site-state-item-count">228</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
