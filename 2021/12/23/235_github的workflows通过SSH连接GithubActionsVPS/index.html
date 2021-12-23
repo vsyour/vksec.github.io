@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="Openresty Python LUA">
 <meta property="og:description" content="github的workflows通过SSH连接GithubActionsVPS QQ群：397745473">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-12-23T03:24:57.000Z">
+<meta property="og:updated_time" content="2021-12-23T15:31:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="白嫖github的workflows通过SSH连接GithubActionsVPS">
 <meta name="twitter:description" content="github的workflows通过SSH连接GithubActionsVPS QQ群：397745473">
@@ -441,6 +441,7 @@
 <p>服务器存活时间默认是 1 小时，可自行调整。这里面的 TOKEN 和 SSH 登录密码最好采用 workflow 中推荐的方式，先在 GitHub 中创建 Secret，然后在 workflow 中引用 Secret。具体步骤可参考官方文档[9]。</p>
 <p><strong>最后再次强调：希望大家以学习研究目的来使用，切勿用作其他恶意用途，切勿滥用！</strong></p>
 <h1 id="白嫖MACOS"><a href="#白嫖MACOS" class="headerlink" title="白嫖MACOS"></a>白嫖MACOS</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">name: CI</span><br><span class="line">on: [push]</span><br><span class="line">jobs:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: macos-latest</span><br><span class="line">    steps:</span><br><span class="line">    - uses: actions/checkout@v2</span><br><span class="line">    - name: Setup tmate session</span><br><span class="line">      uses: mxschmitt/action-tmate@v3</span><br></pre></td></tr></table></figure>
+<h1 id="防断"><a href="#防断" class="headerlink" title="防断"></a>防断</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function ConnectButton()&#123;</span><br><span class="line">    console.log(&quot;Connect pushed&quot;); </span><br><span class="line">    document.querySelector(&quot;#check-step-4 &gt; summary &gt; div &gt; span&quot;).click() </span><br><span class="line">&#125;</span><br><span class="line">setInterval(ConnectButton,60000);</span><br></pre></td></tr></table></figure>
 <p>QQ群：397745473</p>
 
       
@@ -696,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建GITHUB仓库"><span class="nav-number">2.</span> <span class="nav-text">创建GITHUB仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立bash脚本"><span class="nav-number">3.</span> <span class="nav-text">建立bash脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建一个新的工作流"><span class="nav-number">4.</span> <span class="nav-text">创建一个新的工作流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多白嫖-Github-Action参考"><span class="nav-number">5.</span> <span class="nav-text">更多白嫖 Github Action参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#白嫖MACOS"><span class="nav-number">6.</span> <span class="nav-text">白嫖MACOS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建GITHUB仓库"><span class="nav-number">2.</span> <span class="nav-text">创建GITHUB仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立bash脚本"><span class="nav-number">3.</span> <span class="nav-text">建立bash脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建一个新的工作流"><span class="nav-number">4.</span> <span class="nav-text">创建一个新的工作流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多白嫖-Github-Action参考"><span class="nav-number">5.</span> <span class="nav-text">更多白嫖 Github Action参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#白嫖MACOS"><span class="nav-number">6.</span> <span class="nav-text">白嫖MACOS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防断"><span class="nav-number">7.</span> <span class="nav-text">防断</span></a></li></ol></div>
             
 
           </div>
