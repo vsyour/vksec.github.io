@@ -1,0 +1,1106 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="python,网络安全,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Openresty Python LUA" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="QQ群：397745473 利用Ansible批量管理linux主机 常用的自动化运维工具: Puppet: —基于 Ruby 开发，采用 C/S 架构，扩展性强，基于 SSL，远程命令执行相对较弱 SaltStack: —基于 Python 开发，采用 C/S 架构，相对 puppet 更轻量级，配置语法使用 YMAL，使得配置脚本更简单 Ansible: —基于 Python paramiko">
+<meta name="keywords" content="python,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Ansible批量管理linux主机">
+<meta property="og:url" content="http://vksec.com/2021/12/27/237_利用Ansible批量管理linux主机/index.html">
+<meta property="og:site_name" content="Openresty Python LUA">
+<meta property="og:description" content="QQ群：397745473 利用Ansible批量管理linux主机 常用的自动化运维工具: Puppet: —基于 Ruby 开发，采用 C/S 架构，扩展性强，基于 SSL，远程命令执行相对较弱 SaltStack: —基于 Python 开发，采用 C/S 架构，相对 puppet 更轻量级，配置语法使用 YMAL，使得配置脚本更简单 Ansible: —基于 Python paramiko">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-12-27T04:02:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用Ansible批量管理linux主机">
+<meta name="twitter:description" content="QQ群：397745473 利用Ansible批量管理linux主机 常用的自动化运维工具: Puppet: —基于 Ruby 开发，采用 C/S 架构，扩展性强，基于 SSL，远程命令执行相对较弱 SaltStack: —基于 Python 开发，采用 C/S 架构，相对 puppet 更轻量级，配置语法使用 YMAL，使得配置脚本更简单 Ansible: —基于 Python paramiko">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vksec.com/2021/12/27/237_利用Ansible批量管理linux主机/">
+
+
+
+  <title>利用Ansible批量管理linux主机 | Openresty Python LUA</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Openresty Python LUA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">QQ群:397745473</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2021/12/27/237_利用Ansible批量管理linux主机/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用Ansible批量管理linux主机
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-27T03:03:03+08:00">
+                2021-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/12/27/237_利用Ansible批量管理linux主机/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/27/237_利用Ansible批量管理linux主机/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>QQ群：397745473</p>
+<p>利用Ansible批量管理linux主机</p>
+<p>常用的自动化运维工具:</p>
+<p>Puppet: —基于 Ruby 开发，采用 C/S 架构，扩展性强，基于 SSL，远程命令执行相对较弱</p>
+<p>SaltStack: —基于 Python 开发，采用 C/S 架构，相对 puppet 更轻量级，配置语法使用 YMAL，使得配置脚本更简单</p>
+<p>Ansible: —基于 Python paramiko 开发，分布式，无需客户端，轻量级，配置语法使用 YMAL 及 Jinja2 模板语言，更强的远程命令执行操作</p>
+<h1 id="ansible简介"><a href="#ansible简介" class="headerlink" title="ansible简介:"></a><strong>ansible简介:</strong></h1><p>Ansible 是一个简单的自动化运维管理工具，可以用来自动化部署应用、配置、编排 task(持续交付、无宕机更新等)，采用 paramiko 协议库（fabric 也使用这个），通过 SSH 或者 ZeroMQ 等连接主机，大概每 2 个月发布一个主版本</p>
+<p>简单的说:    让我们自动化部署APP；自动化管理配置项；自动化的持续交付；自动化的（AWS）云服务管理。 批量的在远程服务器上执行命令 。</p>
+<p>Ansible则是提供了一套简单的流程，你要按照它的流程来做，就能轻松完成任务.</p>
+<p>ansible的优点：<br>1、轻量级，他不需要去客户端安装agent，更新时，只需要在操作机上进行一次更新即可.<br>2、批量任务执行可以写成脚本，而且不用分发到远程就可以执行.<br>3、使用python编写的，维护更简单，ruby语法过于复杂 .<br>4、支持sudo.</p>
+<a id="more"></a>
+<h1 id="利用Ansible批量管理linux主机"><a href="#利用Ansible批量管理linux主机" class="headerlink" title="利用Ansible批量管理linux主机"></a>利用Ansible批量管理linux主机</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">参考: </span><br><span class="line">https://www.cnblogs.com/yeyou/p/5975900.html</span><br><span class="line">https://blog.51cto.com/u_13859004/2173972</span><br><span class="line">https://blog.51cto.com/tuwei/2388215</span><br><span class="line"></span><br><span class="line">使用Ansible批量管理远程服务器： https://www.linuxidc.com/Linux/2015-05/118080.htm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开始使用:</span></span><br><span class="line">关闭iptables: </span><br><span class="line">service iptables stop</span><br><span class="line">chkconfig iptables off</span><br><span class="line"></span><br><span class="line">各个服务器节点的配置:</span><br><span class="line">hostname node1.server.com</span><br><span class="line"></span><br><span class="line">添加hosts解析</span><br><span class="line">[root@ansible ~]<span class="comment"># vim /etc/hosts #编辑hosts文件</span></span><br><span class="line">[root@ansible ~]<span class="comment"># tail -3 /etc/hosts</span></span><br><span class="line">192.168.1.63 node1.server.com <span class="comment">#node1</span></span><br><span class="line">192.168.1.64 node2.server.com <span class="comment">#node2</span></span><br><span class="line">192.168.1.20 ansible.server.com <span class="comment">#ansible</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置ansible端能基于密钥认证的方式联系各被管理节点。</span></span><br><span class="line"></span><br><span class="line">[root@centos01 ~]<span class="comment"># ssh-keygen -t rsa  &lt;!--生成密钥对--&gt;</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/root/.ssh/id_rsa):&lt;!--密钥对存放路径--&gt;</span><br><span class="line">Created directory <span class="string">'/root/.ssh'</span>.</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):  </span><br><span class="line">       &lt;!--输入私钥保护密码，直接按Enter键表示无密码--&gt;</span><br><span class="line">Enter same passphrase again:    &lt;!--再次输入--&gt;</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /root/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /root/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:cJz6NRTrvMDxX+Jpce6LRnWI3vVEl/zvARL7D10q9WY root@centos01</span><br><span class="line">The key<span class="string">'s randomart image is:</span></span><br><span class="line"><span class="string">+---[RSA 2048]----+</span></span><br><span class="line"><span class="string">|          .   . .|</span></span><br><span class="line"><span class="string">|       . . +   oo|</span></span><br><span class="line"><span class="string">|      . = o o. oo|</span></span><br><span class="line"><span class="string">|       = * o..+ *|</span></span><br><span class="line"><span class="string">|      . S *.=+=*+|</span></span><br><span class="line"><span class="string">|       . o =+XooE|</span></span><br><span class="line"><span class="string">|        . ..=.++.|</span></span><br><span class="line"><span class="string">|           ..o ..|</span></span><br><span class="line"><span class="string">|           .. o. |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[root@centos01 ~]# ssh-copy-id -i .ssh/id_rsa.pub  root@192.168.100.20   &lt;!--复制公钥到远端192.168.100.20--&gt;</span></span><br><span class="line"><span class="string">[root@centos01 ~]# ssh-copy-id -i .ssh/id_rsa.pub  root@192.168.100.30    &lt;!--复制公钥到远端192.168.100.30--&gt;</span></span><br><span class="line"><span class="string">[root@centos01 ~]# ssh-copy-id -i ~/.ssh/id_rsa.pub root@node1.server.com</span></span><br><span class="line"><span class="string">[root@centos01 ~]# ssh-copy-id -i ~/.ssh/id_rsa.pub root@node2.server.com</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">ssh-keygen #按照提示输入即可，一路回车也没问题，它会生成~/.ssh/id_rsa.pub 文件</span></span><br><span class="line"><span class="string">ssh-copy-id &lt;远程主机&gt; #这个会把上一步生成的pub文件放到远程主机，按提示输入ssh密码即可</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 参考 : https://www.linuxidc.com/Linux/2020-01/162135.htm</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">然后我们修改ansible配置文件 /etc/ansible/hosts </span></span><br><span class="line"><span class="string">[clients] </span></span><br><span class="line"><span class="string">代表一组主机的别名，这样就可以按组来操作。有些云平台象ec2 是需要用pem文件登录的。</span></span><br><span class="line"><span class="string">我们只要按第二台的格式写就了。</span></span><br><span class="line"><span class="string">ansible_user是登录用户名</span></span><br><span class="line"><span class="string">[clients]</span></span><br><span class="line"><span class="string">192.168.1.250</span></span><br><span class="line"><span class="string">111.111.111.111 </span></span><br><span class="line"><span class="string">ansible_user=ubuntu </span></span><br><span class="line"><span class="string">ansible_ssh_private_key_file=~/my.pem</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Ansible简单测试</span></span><br><span class="line"><span class="string">ansible命令</span></span><br><span class="line"><span class="string">格式：ansible  节点名称   [ -m  模块]   -a  命令参数</span></span><br><span class="line"><span class="string">例：</span></span><br><span class="line"><span class="string">1、查看各个节点的时间</span></span><br><span class="line"><span class="string">[root@ansible ~]# ansible all -a date</span></span><br><span class="line"><span class="string">[root@ansible ~]# ansible all -m command -a date</span></span><br><span class="line"><span class="string">//以上两条命令结果是一样的，因为默认调用 command 模块，所以可以省略， all 表示所有节点， -a 后面是参数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2、查看各个节点在线情况</span></span><br><span class="line"><span class="string">[root@ansible ~]# ansible all -m ping //内建的ping模块</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3、在各个节点输出指定信息</span></span><br><span class="line"><span class="string">[root@ansible ~]# ansible all -a "/bin/echo hello,world" #输出信息</span></span><br><span class="line"><span class="string">[root@ansible ~]# ansible all -a "/bin/df -h" #输出挂载信息</span></span><br><span class="line"><span class="string">[root@ansible ~]# ansible all -a "/sbin/ip addr show dev eth0 " #查看各节点的 eth0 网卡信息</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Ansible-playbook</span></span><br><span class="line"><span class="string">1、Playbook是通过yaml文件来配置实现的，先来介绍下yaml语法！</span></span><br><span class="line"><span class="string">      YAML的语法和其他高阶语言类似，并且可以简单表达清单、散列表、标量等数据结构。\</span></span><br><span class="line"><span class="string">其结构（Structure）通过空格来展示，序列（Sequence）里的项用"-"来代表，Map里的键值对用":"分隔。YAML文件扩展名通常为.yaml，如example.yaml</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2、Playbook可以用来管理复杂任务</span></span><br><span class="line"><span class="string">     对于需反复执行的、较为复杂的任务，我们可以通过定义 Playbook 来搞定。Playbook 是 Ansible 真正强大的地方，它允许使用变量、条件、循环、以及模板，也能通过角色 及包含指令来重用既有内容。下面我们来看看一些具体的实例。</span></span><br></pre></td></tr></table></figure>
+<h1 id="案例1-批量安装mysql-server软件"><a href="#案例1-批量安装mysql-server软件" class="headerlink" title="案例1: 批量安装mysql-server软件"></a>案例1: 批量安装mysql-server软件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1:批量安装mysql-server软件：</span><br><span class="line">[root@ansible ~]# vim mysql-server.yaml #建立mysql-server .yaml文件</span><br><span class="line">内容如下： (注意语法格式)</span><br><span class="line">选项解析：</span><br><span class="line">hosts：webserver         #指定要执行指定任务的主机，其可以是一个或多个由冒号分隔主机组</span><br><span class="line">remote_user:root         #用于指定远程主机上的执行任务的用户</span><br><span class="line">tasks：                       #  任务</span><br><span class="line">-name：mysql-server installing    # 给这个任务起的名字</span><br><span class="line">yum：name=php           #利用yum模块，安装软件的包名为mysql-server</span><br><span class="line">state=present                 #状态为安装  </span><br><span class="line">state=absent                  #状态为卸载</span><br><span class="line"></span><br><span class="line">[root@ansible ~]# ansible all -a &quot;/bin/rpm -q mysql-server &quot; # 检查node是否已经安装mysql-server</span><br><span class="line">[root@ansible ~]# ansible-playbook mysql-server.yaml</span><br><span class="line">看到结果，ok=2    changed=1 说明客户机上的mysql-server安装成功了！</span><br><span class="line">验证一下 mysql-server是否成功</span><br><span class="line">[root@ansible ~]# ansible all -a &quot;/bin/rpm -q mysql-server &quot;</span><br><span class="line">[root@ansible ~]# ansible all -a &quot;/sbin/service mysqld start &quot; #启动mysqld</span><br></pre></td></tr></table></figure>
+<h1 id="案例2-创建crontab计划"><a href="#案例2-创建crontab计划" class="headerlink" title="案例2: 创建crontab计划"></a><strong>案例2: 创建crontab计划</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.建立cron.yaml，让每月10号来运行/root/backup.sh脚本</span><br><span class="line">[root@ansible ~]# vim crond.yaml</span><br><span class="line">内容如下：</span><br><span class="line"></span><br><span class="line">执行: [root@ansible ~]# ansible-playbook crond.yaml</span><br><span class="line"></span><br><span class="line">看到结果，ok=2    changed=1 说明客户机上的crontab计划创建成功了！</span><br><span class="line"></span><br><span class="line">[root@ansible ~]# ansible all -a &apos;crontab -l &apos; #查看各个节点crontab：</span><br><span class="line">注：</span><br><span class="line">&quot;ansible-doc -l&quot; 命令来查看它内置的有哪些模块。</span><br><span class="line">&quot;ansible-doc  模块名&quot;  命令来查看具体模块的详细用法。</span><br></pre></td></tr></table></figure>
+<h1 id="使用ansible批量的添加用户"><a href="#使用ansible批量的添加用户" class="headerlink" title="使用ansible批量的添加用户"></a><strong>使用ansible批量的添加用户</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">方法一:直接使用ansible命令</span><br><span class="line">[root@ansible ~]# openssl passwd -salt -l &quot;abc123&quot;</span><br><span class="line">-luVlrZexUGHM</span><br><span class="line">[root@ansible ~]# ansible all -m user -a &quot;name=baigujing password=-luVlrZexUGHM shell=/bin/bash &quot; -u root</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">方法二:定义主机清单在使用ansible命令</span><br><span class="line">[root@ansible ~]# openssl passwd -salt -l &quot;abc123&quot;</span><br><span class="line">-luVlrZexUGHM</span><br><span class="line">[root@ansible ~]# vim hosts #添加主机地址</span><br><span class="line">[root@ansible ~]# ansible -i hosts webserver -m user -a &quot;name=tester password=-luVlrZexUGHMshell=/bin/bash &quot; -u root</span><br><span class="line"></span><br><span class="line">参数解释:</span><br><span class="line">-i #指定 inventory文件的位置;</span><br><span class="line">webserver #清单文件中的主机组名称</span><br><span class="line">-m #指定模块,不加此选项默认使用command模块</span><br><span class="line">user #添加用户的模块</span><br><span class="line">-a #编写模块内支持的指定</span><br><span class="line">-u #指定远程用户</span><br><span class="line">注意:密码不能是明文 注意是password 不是passwd</span><br><span class="line">.注意password必须是密文的,直接添加到/etc/shadow文件中</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">创建用户组:</span><br><span class="line">ansible -i test puppet -m group -a &quot;name=test state=present&quot; -u root</span><br><span class="line"></span><br><span class="line">#建立用户组，使用的是新的模块 group</span><br><span class="line">删除用户:</span><br><span class="line">ansible -i hosts webserver -m user -a &quot;name=tester remove=yes state=absent&quot; -u root</span><br><span class="line"></span><br><span class="line">方法三:编写yaml文件</span><br><span class="line">1,生成密钥</span><br><span class="line">[root@ansible ~]# openssl passwd -salt -l &quot;abc123&quot;</span><br><span class="line">-luVlrZexUGHM #生成salt密钥</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2.编辑yaml文件</span><br><span class="line">[root@ansible ~]# vim useradd.yaml #编辑文件</span><br><span class="line">[root@ansible ~]# cat useradd.yaml #查看内容</span><br><span class="line">- hosts: webserver #定义主机组</span><br><span class="line">user: root #远程链接用户</span><br><span class="line">vars:</span><br><span class="line">user: jerry #添加的用户名</span><br><span class="line">tasks: #任务</span><br><span class="line">- name: add user #任务名称</span><br><span class="line">action: user name=&#123;&#123; user &#125;&#125; password=-luVlrZexUGHM shell=/bin/bash home=/home/&#123;&#123; user &#125;&#125; #指定用户相关的信息 密码 必须是密文salt加密 登录shell 宿主目录</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">3.执行yaml文件</span><br><span class="line">[root@ansible ~]# ansible-playbook useradd.yaml 成功</span><br></pre></td></tr></table></figure>
+<p>QQ群：397745473</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
+          
+           <a href="https://book.xd10086.com/categories/%E9%BB%91%E5%AE%A2/" rel="tag"># 黑客书籍</a>
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/12/23/236_免费邮箱邮件别名转发服务商/" rel="next" title="免费邮箱邮件别名转发服务商">
+                <i class="fa fa-chevron-left"></i> 免费邮箱邮件别名转发服务商
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    <div class="post-spread">
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<img src="https://i.imgur.com/eGNMc8d.png" alt="知识星球">
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+<script data-ad-client="ca-pub-9873623505122626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://i.imgur.com/luMBjvD.jpg" alt="vsyour">
+          <p class="site-author-name" itemprop="name">vsyour</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">238</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vsyour" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/vsyour" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/vsyour" target="_blank" title="FaceBook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  FaceBook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vksec.com/" title="Openresti" target="_blank">Openresti</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vsyour.com/" title="Blog" target="_blank">Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://vksec.com/2018/01/29/23_vksec_操作记录/" title="操作记录" target="_blank">操作记录</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shang.qq.com/wpa/qunwpa?idkey=c3e0580ecf8d705036d1901d44121f3b4e2c3b6a4ad7b417e968784345b01380" title="QQ群" target="_blank">QQ群</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ansible简介"><span class="nav-number">1.</span> <span class="nav-text">ansible简介:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用Ansible批量管理linux主机"><span class="nav-number">2.</span> <span class="nav-text">利用Ansible批量管理linux主机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例1-批量安装mysql-server软件"><span class="nav-number">3.</span> <span class="nav-text">案例1: 批量安装mysql-server软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例2-创建crontab计划"><span class="nav-number">4.</span> <span class="nav-text">案例2: 创建crontab计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用ansible批量的添加用户"><span class="nav-number">5.</span> <span class="nav-text">使用ansible批量的添加用户</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vsyour</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vksec.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vksec.com/2021/12/27/237_利用Ansible批量管理linux主机/';
+          this.page.identifier = '2021/12/27/237_利用Ansible批量管理linux主机/';
+          this.page.title = '利用Ansible批量管理linux主机';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vksec.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            var resultItems = [];
+            if (this.value.trim().length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCountInArticle = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCountInArticle = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  var resultItem = '';
+
+                  function highlightKeyword(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+
+                    var matchText = text.substring(start, end);
+                    var matchResult = [];
+                    var prevEnd = 0;
+                    while (position + word.length <= end && index.length != 0) {
+
+                      // highlight keyword
+
+                      var wordBegin = position - start;
+                      var wordEnd = position - start + word.length;
+                      matchResult.push(matchText.substring(prevEnd, wordBegin));
+                      matchResult.push("<b class=\"search-keyword\">" + matchText.substring(wordBegin, wordEnd) + "</b>");
+
+                      // move to next position of hit
+
+                      index.pop();
+                      prevEnd = wordEnd;
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (prevEnd > position - start) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    matchResult.push(matchText.substring(prevEnd));
+                    return matchResult.join('');
+                  }
+
+                  // sort index by position of keyword
+
+                  indexOfTitle.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  indexOfContent.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  // highlight title
+
+                  if (indexOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, 0, title.length, indexOfTitle) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  // highlight content
+
+                  var resultUpperBound = parseInt(1);
+                  var withoutUpperBound = false;
+                  if (resultUpperBound === -1) {
+                    withoutUpperBound = true;
+                  }
+                  var currentResultNum = 0;
+                  while (indexOfContent.length != 0 && (withoutUpperBound || (currentResultNum < resultUpperBound))) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                    "<p class=\"search-result\">" + highlightKeyword(content, start, end, indexOfContent) +
+                    "...</p>" + "</a>";
+                    currentResultNum++;
+                  }
+                  resultItem += "</li>";
+                  resultItems.push({item: resultItem, hitCount: hitCountInArticle, id: resultItems.length});
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.hitCount != resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultLeft.id - resultRight.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result, i) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              $resultContent.innerHTML = searchResultList;
+            }
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
