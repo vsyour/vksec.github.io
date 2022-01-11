@@ -305,6 +305,171 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/04/24/00_托管网站在Tor网络上_Ubuntu主机/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vsyour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/luMBjvD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Openresty Python LUA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/24/00_托管网站在Tor网络上_Ubuntu主机/" itemprop="url">
+                  托管网站在Tor网络上
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T03:03:03+08:00">
+                2017-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/小技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">小技巧</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/24/00_托管网站在Tor网络上_Ubuntu主机/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/24/00_托管网站在Tor网络上_Ubuntu主机/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>托管网站在Tor网络上（Ubuntu主机）<a href="https://www.t00ls.net/thread-44040-1-1.html" target="_blank" rel="noopener">https://www.t00ls.net/thread-44040-1-1.html</a></p>
+<p>  大部分人接触Tor网络是由Tor Browser开始的，这个东东可以浏览暗网里面奇奇怪怪的东西，网络里面最黑色的部分在这里完整的体现了。<br>开始好奇一个网站怎么和Tor网络联系在一起的，怎么去获取一个.onion域名。<br>查阅相关资料，发现教程极少，自己摸索着，发现几条命令就搞定了，国内还没有相关教程，便有了这篇文章。</p>
+<p>环境：Ubuntu14.04（国外的）</p>
+<p>1.安装Tor Browser,这步就不多说了，<a href="https://www.torproject.org/。" target="_blank" rel="noopener">https://www.torproject.org/。</a><br>注意：安装完后，国内大部分ip是直接链接不上tor网络的，点击配置，然后选择网桥obfs4，挂个国外的sock5，稍等一分钟就行了。  </p>
+<p><img src="https://i.imgur.com/E9e2AJ5.png" alt></p>
+<p>  2.Ubuntu安装tor，由<a href="https://www.torproject.org/docs/debian.html.en，执行如下：" target="_blank" rel="noopener">https://www.torproject.org/docs/debian.html.en，执行如下：</a><br>修改源 vim /etc/apt/sources.list<br>添加 ：<br>deb <a href="http://deb.torproject.org/torproject.org" target="_blank" rel="noopener">http://deb.torproject.org/torproject.org</a> stretch main<br>deb-src <a href="http://deb.torproject.org/torproject.org" target="_blank" rel="noopener">http://deb.torproject.org/torproject.org</a> stretch main<br>接着运行：<br>gpg –keyserver keys.gnupg.net –recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89<br>gpg –export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -<br>apt update<br>apt install tor deb.torproject.org-keyring</p>
+<p>3.<br>运行：<br>mkdir /root/server<br>chmod 700 /root/server ，配置权限。</p>
+<p>添加网站到tor配置文件。<br>tor配置文件位于/etc/tor/torrc.<br>在文件最后面添加<br>HiddenServiceDir /root/server<br>HiddenServicePort 80 127.0.0.1:80  </p>
+<p><img src="https://i.imgur.com/lVINyXy.png" alt></p>
+<p>  这里的/root/server 自己配置自己的路径，等会而输出一些文件到这个文件夹，hostname，private_keyz这些。</p>
+<p>4.<br>运行：<br>tor </p>
+<p>看到Done就可以了。接着在/root/server/hostname 里面就是tor网站地址，指向本地的80端口。</p>
+<p>5.作为一个演示，我们python 搭建一个简单的网站，test.html 写入了Hello World！</p>
+<p>6.Tor Browser浏览试试</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://vksec.com/2017/04/22/04_OpenResty新的正式版1.11.2.3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -497,7 +662,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">241</span>
+                <span class="site-state-item-count">242</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
